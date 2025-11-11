@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import heroChateau from '@/assets/hero-chateau.jpg';
+import heroImage from '@/assets/hero-sumi-performance.png';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -19,11 +19,11 @@ const HeroSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroChateau}
-          alt="Château de la Ferté-Imbault"
+          src={heroImage}
+          alt="Sumi Jo Performance"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/60 via-accent/40 to-accent/80" />
       </div>
 
       {/* Content */}
