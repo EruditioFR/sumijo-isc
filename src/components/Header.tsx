@@ -68,6 +68,12 @@ const Header = () => {
               {t('nav.sumijo')}
             </button>
             <button
+              onClick={() => scrollToSection('jury')}
+              className="text-sm text-cream hover:text-gold transition-colors"
+            >
+              {t('nav.jury')}
+            </button>
+            <button
               onClick={() => scrollToSection('sponsors')}
               className="text-sm text-cream hover:text-gold transition-colors"
             >
@@ -153,6 +159,12 @@ const Header = () => {
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.sumijo')}
+              </button>
+              <button
+                onClick={() => scrollToSection('jury')}
+                className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+              >
+                {t('nav.jury')}
               </button>
               <button
                 onClick={() => scrollToSection('sponsors')}

@@ -2,6 +2,7 @@
   "nav": {
     "competition": "La Compétition",
     "sumijo": "Sumi Jo",
+    "jury": "Le Jury",
     "participate": "Participer",
     "sponsors": "Partenaires",
     "contact": "Contact"
@@ -97,6 +98,39 @@
     "institutional": "PARTENAIRES INSTITUTIONNELS",
     "private": "PARTENAIRES PRIVÉS",
     "become": "DEVENIR PARTENAIRE"
+  },
+  "jury": {
+    "title": "LE JURY",
+    "president": {
+      "name": "Sumi Jo",
+      "role": "Soprano"
+    },
+    "members": {
+      "operowicz": {
+        "name": "Olivier Operowicz-Metzinger",
+        "role": "Président du jury associé, DG Orpheus de la Ferté-Imbault"
+      },
+      "friend": {
+        "name": "Jonathan Friend",
+        "role": "Conseiller Musical du Metropolitan Opera de NYC et du Irish National Opera"
+      },
+      "galoppini": {
+        "name": "Alessandro Galoppini",
+        "role": "Casting Manager de La Scala"
+      },
+      "lanceron": {
+        "name": "Alain Lanceron",
+        "role": "Président de Warner Classics et Erato"
+      },
+      "rhorer": {
+        "name": "Jérémie Rhorer",
+        "role": "Chef d'orchestre, compositeur et directeur du Cercle de l'Harmonie"
+      },
+      "vargas": {
+        "name": "Ramón Vargas",
+        "role": "Ténor"
+      }
+    }
   },
   "footer": {
     "navigation": "NAVIGATION",
