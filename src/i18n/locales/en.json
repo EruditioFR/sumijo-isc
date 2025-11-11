@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "competition": "Competition",
+    "sumijo": "Sumi Jo",
+    "participate": "Participate",
+    "sponsors": "Partners",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
+    "subtitle": "Revealing talents, inspiring excellence",
+    "date": "Next edition: 2026",
+    "location": "Château de la Ferté-Imbault, France",
+    "participate": "PARTICIPATE",
+    "learnMore": "LEARN MORE"
+  },
+  "introduction": {
+    "title": "A WORLD PREMIERE",
+    "content1": "The first edition of the Sumi Jo International Singing Competition took place in France from July 7 to 13, 2024 at Château de la Ferté-Imbault, one of the most charming estates in the Loire Valley.",
+    "content2": "The culmination of a long-standing dream of Miss Sumi Jo herself, who patiently developed it with the help of a team of renowned music professionals, the competition is designed as an international platform capable of showcasing the talent of exceptional young artists from around the world and promoting their careers globally.",
+    "participants": "Participants",
+    "countries": "Countries",
+    "days": "Days"
+  },
+  "harmony": {
+    "title": "HARMONY & CULTURE",
+    "subtitle": "OPEN TO ALL VOCAL CATEGORIES AND ALL COUNTRIES WORLDWIDE",
+    "content1": "The first competition to be organized at Château de La Ferté-Imbault, where heritage meets elegance, is rooted in Miss Jo's experience and passion over the past 36 years.",
+    "content2": "This event plays a major role in enabling young singers to access the world opera stage. Alternating competitions, auditions, masterclasses, recitals and gala concerts, the week welcomes international media and professionals as well as the public, for a privileged moment where harmony and nature meet History and Culture."
+  },
+  "sumijo": {
+    "title": "SUMI JO",
+    "subtitle": "WORLD-RENOWNED SOPRANO",
+    "content1": "During 36 years of an exceptionally rich and successful career, she has been praised continuously, both by the press and by audiences, for the remarkable musicality of her voice, her agility, precision and the purity of her tone.",
+    "content2": "She has performed in the most important opera houses and theaters around the world and is one of the classical artists who has sold the most records in the history of music, with more than 50 recordings to her credit including several platinum records rewarding one million copies.",
+    "content3": "Miss Jo first studied in her native country before joining the Conservatory of the Accademia di Santa Cecilia in Rome, from which she graduated with honors in 1986. The numerous accolades she has received include the International Puccini award and first prize at the international competitions of Seoul, Enna, Barcelona, Naples and Verona.",
+    "content4": "She was one of the favorite singers of Maestro Herbert von Karajan, named conductor of the Century in 1986, and of Sir Georg Solti for whom she recorded a Woman Without a Shadow rewarded with a Grammy Award and an unforgettable Queen of the Night in The Magic Flute.",
+    "unesco": "UNESCO Artist for Peace"
+  },
+  "career": {
+    "title": "CAREER HIGHLIGHTS",
+    "event1": {
+      "year": "1989",
+      "description": "MISS JO WINS THE GRAMMY AWARD FOR PRINCIPAL SOLOIST IN THE BEST OPERA RECORDING FOR RICHARD STRAUSS' \"DIE FRAU OHNE SCHATTEN\"."
+    },
+    "event2": {
+      "year": "2000",
+      "description": "SHE RECEIVES FROM MR MATSUURA, DIRECTOR GENERAL OF UNESCO, THE TITLE \"UNESCO ARTIST FOR PEACE\"."
+    },
+    "event3": {
+      "year": "2015",
+      "description": "CELEBRATING 30 YEARS OF CAREER, SHE PERFORMS CHINESE, AMERICAN, AUSTRALIAN AND EUROPEAN TOURS. THE SONG SHE PERFORMS IN SORRENTINO'S FILM \"YOUTH\" IS NOMINATED FOR A GOLDEN GLOBE AND AN ACADEMY AWARD."
+    },
+    "event4": {
+      "year": "2024",
+      "description": "ON JULY 15, SUMI JO OFFICIALLY LAUNCHES THE FIRST INTERNATIONAL SINGING COMPETITION BEARING HER NAME."
+    }
+  },
+  "festival": {
+    "title": "FESTIVAL & VOCATION",
+    "intro": "Driven by the desire that her journey and passion can serve to inspire, support and reveal the talents of other artists, Miss Jo creates with the SUMI JO INTERNATIONAL SINGING COMPETITION a new kind of festival closer to the public and artists, based on three key values.",
+    "ambition": {
+      "title": "AMBITION",
+      "content": "Through different formats, auditions, concerts, masterclasses, the week aims to share musical culture in all its beauty and diversity with as wide an audience as possible."
+    },
+    "transmission": {
+      "title": "TRANSMISSION",
+      "content": "As Miss Jo herself learned from her extraordinary successive mentors, the sharing of experience and passion is fundamental to perpetuate artistic excellence."
+    },
+    "emotion": {
+      "title": "EMOTION",
+      "content": "SJISC participants will benefit from an exceptionally romantic and privileged environment conducive to inspiration and artistic excellence."
+    }
+  },
+  "practical": {
+    "title": "PRACTICAL INFORMATION",
+    "contact": {
+      "title": "CONTACT",
+      "email": "contact@sumijo-isc.com",
+      "phone": "Phone"
+    },
+    "venue": {
+      "title": "THE CHÂTEAU",
+      "name": "Château de la Ferté-Imbault",
+      "address": "41300 La Ferté-Imbault, France"
+    },
+    "newsletter": {
+      "title": "NEWSLETTER",
+      "description": "Stay informed about upcoming editions",
+      "placeholder": "Your email",
+      "subscribe": "Subscribe"
+    }
+  },
+  "sponsors": {
+    "title": "OUR PARTNERS & SPONSORS",
+    "main": "MAIN PARTNERS",
+    "institutional": "INSTITUTIONAL PARTNERS",
+    "private": "PRIVATE PARTNERS",
+    "become": "BECOME A PARTNER"
+  },
+  "footer": {
+    "navigation": "NAVIGATION",
+    "followUs": "FOLLOW US",
+    "newsletter": "NEWSLETTER",
+    "partners": "PARTNERS",
+    "copyright": "© 2025 Sumi Jo International Singing Competition. All rights reserved.",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookies"
+  }
+}

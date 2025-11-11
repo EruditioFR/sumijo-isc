@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "competition": "La Compétition",
+    "sumijo": "Sumi Jo",
+    "participate": "Participer",
+    "sponsors": "Partenaires",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
+    "subtitle": "Révéler les talents, inspirer l'excellence",
+    "date": "Prochaine édition : 2026",
+    "location": "Château de la Ferté-Imbault, France",
+    "participate": "PARTICIPER",
+    "learnMore": "EN SAVOIR PLUS"
+  },
+  "introduction": {
+    "title": "UNE PREMIÈRE MONDIALE",
+    "content1": "La première édition de la Sumi Jo International Singing Competition a eu lieu en France du 7 au 13 juillet 2024 dans l'enceinte du Château de la Ferté-Imbault, l'un des plus charmants domaines de la vallée de la Loire.",
+    "content2": "Aboutissement d'un rêve de longue date de Mlle Sumi Jo elle-même, qui l'a patiemment élaborée avec l'aide d'une équipe de professionnels de la musique reconnus, la compétition est conçue comme une plateforme internationale susceptible de mettre en valeur le talent d'exceptionnels jeunes artistes du monde entier et de promouvoir leur carrière globalement.",
+    "participants": "Participants",
+    "countries": "Pays",
+    "days": "Jours"
+  },
+  "harmony": {
+    "title": "HARMONIE & CULTURE",
+    "subtitle": "OUVERT À TOUTES LES CATÉGORIES VOCALES ET TOUS LES PAYS DU MONDE",
+    "content1": "La première compétition à être organisée au Château de La Ferté-Imbault, où le patrimoine se mêle à l'élégance, s'enracine dans l'expérience et la passion de Mlle Jo lors de ces 36 dernières années.",
+    "content2": "Cette manifestation joue un rôle majeur afin de permettre aux jeunes chanteurs d'accéder à la scène opératique mondiale. Alternant concours, auditions, masterclasses, recitals et concerts de gala, la semaine accueille aussi bien les médias internationaux et les professionnels que le public, pour un moment privilégié où harmonie et nature rencontrent l'Histoire et la Culture."
+  },
+  "sumijo": {
+    "title": "SUMI JO",
+    "subtitle": "SOPRANO DE RENOMMÉE MONDIALE",
+    "content1": "Pendant les 36 ans d'une carrière exceptionnellement riche et couronnée de succès, elle a été louée sans discontinuer, aussi bien par la presse que par les spectateurs, pour la remarquable musicalité de sa voix, son agilité, sa précision et la pureté de son timbre.",
+    "content2": "Elle s'est produite dans les plus importants opéras et théâtres du monde entier et est l'une des artistes classiques à avoir vendu le plus de disques de toute l'Histoire de la musique, avec plus de 50 enregistrements à son actif incluant plusieurs disques de platine récompensant le million d'exemplaires.",
+    "content3": "Mlle Jo a d'abord étudié dans son pays natal avant de rejoindre le Conservatoire de l'Accademia di Santa Cecilia à Rome, dont elle sort diplômée avec les honneurs en 1986. Les nombreuses accolades qu'elle a reçues incluent l'International Puccini award et le premier prix aux concours internationaux de Seoul, d'Enna, de Barcelone, de Naples et de Vérone.",
+    "content4": "Elle était l'une des chanteuses préférées du Maestro Herbert von Karajan, nommé chef d'orchestre du Siècle en 1986, et de Sir Georg Solti pour lequel elle enregistre une Femme sans Ombre récompensée d'un Grammy Award et une inoubliable Reine de la Nuit dans la Flûte Enchantée.",
+    "unesco": "Artiste UNESCO de la Paix"
+  },
+  "career": {
+    "title": "MOMENTS D'UNE CARRIÈRE",
+    "event1": {
+      "year": "1989",
+      "description": "MLLE JO REMPORTE LE GRAMMY AWARD DE SOLISTE PRINCIPAL DANS LE MEILLEUR ENREGISTREMENT D'OPÉRA POUR \"LA FEMME SANS OMBRE\" DE RICHARD STRAUSS."
+    },
+    "event2": {
+      "year": "2000",
+      "description": "ELLE REÇOIT DE MR MATSUURA, DIRECTEUR GÉNÉRAL DE L'UNESCO, LE TITRE \"D'ARTISTE UNESCO DE LA PAIX\"."
+    },
+    "event3": {
+      "year": "2015",
+      "description": "CÉLÉBRANT SES 30 ANS DE CARRIÈRE, ELLE RÉALISE UNE TOURNÉE CHINOISE, AMÉRICAINE, AUSTRALIENNE ET EUROPÉENNE. LA CHANSON QU'ELLE INTERPRÈTE DANS LE FILM DE SORRENTINO \"YOUTH\" EST NOMMÉE POUR UN GOLDEN GLOBE ET UN ACADEMY AWARD."
+    },
+    "event4": {
+      "year": "2024",
+      "description": "LE 15 JUILLET, SUMI JO LANCE OFFICIELLEMENT LA PREMIÈRE COMPÉTITION INTERNATIONALE DE CHANT QUI PORTE SON NOM."
+    }
+  },
+  "festival": {
+    "title": "FESTIVAL & VOCATION",
+    "intro": "Animée de la volonté que son parcours et sa passion puissent servir à inspirer, soutenir et révéler les talents d'autres artistes, Mlle Jo crée avec la SUMI JO INTERNATIONAL SINGING COMPETITION un nouveau genre de festival plus proche du public et des artistes, s'appuyant sur trois valeurs clés.",
+    "ambition": {
+      "title": "AMBITION",
+      "content": "À travers différents formats, auditions, concerts, masterclasses, la semaine vise à partager la culture musicale dans toute sa beauté et sa diversité avec un public aussi large que possible."
+    },
+    "transmission": {
+      "title": "TRANSMISSION",
+      "content": "Comme Mlle Jo elle-même l'a appris de ses extraordinaires mentors successifs, le partage d'expérience et de passion est fondamental pour perpétuer l'excellence artistique."
+    },
+    "emotion": {
+      "title": "ÉMOTION",
+      "content": "Les participants du SJISC bénéficieront d'un environnement exceptionnellement romantique et privilégié propice à l'inspiration et à l'excellence artistique."
+    }
+  },
+  "practical": {
+    "title": "INFORMATIONS PRATIQUES",
+    "contact": {
+      "title": "CONTACT",
+      "email": "contact@sumijo-isc.com",
+      "phone": "Téléphone"
+    },
+    "venue": {
+      "title": "LE CHÂTEAU",
+      "name": "Château de la Ferté-Imbault",
+      "address": "41300 La Ferté-Imbault, France"
+    },
+    "newsletter": {
+      "title": "NEWSLETTER",
+      "description": "Restez informé des prochaines éditions",
+      "placeholder": "Votre email",
+      "subscribe": "S'inscrire"
+    }
+  },
+  "sponsors": {
+    "title": "NOS PARTENAIRES & SPONSORS",
+    "main": "PARTENAIRES PRINCIPAUX",
+    "institutional": "PARTENAIRES INSTITUTIONNELS",
+    "private": "PARTENAIRES PRIVÉS",
+    "become": "DEVENIR PARTENAIRE"
+  },
+  "footer": {
+    "navigation": "NAVIGATION",
+    "followUs": "SUIVEZ-NOUS",
+    "newsletter": "NEWSLETTER",
+    "partners": "PARTENAIRES",
+    "copyright": "© 2025 Sumi Jo International Singing Competition. Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Cookies"
+  }
+}
