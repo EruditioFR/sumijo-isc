@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-foreground/95 backdrop-blur-md shadow-elegant' : 'bg-transparent'
+        isScrolled ? 'bg-accent/95 backdrop-blur-md shadow-elegant' : 'bg-gradient-to-b from-accent/80 to-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -145,7 +145,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-foreground border-t border-gold/20"
+            className="lg:hidden bg-accent border-t border-gold/20"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               <button

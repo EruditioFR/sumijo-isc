@@ -63,7 +63,7 @@ const JurySection = () => {
   ];
 
   return (
-    <section id="jury" className="py-20 bg-beige">
+    <section id="jury" className="py-20 bg-muted">
       <div className="container mx-auto px-4" ref={ref}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ const JurySection = () => {
           className="flex flex-col items-center mb-16"
         >
           <div className="relative mb-4 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-burgundy/20 rounded-lg transform transition-transform group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-accent/20 rounded-lg transform transition-transform group-hover:scale-105" />
             <img
               src={sumiJoImage}
               alt={t('jury.president.name')}
@@ -108,7 +108,7 @@ const JurySection = () => {
               className="flex flex-col items-center"
             >
               <div className="relative mb-4 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-lg transform transition-transform group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-accent/10 rounded-lg transform transition-transform group-hover:scale-105" />
                 <img
                   src={member.image}
                   alt={member.name}
