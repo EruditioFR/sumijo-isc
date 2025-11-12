@@ -43,7 +43,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.4 }}
             className="space-y-2"
           >
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-gold tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
               SUMI JO
             </h1>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
