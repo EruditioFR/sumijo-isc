@@ -67,9 +67,9 @@ export default {
         burgundy: "hsl(var(--burgundy))",
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'sans': ['Lato', 'sans-serif'],
-        'elegant': ['Cinzel', 'serif'],
+        'display': ['Arial', 'Helvetica', 'Lucida', 'sans-serif'],
+        'sans': ['Arial', 'Helvetica', 'Lucida', 'sans-serif'],
+        'elegant': ['Arial', 'Helvetica', 'Lucida', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
