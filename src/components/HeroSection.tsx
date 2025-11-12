@@ -77,11 +77,6 @@ const HeroSection = () => {
             className="flex flex-col md:flex-row gap-6 justify-center items-center pt-4"
           >
             <div className="backdrop-blur-sm bg-accent/30 border border-gold/30 rounded-lg px-8 py-4 shadow-elegant">
-              <p className="text-cream text-xl md:text-2xl font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                {t('hero.date')}
-              </p>
-            </div>
-            <div className="backdrop-blur-sm bg-accent/30 border border-gold/30 rounded-lg px-8 py-4 shadow-elegant">
               <p className="text-gold-light text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 {t('hero.location')}
               </p>
