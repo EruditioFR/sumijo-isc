@@ -23,7 +23,7 @@ const HeroSection = () => {
           alt="Sumi Jo Performance"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/60 via-accent/40 to-accent/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/75 via-accent/70 to-accent/90" />
       </div>
 
       {/* Content */}
