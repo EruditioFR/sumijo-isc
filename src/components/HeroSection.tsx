@@ -21,9 +21,11 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-accent/75 via-accent/70 to-accent/90" />
+        {/* Decorative overlay pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
 
       {/* Content */}
@@ -32,63 +34,80 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-8"
         >
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          {/* Main Title with enhanced styling */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl text-gold tracking-wide"
+            className="space-y-2"
           >
-            SUMI JO
-          </motion.h1>
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-gold tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
+              SUMI JO
+            </h1>
+            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
+          </motion.div>
+
+          {/* Subtitle with elegant spacing */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="font-display text-2xl md:text-4xl lg:text-5xl text-cream"
+            className="font-display text-2xl md:text-4xl lg:text-5xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed"
           >
-            INTERNATIONAL SINGING COMPETITION
+            INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
           </motion.h2>
+
+          {/* Description with improved typography */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="font-elegant text-lg md:text-xl text-gold-light max-w-2xl mx-auto"
+            className="font-sans text-lg md:text-2xl text-gold-light max-w-3xl mx-auto drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] leading-relaxed px-4"
           >
             {t('hero.subtitle')}
           </motion.p>
+
+          {/* Event Details with cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
-            className="space-y-4 pt-8"
+            className="flex flex-col md:flex-row gap-6 justify-center items-center pt-4"
           >
-            <p className="text-cream text-lg">
-              {t('hero.date')}
-            </p>
-            <p className="text-gold text-base">
-              {t('hero.location')}
-            </p>
+            <div className="backdrop-blur-sm bg-accent/30 border border-gold/30 rounded-lg px-8 py-4 shadow-elegant">
+              <p className="text-cream text-xl md:text-2xl font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                {t('hero.date')}
+              </p>
+            </div>
+            <div className="backdrop-blur-sm bg-accent/30 border border-gold/30 rounded-lg px-8 py-4 shadow-elegant">
+              <p className="text-gold-light text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                {t('hero.location')}
+              </p>
+            </div>
           </motion.div>
+
+          {/* CTA Buttons with enhanced design */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
+            className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
             <Button
               size="lg"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold text-lg px-8 py-6 hover:shadow-gold transition-all"
+              className="group relative bg-gradient-to-r from-gold via-gold-light to-gold text-foreground font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              {t('hero.participate')}
+              <span className="relative z-10">{t('hero.participate')}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={scrollToNext}
-              className="border-2 border-gold text-gold hover:bg-gold hover:text-foreground font-semibold text-lg px-8 py-6 transition-all"
+              className="border-2 border-gold text-gold bg-accent/20 backdrop-blur-sm hover:bg-gold hover:text-foreground font-bold text-lg px-10 py-7 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(162,148,124,0.4)]"
             >
               {t('hero.learnMore')}
             </Button>
@@ -96,16 +115,16 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <motion.button
         onClick={scrollToNext}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.5, repeat: Infinity, repeatType: 'reverse', repeatDelay: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold hover:text-gold-light transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold hover:text-gold-light transition-all duration-300 hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         aria-label="Scroll to next section"
       >
-        <ChevronDown className="w-8 h-8" />
+        <ChevronDown className="w-10 h-10" />
       </motion.button>
     </section>
   );
