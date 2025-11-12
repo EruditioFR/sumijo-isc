@@ -50,14 +50,19 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Subtitle with elegant spacing */}
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="font-display text-2xl md:text-4xl lg:text-5xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed"
+            className="space-y-3"
           >
-            INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
-          </motion.h2>
+            <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed">
+              INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
+            </h2>
+            <p className="font-display text-3xl md:text-5xl text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
+              2026
+            </p>
+          </motion.div>
 
           {/* Description with improved typography */}
           <motion.p
