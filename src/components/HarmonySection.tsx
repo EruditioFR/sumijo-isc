@@ -8,8 +8,18 @@ const HarmonySection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30">
-      <div className="container mx-auto px-4">
+    <section className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background avec image discrète */}
+      <div className="absolute inset-0">
+        <img
+          src={chateauGardens}
+          alt=""
+          className="w-full h-full object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-secondary/80" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             ref={ref}
