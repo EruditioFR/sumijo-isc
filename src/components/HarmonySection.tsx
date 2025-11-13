@@ -28,7 +28,7 @@ const HarmonySection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl text-white">
               {t('harmony.title')}
             </h2>
             <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light" />
