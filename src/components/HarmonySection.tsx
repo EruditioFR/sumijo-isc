@@ -32,7 +32,7 @@ const HarmonySection = () => {
               {t('harmony.title')}
             </h2>
             <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light" />
-            <p className="font-elegant text-xl text-gold">
+            <p className="font-elegant text-xl text-foreground">
               {t('harmony.subtitle')}
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
