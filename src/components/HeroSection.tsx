@@ -49,6 +49,9 @@ const HeroSection = () => {
             <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
               INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
             </h2>
+            <p className="font-sans text-lg md:text-2xl text-white max-w-3xl mx-auto drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] leading-relaxed px-4 pt-4">
+              {t('hero.subtitle')}
+            </p>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
           </motion.div>
 
@@ -64,15 +67,6 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Description with improved typography */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="font-sans text-lg md:text-2xl text-white max-w-3xl mx-auto drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] leading-relaxed px-4"
-          >
-            {t('hero.subtitle')}
-          </motion.p>
 
           {/* Event Details with cards */}
           <motion.div
