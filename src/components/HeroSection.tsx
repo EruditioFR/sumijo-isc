@@ -53,7 +53,7 @@ const HeroSection = () => {
               <p className="font-sans text-base md:text-lg text-white/80 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] tracking-wide">
                 Révéler les talents
               </p>
-              <p className="font-display text-2xl md:text-4xl text-white font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wider">
+              <p className="font-display text-2xl md:text-4xl text-gold font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wider">
                 INSPIRER L'EXCELLENCE
               </p>
             </div>
@@ -67,7 +67,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className="space-y-3"
           >
-            <p className="font-display text-3xl md:text-5xl text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
+            <p className="font-display text-3xl md:text-5xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
               2026
             </p>
           </motion.div>
