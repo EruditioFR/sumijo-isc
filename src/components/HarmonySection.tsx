@@ -14,9 +14,9 @@ const HarmonySection = () => {
         <img
           src={chateauGardens}
           alt=""
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-secondary/80" />
+        <div className="absolute inset-0 bg-secondary/70" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
