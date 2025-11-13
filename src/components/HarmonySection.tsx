@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import chateauGardens from '@/assets/chateau-gardens.jpg';
+import chateauGardens from '@/assets/chateau-drone.jpg';
 
 const HarmonySection = () => {
   const { t } = useTranslation();
