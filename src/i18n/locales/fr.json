@@ -100,34 +100,42 @@
   },
   "jury": {
     "title": "LE JURY",
+    "viewDetails": "Voir le profil",
     "president": {
       "name": "Sumi Jo",
-      "role": "Soprano"
+      "role": "Soprano",
+      "bio": "Soprano de renommée mondiale, Sumi Jo a marqué la scène lyrique internationale pendant plus de 36 ans avec sa voix exceptionnelle. Elle a chanté dans les plus grandes salles du monde et a vendu plus de 50 enregistrements, dont plusieurs disques de platine. Artiste UNESCO pour la Paix, elle a été la chanteuse préférée du Maestro Herbert von Karajan et a remporté un Grammy Award pour son interprétation dans 'La Femme sans Ombre' de Richard Strauss."
     },
     "members": {
       "operowicz": {
         "name": "Olivier Operowicz-Metzinger",
-        "role": "Président du jury associé, DG Orpheus de la Ferté-Imbault"
+        "role": "Président du jury associé, DG Orpheus de la Ferté-Imbault",
+        "bio": "Directeur Général d'Orpheus de la Ferté-Imbault et figure clé de l'organisation du concours. Passionné par la promotion des jeunes talents, il œuvre à créer des opportunités exceptionnelles pour les artistes émergents dans le cadre prestigieux du Château de la Ferté-Imbault."
       },
       "friend": {
         "name": "Jonathan Friend",
-        "role": "Conseiller Musical du Metropolitan Opera de NYC et du Irish National Opera"
+        "role": "Conseiller Musical du Metropolitan Opera de NYC et du Irish National Opera",
+        "bio": "Conseiller musical de renommée internationale, Jonathan Friend apporte son expertise auprès du Metropolitan Opera de New York et de l'Irish National Opera. Son œil avisé et sa connaissance approfondie du répertoire lyrique font de lui un membre précieux du jury."
       },
       "galoppini": {
         "name": "Alessandro Galoppini",
-        "role": "Casting Manager de La Scala"
+        "role": "Casting Manager de La Scala",
+        "bio": "En tant que Casting Manager du prestigieux Teatro alla Scala de Milan, Alessandro Galoppini est au cœur de la découverte et de la sélection des meilleurs talents lyriques mondiaux. Son expérience dans l'une des maisons d'opéra les plus exigeantes du monde en fait un expert incontournable."
       },
       "lanceron": {
         "name": "Alain Lanceron",
-        "role": "Président de Warner Classics et Erato"
+        "role": "Président de Warner Classics et Erato",
+        "bio": "Président de Warner Classics et Erato, Alain Lanceron est une figure majeure de l'industrie musicale classique. Sa vision artistique et son expertise dans la production d'enregistrements de classe mondiale enrichissent le jury de perspectives uniques sur les carrières musicales."
       },
       "rhorer": {
         "name": "Jérémie Rhorer",
-        "role": "Chef d'orchestre, compositeur et directeur du Cercle de l'Harmonie"
+        "role": "Chef d'orchestre, compositeur et directeur du Cercle de l'Harmonie",
+        "bio": "Chef d'orchestre, compositeur et directeur artistique du Cercle de l'Harmonie, Jérémie Rhorer est reconnu internationalement pour son approche innovante de la musique baroque et classique. Sa profonde compréhension musicale apporte une dimension artistique essentielle au jury."
       },
       "vargas": {
         "name": "Ramón Vargas",
-        "role": "Ténor"
+        "role": "Ténor",
+        "bio": "Ténor mexicain de renommée internationale, Ramón Vargas s'est produit sur les plus grandes scènes lyriques du monde. Sa carrière exceptionnelle et sa maîtrise du bel canto font de lui un mentor idéal pour guider et évaluer les jeunes talents."
       }
     }
   },
