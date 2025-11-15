@@ -100,34 +100,42 @@
   },
   "jury": {
     "title": "THE JURY",
+    "viewDetails": "View Profile",
     "president": {
       "name": "Sumi Jo",
-      "role": "Soprano"
+      "role": "Soprano",
+      "bio": "World-renowned soprano, Sumi Jo has graced the international opera stage for over 36 years with her exceptional voice. She has performed in the world's greatest venues and has sold over 50 recordings, including several platinum albums. UNESCO Artist for Peace, she was the favorite singer of Maestro Herbert von Karajan and won a Grammy Award for her performance in Richard Strauss' 'Die Frau ohne Schatten'."
     },
     "members": {
       "operowicz": {
         "name": "Olivier Operowicz-Metzinger",
-        "role": "Associate Jury President, General Director Orpheus de la Ferté-Imbault"
+        "role": "Associate Jury President, General Director Orpheus de la Ferté-Imbault",
+        "bio": "General Director of Orpheus de la Ferté-Imbault and a key figure in organizing the competition. Passionate about promoting young talent, he works to create exceptional opportunities for emerging artists in the prestigious setting of Château de la Ferté-Imbault."
       },
       "friend": {
         "name": "Jonathan Friend",
-        "role": "Music Consultant at the Metropolitan Opera and Irish National Opera"
+        "role": "Music Consultant at the Metropolitan Opera and Irish National Opera",
+        "bio": "Internationally renowned music consultant, Jonathan Friend brings his expertise to the Metropolitan Opera in New York and the Irish National Opera. His discerning eye and deep knowledge of the operatic repertoire make him a valuable jury member."
       },
       "galoppini": {
         "name": "Alessandro Galoppini",
-        "role": "Casting Manager at La Scala"
+        "role": "Casting Manager at La Scala",
+        "bio": "As Casting Manager of the prestigious Teatro alla Scala in Milan, Alessandro Galoppini is at the heart of discovering and selecting the world's finest operatic talents. His experience in one of the world's most demanding opera houses makes him an essential expert."
       },
       "lanceron": {
         "name": "Alain Lanceron",
-        "role": "President of Warner Classics and Erato"
+        "role": "President of Warner Classics and Erato",
+        "bio": "President of Warner Classics and Erato, Alain Lanceron is a major figure in the classical music industry. His artistic vision and expertise in world-class recording production enrich the jury with unique perspectives on musical careers."
       },
       "rhorer": {
         "name": "Jérémie Rhorer",
-        "role": "Conductor, composer and director of Le Cercle de l'Harmonie"
+        "role": "Conductor, composer and director of Le Cercle de l'Harmonie",
+        "bio": "Conductor, composer and artistic director of Le Cercle de l'Harmonie, Jérémie Rhorer is internationally recognized for his innovative approach to baroque and classical music. His profound musical understanding brings an essential artistic dimension to the jury."
       },
       "vargas": {
         "name": "Ramón Vargas",
-        "role": "Tenor"
+        "role": "Tenor",
+        "bio": "Internationally renowned Mexican tenor, Ramón Vargas has performed on the world's greatest operatic stages. His exceptional career and mastery of bel canto make him an ideal mentor to guide and evaluate young talent."
       }
     }
   },

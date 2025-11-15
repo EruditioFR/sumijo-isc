@@ -1,6 +1,16 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import sumiJoImage from '@/assets/jury-sumi-jo.png';
 import ramonVargasImage from '@/assets/jury-ramon-vargas.png';
 import jeremieRhorerImage from '@/assets/jury-jeremie-rhorer.png';
@@ -13,6 +23,7 @@ interface JuryMember {
   id: string;
   name: string;
   role: string;
+  bio: string;
   image: string;
 }
 
@@ -22,110 +33,190 @@ const JurySection = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [selectedMember, setSelectedMember] = useState<JuryMember | null>(null);
+
+  const president: JuryMember = {
+    id: 'president',
+    name: t('jury.president.name'),
+    role: t('jury.president.role'),
+    bio: t('jury.president.bio'),
+    image: sumiJoImage,
+  };
 
   const juryMembers: JuryMember[] = [
     {
       id: 'operowicz',
       name: t('jury.members.operowicz.name'),
       role: t('jury.members.operowicz.role'),
+      bio: t('jury.members.operowicz.bio'),
       image: olivierOperowiczImage,
     },
     {
       id: 'friend',
       name: t('jury.members.friend.name'),
       role: t('jury.members.friend.role'),
+      bio: t('jury.members.friend.bio'),
       image: jonathanFriendImage,
     },
     {
       id: 'galoppini',
       name: t('jury.members.galoppini.name'),
       role: t('jury.members.galoppini.role'),
+      bio: t('jury.members.galoppini.bio'),
       image: alessandroGaloppiniImage,
     },
     {
       id: 'lanceron',
       name: t('jury.members.lanceron.name'),
       role: t('jury.members.lanceron.role'),
+      bio: t('jury.members.lanceron.bio'),
       image: alainLanceronImage,
     },
     {
       id: 'rhorer',
       name: t('jury.members.rhorer.name'),
       role: t('jury.members.rhorer.role'),
+      bio: t('jury.members.rhorer.bio'),
       image: jeremieRhorerImage,
     },
     {
       id: 'vargas',
       name: t('jury.members.vargas.name'),
       role: t('jury.members.vargas.role'),
+      bio: t('jury.members.vargas.bio'),
       image: ramonVargasImage,
     },
   ];
 
   return (
-    <section id="jury" className="py-20 bg-muted">
-      <div className="container mx-auto px-4" ref={ref}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-display text-center mb-16 text-foreground"
-        >
-          {t('jury.title')}
-        </motion.h2>
+    <>
+      <section id="jury" className="py-20 bg-muted">
+        <div className="container mx-auto px-4" ref={ref}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-display text-center mb-16 text-foreground"
+          >
+            {t('jury.title')}
+          </motion.h2>
 
-        {/* President - Sumi Jo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-center mb-16"
-        >
-          <div className="relative mb-4 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-accent/20 rounded-lg transform transition-transform group-hover:scale-105" />
-            <img
-              src={sumiJoImage}
-              alt={t('jury.president.name')}
-              className="relative w-48 h-48 object-cover rounded-lg border-4 border-gold shadow-lg"
-            />
-          </div>
-          <h3 className="text-2xl font-display text-foreground mb-1">
-            {t('jury.president.name')}
-          </h3>
-          <p className="text-sm text-muted-foreground font-sans">
-            {t('jury.president.role')}
-          </p>
-        </motion.div>
-
-        {/* Jury Members Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {juryMembers.map((member, index) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="flex flex-col items-center"
+          {/* President - Sumi Jo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-16 max-w-2xl mx-auto"
+          >
+            <Card 
+              className="overflow-hidden cursor-pointer transition-all hover:shadow-2xl hover:shadow-gold/20 border-gold/30"
+              onClick={() => setSelectedMember(president)}
             >
-              <div className="relative mb-4 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-accent/10 rounded-lg transform transition-transform group-hover:scale-105" />
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="relative w-40 h-40 object-cover rounded-lg border-2 border-gold-light shadow-md"
-                />
-              </div>
-              <h4 className="text-lg font-display text-foreground text-center mb-1">
-                {member.name}
-              </h4>
-              <p className="text-xs text-muted-foreground text-center font-sans max-w-xs">
-                {member.role}
-              </p>
-            </motion.div>
-          ))}
+              <CardContent className="p-0">
+                <div className="flex flex-col md:flex-row items-center gap-6 p-6">
+                  <div className="relative group flex-shrink-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-accent/20 rounded-lg transform transition-transform group-hover:scale-105" />
+                    <img
+                      src={president.image}
+                      alt={president.name}
+                      className="relative w-48 h-48 object-cover rounded-lg border-4 border-gold shadow-lg"
+                    />
+                  </div>
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="inline-block px-3 py-1 bg-gold text-background text-xs font-display rounded-full mb-3">
+                      Présidente du Jury
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">
+                      {president.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-sans mb-4">
+                      {president.role}
+                    </p>
+                    <Button variant="outline" size="sm" className="border-gold text-gold hover:bg-gold hover:text-background">
+                      {t('jury.viewDetails')}
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Jury Members Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {juryMembers.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              >
+                <Card 
+                  className="overflow-hidden cursor-pointer transition-all hover:shadow-xl hover:shadow-gold/10 border-gold/20 h-full"
+                  onClick={() => setSelectedMember(member)}
+                >
+                  <CardContent className="p-0">
+                    <div className="relative group overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-64 object-cover transition-transform group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h4 className="text-lg font-display text-foreground mb-2 line-clamp-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground font-sans mb-4 line-clamp-2 min-h-[2.5rem]">
+                        {member.role}
+                      </p>
+                      <Button variant="ghost" size="sm" className="text-gold hover:text-gold hover:bg-gold/10 w-full">
+                        {t('jury.viewDetails')}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Modal Dialog */}
+      <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          {selectedMember && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-6 mb-4">
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="w-24 h-24 object-cover rounded-lg border-2 border-gold shadow-md"
+                  />
+                  <div>
+                    {selectedMember.id === 'president' && (
+                      <div className="inline-block px-3 py-1 bg-gold text-background text-xs font-display rounded-full mb-2">
+                        Présidente du Jury
+                      </div>
+                    )}
+                    <DialogTitle className="text-2xl font-display mb-1">
+                      {selectedMember.name}
+                    </DialogTitle>
+                    <p className="text-sm text-muted-foreground font-sans">
+                      {selectedMember.role}
+                    </p>
+                  </div>
+                </div>
+              </DialogHeader>
+              <DialogDescription className="text-foreground font-sans leading-relaxed text-base">
+                {selectedMember.bio}
+              </DialogDescription>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
