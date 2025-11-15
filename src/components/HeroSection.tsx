@@ -68,7 +68,7 @@ const HeroSection = () => {
             className="space-y-3"
           >
             <p className="font-display text-3xl md:text-5xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
-              2026
+              Juillet 2026
             </p>
           </motion.div>
 
