@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -67,12 +68,12 @@ const Header = () => {
             >
               {t('nav.sumijo')}
             </button>
-            <button
-              onClick={() => scrollToSection('chateau')}
+            <Link
+              to="/chateau"
               className="text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.chateau')}
-            </button>
+            </Link>
             <button
               onClick={() => scrollToSection('jury')}
               className="text-sm text-cream hover:text-gold transition-colors"
@@ -166,12 +167,13 @@ const Header = () => {
               >
                 {t('nav.sumijo')}
               </button>
-              <button
-                onClick={() => scrollToSection('chateau')}
+              <Link
+                to="/chateau"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.chateau')}
-              </button>
+              </Link>
               <button
                 onClick={() => scrollToSection('jury')}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
