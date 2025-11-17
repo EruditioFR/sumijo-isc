@@ -5,6 +5,16 @@ import { Globe2, Users, Award, TrendingUp, Heart, Briefcase, Wrench, Mail } from
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import hyundaiLogo from '@/assets/partners/hyundai.jpg';
+import medingerLogo from '@/assets/partners/medinger.png';
+import loirEtCherLogo from '@/assets/partners/loir-et-cher.png';
+import sologneLogo from '@/assets/partners/sologne-2-rivieres.png';
+import vinciCulturaLogo from '@/assets/partners/vinci-cultura.png';
+import pingshanGovLogo from '@/assets/partners/pingshan-government.png';
+import pingshanTheaterLogo from '@/assets/partners/pingshan-theater.png';
+import smiEntertainmentLogo from '@/assets/partners/smi-entertainment.png';
+import mayaManagementLogo from '@/assets/partners/maya-management.jpg';
+import centreCulturelCoreenLogo from '@/assets/partners/centre-culturel-coreen.png';
 
 const SponsorshipSection = () => {
   const { t } = useTranslation();
@@ -35,20 +45,20 @@ const SponsorshipSection = () => {
 
   const partners2024 = {
     main: [
-      { name: 'Hyundai Motor Group', category: 'main' },
-      { name: 'Medinger', category: 'main' },
+      { name: 'Hyundai Motor Group', logo: hyundaiLogo },
+      { name: 'Medinger', logo: medingerLogo },
     ],
     institutional: [
-      'Communauté de Communes Sologne 2 Rivières',
-      'Loir-et-Cher',
-      'Vinci Cultura',
-      'Government de Pingshan',
-      'Théâtre de Pingshan',
+      { name: 'Communauté de Communes Sologne 2 Rivières', logo: sologneLogo },
+      { name: 'Loir-et-Cher', logo: loirEtCherLogo },
+      { name: 'Vinci Cultura', logo: vinciCulturaLogo },
+      { name: 'Government de Pingshan', logo: pingshanGovLogo },
+      { name: 'Théâtre de Pingshan', logo: pingshanTheaterLogo },
+      { name: 'Centre Culturel Coréen', logo: centreCulturelCoreenLogo },
     ],
     private: [
-      'SMI Entertainment Inc.',
-      'Fonds de dotation Canopée Maya',
-      'I&S',
+      { name: 'SMI Entertainment Inc.', logo: smiEntertainmentLogo },
+      { name: 'Maya Management', logo: mayaManagementLogo },
     ],
   };
 
@@ -219,11 +229,15 @@ const SponsorshipSection = () => {
                 <h4 className="font-display text-xl text-gold mb-4 text-center">
                   {t('sponsorship.partners.main')}
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   {partners2024.main.map((partner) => (
-                    <Card key={partner.name} className="bg-gradient-to-br from-gold/5 to-gold-light/5 border-gold/30">
-                      <CardContent className="p-6 text-center">
-                        <p className="font-display text-xl text-foreground">{partner.name}</p>
+                    <Card key={partner.name} className="bg-gradient-to-br from-gold/5 to-gold-light/5 border-gold/30 overflow-hidden">
+                      <CardContent className="p-8 flex items-center justify-center">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="max-h-20 w-auto object-contain"
+                        />
                       </CardContent>
                     </Card>
                   ))}
@@ -235,11 +249,15 @@ const SponsorshipSection = () => {
                 <h4 className="font-display text-xl text-foreground/80 mb-4 text-center">
                   {t('sponsorship.partners.institutional')}
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                   {partners2024.institutional.map((partner) => (
-                    <Card key={partner} className="bg-card border-gold/20">
-                      <CardContent className="p-4 text-center">
-                        <p className="text-sm text-muted-foreground">{partner}</p>
+                    <Card key={partner.name} className="bg-card border-gold/20 overflow-hidden">
+                      <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="max-h-16 w-auto object-contain"
+                        />
                       </CardContent>
                     </Card>
                   ))}
@@ -251,11 +269,15 @@ const SponsorshipSection = () => {
                 <h4 className="font-display text-xl text-foreground/80 mb-4 text-center">
                   {t('sponsorship.partners.private')}
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                   {partners2024.private.map((partner) => (
-                    <Card key={partner} className="bg-card border-gold/20">
-                      <CardContent className="p-4 text-center">
-                        <p className="text-sm text-muted-foreground">{partner}</p>
+                    <Card key={partner.name} className="bg-card border-gold/20 overflow-hidden">
+                      <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="max-h-16 w-auto object-contain"
+                        />
                       </CardContent>
                     </Card>
                   ))}
