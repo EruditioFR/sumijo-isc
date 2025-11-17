@@ -15,12 +15,28 @@
     "learnMore": "LEARN MORE"
   },
   "introduction": {
-    "title": "A WORLD PREMIERE",
-    "content1": "The first edition of the Sumi Jo International Singing Competition took place in France from July 7 to 13, 2024 at Château de la Ferté-Imbault, one of the most charming estates in the Loire Valley.",
-    "content2": "The culmination of a long-standing dream of Miss Sumi Jo herself, who patiently developed it with the help of a team of renowned music professionals, the competition is designed as an international platform capable of showcasing the talent of exceptional young artists from around the world and promoting their careers globally.",
-    "participants": "Participants",
-    "countries": "Countries",
-    "days": "Days"
+    "title": "The Competition",
+    "participants": "Applications Received",
+    "countries": "Countries Represented",
+    "days": "Selected Finalists",
+    "content1": "The first edition of the Sumi Jo International Singing Competition, which took place from July 7-13, 2024 at the Château de la Ferté-Imbault, exceeded all expectations and confirmed Sumi Jo's vision: to create an exceptional event that reveals tomorrow's talents.",
+    "content2": "Through high-level auditions, masterclasses, and concerts, this competition offers a unique platform for emerging singers to make themselves known and develop their careers under the guidance of internationally recognized professionals. The winner will be Sumi Jo's special guest for a performance at one of her international concerts."
+  },
+  "winners": {
+    "title": "THE 2024 WINNERS",
+    "subtitle": "A new generation of talent",
+    "baritone": "Baritone",
+    "tenor": "Tenor",
+    "soprano": "Soprano",
+    "china": "China",
+    "romania": "Romania",
+    "southKorea": "South Korea",
+    "france": "France",
+    "juryPrize": "Special Jury Prize (ex-aequo)",
+    "tour": {
+      "title": "The tour « The Magic: Sumi Jo & Winners »",
+      "description": "The 2024 winners are touring with Sumi Jo in 2025 in South Korea. This exceptional tour offers them international visibility alongside the world-renowned soprano, including press conferences and TV show appearances."
+    }
   },
   "harmony": {
     "title": "HARMONY & CULTURE",
@@ -70,6 +86,61 @@
     "emotion": {
       "title": "EMOTION",
       "content": "SJISC participants will benefit from an exceptionally romantic and privileged environment conducive to inspiration and artistic excellence."
+    }
+  },
+  "sponsorship": {
+    "title": "PARTNERS & SPONSORS",
+    "intro": "Becoming a partner or sponsor of the competition represents a unique opportunity to align your brand with artistic excellence and actively contribute to a cultural event of global scope.",
+    "benefits": {
+      "visibility": {
+        "title": "International Visibility",
+        "description": "Elevate your brand's prestige internationally. Benefit from targeted media exposure and enhanced brand image through extensive visibility across all our communication platforms."
+      },
+      "engagement": {
+        "title": "Loyalty and Engagement",
+        "description": "Strengthen your customer and partner relationships. Differentiate your company through artistic excellence and cultural commitment, demonstrating deep engagement in cultural development."
+      },
+      "vip": {
+        "title": "Exclusive VIP Experiences",
+        "description": "Offer your key clients and partners a unique immersion in the world of art: best concert seats, private meetings with world-renowned artists, and access to rehearsals."
+      },
+      "networking": {
+        "title": "Media Coverage & Networking",
+        "description": "Enjoy national and international media coverage. Strategic networking with influential personalities from the cultural world and exclusive events to forge new alliances."
+      }
+    },
+    "support": {
+      "title": "Support Methods",
+      "subtitle": "Three ways to support us and contribute to the success of this exceptional competition",
+      "financial": {
+        "tab": "Financial",
+        "title": "Financial Support",
+        "description": "Contribute financially to the competition with attractive tax benefits",
+        "items": ["Patronage with tax benefits", "Sponsorship of specific events", "Advertising space purchase", "Donations"]
+      },
+      "inKind": {
+        "tab": "In-Kind",
+        "title": "In-Kind Support",
+        "description": "Provide your contribution through services or material goods",
+        "items": ["Transportation (vehicles with drivers)", "Instrumentarium (pianos, instruments)", "Event logistics", "Hospitality and catering", "Communication materials", "Accommodation"]
+      },
+      "skills": {
+        "tab": "Skills",
+        "title": "Skills-Based Support",
+        "description": "Share your expertise and professional skills",
+        "items": ["Communication & Public Relations", "Legal & administrative expertise", "Accounting & Management", "Technology and digital", "Network mobilization", "Specialized volunteering"]
+      }
+    },
+    "partners": {
+      "title": "2024 Partners",
+      "main": "Main Partners",
+      "institutional": "Institutional Partners",
+      "private": "Private Partners"
+    },
+    "cta": {
+      "title": "Join Us",
+      "description": "We are at your complete disposal to discuss partnership opportunities and build together a project tailored to your objectives.",
+      "button": "Become a Partner"
     }
   },
   "practical": {

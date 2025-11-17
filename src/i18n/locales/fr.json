@@ -15,12 +15,28 @@
     "learnMore": "EN SAVOIR PLUS"
   },
   "introduction": {
-    "title": "UNE PREMIÈRE MONDIALE",
-    "content1": "La première édition de la Sumi Jo International Singing Competition a eu lieu en France du 7 au 13 juillet 2024 dans l'enceinte du Château de la Ferté-Imbault, l'un des plus charmants domaines de la vallée de la Loire.",
-    "content2": "Aboutissement d'un rêve de longue date de Mlle Sumi Jo elle-même, qui l'a patiemment élaborée avec l'aide d'une équipe de professionnels de la musique reconnus, la compétition est conçue comme une plateforme internationale susceptible de mettre en valeur le talent d'exceptionnels jeunes artistes du monde entier et de promouvoir leur carrière globalement.",
-    "participants": "Participants",
-    "countries": "Pays",
-    "days": "Jours"
+    "title": "Le Concours",
+    "participants": "Candidatures reçues",
+    "countries": "Pays représentés",
+    "days": "Finalistes sélectionnés",
+    "content1": "La première édition du Sumi Jo International Singing Competition, qui s'est déroulée du 7 au 13 juillet 2024 au Château de la Ferté-Imbault, a dépassé toutes les attentes et confirmé la vision de Sumi Jo : créer un événement d'exception qui révèle les talents de demain.",
+    "content2": "À travers des auditions de haut niveau, des masterclasses et des concerts, ce concours offre une plateforme unique pour les chanteurs émergents de se faire connaître et de développer leur carrière sous la guidance de professionnels reconnus internationalement. Le gagnant sera l'invité spécial de Sumi Jo pour une performance lors d'un de ses concerts internationaux."
+  },
+  "winners": {
+    "title": "LES LAURÉATS 2024",
+    "subtitle": "Une nouvelle génération de talents",
+    "baritone": "Baryton",
+    "tenor": "Ténor",
+    "soprano": "Soprano",
+    "china": "Chine",
+    "romania": "Roumanie",
+    "southKorea": "Corée du Sud",
+    "france": "France",
+    "juryPrize": "Prix Spécial du Jury (ex-aequo)",
+    "tour": {
+      "title": "La tournée « The Magic : Sumi Jo & Winners »",
+      "description": "Les lauréats 2024 sont en tournée avec Sumi Jo en 2025 en Corée du Sud. Cette tournée exceptionnelle leur offre une visibilité internationale aux côtés de la soprano de renommée mondiale avec notamment l'organisation de conférences de presse et la participation à des émissions TV."
+    }
   },
   "harmony": {
     "title": "HARMONIE & CULTURE",
@@ -70,6 +86,61 @@
     "emotion": {
       "title": "ÉMOTION",
       "content": "Les participants du SJISC bénéficieront d'un environnement exceptionnellement romantique et privilégié propice à l'inspiration et à l'excellence artistique."
+    }
+  },
+  "sponsorship": {
+    "title": "PARTENAIRES & MÉCÈNES",
+    "intro": "Devenir partenaire ou sponsor du concours représente une opportunité unique d'aligner votre marque avec l'excellence artistique et de contribuer activement à un événement culturel de portée mondiale.",
+    "benefits": {
+      "visibility": {
+        "title": "Visibilité Internationale",
+        "description": "Élevez le prestige de votre marque internationalement. Bénéficiez d'une exposition médiatique ciblée et d'une image de marque renforcée grâce à une visibilité étendue sur tous nos supports de communication."
+      },
+      "engagement": {
+        "title": "Fidélisation et Engagement",
+        "description": "Renforcez vos relations clients et partenaires. Différenciez votre entreprise par l'excellence artistique et l'engagement culturel, en démontrant un engagement profond envers le développement culturel."
+      },
+      "vip": {
+        "title": "Expériences VIP Exclusives",
+        "description": "Offrez à vos clients et partenaires clés une immersion unique dans le monde de l'art : meilleurs sièges aux concerts, rencontres privées avec les artistes de renommée mondiale, et accès aux répétitions."
+      },
+      "networking": {
+        "title": "Retombées Médiatiques & Networking",
+        "description": "Profitez d'une couverture médiatique nationale et internationale. Networking stratégique avec personnalités influentes du monde culturel et événements exclusifs pour forger de nouvelles alliances."
+      }
+    },
+    "support": {
+      "title": "Modalités de Soutien",
+      "subtitle": "Trois façons de nous soutenir pour contribuer à la réussite de ce concours d'exception",
+      "financial": {
+        "tab": "Financier",
+        "title": "Soutien Financier",
+        "description": "Contribuez financièrement au concours avec des avantages fiscaux attractifs",
+        "items": ["Mécénat avec avantages fiscaux", "Parrainage d'événements spécifiques", "Achat d'espace publicitaire", "Donations"]
+      },
+      "inKind": {
+        "tab": "En Nature",
+        "title": "Soutien en Nature",
+        "description": "Apportez votre contribution à travers des services ou des biens matériels",
+        "items": ["Transport (véhicules avec chauffeurs)", "Instrumentarium (pianos, instruments)", "Logistique événementielle", "Hospitalité et restauration", "Matériel de communication", "Hébergement"]
+      },
+      "skills": {
+        "tab": "Compétences",
+        "title": "Soutien en Compétences",
+        "description": "Partagez votre expertise et vos compétences professionnelles",
+        "items": ["Communication & Relations Publiques", "Expertise légale & administrative", "Comptabilité & Gestion", "Technologie et digital", "Mobilisation de réseaux", "Bénévolat spécialisé"]
+      }
+    },
+    "partners": {
+      "title": "Partenaires 2024",
+      "main": "Partenaires Principaux",
+      "institutional": "Partenaires Institutionnels",
+      "private": "Partenaires Privés"
+    },
+    "cta": {
+      "title": "Rejoignez-nous",
+      "description": "Nous sommes à votre entière disposition pour échanger sur les opportunités de partenariat et construire ensemble un projet adapté à vos objectifs.",
+      "button": "Devenir Partenaire"
     }
   },
   "practical": {
