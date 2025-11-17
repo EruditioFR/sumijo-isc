@@ -6,7 +6,6 @@ import SumiJoSection from '@/components/SumiJoSection';
 import CareerSection from '@/components/CareerSection';
 import WinnersSection from '@/components/WinnersSection';
 import FestivalSection from '@/components/FestivalSection';
-import ChateauSection from '@/components/ChateauSection';
 import JurySection from '@/components/JurySection';
 import SponsorshipSection from '@/components/SponsorshipSection';
 import ContactSection from '@/components/ContactSection';
@@ -25,7 +24,6 @@ const Index = () => {
         <CareerSection />
         <WinnersSection />
         <FestivalSection />
-        <ChateauSection />
         <JurySection />
         <SponsorshipSection />
         <ContactSection />
