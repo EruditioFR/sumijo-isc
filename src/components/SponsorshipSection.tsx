@@ -231,7 +231,7 @@ const SponsorshipSection = () => {
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   {partners2024.main.map((partner) => (
-                    <Card key={partner.name} className="bg-gradient-to-br from-gold/5 to-gold-light/5 border-gold/30 overflow-hidden">
+                    <Card key={partner.name} className="bg-gradient-to-br from-muted/40 to-muted/30 border-gold/30 overflow-hidden">
                       <CardContent className="p-8 flex items-center justify-center">
                         <img 
                           src={partner.logo} 
@@ -251,7 +251,7 @@ const SponsorshipSection = () => {
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                   {partners2024.institutional.map((partner) => (
-                    <Card key={partner.name} className="bg-gradient-to-br from-gold/5 to-gold-light/5 border-gold/30 overflow-hidden">
+                    <Card key={partner.name} className="bg-gradient-to-br from-muted/40 to-muted/30 border-gold/30 overflow-hidden">
                       <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
                         <img 
                           src={partner.logo} 
@@ -271,7 +271,7 @@ const SponsorshipSection = () => {
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                   {partners2024.private.map((partner) => (
-                    <Card key={partner.name} className="bg-gradient-to-br from-gold/5 to-gold-light/5 border-gold/30 overflow-hidden">
+                    <Card key={partner.name} className="bg-gradient-to-br from-muted/40 to-muted/30 border-gold/30 overflow-hidden">
                       <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
                         <img 
                           src={partner.logo} 
