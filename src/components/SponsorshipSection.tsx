@@ -46,7 +46,7 @@ const SponsorshipSection = () => {
   const partners2024 = {
     main: [
       { name: 'Hyundai Motor Group', logo: hyundaiLogo },
-      { name: 'Medinger', logo: medingerLogo },
+      { name: 'Centre Culturel Coréen', logo: centreCulturelCoreenLogo },
     ],
     institutional: [
       { name: 'Communauté de Communes Sologne 2 Rivières', logo: sologneLogo },
@@ -54,7 +54,7 @@ const SponsorshipSection = () => {
       { name: 'Vinci Cultura', logo: vinciCulturaLogo },
       { name: 'Government de Pingshan', logo: pingshanGovLogo },
       { name: 'Théâtre de Pingshan', logo: pingshanTheaterLogo },
-      { name: 'Centre Culturel Coréen', logo: centreCulturelCoreenLogo },
+      { name: 'Medinger', logo: medingerLogo },
     ],
     private: [
       { name: 'SMI Entertainment Inc.', logo: smiEntertainmentLogo },
