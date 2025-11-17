@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import { MapPin, Calendar, Users, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import chateauDroneImage from '@/assets/chateau-drone.jpg';
-import chateauGardensImage from '@/assets/chateau-gardens.jpg';
 
 const ChateauSection = () => {
   const { t } = useTranslation();
@@ -107,42 +106,6 @@ const ChateauSection = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Gardens Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-          >
-            <div className="space-y-6">
-              <h3 className="font-display text-3xl md:text-4xl text-foreground">
-                {t('chateau.gardens.title')}
-              </h3>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                {t('chateau.gardens.description')}
-              </p>
-              <ul className="space-y-3">
-                {(() => {
-                  const items = t('chateau.gardens.features', { returnObjects: true });
-                  const itemsArray = Array.isArray(items) ? items : [];
-                  return itemsArray.map((item: string, idx: number) => (
-                    <li key={idx} className="flex items-start text-muted-foreground">
-                      <span className="text-gold mr-2">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ));
-                })()}
-              </ul>
-            </div>
-            <div className="relative overflow-hidden rounded-xl shadow-xl">
-              <img
-                src={chateauGardensImage}
-                alt="Jardins du Château de la Ferté-Imbault"
-                className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
