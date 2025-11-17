@@ -115,7 +115,7 @@ const JurySection = () => {
                 >
                   <CardContent className="p-0">
                     <div className="relative group overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gold/60 via-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                       <img
                         src={member.image}
                         alt={member.name}
