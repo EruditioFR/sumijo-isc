@@ -37,13 +37,20 @@ const JurySection = () => {
 
   const president: JuryMember = {
     id: 'president',
-    name: t('jury.members.operowicz.name'),
-    role: t('jury.members.operowicz.role'),
-    bio: t('jury.members.operowicz.bio'),
-    image: olivierOperowiczImage,
+    name: t('jury.president.name'),
+    role: t('jury.president.role'),
+    bio: t('jury.president.bio'),
+    image: sumiJoImage,
   };
 
   const juryMembers: JuryMember[] = [
+    {
+      id: 'operowicz',
+      name: t('jury.members.operowicz.name'),
+      role: t('jury.members.operowicz.role'),
+      bio: t('jury.members.operowicz.bio'),
+      image: olivierOperowiczImage,
+    },
     {
       id: 'friend',
       name: t('jury.members.friend.name'),
