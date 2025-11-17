@@ -81,12 +81,12 @@ const Header = () => {
             >
               {t('nav.chateau')}
             </Link>
-            <button
-              onClick={() => scrollToSection('sponsorship')}
+            <Link
+              to="/partenaires"
               className="text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.sponsors')}
-            </button>
+            </Link>
             <button
               onClick={() => scrollToSection('contact')}
               className="text-sm text-cream hover:text-gold transition-colors"
@@ -183,12 +183,13 @@ const Header = () => {
               >
                 {t('nav.chateau')}
               </Link>
-              <button
-                onClick={() => scrollToSection('sponsorship')}
+              <Link
+                to="/partenaires"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.sponsors')}
-              </button>
+              </Link>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"

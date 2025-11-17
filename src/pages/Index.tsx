@@ -5,7 +5,6 @@ import HarmonySection from '@/components/HarmonySection';
 import WinnersSection from '@/components/WinnersSection';
 import FestivalSection from '@/components/FestivalSection';
 import JurySection from '@/components/JurySection';
-import SponsorshipSection from '@/components/SponsorshipSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -21,7 +20,6 @@ const Index = () => {
         <WinnersSection />
         <FestivalSection />
         <JurySection />
-        <SponsorshipSection />
         <ContactSection />
       </main>
       <Footer />

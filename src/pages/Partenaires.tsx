@@ -1,0 +1,24 @@
+import { useEffect } from 'react';
+import Header from '@/components/Header';
+import SponsorshipSection from '@/components/SponsorshipSection';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+
+const Partenaires = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main className="pt-20">
+        <SponsorshipSection />
+      </main>
+      <Footer />
+      <ScrollToTop />
+    </div>
+  );
+};
+
+export default Partenaires;
