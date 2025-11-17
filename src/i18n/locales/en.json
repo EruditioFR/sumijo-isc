@@ -5,6 +5,7 @@
     "jury": "Jury",
     "participate": "Participate",
     "sponsors": "Partners",
+    "chateau": "The Château",
     "contact": "Contact"
   },
   "hero": {
@@ -168,6 +169,43 @@
     "institutional": "INSTITUTIONAL PARTNERS",
     "private": "PRIVATE PARTNERS",
     "become": "BECOME A PARTNER"
+  },
+  "chateau": {
+    "title": "Château de la Ferté-Imbault",
+    "subtitle": "An exceptional setting in the heart of Sologne",
+    "imageCaption": "Aerial view of the estate",
+    "description": {
+      "paragraph1": "Nestled in the heart of Sologne, the Château de la Ferté-Imbault is an architectural jewel from the 16th century. This exceptional venue combines the elegance of its Renaissance architecture with the natural beauty of its 30-hectare park, offering a unique setting for international cultural events.",
+      "paragraph2": "Listed as a Historic Monument, the château has been meticulously restored to preserve its authentic character while providing modern infrastructure. Its state rooms, chapel, and French gardens constitute a perfect setting to host the competition and its associated events."
+    },
+    "features": {
+      "location": {
+        "title": "Location",
+        "description": "2 hours from Paris, in the heart of Sologne, in a preserved natural setting"
+      },
+      "history": {
+        "title": "History",
+        "description": "16th-century historic monument, witness to French history"
+      },
+      "capacity": {
+        "title": "Capacity",
+        "description": "Concert halls, state rooms, and spaces for masterclasses"
+      },
+      "heritage": {
+        "title": "Heritage",
+        "description": "Renaissance architecture and listed French gardens"
+      }
+    },
+    "gardens": {
+      "title": "The Gardens",
+      "description": "The château's French gardens offer an enchanting setting for outdoor concerts and moments of conviviality among participants. Carefully restored, they present a perfect harmony between historical heritage and lush nature.",
+      "features": [
+        "30-hectare park with French gardens",
+        "Open-air theater for outdoor concerts",
+        "Renovated historic orangery",
+        "Panoramic view of the Sologne ponds"
+      ]
+    }
   },
   "jury": {
     "title": "THE JURY",
