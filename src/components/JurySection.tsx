@@ -35,14 +35,6 @@ const JurySection = () => {
   });
   const [selectedMember, setSelectedMember] = useState<JuryMember | null>(null);
 
-  const president: JuryMember = {
-    id: 'president',
-    name: t('jury.president.name'),
-    role: t('jury.president.role'),
-    bio: t('jury.president.bio'),
-    image: sumiJoImage,
-  };
-
   const juryMembers: JuryMember[] = [
     {
       id: 'operowicz',
@@ -50,6 +42,13 @@ const JurySection = () => {
       role: t('jury.members.operowicz.role'),
       bio: t('jury.members.operowicz.bio'),
       image: olivierOperowiczImage,
+    },
+    {
+      id: 'jo',
+      name: t('jury.president.name'),
+      role: t('jury.president.role'),
+      bio: t('jury.president.bio'),
+      image: sumiJoImage,
     },
     {
       id: 'friend',
@@ -100,46 +99,6 @@ const JurySection = () => {
           >
             {t('jury.title')}
           </motion.h2>
-
-          {/* President - Sumi Jo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16 max-w-2xl mx-auto"
-          >
-            <Card 
-              className="overflow-hidden cursor-pointer transition-all hover:shadow-2xl hover:shadow-gold/20 border-gold/30"
-              onClick={() => setSelectedMember(president)}
-            >
-              <CardContent className="p-0">
-                <div className="flex flex-col md:flex-row items-center gap-6 p-6">
-                  <div className="relative group flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-accent/20 rounded-lg transform transition-transform group-hover:scale-105" />
-                    <img
-                      src={president.image}
-                      alt={president.name}
-                      className="relative w-48 h-48 object-cover rounded-lg border-4 border-gold shadow-lg"
-                    />
-                  </div>
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-block px-3 py-1 bg-gold text-background text-xs font-display rounded-full mb-3">
-                      Présidente du Jury
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">
-                      {president.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground font-sans mb-4">
-                      {president.role}
-                    </p>
-                    <Button variant="outline" size="sm" className="border-gold text-gold hover:bg-gold hover:text-background">
-                      {t('jury.viewDetails')}
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
 
           {/* Jury Members Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -195,11 +154,6 @@ const JurySection = () => {
                     className="w-24 h-24 object-cover rounded-lg border-2 border-gold shadow-md"
                   />
                   <div>
-                    {selectedMember.id === 'president' && (
-                      <div className="inline-block px-3 py-1 bg-gold text-background text-xs font-display rounded-full mb-2">
-                        Présidente du Jury
-                      </div>
-                    )}
                     <DialogTitle className="text-2xl font-display mb-1">
                       {selectedMember.name}
                     </DialogTitle>
