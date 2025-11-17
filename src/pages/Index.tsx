@@ -2,8 +2,6 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
-import SumiJoSection from '@/components/SumiJoSection';
-import CareerSection from '@/components/CareerSection';
 import WinnersSection from '@/components/WinnersSection';
 import FestivalSection from '@/components/FestivalSection';
 import JurySection from '@/components/JurySection';
@@ -20,8 +18,6 @@ const Index = () => {
         <HeroSection />
         <IntroductionSection />
         <HarmonySection />
-        <SumiJoSection />
-        <CareerSection />
         <WinnersSection />
         <FestivalSection />
         <JurySection />
