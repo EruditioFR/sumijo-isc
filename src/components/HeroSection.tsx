@@ -51,10 +51,10 @@ const HeroSection = () => {
             </h2>
             <div className="pt-4 space-y-1">
               <p className="font-sans text-base md:text-lg text-white/80 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] tracking-wide">
-                Révéler les talents
+                Inspirer l'excellence
               </p>
               <p className="font-display text-2xl md:text-4xl text-gold font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wider">
-                INSPIRER L'EXCELLENCE
+                RÉVÉLER LES TALENTS
               </p>
             </div>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
