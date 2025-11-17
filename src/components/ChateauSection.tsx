@@ -67,11 +67,6 @@ const ChateauSection = () => {
               className="w-full h-[400px] md:h-[600px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 text-cream">
-              <h3 className="font-display text-2xl md:text-4xl mb-2">
-                {t('chateau.imageCaption')}
-              </h3>
-            </div>
           </motion.div>
 
           {/* Description */}
