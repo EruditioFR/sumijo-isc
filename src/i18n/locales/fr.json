@@ -5,6 +5,7 @@
     "jury": "Le Jury",
     "participate": "Participer",
     "sponsors": "Partenaires",
+    "chateau": "Le Château",
     "contact": "Contact"
   },
   "hero": {
@@ -168,6 +169,43 @@
     "institutional": "PARTENAIRES INSTITUTIONNELS",
     "private": "PARTENAIRES PRIVÉS",
     "become": "DEVENIR PARTENAIRE"
+  },
+  "chateau": {
+    "title": "Le Château de la Ferté-Imbault",
+    "subtitle": "Un écrin d'exception au cœur de la Sologne",
+    "imageCaption": "Vue aérienne du domaine",
+    "description": {
+      "paragraph1": "Niché au cœur de la Sologne, le Château de la Ferté-Imbault est un joyau architectural du XVIe siècle. Ce lieu d'exception allie l'élégance de son architecture Renaissance à la beauté naturelle de son parc de 30 hectares, offrant un cadre unique pour des événements culturels d'envergure internationale.",
+      "paragraph2": "Classé Monument Historique, le château a été méticuleusement restauré pour préserver son caractère authentique tout en offrant des infrastructures modernes. Ses salons d'apparat, sa chapelle et ses jardins à la française constituent un écrin parfait pour accueillir le concours et ses événements annexes."
+    },
+    "features": {
+      "location": {
+        "title": "Situation",
+        "description": "À 2h de Paris, au cœur de la Sologne, dans un cadre naturel préservé"
+      },
+      "history": {
+        "title": "Histoire",
+        "description": "Monument historique du XVIe siècle, témoin de l'histoire de France"
+      },
+      "capacity": {
+        "title": "Capacité",
+        "description": "Salles de concerts, salons d'apparat et espaces pour masterclasses"
+      },
+      "heritage": {
+        "title": "Patrimoine",
+        "description": "Architecture Renaissance et jardins à la française classés"
+      }
+    },
+    "gardens": {
+      "title": "Les Jardins",
+      "description": "Les jardins à la française du château offrent un cadre enchanteur pour les concerts en plein air et les moments de convivialité entre les participants. Restaurés avec soin, ils présentent une harmonie parfaite entre patrimoine historique et nature luxuriante.",
+      "features": [
+        "Parc de 30 hectares avec jardins à la française",
+        "Théâtre de verdure pour les concerts en plein air",
+        "Orangerie historique rénovée",
+        "Vue panoramique sur les étangs de Sologne"
+      ]
+    }
   },
   "jury": {
     "title": "LE JURY",
