@@ -57,12 +57,12 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('competition')}
+            <Link
+              to="/"
               className="text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.competition')}
-            </button>
+            </Link>
             <Link
               to="/sumi-jo"
               className="text-sm text-cream hover:text-gold transition-colors"
@@ -156,12 +156,13 @@ const Header = () => {
             className="lg:hidden bg-accent border-t border-gold/20"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
-              <button
-                onClick={() => scrollToSection('competition')}
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.competition')}
-              </button>
+              </Link>
               <Link
                 to="/sumi-jo"
                 onClick={() => setIsMobileMenuOpen(false)}
