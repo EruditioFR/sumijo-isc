@@ -137,12 +137,16 @@ const SponsorshipSection = () => {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
-                      {(t('sponsorship.support.financial.items', { returnObjects: true }) as string[]).map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-gold mr-2">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
+                      {(() => {
+                        const items = t('sponsorship.support.financial.items', { returnObjects: true });
+                        const itemsArray = Array.isArray(items) ? items : [];
+                        return itemsArray.map((item: string, idx: number) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="text-gold mr-2">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ));
+                      })()}
                     </ul>
                   </CardContent>
                 </Card>
@@ -156,12 +160,16 @@ const SponsorshipSection = () => {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
-                      {(t('sponsorship.support.inKind.items', { returnObjects: true }) as string[]).map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-gold mr-2">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
+                      {(() => {
+                        const items = t('sponsorship.support.inKind.items', { returnObjects: true });
+                        const itemsArray = Array.isArray(items) ? items : [];
+                        return itemsArray.map((item: string, idx: number) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="text-gold mr-2">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ));
+                      })()}
                     </ul>
                   </CardContent>
                 </Card>
@@ -175,12 +183,16 @@ const SponsorshipSection = () => {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
-                      {(t('sponsorship.support.skills.items', { returnObjects: true }) as string[]).map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-gold mr-2">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
+                      {(() => {
+                        const items = t('sponsorship.support.skills.items', { returnObjects: true });
+                        const itemsArray = Array.isArray(items) ? items : [];
+                        return itemsArray.map((item: string, idx: number) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="text-gold mr-2">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ));
+                      })()}
                     </ul>
                   </CardContent>
                 </Card>
