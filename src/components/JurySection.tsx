@@ -119,7 +119,7 @@ const JurySection = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-64 object-cover transition-transform group-hover:scale-105"
+                        className="w-full h-72 object-cover object-top transition-transform group-hover:scale-105"
                       />
                     </div>
                     <div className="p-6">
