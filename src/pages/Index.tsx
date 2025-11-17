@@ -4,10 +4,11 @@ import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
 import SumiJoSection from '@/components/SumiJoSection';
 import CareerSection from '@/components/CareerSection';
+import WinnersSection from '@/components/WinnersSection';
 import FestivalSection from '@/components/FestivalSection';
 import JurySection from '@/components/JurySection';
+import SponsorshipSection from '@/components/SponsorshipSection';
 import ContactSection from '@/components/ContactSection';
-import SponsorsSection from '@/components/SponsorsSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -21,10 +22,11 @@ const Index = () => {
         <HarmonySection />
         <SumiJoSection />
         <CareerSection />
+        <WinnersSection />
         <FestivalSection />
         <JurySection />
+        <SponsorshipSection />
         <ContactSection />
-        <SponsorsSection />
       </main>
       <Footer />
       <ScrollToTop />
