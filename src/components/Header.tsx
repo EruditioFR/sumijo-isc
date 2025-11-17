@@ -74,7 +74,7 @@ const Header = () => {
               {t('nav.jury')}
             </button>
             <button
-              onClick={() => scrollToSection('sponsors')}
+              onClick={() => scrollToSection('sponsorship')}
               className="text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.sponsors')}
@@ -167,7 +167,7 @@ const Header = () => {
                 {t('nav.jury')}
               </button>
               <button
-                onClick={() => scrollToSection('sponsors')}
+                onClick={() => scrollToSection('sponsorship')}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.sponsors')}
