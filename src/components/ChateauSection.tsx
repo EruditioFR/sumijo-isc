@@ -60,7 +60,6 @@ const ChateauSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative overflow-hidden rounded-2xl shadow-2xl"
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-gold/60 via-gold/20 to-transparent z-10" />
             <img
               src={chateauDroneImage}
               alt="Château de la Ferté-Imbault vue aérienne"
