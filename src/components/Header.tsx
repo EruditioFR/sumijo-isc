@@ -58,7 +58,7 @@ const Header = () => {
             <span className="md:hidden text-sm leading-tight">
               <span className="font-bold text-white text-2xl">Sumi Jo</span>
               <br />
-              <span className="text-xs">International Singing Competition</span>
+              <span className="text-xs text-white">International Singing Competition</span>
             </span>
           </button>
 
