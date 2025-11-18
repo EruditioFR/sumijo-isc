@@ -50,9 +50,16 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-elegant text-xl md:text-2xl text-gold tracking-wider hover:text-gold-light transition-colors"
+            className="font-elegant text-gold tracking-wider hover:text-gold-light transition-colors"
           >
-            SJISC
+            {/* Desktop logo */}
+            <span className="hidden md:block text-xl md:text-2xl">SJISC</span>
+            {/* Mobile logo */}
+            <span className="md:hidden text-sm leading-tight">
+              <span className="font-bold text-gold-light">Sumi Jo</span>
+              <br />
+              <span className="text-xs">International Singing Competition</span>
+            </span>
           </button>
 
           {/* Desktop Navigation */}
