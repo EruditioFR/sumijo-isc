@@ -71,7 +71,6 @@ const SumiJoSection = () => {
               className="relative"
             >
               <div className="relative overflow-hidden rounded-lg shadow-elegant">
-                <div className="absolute inset-0 bg-gradient-to-t from-gold/60 via-gold/20 to-transparent z-10" />
                 <img
                   src={singerPerformance}
                   alt="Sumi Jo performance"
