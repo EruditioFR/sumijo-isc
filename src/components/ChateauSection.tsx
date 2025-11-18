@@ -1,13 +1,20 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MapPin, Calendar, Users, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import chateauDroneImage from '@/assets/chateau-drone.jpg';
+import { useRef } from 'react';
 
 const ChateauSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const imageRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   const features = [
     {
@@ -53,17 +60,19 @@ const ChateauSection = () => {
             </p>
           </div>
 
-          {/* Main Image */}
+          {/* Main Image with Parallax */}
           <motion.div
+            ref={imageRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative overflow-hidden rounded-2xl shadow-2xl"
           >
-            <img
+            <motion.img
+              style={{ y }}
               src={chateauDroneImage}
               alt="Château de la Ferté-Imbault vue aérienne"
-              className="w-full h-[400px] md:h-[600px] object-cover"
+              className="w-full h-[400px] md:h-[600px] object-cover scale-110"
             />
           </motion.div>
 
@@ -91,9 +100,21 @@ const ChateauSection = () => {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
               >
-                <Card className="h-full bg-card border-gold/20 hover:shadow-gold transition-all duration-300 group">
-                  <CardContent className="p-6 text-center space-y-4">
-                    <feature.icon className="w-10 h-10 text-gold mx-auto group-hover:scale-110 transition-transform" />
+                <Card className="h-full bg-card border-gold/20 hover:shadow-gold transition-all duration-300 group relative overflow-hidden">
+                  {/* Animated Border Gradient */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold bg-[length:200%_100%] animate-[gradient_3s_ease_infinite]" 
+                         style={{ 
+                           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           maskComposite: 'exclude',
+                           WebkitMaskComposite: 'xor',
+                           padding: '2px'
+                         }} 
+                    />
+                  </div>
+                  <CardContent className="p-6 text-center space-y-4 relative z-10">
+                    <feature.icon className="w-10 h-10 text-gold mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h4 className="font-display text-lg text-foreground">
                       {feature.title}
                     </h4>
