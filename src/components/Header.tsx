@@ -87,12 +87,12 @@ const Header = () => {
             >
               {t('nav.sponsors')}
             </Link>
-            <button
-              onClick={() => scrollToSection('contact')}
+            <Link
+              to="/contact"
               className="text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.contact')}
-            </button>
+            </Link>
           </nav>
 
           {/* Language Selector & CTA */}
@@ -191,12 +191,13 @@ const Header = () => {
               >
                 {t('nav.sponsors')}
               </Link>
-              <button
-                onClick={() => scrollToSection('contact')}
+              <Link
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
               >
                 {t('nav.contact')}
-              </button>
+              </Link>
               <div className="pt-4 border-t border-gold/20 space-y-2">
                 {languages.map((lang) => (
                   <button
