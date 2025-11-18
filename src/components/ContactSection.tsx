@@ -1,23 +1,51 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useState } from 'react';
+import { Textarea } from '@/components/ui/textarea';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { toast } from 'sonner';
+import logoCompetition from '@/assets/logo-competition.png';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, { message: "Le nom doit contenir au moins 2 caractères" }).max(100),
+  email: z.string().trim().email({ message: "Email invalide" }).max(255),
+  subject: z.string().trim().min(3, { message: "Le sujet doit contenir au moins 3 caractères" }).max(200),
+  message: z.string().trim().min(10, { message: "Le message doit contenir au moins 10 caractères" }).max(1000),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [email, setEmail] = useState('');
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      toast.success('Thank you for subscribing!');
-      setEmail('');
-    }
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+  });
+
+  const onSubmit = (data: ContactFormData) => {
+    console.log('Contact form submitted:', data);
+    toast.success('Votre message a été envoyé avec succès !');
+    form.reset();
   };
 
   return (
@@ -37,8 +65,8 @@ const ContactSection = () => {
             <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Contact */}
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -82,35 +110,114 @@ const ContactSection = () => {
               </div>
             </motion.div>
 
-            {/* Newsletter */}
+            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-card border border-gold/20 rounded-lg p-8 shadow-lg h-fit"
+              className="relative bg-card border border-gold/20 rounded-lg p-8 shadow-lg overflow-hidden"
             >
-              <h3 className="font-elegant text-2xl text-gold mb-4">
-                {t('practical.newsletter.title')}
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                {t('practical.newsletter.description')}
-              </p>
-              <form onSubmit={handleSubscribe} className="space-y-4">
-                <Input
-                  type="email"
-                  placeholder={t('practical.newsletter.placeholder')}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="border-gold/30 focus:border-gold"
-                  required
-                />
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
-                >
-                  {t('practical.newsletter.subscribe')}
-                </Button>
-              </form>
+              {/* Logo Background */}
+              <div 
+                className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none"
+                style={{
+                  backgroundImage: `url(${logoCompetition})`,
+                  backgroundSize: '60%',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+              
+              <div className="relative z-10">
+                <h3 className="font-elegant text-2xl text-gold mb-6">
+                  Contactez-nous
+                </h3>
+                
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-muted-foreground">Nom</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Votre nom" 
+                              {...field} 
+                              className="border-gold/30 focus:border-gold bg-background/50"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-muted-foreground">Email</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="email"
+                              placeholder="votre@email.com" 
+                              {...field} 
+                              className="border-gold/30 focus:border-gold bg-background/50"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-muted-foreground">Sujet</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Sujet de votre message" 
+                              {...field} 
+                              className="border-gold/30 focus:border-gold bg-background/50"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-muted-foreground">Message</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Votre message..." 
+                              {...field} 
+                              className="border-gold/30 focus:border-gold bg-background/50 min-h-[120px]"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
+                    >
+                      <Send className="w-4 h-4 mr-2" />
+                      Envoyer le message
+                    </Button>
+                  </form>
+                </Form>
+              </div>
             </motion.div>
           </div>
         </motion.div>
