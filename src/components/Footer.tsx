@@ -56,6 +56,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
                   className="hover:text-gold transition-colors"
                 >
                   {t('nav.contact')}
