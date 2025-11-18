@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Award, Music, Trophy } from 'lucide-react';
-import singerPerformance from '@/assets/singer-performance.jpg';
+import singerPerformance from '@/assets/sumi-jo-portrait.jpg';
 
 const SumiJoSection = () => {
   const { t } = useTranslation();
