@@ -8,6 +8,7 @@ import Chateau from "./pages/Chateau";
 import SumiJo from "./pages/SumiJo";
 import Partenaires from "./pages/Partenaires";
 import Jury from "./pages/Jury";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/sumi-jo" element={<SumiJo />} />
           <Route path="/partenaires" element={<Partenaires />} />
           <Route path="/jury" element={<Jury />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
