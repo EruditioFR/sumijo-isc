@@ -12,7 +12,7 @@ const Partenaires = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
+      <main className="pt-8">
         <SponsorshipSection />
       </main>
       <Footer />

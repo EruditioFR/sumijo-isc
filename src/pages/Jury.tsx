@@ -7,7 +7,7 @@ const Jury = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
+      <main className="pt-8">
         <JurySection />
       </main>
       <Footer />

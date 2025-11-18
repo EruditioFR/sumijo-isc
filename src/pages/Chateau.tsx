@@ -12,7 +12,7 @@ const Chateau = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
+      <main className="pt-8">
         <ChateauSection />
       </main>
       <Footer />
