@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -37,12 +38,12 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('sumijo')}
+                <Link
+                  to="/sumi-jo"
                   className="hover:text-gold transition-colors"
                 >
                   {t('nav.sumijo')}
-                </button>
+                </Link>
               </li>
               <li>
                 <button
