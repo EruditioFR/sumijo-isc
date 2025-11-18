@@ -10,10 +10,14 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [showMobileHeader, setShowMobileHeader] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      // Show mobile header after scrolling 75vh
+      const scrollThreshold = window.innerHeight * 0.75;
+      setShowMobileHeader(window.scrollY > scrollThreshold);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,7 +46,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
         isScrolled ? 'shadow-elegant' : ''
-      }`}
+      } ${showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
       style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
     >
       <div className="container mx-auto px-4 pt-10 md:pt-0">
