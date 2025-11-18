@@ -110,10 +110,22 @@ const JurySection = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               >
                 <Card 
-                  className="overflow-hidden cursor-pointer transition-all hover:shadow-xl hover:shadow-gold/10 border-gold/20 h-full"
+                  className="overflow-hidden cursor-pointer transition-all hover:shadow-xl hover:shadow-gold/10 border-gold/20 h-full relative group"
                   onClick={() => setSelectedMember(member)}
                 >
-                  <CardContent className="p-0">
+                  {/* Animated Border Gradient */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold bg-[length:200%_100%] animate-gradient" 
+                         style={{ 
+                           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           maskComposite: 'exclude',
+                           WebkitMaskComposite: 'xor',
+                           padding: '2px'
+                         }} 
+                    />
+                  </div>
+                  <CardContent className="p-0 relative">
                     <div className="relative group overflow-hidden">
                       <img
                         src={member.image}

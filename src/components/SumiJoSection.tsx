@@ -1,5 +1,6 @@
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Award, Music, Trophy } from 'lucide-react';
 import singerPerformance from '@/assets/singer-performance.jpg';
@@ -7,6 +8,12 @@ import singerPerformance from '@/assets/singer-performance.jpg';
 const SumiJoSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const imageRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
     <section id="sumijo" className="py-20 md:py-32 bg-background">
@@ -65,16 +72,18 @@ const SumiJoSection = () => {
             </motion.div>
 
             <motion.div
+              ref={imageRef}
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative"
             >
               <div className="relative overflow-hidden rounded-lg shadow-elegant">
-                <img
+                <motion.img
+                  style={{ y }}
                   src={singerPerformance}
                   alt="Sumi Jo performance"
-                  className="w-full h-[600px] object-cover"
+                  className="w-full h-[600px] object-cover scale-110"
                 />
                 <div className="absolute inset-0 border-4 border-gold/30 rounded-lg" />
               </div>
