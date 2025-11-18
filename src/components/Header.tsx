@@ -43,12 +43,21 @@ const Header = () => {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
-        isScrolled ? 'shadow-elegant' : ''
-      } ${showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
-      style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
-    >
+    <>
+      {/* Floating burger button for mobile - always visible */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="md:hidden fixed top-4 right-4 z-[60] text-white hover:text-gold transition-colors bg-accent/90 backdrop-blur-sm rounded-full p-3 shadow-lg"
+      >
+        {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
+          isScrolled ? 'shadow-elegant' : ''
+        } ${showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
+        style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
+      >
       <div className="container mx-auto px-4 pt-10 md:pt-0">
         <div className="flex items-center justify-between h-28 md:h-20">
           {/* Logo */}
@@ -146,14 +155,6 @@ const Header = () => {
               {t('nav.participate')}
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-cream hover:text-gold transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
       </div>
 
@@ -231,6 +232,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
+    </>
   );
 };
 
