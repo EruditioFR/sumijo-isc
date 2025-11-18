@@ -130,6 +130,10 @@ const JurySection = () => {
                       <img
                         src={member.image}
                         alt={member.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="400"
+                        height="288"
                         className="w-full h-72 object-cover object-top transition-transform group-hover:scale-105"
                       />
                     </div>
@@ -162,6 +166,10 @@ const JurySection = () => {
                   <img
                     src={selectedMember.image}
                     alt={selectedMember.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="96"
+                    height="96"
                     className="w-24 h-24 object-cover rounded-lg border-2 border-gold shadow-md"
                   />
                   <div>
