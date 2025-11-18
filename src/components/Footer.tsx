@@ -46,12 +46,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('sponsors')}
+                <Link
+                  to="/partenaires"
                   className="hover:text-gold transition-colors"
                 >
                   {t('nav.sponsors')}
-                </button>
+                </Link>
               </li>
               <li>
                 <button
