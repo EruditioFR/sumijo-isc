@@ -98,7 +98,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gold/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p className="text-muted-foreground">
+            <p className="text-cream">
               {t('footer.copyright')}
             </p>
             <div className="flex gap-6">
