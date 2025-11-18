@@ -45,7 +45,7 @@ const Header = () => {
       }`}
       style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-10 md:pt-0">
         <div className="flex items-center justify-between h-28 md:h-20">
           {/* Logo */}
           <button
