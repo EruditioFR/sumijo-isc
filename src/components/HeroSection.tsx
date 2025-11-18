@@ -18,6 +18,7 @@ const HeroSection = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-gold/60 via-gold/20 to-transparent z-10" />
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
