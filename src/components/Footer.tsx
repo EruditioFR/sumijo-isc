@@ -54,12 +54,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
+                <Link
+                  to="/contact"
                   className="hover:text-gold transition-colors"
                 >
                   {t('nav.contact')}
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
