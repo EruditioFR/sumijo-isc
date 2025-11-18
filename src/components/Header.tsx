@@ -56,7 +56,7 @@ const Header = () => {
             <span className="hidden md:block text-xl md:text-2xl">SJISC</span>
             {/* Mobile logo */}
             <span className="md:hidden text-sm leading-tight">
-              <span className="font-bold text-gold-light">Sumi Jo</span>
+              <span className="font-bold text-white text-base">Sumi Jo</span>
               <br />
               <span className="text-xs">International Singing Competition</span>
             </span>
