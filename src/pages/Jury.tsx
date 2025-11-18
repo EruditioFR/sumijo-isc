@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import Header from '@/components/Header';
+import { useEffect, lazy, Suspense } from 'react';
 import JurySection from '@/components/JurySection';
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
+
+const Header = lazy(() => import('@/components/Header'));
+const Footer = lazy(() => import('@/components/Footer'));
+const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 
 const Jury = () => {
   useEffect(() => {
@@ -10,12 +11,18 @@ const Jury = () => {
   }, []);
   return (
     <div className="min-h-screen">
-      <Header />
+      <Suspense fallback={<div className="h-20 bg-background" />}>
+        <Header />
+      </Suspense>
       <main className="pt-8">
         <JurySection />
       </main>
-      <Footer />
-      <ScrollToTop />
+      <Suspense fallback={<div className="h-40 bg-muted" />}>
+        <Footer />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ScrollToTop />
+      </Suspense>
     </div>
   );
 };
