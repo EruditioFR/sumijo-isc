@@ -18,16 +18,17 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      const scrollThreshold = window.innerHeight * 0.75;
+      // Utiliser une valeur fixe pour éviter les problèmes avec la barre d'adresse mobile
+      const scrollThreshold = 500;
       
-      // Une fois le header affiché après 75vh, le garder visible tant qu'on a scrollé
+      // Une fois le header affiché après le seuil, le garder visible tant qu'on a scrollé
       if (window.scrollY > scrollThreshold) {
         setShowMobileHeader(true);
       } else if (window.scrollY < 50) {
         // Ne cacher que si on est vraiment en haut de la page
         setShowMobileHeader(false);
       }
-      // Si entre 50px et 75vh, garder l'état actuel (ne pas changer)
+      // Si entre 50px et le seuil, garder l'état actuel (ne pas changer)
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
