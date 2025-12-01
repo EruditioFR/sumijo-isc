@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,8 @@ import logoSjisc from '@/assets/logo-sjisc.jpg';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const isHomepage = location.pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -56,7 +58,7 @@ const Header = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
           isScrolled ? 'shadow-elegant' : ''
-        } ${showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
+        } ${showMobileHeader || !isHomepage ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
       <div className="container mx-auto px-4 pt-2 md:pt-0">
