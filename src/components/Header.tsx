@@ -64,13 +64,18 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hover:opacity-80 transition-opacity"
+            className="hover:opacity-80 transition-opacity flex items-center gap-4"
           >
             <img 
               src={logoSjisc} 
               alt="Sumi Jo International Singing Competition" 
               className="h-24 md:h-28 w-auto object-contain"
             />
+            <div className="hidden lg:flex flex-col text-left">
+              <span className="text-gold font-elegant text-2xl tracking-wide">Sumi Jo</span>
+              <span className="text-cream text-sm tracking-wider">International Singing Competition</span>
+              <span className="text-gold-light text-xl font-semibold">2026</span>
+            </div>
           </button>
 
           {/* Desktop Navigation */}
