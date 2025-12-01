@@ -157,118 +157,118 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile Sidebar Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="lg:hidden fixed inset-0 bg-black/50 z-[55]"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            
-            {/* Sidebar */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-accent z-[60] shadow-2xl overflow-y-auto"
-            >
-              <div className="p-6 space-y-6">
-                {/* Close button */}
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="absolute top-4 right-4 text-cream hover:text-gold transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-
-                {/* Logo */}
-                <div className="pt-8 pb-4 border-b border-gold/20">
-                  <span className="font-elegant text-gold text-xl">SJISC</span>
-                </div>
-
-                {/* Navigation Links */}
-                <nav className="space-y-3">
-                  <Link
-                    to="/"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.competition')}
-                  </Link>
-                  <Link
-                    to="/sumi-jo"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.sumijo')}
-                  </Link>
-                  <Link
-                    to="/jury"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.jury')}
-                  </Link>
-                  <Link
-                    to="/chateau"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.chateau')}
-                  </Link>
-                  <Link
-                    to="/partenaires"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.sponsors')}
-                  </Link>
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                  >
-                    {t('nav.contact')}
-                  </Link>
-                </nav>
-
-                {/* Language Selector */}
-                <div className="pt-4 border-t border-gold/20 space-y-2">
-                  <p className="text-sm text-cream/70 mb-2">{t('nav.language')}</p>
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => changeLanguage(lang.code)}
-                      className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <Button
-                  onClick={() => {
-                    scrollToSection('contact');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold"
-                >
-                  {t('nav.participate')}
-                </Button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </header>
+
+    {/* Mobile Sidebar Menu */}
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden fixed inset-0 bg-black/50 z-[55]"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Sidebar */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-accent z-[60] shadow-2xl overflow-y-auto"
+          >
+            <div className="p-6 space-y-6">
+              {/* Close button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-4 right-4 text-cream hover:text-gold transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Logo */}
+              <div className="pt-8 pb-4 border-b border-gold/20">
+                <span className="font-elegant text-gold text-xl">SJISC</span>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="space-y-3">
+                <Link
+                  to="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.competition')}
+                </Link>
+                <Link
+                  to="/sumi-jo"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.sumijo')}
+                </Link>
+                <Link
+                  to="/jury"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.jury')}
+                </Link>
+                <Link
+                  to="/chateau"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.chateau')}
+                </Link>
+                <Link
+                  to="/partenaires"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.sponsors')}
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.contact')}
+                </Link>
+              </nav>
+
+              {/* Language Selector */}
+              <div className="pt-4 border-t border-gold/20 space-y-2">
+                <p className="text-sm text-cream/70 mb-2">{t('nav.language')}</p>
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <Button
+                onClick={() => {
+                  scrollToSection('contact');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold"
+              >
+                {t('nav.participate')}
+              </Button>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
     </>
   );
 };
