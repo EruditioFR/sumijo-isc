@@ -69,7 +69,7 @@ const Header = () => {
             <img 
               src={logoSjisc} 
               alt="Sumi Jo International Singing Competition" 
-              className="h-16 md:h-20 w-auto object-contain"
+              className="h-24 md:h-28 w-auto object-contain"
             />
           </button>
 
