@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoSjisc from '@/assets/logo-sjisc.jpg';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -63,16 +64,13 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-elegant text-gold tracking-wider hover:text-gold-light transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            {/* Desktop logo */}
-            <span className="hidden md:block text-xl md:text-2xl">SJISC</span>
-            {/* Mobile logo */}
-            <span className="md:hidden text-sm leading-tight">
-              <span className="font-bold text-white text-2xl">Sumi Jo</span>
-              <br />
-              <span className="text-xs text-white">International Singing Competition</span>
-            </span>
+            <img 
+              src={logoSjisc} 
+              alt="Sumi Jo International Singing Competition" 
+              className="h-16 md:h-20 w-auto object-contain"
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -190,8 +188,12 @@ const Header = () => {
               </button>
 
               {/* Logo */}
-              <div className="pt-8 pb-4 border-b border-gold/20">
-                <span className="font-elegant text-gold text-xl">SJISC</span>
+              <div className="pt-8 pb-4 border-b border-gold/20 flex justify-center">
+                <img 
+                  src={logoSjisc} 
+                  alt="Sumi Jo International Singing Competition" 
+                  className="h-24 w-auto object-contain"
+                />
               </div>
 
               {/* Navigation Links */}
