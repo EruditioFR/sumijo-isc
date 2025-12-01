@@ -59,8 +59,8 @@ const Header = () => {
         } ${showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
-      <div className="container mx-auto px-4 pt-10 md:pt-0">
-        <div className="flex items-center justify-between h-28 md:h-20">
+      <div className="container mx-auto px-4 pt-2 md:pt-0">
+        <div className="flex items-center justify-between h-20 md:h-20">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -69,7 +69,7 @@ const Header = () => {
             <img 
               src={logoSjisc} 
               alt="Sumi Jo International Singing Competition" 
-              className="h-24 md:h-28 w-auto object-contain"
+              className="h-16 md:h-20 w-auto object-contain"
             />
             <div className="flex flex-col text-left">
               <span className="text-gold font-elegant text-lg md:text-2xl tracking-wide">Sumi Jo</span>
