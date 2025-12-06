@@ -68,7 +68,7 @@ const Header = () => {
           isScrolled ? 'shadow-elegant' : ''
         } ${
           isHomepage 
-            ? (showMobileHeader ? 'translate-y-0' : '-translate-y-full md:translate-y-0') 
+            ? (showMobileHeader ? 'translate-y-0' : '-translate-y-full') 
             : 'translate-y-0'
         }`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
