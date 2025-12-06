@@ -92,41 +92,41 @@ const Header = () => {
             </div>
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Navigation */}
+          <nav className="flex items-center gap-4 md:gap-8">
             <Link
               to="/"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.competition')}
             </Link>
             <Link
               to="/sumi-jo"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="hidden sm:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.sumijo')}
             </Link>
             <Link
               to="/jury"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.jury')}
             </Link>
             <Link
               to="/chateau"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="hidden sm:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.chateau')}
             </Link>
             <Link
               to="/partenaires"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="hidden md:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.sponsors')}
             </Link>
             <Link
               to="/contact"
-              className="text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.contact')}
             </Link>
