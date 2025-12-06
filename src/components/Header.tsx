@@ -18,8 +18,8 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      // Utiliser une valeur fixe pour éviter les problèmes avec la barre d'adresse mobile
-      const scrollThreshold = 500;
+      // Afficher le header après avoir scrollé 100vh
+      const scrollThreshold = window.innerHeight;
       
       // Une fois le header affiché après le seuil, le garder visible tant qu'on a scrollé
       if (window.scrollY > scrollThreshold) {
