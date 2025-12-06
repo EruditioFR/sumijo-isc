@@ -73,8 +73,8 @@ const Header = () => {
         }`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
-      <div className="container mx-auto px-4 pt-2 md:pt-0">
-        <div className="flex items-center justify-between h-20 md:h-20">
+      <div className="container mx-auto px-4 py-[5px]">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
