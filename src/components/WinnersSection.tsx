@@ -8,6 +8,7 @@ import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 import winnerZihaoLi from '@/assets/winner-zihao-li.png';
 import winnerGeorgeVirban from '@/assets/winner-george-virban.png';
 import winnerKiupLee from '@/assets/winner-kiup-lee.png';
+import winnerMarieLombard from '@/assets/winner-marie-lombard.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -49,7 +50,7 @@ const WinnersSection = () => {
       name: 'Marie Lombard',
       category: t('winners.soprano'),
       country: t('winners.france'),
-      image: null,
+      image: winnerMarieLombard,
     },
     {
       name: 'Juliette Tacchino',
