@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Music, X } from 'lucide-react';
+import { Trophy, Music, Globe } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
@@ -130,7 +130,7 @@ const WinnersSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-16 bg-gradient-to-r from-gold/10 via-gold-light/10 to-gold/10 border border-gold/20 rounded-lg p-8"
           >
-          <Music className="w-12 h-12 text-gold mx-auto mb-4" />
+          <Globe className="w-12 h-12 text-gold mx-auto mb-4" />
             <h3 className="font-display text-2xl md:text-3xl text-foreground mb-6">
               {t('winners.tour.title')}
             </h3>
