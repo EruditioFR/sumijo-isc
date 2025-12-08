@@ -110,15 +110,6 @@ const WinnersSection = () => {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-2 mb-6"
-            >
-              <Trophy className="w-4 h-4 text-gold" />
-              <span className="text-sm font-medium text-gold">Édition 2024</span>
-            </motion.div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
               {t('winners.title')}
             </h2>
