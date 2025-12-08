@@ -22,7 +22,7 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-top scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          className="w-full h-full object-cover object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
         {/* Decorative overlay pattern */}
