@@ -50,24 +50,6 @@ const HeroSection = () => {
             <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
               INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
             </h2>
-            <div className="pt-4 space-y-1">
-              <motion.p 
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="font-sans text-base md:text-lg text-white/80 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] tracking-wide"
-              >
-                Inspirer l'excellence
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
-                className="font-display text-2xl md:text-4xl text-gold font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wider"
-              >
-                RÉVÉLER LES TALENTS
-              </motion.p>
-            </div>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
           </motion.div>
 
