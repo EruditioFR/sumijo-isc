@@ -6,6 +6,7 @@ import { Trophy, Music, Globe, User, Award } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 import winnerZihaoLi from '@/assets/winner-zihao-li.png';
+import winnerGeorgeVirban from '@/assets/winner-george-virban.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ const WinnersSection = () => {
       prize: '2ème',
       prizeLabel: t('winners.secondPrize'),
       color: 'silver',
-      image: null,
+      image: winnerGeorgeVirban,
     },
     {
       name: 'Kiup Lee',
