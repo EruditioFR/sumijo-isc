@@ -42,9 +42,6 @@ const StatsSection = () => {
             <Trophy className="w-4 h-4 text-gold" />
             <span className="text-sm font-medium text-gold">Édition 2024</span>
           </motion.div>
-          <h3 className="font-display text-2xl md:text-3xl text-cream mb-8">
-            {t('introduction.statsTitle')}
-          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <motion.div
