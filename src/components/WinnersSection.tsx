@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { Trophy, Music, Globe, User, Award } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
+import winnerZihaoLi from '@/assets/winner-zihao-li.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -19,7 +20,7 @@ const WinnersSection = () => {
       prize: '1er',
       prizeLabel: t('winners.firstPrize'),
       color: 'gold',
-      image: null, // À remplacer par le chemin de l'image
+      image: winnerZihaoLi,
     },
     {
       name: 'George Virban',
