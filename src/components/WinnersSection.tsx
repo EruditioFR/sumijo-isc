@@ -178,7 +178,7 @@ const WinnersSection = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
               {juryPrizes.map((winner, index) => (
                 <motion.div
                   key={winner.name}
@@ -187,26 +187,26 @@ const WinnersSection = () => {
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="group"
                 >
-                  <div className="bg-card border border-gold/20 rounded-2xl p-6 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300">
-                    <div className="flex items-center gap-4">
+                  <div className="bg-card border border-gold/20 rounded-2xl p-8 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300">
+                    <div className="flex items-center gap-6">
                       {/* Photo placeholder */}
                       <div className="relative">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold/20 to-gold-light/10 border-2 border-gold/30 flex items-center justify-center overflow-hidden">
+                        <div className="w-28 h-28 rounded-full bg-gradient-to-br from-gold/20 to-gold-light/10 border-2 border-gold/30 flex items-center justify-center overflow-hidden">
                           {winner.image ? (
                             <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
                           ) : (
-                            <User className="w-8 h-8 text-gold/50" />
+                            <User className="w-10 h-10 text-gold/50" />
                           )}
                         </div>
-                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gold rounded-full flex items-center justify-center">
-                          <Music className="w-3 h-3 text-background" />
+                        <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-gold rounded-full flex items-center justify-center">
+                          <Music className="w-4 h-4 text-background" />
                         </div>
                       </div>
                       
                       <div className="flex-1">
-                        <h4 className="font-display text-lg text-foreground mb-1">{winner.name}</h4>
-                        <p className="text-gold text-sm font-medium mb-0.5">{winner.category}</p>
-                        <p className="text-muted-foreground text-xs">{winner.country}</p>
+                        <h4 className="font-display text-xl text-foreground mb-1">{winner.name}</h4>
+                        <p className="text-gold text-base font-medium mb-0.5">{winner.category}</p>
+                        <p className="text-muted-foreground text-sm">{winner.country}</p>
                       </div>
                     </div>
                   </div>
