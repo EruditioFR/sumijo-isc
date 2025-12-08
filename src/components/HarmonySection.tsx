@@ -110,15 +110,10 @@ const HarmonySection = () => {
               <div className="w-2 h-2 rotate-45 border border-gold" />
               <div className="h-px w-16 bg-gradient-to-l from-gold to-transparent" />
             </div>
-            {/* Content paragraphs */}
-            <div className="space-y-6">
-              <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                {t('harmony.content1')}
-              </p>
-              <p className="text-base md:text-lg text-white/70 leading-relaxed">
-                {t('harmony.content2')}
-              </p>
-            </div>
+            {/* Content paragraph */}
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              {t('harmony.content1')}
+            </p>
           </motion.div>
         </div>
       </div>
