@@ -91,7 +91,17 @@ const IntroductionSection = () => {
             <Sparkles className="absolute bottom-1/3 -left-5 md:left-10 w-4 h-4 text-gold animate-pulse" style={{ animationDelay: '0.85s' }} />
             <Sparkles className="absolute -bottom-6 -left-2 md:left-24 w-4 h-4 text-gold-light animate-pulse" style={{ animationDelay: '1.25s' }} />
             
-            <img 
+            {/* Étoiles derrière l'image (z-0) qui dépassent sur les bords */}
+            <Sparkles className="absolute top-6 left-1/2 -translate-x-20 md:-translate-x-48 w-7 h-7 text-gold z-0 animate-pulse" style={{ animationDelay: '0.35s' }} />
+            <Sparkles className="absolute top-6 left-1/2 translate-x-16 md:translate-x-44 w-6 h-6 text-gold-light z-0 animate-pulse" style={{ animationDelay: '0.65s' }} />
+            <Sparkles className="absolute bottom-10 left-1/2 -translate-x-24 md:-translate-x-52 w-8 h-8 text-gold z-0 animate-pulse" style={{ animationDelay: '0.9s' }} />
+            <Sparkles className="absolute bottom-16 left-1/2 translate-x-20 md:translate-x-48 w-7 h-7 text-gold-light z-0 animate-pulse" style={{ animationDelay: '1.2s' }} />
+            <Sparkles className="absolute top-1/3 left-1/2 -translate-x-28 md:-translate-x-56 w-5 h-5 text-gold z-0 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            <Sparkles className="absolute top-1/2 left-1/2 translate-x-24 md:translate-x-52 w-6 h-6 text-gold-light z-0 animate-pulse" style={{ animationDelay: '0.8s' }} />
+            <Sparkles className="absolute top-2/3 left-1/2 -translate-x-20 md:-translate-x-44 w-4 h-4 text-gold z-0 animate-pulse" style={{ animationDelay: '1.05s' }} />
+            <Sparkles className="absolute top-1/4 left-1/2 translate-x-28 md:translate-x-56 w-5 h-5 text-gold-light z-0 animate-pulse" style={{ animationDelay: '0.25s' }} />
+            
+            <img
               src={competitionPoster} 
               alt="Sumi Jo International Singing Competition 2026" 
               className="mx-auto max-w-md md:max-w-lg rounded-lg shadow-lg relative z-10"
