@@ -37,8 +37,9 @@
     "france": "France",
     "juryPrize": "Special Jury Prize (ex-aequo)",
     "tour": {
-      "title": "The tour « The Magic: Sumi Jo & Winners »",
-      "description": "The 2024 winners are touring with Sumi Jo in 2025 in South Korea. This exceptional tour offers them international visibility alongside the world-renowned soprano, including press conferences and TV show appearances."
+      "title": "The 2024 winners on tour with Sumi Jo",
+      "dates": "Concert dates and venues:\nJune 10, 2025: Shijiazhuang, China\nJune 12, 2025: Shenzhen, China\nJune 19, 2025: Jeonju, South Korea\nJune 21, 2025: Seongnam, South Korea\nJune 22, 2025: Seoul, South Korea\nJune 24, 2025: Chuncheon, South Korea",
+      "description": "Since the competition, the winners have developed their careers with continuous support from Sumi Jo and her team. This exceptional tour has offered them international visibility alongside the world-renowned soprano, including press conferences and television appearances."
     }
   },
   "harmony": {
