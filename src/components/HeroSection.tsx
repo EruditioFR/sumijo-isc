@@ -44,10 +44,10 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.4 }}
             className="space-y-2"
           >
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white/90 tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white/80 tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
               SUMI JO
             </h1>
-            <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
+            <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
               INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
             </h2>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
