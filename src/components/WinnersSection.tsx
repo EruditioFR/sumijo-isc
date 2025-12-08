@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Music, Globe } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Trophy, Music, Globe, User, Award } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 
@@ -18,21 +17,27 @@ const WinnersSection = () => {
       category: t('winners.baritone'),
       country: t('winners.china'),
       prize: '1er',
-      color: 'from-gold via-gold-light to-gold',
+      prizeLabel: t('winners.firstPrize'),
+      color: 'gold',
+      image: null, // À remplacer par le chemin de l'image
     },
     {
       name: 'George Virban',
       category: t('winners.tenor'),
       country: t('winners.romania'),
       prize: '2ème',
-      color: 'from-gray-400 via-gray-300 to-gray-400',
+      prizeLabel: t('winners.secondPrize'),
+      color: 'silver',
+      image: null,
     },
     {
       name: 'Kiup Lee',
       category: t('winners.tenor'),
       country: t('winners.southKorea'),
       prize: '3ème',
-      color: 'from-amber-600 via-amber-500 to-amber-600',
+      prizeLabel: t('winners.thirdPrize'),
+      color: 'bronze',
+      image: null,
     },
   ];
 
@@ -41,113 +46,236 @@ const WinnersSection = () => {
       name: 'Marie Lombard',
       category: t('winners.soprano'),
       country: t('winners.france'),
+      image: null,
     },
     {
       name: 'Juliette Tacchino',
       category: t('winners.soprano'),
       country: t('winners.france'),
+      image: null,
     },
   ];
 
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'gold':
+        return {
+          bg: 'bg-gradient-to-br from-gold/20 via-gold-light/10 to-gold/5',
+          border: 'border-gold/40',
+          text: 'text-gold',
+          badge: 'bg-gold text-background',
+          ring: 'ring-gold/30',
+        };
+      case 'silver':
+        return {
+          bg: 'bg-gradient-to-br from-gray-300/20 via-gray-200/10 to-gray-300/5',
+          border: 'border-gray-400/40',
+          text: 'text-gray-400',
+          badge: 'bg-gray-400 text-background',
+          ring: 'ring-gray-400/30',
+        };
+      case 'bronze':
+        return {
+          bg: 'bg-gradient-to-br from-amber-600/20 via-amber-500/10 to-amber-600/5',
+          border: 'border-amber-600/40',
+          text: 'text-amber-600',
+          badge: 'bg-amber-600 text-background',
+          ring: 'ring-amber-600/30',
+        };
+      default:
+        return {
+          bg: 'bg-card',
+          border: 'border-border',
+          text: 'text-foreground',
+          badge: 'bg-primary text-primary-foreground',
+          ring: 'ring-primary/30',
+        };
+    }
+  };
+
   return (
-    <section id="winners" className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/20">
+    <section id="winners" className="py-20 md:py-32 bg-gradient-to-b from-background via-muted/10 to-background overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-6xl mx-auto text-center space-y-12"
+          className="max-w-6xl mx-auto"
         >
-          <div>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-2 mb-6"
+            >
+              <Trophy className="w-4 h-4 text-gold" />
+              <span className="text-sm font-medium text-gold">Édition 2024</span>
+            </motion.div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
               {t('winners.title')}
             </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto mb-6" />
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               {t('winners.subtitle')}
             </p>
           </div>
 
-          {/* Main Winners */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            {winners.map((winner, index) => (
-              <motion.div
-                key={winner.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              >
-                <Card className="relative overflow-hidden bg-card border-gold/20 hover:shadow-gold transition-all duration-300 group">
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${winner.color}`} />
-                  <CardContent className="p-8 text-center">
-                    <div className="mb-4">
-                      <Trophy className={`w-16 h-16 mx-auto ${index === 0 ? 'text-gold' : index === 1 ? 'text-gray-400' : 'text-amber-600'}`} />
-                    </div>
-                    <div className={`font-display text-6xl mb-4 bg-gradient-to-r ${winner.color} bg-clip-text text-transparent`}>
-                      {winner.prize}
-                    </div>
-                    <h3 className="font-display text-2xl text-foreground mb-2">{winner.name}</h3>
-                    <p className="text-muted-foreground mb-1">{winner.category}</p>
-                    <p className="text-sm text-muted-foreground">{winner.country}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Main Winners - Podium Style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
+            {/* Second Place */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="md:mt-12 order-2 md:order-1"
+            >
+              <WinnerCard winner={winners[1]} colors={getColorClasses('silver')} />
+            </motion.div>
+
+            {/* First Place */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="order-1 md:order-2"
+            >
+              <WinnerCard winner={winners[0]} colors={getColorClasses('gold')} isFirst />
+            </motion.div>
+
+            {/* Third Place */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="md:mt-12 order-3"
+            >
+              <WinnerCard winner={winners[2]} colors={getColorClasses('bronze')} />
+            </motion.div>
           </div>
 
-          {/* Special Jury Prizes */}
+          {/* Jury Prize Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-16"
+            className="mb-20"
           >
-            <h3 className="font-display text-2xl md:text-3xl text-foreground mb-8">
-              {t('winners.juryPrize')}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <Award className="w-5 h-5 text-gold" />
+                <h3 className="font-display text-2xl md:text-3xl text-foreground">
+                  {t('winners.juryPrize')}
+                </h3>
+                <Award className="w-5 h-5 text-gold" />
+              </div>
+              <p className="text-muted-foreground text-sm">(ex-aequo)</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {juryPrizes.map((winner, index) => (
-                <Card
+                <motion.div
                   key={winner.name}
-                  className="bg-card border-gold/20 hover:shadow-gold transition-all duration-300"
+                  initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  className="group"
                 >
-                  <CardContent className="p-6 text-center">
-                    <Music className="w-10 h-10 text-gold mx-auto mb-3" />
-                    <h4 className="font-display text-xl text-foreground mb-1">{winner.name}</h4>
-                    <p className="text-muted-foreground text-sm mb-1">{winner.category}</p>
-                    <p className="text-xs text-muted-foreground">{winner.country}</p>
-                  </CardContent>
-                </Card>
+                  <div className="bg-card border border-gold/20 rounded-2xl p-6 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      {/* Photo placeholder */}
+                      <div className="relative">
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold/20 to-gold-light/10 border-2 border-gold/30 flex items-center justify-center overflow-hidden">
+                          {winner.image ? (
+                            <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <User className="w-8 h-8 text-gold/50" />
+                          )}
+                        </div>
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gold rounded-full flex items-center justify-center">
+                          <Music className="w-3 h-3 text-background" />
+                        </div>
+                      </div>
+                      
+                      <div className="flex-1">
+                        <h4 className="font-display text-lg text-foreground mb-1">{winner.name}</h4>
+                        <p className="text-gold text-sm font-medium mb-0.5">{winner.category}</p>
+                        <p className="text-muted-foreground text-xs">{winner.country}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Tour Information */}
+          {/* Tour Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-16 bg-gradient-to-r from-gold/10 via-gold-light/10 to-gold/10 border border-gold/20 rounded-lg p-8"
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="relative"
           >
-          <Globe className="w-12 h-12 text-gold mx-auto mb-4" />
-            <h3 className="font-display text-2xl md:text-3xl text-foreground mb-6">
-              {t('winners.tour.title')}
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-              {t('winners.tour.description')}
-            </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto whitespace-pre-line text-sm">
-              {t('winners.tour.dates')}
-            </p>
-            <div className="mt-8">
-              <img 
-                src={magicTourImage} 
-                alt="The Magic 2025 - Sumi Jo & Winners Tour" 
-                className="max-w-xs w-full mx-auto rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setIsImageOpen(true)}
-              />
-              <p className="text-xs text-muted-foreground mt-2">Cliquez pour agrandir</p>
+            <div className="bg-gradient-to-br from-gold/5 via-background to-gold/5 border border-gold/20 rounded-3xl p-8 md:p-12 overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-gold-light/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <Globe className="w-8 h-8 text-gold" />
+                  <h3 className="font-display text-2xl md:text-3xl text-foreground">
+                    {t('winners.tour.title')}
+                  </h3>
+                </div>
+                
+                <p className="text-muted-foreground max-w-2xl mx-auto text-center mb-8">
+                  {t('winners.tour.description')}
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  {/* Tour dates */}
+                  <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-6 border border-gold/10">
+                    <h4 className="font-display text-lg text-gold mb-4">Dates et lieux des concerts</h4>
+                    <div className="space-y-3 text-sm">
+                      {[
+                        { date: '10 juin 2025', location: 'Shijiazhuang, China' },
+                        { date: '12 juin 2025', location: 'Shenzhen, China' },
+                        { date: '19 juin 2025', location: 'Jeonju, South Korea' },
+                        { date: '21 juin 2025', location: 'Seongnam, South Korea' },
+                        { date: '22 juin 2025', location: 'Seoul, South Korea' },
+                        { date: '24 juin 2025', location: 'Chuncheon, South Korea' },
+                      ].map((concert, index) => (
+                        <div key={index} className="flex items-center gap-3 text-muted-foreground">
+                          <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
+                          <span className="font-medium text-foreground">{concert.date}</span>
+                          <span className="text-gold">—</span>
+                          <span>{concert.location}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Tour image */}
+                  <div className="flex justify-center">
+                    <div 
+                      className="relative cursor-pointer group"
+                      onClick={() => setIsImageOpen(true)}
+                    >
+                      <img 
+                        src={magicTourImage} 
+                        alt="The Magic 2025 - Sumi Jo & Winners Tour" 
+                        className="max-w-xs w-full rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-gold/20 transition-all duration-300 group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <span className="text-white text-sm font-medium">Cliquez pour agrandir</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
@@ -165,5 +293,59 @@ const WinnersSection = () => {
     </section>
   );
 };
+
+// Winner Card Component
+interface WinnerCardProps {
+  winner: {
+    name: string;
+    category: string;
+    country: string;
+    prize: string;
+    prizeLabel?: string;
+    image: string | null;
+  };
+  colors: {
+    bg: string;
+    border: string;
+    text: string;
+    badge: string;
+    ring: string;
+  };
+  isFirst?: boolean;
+}
+
+const WinnerCard = ({ winner, colors, isFirst }: WinnerCardProps) => (
+  <div className={`relative ${colors.bg} border ${colors.border} rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 group`}>
+    {/* Prize badge */}
+    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 ${colors.badge} px-4 py-1.5 rounded-full font-display text-sm shadow-lg`}>
+      {winner.prize} Prix
+    </div>
+    
+    <div className="pt-4 text-center">
+      {/* Photo placeholder */}
+      <div className="relative mx-auto mb-6">
+        <div className={`w-28 h-28 md:w-32 md:h-32 ${isFirst ? 'md:w-40 md:h-40' : ''} mx-auto rounded-full bg-gradient-to-br from-muted/50 to-muted border-4 ${colors.border} flex items-center justify-center overflow-hidden ring-4 ${colors.ring} ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-offset-4`}>
+          {winner.image ? (
+            <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
+          ) : (
+            <User className={`w-12 h-12 md:w-16 md:h-16 ${colors.text} opacity-40`} />
+          )}
+        </div>
+        {isFirst && (
+          <div className="absolute -top-2 -right-2 md:right-4">
+            <Trophy className="w-8 h-8 text-gold drop-shadow-lg" />
+          </div>
+        )}
+      </div>
+      
+      {/* Winner info */}
+      <h3 className={`font-display text-xl md:text-2xl ${isFirst ? 'md:text-3xl' : ''} text-foreground mb-2`}>
+        {winner.name}
+      </h3>
+      <p className={`${colors.text} font-medium mb-1`}>{winner.category}</p>
+      <p className="text-muted-foreground text-sm">{winner.country}</p>
+    </div>
+  </div>
+);
 
 export default WinnersSection;
