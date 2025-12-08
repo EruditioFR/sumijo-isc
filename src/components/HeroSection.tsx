@@ -24,7 +24,7 @@ const HeroSection = () => {
           alt="Sumi Jo Performance"
           className="w-full h-full object-cover scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/75 via-accent/70 to-accent/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
