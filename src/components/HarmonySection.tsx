@@ -125,29 +125,6 @@ const HarmonySection = () => {
                 {t('harmony.content2')}
               </p>
             </div>
-
-            {/* Stats or highlight */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="pt-4 flex gap-8"
-            >
-              <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl text-gold">XVIe</div>
-                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Siècle</div>
-              </div>
-              <div className="w-px bg-gold/30" />
-              <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl text-gold">40</div>
-                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Hectares</div>
-              </div>
-              <div className="w-px bg-gold/30" />
-              <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl text-gold">MH</div>
-                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Classé</div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
