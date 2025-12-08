@@ -100,7 +100,7 @@ const HarmonySection = () => {
             </motion.div>
 
             {/* Title with elegant styling */}
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-white leading-tight">
               {t('harmony.title')}
             </h2>
 
