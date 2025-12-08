@@ -31,7 +31,7 @@ const StatsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center pt-[30px]"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
