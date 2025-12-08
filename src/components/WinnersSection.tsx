@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Trophy, Music } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -136,6 +137,13 @@ const WinnersSection = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto whitespace-pre-line text-sm">
               {t('winners.tour.dates')}
             </p>
+            <div className="mt-8">
+              <img 
+                src={magicTourImage} 
+                alt="The Magic 2025 - Sumi Jo & Winners Tour" 
+                className="max-w-2xl w-full mx-auto rounded-lg shadow-lg"
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>
