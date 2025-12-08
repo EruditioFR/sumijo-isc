@@ -91,8 +91,8 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1 }}
             className="flex flex-col md:flex-row gap-6 justify-center items-center pt-4"
           >
-            <div className="backdrop-blur-sm bg-accent/30 border border-gold/30 rounded-lg px-8 py-4 shadow-elegant">
-              <p className="text-gold-light text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <div className="backdrop-blur-md bg-accent/50 border-2 border-gold/50 rounded-lg px-10 py-5 shadow-elegant">
+              <p className="text-gold-light text-xl md:text-2xl lg:text-3xl font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] tracking-wide">
                 {t('hero.location')}
               </p>
             </div>
