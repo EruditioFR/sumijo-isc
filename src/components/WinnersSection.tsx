@@ -130,11 +130,11 @@ const WinnersSection = () => {
             <h3 className="font-display text-2xl md:text-3xl text-foreground mb-6">
               {t('winners.tour.title')}
             </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-6 whitespace-pre-line text-sm">
-              {t('winners.tour.dates')}
-            </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
               {t('winners.tour.description')}
+            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto whitespace-pre-line text-sm">
+              {t('winners.tour.dates')}
             </p>
           </motion.div>
         </motion.div>
