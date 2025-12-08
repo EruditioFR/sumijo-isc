@@ -67,13 +67,29 @@ const IntroductionSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="pt-4 relative"
           >
-            {/* Sparkling stars */}
-            <Sparkles className="absolute -top-4 -left-4 md:left-16 w-6 h-6 text-gold animate-pulse" />
-            <Sparkles className="absolute top-8 -right-2 md:right-20 w-5 h-5 text-gold-light animate-pulse" style={{ animationDelay: '0.3s' }} />
-            <Sparkles className="absolute bottom-12 -left-2 md:left-20 w-4 h-4 text-gold animate-pulse" style={{ animationDelay: '0.6s' }} />
-            <Sparkles className="absolute -bottom-2 -right-4 md:right-24 w-6 h-6 text-gold-light animate-pulse" style={{ animationDelay: '0.9s' }} />
-            <Sparkles className="absolute top-1/3 -left-6 md:left-12 w-5 h-5 text-gold animate-pulse" style={{ animationDelay: '1.2s' }} />
-            <Sparkles className="absolute top-1/2 -right-6 md:right-16 w-4 h-4 text-gold-light animate-pulse" style={{ animationDelay: '0.5s' }} />
+            {/* Sparkling stars - grandes */}
+            <Sparkles className="absolute -top-6 left-1/4 w-8 h-8 text-gold animate-pulse" />
+            <Sparkles className="absolute top-12 -right-4 md:right-12 w-8 h-8 text-gold-light animate-pulse" style={{ animationDelay: '0.4s' }} />
+            <Sparkles className="absolute bottom-20 -left-4 md:left-8 w-8 h-8 text-gold animate-pulse" style={{ animationDelay: '0.8s' }} />
+            <Sparkles className="absolute -bottom-4 right-1/4 w-8 h-8 text-gold-light animate-pulse" style={{ animationDelay: '1.1s' }} />
+            
+            {/* Sparkling stars - moyennes */}
+            <Sparkles className="absolute -top-2 -left-2 md:left-20 w-6 h-6 text-gold animate-pulse" style={{ animationDelay: '0.2s' }} />
+            <Sparkles className="absolute top-1/4 -right-2 md:right-16 w-6 h-6 text-gold-light animate-pulse" style={{ animationDelay: '0.6s' }} />
+            <Sparkles className="absolute top-1/2 -left-6 md:left-6 w-6 h-6 text-gold animate-pulse" style={{ animationDelay: '1s' }} />
+            <Sparkles className="absolute bottom-8 -right-6 md:right-8 w-6 h-6 text-gold-light animate-pulse" style={{ animationDelay: '0.3s' }} />
+            <Sparkles className="absolute top-2/3 -left-4 md:left-14 w-5 h-5 text-gold animate-pulse" style={{ animationDelay: '0.7s' }} />
+            <Sparkles className="absolute top-8 -left-8 md:left-4 w-5 h-5 text-gold-light animate-pulse" style={{ animationDelay: '1.3s' }} />
+            
+            {/* Sparkling stars - petites */}
+            <Sparkles className="absolute top-4 right-1/3 w-3 h-3 text-gold animate-pulse" style={{ animationDelay: '0.15s' }} />
+            <Sparkles className="absolute top-1/3 -left-3 md:left-18 w-3 h-3 text-gold-light animate-pulse" style={{ animationDelay: '0.45s' }} />
+            <Sparkles className="absolute bottom-1/4 -right-3 md:right-20 w-3 h-3 text-gold animate-pulse" style={{ animationDelay: '0.75s' }} />
+            <Sparkles className="absolute -top-3 -right-2 md:right-28 w-3 h-3 text-gold-light animate-pulse" style={{ animationDelay: '0.95s' }} />
+            <Sparkles className="absolute bottom-4 left-1/3 w-3 h-3 text-gold animate-pulse" style={{ animationDelay: '1.15s' }} />
+            <Sparkles className="absolute top-1/2 right-1/4 w-4 h-4 text-gold-light animate-pulse" style={{ animationDelay: '0.55s' }} />
+            <Sparkles className="absolute bottom-1/3 -left-5 md:left-10 w-4 h-4 text-gold animate-pulse" style={{ animationDelay: '0.85s' }} />
+            <Sparkles className="absolute -bottom-6 -left-2 md:left-24 w-4 h-4 text-gold-light animate-pulse" style={{ animationDelay: '1.25s' }} />
             
             <img 
               src={competitionPoster} 
