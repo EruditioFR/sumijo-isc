@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Users, Globe2, Trophy } from 'lucide-react';
+import { Users, Globe2, Trophy, Sparkles } from 'lucide-react';
 import competitionPoster from '@/assets/competition-2026-poster.jpg';
 
 const IntroductionSection = () => {
@@ -65,12 +65,20 @@ const IntroductionSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="pt-4"
+            className="pt-4 relative"
           >
+            {/* Sparkling stars */}
+            <Sparkles className="absolute -top-4 -left-4 md:left-16 w-6 h-6 text-gold animate-pulse" />
+            <Sparkles className="absolute top-8 -right-2 md:right-20 w-5 h-5 text-gold-light animate-pulse" style={{ animationDelay: '0.3s' }} />
+            <Sparkles className="absolute bottom-12 -left-2 md:left-20 w-4 h-4 text-gold animate-pulse" style={{ animationDelay: '0.6s' }} />
+            <Sparkles className="absolute -bottom-2 -right-4 md:right-24 w-6 h-6 text-gold-light animate-pulse" style={{ animationDelay: '0.9s' }} />
+            <Sparkles className="absolute top-1/3 -left-6 md:left-12 w-5 h-5 text-gold animate-pulse" style={{ animationDelay: '1.2s' }} />
+            <Sparkles className="absolute top-1/2 -right-6 md:right-16 w-4 h-4 text-gold-light animate-pulse" style={{ animationDelay: '0.5s' }} />
+            
             <img 
               src={competitionPoster} 
               alt="Sumi Jo International Singing Competition 2026" 
-              className="mx-auto max-w-md md:max-w-lg rounded-lg shadow-lg"
+              className="mx-auto max-w-md md:max-w-lg rounded-lg shadow-lg relative z-10"
             />
           </motion.div>
         </motion.div>
