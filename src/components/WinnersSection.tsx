@@ -151,11 +151,11 @@ const WinnersSection = () => {
             </div>
 
             <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
-              <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-2 bg-background border-gold/20 overflow-auto">
                 <img 
                   src={magicTourImage} 
                   alt="The Magic 2025 - Sumi Jo & Winners Tour" 
-                  className="w-full rounded-lg"
+                  className="w-auto h-auto max-h-[85vh] mx-auto rounded-lg"
                 />
               </DialogContent>
             </Dialog>
