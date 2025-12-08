@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Music } from 'lucide-react';
+import { Trophy, Music, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [isImageOpen, setIsImageOpen] = useState(false);
 
   const winners = [
     {
@@ -141,9 +144,21 @@ const WinnersSection = () => {
               <img 
                 src={magicTourImage} 
                 alt="The Magic 2025 - Sumi Jo & Winners Tour" 
-                className="max-w-2xl w-full mx-auto rounded-lg shadow-lg"
+                className="max-w-xs w-full mx-auto rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => setIsImageOpen(true)}
               />
+              <p className="text-xs text-muted-foreground mt-2">Cliquez pour agrandir</p>
             </div>
+
+            <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
+              <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
+                <img 
+                  src={magicTourImage} 
+                  alt="The Magic 2025 - Sumi Jo & Winners Tour" 
+                  className="w-full rounded-lg"
+                />
+              </DialogContent>
+            </Dialog>
           </motion.div>
         </motion.div>
       </div>
