@@ -11,7 +11,7 @@ const IntroductionSection = () => {
   const stats = [
     { icon: Users, value: '50+', label: t('introduction.participants') },
     { icon: Globe2, value: '20+', label: t('introduction.countries') },
-    { icon: Calendar, value: '7', label: t('introduction.days') },
+    { icon: Calendar, value: '80 000€', label: t('introduction.prizes') },
   ];
 
   return (
