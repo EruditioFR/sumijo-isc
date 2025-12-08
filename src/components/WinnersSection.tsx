@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 import winnerZihaoLi from '@/assets/winner-zihao-li.png';
 import winnerGeorgeVirban from '@/assets/winner-george-virban.png';
+import winnerKiupLee from '@/assets/winner-kiup-lee.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const WinnersSection = () => {
       prize: '3ème',
       prizeLabel: t('winners.thirdPrize'),
       color: 'bronze',
-      image: null,
+      image: winnerKiupLee,
     },
   ];
 
