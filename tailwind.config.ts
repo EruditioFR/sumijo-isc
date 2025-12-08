@@ -62,6 +62,11 @@ export default {
           light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
         },
+        rose: {
+          DEFAULT: "hsl(var(--rose))",
+          light: "hsl(var(--rose-light))",
+          dark: "hsl(var(--rose-dark))",
+        },
         cream: "hsl(var(--cream))",
         beige: "hsl(var(--beige))",
         burgundy: "hsl(var(--burgundy))",

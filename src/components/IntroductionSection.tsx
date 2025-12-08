@@ -60,10 +60,10 @@ const IntroductionSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                className="bg-card border border-gold/20 rounded-lg p-8 shadow-lg hover:shadow-gold transition-all"
+                className="bg-rose/10 border border-rose/30 rounded-lg p-8 shadow-lg hover:shadow-xl hover:bg-rose/20 transition-all"
               >
-                <stat.icon className="w-12 h-12 text-gold mx-auto mb-4" />
-                <div className="font-display text-4xl text-gold mb-2">{stat.value}</div>
+                <stat.icon className="w-12 h-12 text-rose-dark mx-auto mb-4" />
+                <div className="font-display text-4xl text-rose-dark mb-2">{stat.value}</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
