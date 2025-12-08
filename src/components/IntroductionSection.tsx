@@ -54,7 +54,7 @@ const IntroductionSection = () => {
 
           {/* Intro text above poster */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed pt-8">
-            {t('introduction.intro')} <span className="font-bold text-gold">{t('introduction.introDate')}</span>.
+            {t('introduction.intro')} <span className="font-bold text-rose-dark">{t('introduction.introDate')}</span>.
           </p>
 
           {/* Competition Poster */}
