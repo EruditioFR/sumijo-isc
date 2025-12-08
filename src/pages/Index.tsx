@@ -15,8 +15,8 @@ const Index = () => {
         <HeroSection />
         <IntroductionSection />
         <HarmonySection />
-        <WinnersSection />
         <FestivalSection />
+        <WinnersSection />
       </main>
       <Footer />
       <ScrollToTop />
