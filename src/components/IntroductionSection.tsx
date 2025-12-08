@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Users, Globe2, Calendar } from 'lucide-react';
+import competitionPoster from '@/assets/competition-2026-poster.jpg';
 
 const IntroductionSection = () => {
   const { t } = useTranslation();
@@ -36,6 +37,20 @@ const IntroductionSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {t('introduction.content2')}
           </p>
+
+          {/* Competition Poster */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="pt-8"
+          >
+            <img 
+              src={competitionPoster} 
+              alt="Sumi Jo International Singing Competition 2026" 
+              className="mx-auto max-w-md md:max-w-lg rounded-lg shadow-lg"
+            />
+          </motion.div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
