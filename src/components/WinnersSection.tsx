@@ -171,7 +171,6 @@ const WinnersSection = () => {
                 </h3>
                 <Award className="w-5 h-5 text-gold" />
               </div>
-              <p className="text-muted-foreground text-sm">(ex-aequo)</p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
