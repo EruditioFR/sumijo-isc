@@ -28,6 +28,9 @@ const IntroductionSection = () => {
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            {t('introduction.intro')}
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {t('introduction.content1')}
           </p>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
