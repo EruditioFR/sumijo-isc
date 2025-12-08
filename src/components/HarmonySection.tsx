@@ -95,7 +95,7 @@ const HarmonySection = () => {
             >
               <Sparkles className="w-5 h-5 text-gold" />
               <span className="text-gold text-sm tracking-[0.3em] uppercase font-medium">
-                Un lieu d'exception
+                {t('harmony.label')}
               </span>
             </motion.div>
 
