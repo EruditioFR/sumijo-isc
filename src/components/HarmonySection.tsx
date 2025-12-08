@@ -110,12 +110,6 @@ const HarmonySection = () => {
               <div className="w-2 h-2 rotate-45 border border-gold" />
               <div className="h-px w-16 bg-gradient-to-l from-gold to-transparent" />
             </div>
-
-            {/* Subtitle with accent */}
-            <p className="font-elegant text-xl md:text-2xl text-gold-light italic">
-              {t('harmony.subtitle')}
-            </p>
-
             {/* Content paragraphs */}
             <div className="space-y-6">
               <p className="text-base md:text-lg text-white/80 leading-relaxed">
