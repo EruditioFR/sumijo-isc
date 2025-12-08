@@ -9,7 +9,7 @@ const IntroductionSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   const stats = [
-    { icon: Users, value: '50+', label: t('introduction.participants') },
+    { icon: Users, value: '500+', label: t('introduction.participants') },
     { icon: Globe2, value: '20+', label: t('introduction.countries') },
     { icon: Trophy, value: '80 000€', label: t('introduction.prizes') },
   ];
