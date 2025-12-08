@@ -36,7 +36,10 @@ const IntroductionSection = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+          <h3 className="font-display text-2xl md:text-3xl text-foreground pt-12">
+            {t('introduction.statsTitle')}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
