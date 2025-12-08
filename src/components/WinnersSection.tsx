@@ -9,6 +9,7 @@ import winnerZihaoLi from '@/assets/winner-zihao-li.png';
 import winnerGeorgeVirban from '@/assets/winner-george-virban.png';
 import winnerKiupLee from '@/assets/winner-kiup-lee.png';
 import winnerMarieLombard from '@/assets/winner-marie-lombard.png';
+import winnerJulietteTacchino from '@/assets/winner-juliette-tacchino.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
@@ -56,7 +57,7 @@ const WinnersSection = () => {
       name: 'Juliette Tacchino',
       category: t('winners.soprano'),
       country: t('winners.france'),
-      image: null,
+      image: winnerJulietteTacchino,
     },
   ];
 
