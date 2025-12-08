@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import chateauGardens from '@/assets/chateau-drone.jpg';
 import { useRef } from 'react';
+import { Sparkles } from 'lucide-react';
 
 const HarmonySection = () => {
   const { t } = useTranslation();
@@ -12,60 +13,141 @@ const HarmonySection = () => {
     target: imageRef,
     offset: ["start end", "end start"]
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.05, 1.1]);
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background avec image discrète */}
-      <div className="absolute inset-0">
-        <img
-          src={chateauGardens}
-          alt=""
-          className="w-full h-full object-cover opacity-25"
-        />
-        <div className="absolute inset-0 bg-secondary/70" />
-      </div>
+    <section className="relative overflow-hidden bg-gradient-to-b from-accent via-accent/95 to-accent">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <h2 className="font-display text-4xl md:text-5xl text-white">
-              {t('harmony.title')}
-            </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light" />
-            <p className="font-elegant text-xl text-foreground">
-              {t('harmony.subtitle')}
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t('harmony.content1')}
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t('harmony.content2')}
-            </p>
-          </motion.div>
+      {/* Floating decorative shapes */}
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-32 -right-32 w-64 h-64 border border-gold/10 rounded-full"
+      />
+      <motion.div 
+        animate={{ rotate: -360 }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-48 -left-48 w-96 h-96 border border-gold/10 rounded-full"
+      />
 
+      <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          
+          {/* Image column - takes 7 cols on large screens */}
           <motion.div
             ref={imageRef}
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="lg:col-span-7 relative order-2 lg:order-1"
+          >
+            {/* Main image container with luxury frame */}
+            <div className="relative">
+              {/* Golden corner accents */}
+              <div className="absolute -top-4 -left-4 w-20 h-20 border-l-2 border-t-2 border-gold/60 z-20" />
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-r-2 border-b-2 border-gold/60 z-20" />
+              
+              {/* Image with parallax */}
+              <div className="relative overflow-hidden rounded-sm shadow-2xl">
+                <motion.img
+                  style={{ y, scale }}
+                  src={chateauGardens}
+                  alt="Château gardens"
+                  className="w-full h-[400px] md:h-[550px] object-cover"
+                />
+                {/* Gradient overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-accent/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-gold/10 via-transparent to-gold/10" />
+              </div>
+
+              {/* Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="absolute -bottom-6 left-8 md:left-12 bg-gold px-6 py-3 shadow-xl"
+              >
+                <p className="text-accent font-display text-sm md:text-base tracking-widest uppercase">
+                  Château de la Ferté-Imbault
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Content column - takes 5 cols */}
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="lg:col-span-5 space-y-8 order-1 lg:order-2"
           >
-            <div className="relative overflow-hidden rounded-lg shadow-elegant">
-              <motion.img
-                style={{ y }}
-                src={chateauGardens}
-                alt="Château gardens"
-                className="w-full h-[500px] object-cover scale-110"
-              />
-              <div className="absolute inset-0 border-4 border-gold/30 rounded-lg" />
+            {/* Section label */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-3"
+            >
+              <Sparkles className="w-5 h-5 text-gold" />
+              <span className="text-gold text-sm tracking-[0.3em] uppercase font-medium">
+                Un lieu d'exception
+              </span>
+            </motion.div>
+
+            {/* Title with elegant styling */}
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+              {t('harmony.title')}
+            </h2>
+
+            {/* Decorative divider */}
+            <div className="flex items-center gap-4">
+              <div className="h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+              <div className="w-2 h-2 rotate-45 border border-gold" />
+              <div className="h-px w-16 bg-gradient-to-l from-gold to-transparent" />
             </div>
+
+            {/* Subtitle with accent */}
+            <p className="font-elegant text-xl md:text-2xl text-gold-light italic">
+              {t('harmony.subtitle')}
+            </p>
+
+            {/* Content paragraphs */}
+            <div className="space-y-6">
+              <p className="text-base md:text-lg text-white/80 leading-relaxed">
+                {t('harmony.content1')}
+              </p>
+              <p className="text-base md:text-lg text-white/70 leading-relaxed">
+                {t('harmony.content2')}
+              </p>
+            </div>
+
+            {/* Stats or highlight */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="pt-4 flex gap-8"
+            >
+              <div className="text-center">
+                <div className="font-display text-3xl md:text-4xl text-gold">XVIe</div>
+                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Siècle</div>
+              </div>
+              <div className="w-px bg-gold/30" />
+              <div className="text-center">
+                <div className="font-display text-3xl md:text-4xl text-gold">40</div>
+                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Hectares</div>
+              </div>
+              <div className="w-px bg-gold/30" />
+              <div className="text-center">
+                <div className="font-display text-3xl md:text-4xl text-gold">MH</div>
+                <div className="text-xs text-white/60 uppercase tracking-wider mt-1">Classé</div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
