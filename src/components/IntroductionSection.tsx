@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Users, Globe2, Calendar } from 'lucide-react';
+import { Users, Globe2, Trophy } from 'lucide-react';
 import competitionPoster from '@/assets/competition-2026-poster.jpg';
 
 const IntroductionSection = () => {
@@ -11,7 +11,7 @@ const IntroductionSection = () => {
   const stats = [
     { icon: Users, value: '50+', label: t('introduction.participants') },
     { icon: Globe2, value: '20+', label: t('introduction.countries') },
-    { icon: Calendar, value: '80 000€', label: t('introduction.prizes') },
+    { icon: Trophy, value: '80 000€', label: t('introduction.prizes') },
   ];
 
   return (
