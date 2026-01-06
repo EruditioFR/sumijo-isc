@@ -56,6 +56,41 @@ const Header = () => {
 
   return (
     <>
+      {/* Floating language selector - always visible */}
+      <div className="fixed top-4 left-4 z-[60]">
+        <div className="relative">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+            className="text-cream hover:text-gold hover:bg-accent/80 bg-accent/90 backdrop-blur-sm rounded-full shadow-lg"
+          >
+            <Globe className="w-4 h-4 mr-2" />
+            {i18n.language.toUpperCase()}
+          </Button>
+          <AnimatePresence>
+            {isLangMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute top-full left-0 mt-2 bg-card border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-50"
+              >
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className="block w-full px-4 py-2 text-left text-sm hover:bg-gold/10 transition-colors"
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
       {/* Floating burger button for mobile - always visible */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -76,40 +111,6 @@ const Header = () => {
       >
       <div className="container mx-auto px-4 py-[5px]">
         <div className="flex items-center justify-between">
-          {/* Language Selector - Top Left */}
-          <div className="hidden lg:flex items-center">
-            <div className="relative">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="text-cream hover:text-gold hover:bg-transparent"
-              >
-                <Globe className="w-4 h-4 mr-2" />
-                {i18n.language.toUpperCase()}
-              </Button>
-              <AnimatePresence>
-                {isLangMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full left-0 mt-2 bg-card border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-50"
-                  >
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => changeLanguage(lang.code)}
-                        className="block w-full px-4 py-2 text-left text-sm hover:bg-gold/10 transition-colors"
-                      >
-                        {lang.label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
 
           {/* Logo - Center */}
           <button
