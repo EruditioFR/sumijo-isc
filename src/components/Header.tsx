@@ -76,7 +76,42 @@ const Header = () => {
       >
       <div className="container mx-auto px-4 py-[5px]">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Language Selector - Top Left */}
+          <div className="hidden lg:flex items-center">
+            <div className="relative">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                className="text-cream hover:text-gold hover:bg-transparent"
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                {i18n.language.toUpperCase()}
+              </Button>
+              <AnimatePresence>
+                {isLangMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 mt-2 bg-card border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-50"
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => changeLanguage(lang.code)}
+                        className="block w-full px-4 py-2 text-left text-sm hover:bg-gold/10 transition-colors"
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Logo - Center */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="hover:opacity-80 transition-opacity flex items-center gap-3 md:gap-4"
@@ -133,39 +168,8 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Language Selector & CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="relative">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="text-cream hover:text-gold hover:bg-transparent"
-              >
-                <Globe className="w-4 h-4 mr-2" />
-                {i18n.language.toUpperCase()}
-              </Button>
-              <AnimatePresence>
-                {isLangMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full right-0 mt-2 bg-card border border-gold/20 rounded-lg shadow-elegant overflow-hidden"
-                  >
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => changeLanguage(lang.code)}
-                        className="block w-full px-4 py-2 text-left text-sm hover:bg-gold/10 transition-colors"
-                      >
-                        {lang.label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+          {/* CTA Button - Right */}
+          <div className="hidden lg:flex items-center">
             <Button
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
