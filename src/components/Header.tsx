@@ -51,6 +51,7 @@ const Header = () => {
     { code: 'fr', label: '🇫🇷 FR' },
     { code: 'en', label: '🇬🇧 EN' },
     { code: 'kr', label: '🇰🇷 KR' },
+    { code: 'zh', label: '🇨🇳 ZH' },
   ];
 
   return (
