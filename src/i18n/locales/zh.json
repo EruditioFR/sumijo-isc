@@ -1,0 +1,266 @@
+{
+  "nav": {
+    "competition": "比赛",
+    "sumijo": "Sumi Jo",
+    "jury": "评审团",
+    "participate": "参赛",
+    "sponsors": "合作伙伴",
+    "chateau": "城堡",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
+    "subtitle": "发掘人才，激励卓越",
+    "location": "Château de la Ferté-Imbault, 法国",
+    "participate": "立即报名",
+    "learnMore": "了解更多"
+  },
+  "introduction": {
+    "title": "比赛介绍",
+    "participants": "收到的申请",
+    "countries": "参赛国家",
+    "days": "入围决赛选手",
+    "prizes": "颁发给获奖者",
+    "statsTitle": "2024年赛事数据",
+    "intro": "继2024年首届大获成功之后，诚邀您参加将于",
+    "introDate": "2026年7月",
+    "content1": "首届Sumi Jo国际声乐比赛于2024年7月7日至13日在Château de la Ferté-Imbault成功举办，超越了所有预期，实现了Sumi Jo的愿景：创造一个发掘未来人才的非凡赛事。",
+    "content2": "通过高水平的试唱、大师班和音乐会，本比赛为新锐歌手提供了一个独特的平台，让他们在国际知名专家的指导下展示自我、发展事业。获胜者将作为Sumi Jo的特邀嘉宾在其国际音乐会上演出。"
+  },
+  "winners": {
+    "title": "2024年获奖者",
+    "subtitle": "新一代人才",
+    "baritone": "男中音",
+    "tenor": "男高音",
+    "soprano": "女高音",
+    "china": "中国",
+    "romania": "罗马尼亚",
+    "southKorea": "韩国",
+    "france": "法国",
+    "juryPrize": "评审团特别奖（并列）",
+    "tour": {
+      "title": "2024年获奖者与Sumi Jo巡演",
+      "dates": "音乐会日期和地点：\n2025年6月10日：石家庄，中国\n2025年6月12日：深圳，中国\n2025年6月19日：全州，韩国\n2025年6月21日：城南，韩国\n2025年6月22日：首尔，韩国\n2025年6月24日：春川，韩国",
+      "description": "比赛结束后，获奖者在Sumi Jo及其团队的持续支持下发展事业。这次非凡的巡演为他们提供了与世界著名女高音同台的国际曝光机会，包括新闻发布会和电视节目亮相。"
+    }
+  },
+  "harmony": {
+    "label": "非凡场地",
+    "title": "Château de la Ferté-Imbault",
+    "subtitle": "面向全球所有声乐类别和所有国家开放",
+    "content1": "城堡位于卢瓦尔河谷，距巴黎不到两小时车程，建于公元980年的基础之上。Ferté-Imbault庄园呈现了一组保存完好的16至17世纪建筑群，包括主城堡、附属建筑、亭阁、护城河、双层露台、花园和公园。城堡于1627年竣工，建筑与景观和谐统一，其设计是历史的明证：既是一座气势恢宏的堡垒（Ferté即由此得名），唤起辉煌的军事历史，又是一座优雅的城堡，宽大的窗户和精雕细琢的外墙展现了文艺复兴精神和启蒙时代的精致品味。"
+  },
+  "sumijo": {
+    "title": "SUMI JO",
+    "subtitle": "世界著名女高音",
+    "content1": "在36年非凡而成功的职业生涯中，她一直受到媒体和观众的持续赞誉，因其卓越的音乐性、敏捷性、精准度和音色的纯净而备受推崇。",
+    "content2": "她曾在世界上最重要的歌剧院和剧院演出，是音乐史上唱片销量最高的古典艺术家之一，拥有超过50张录音作品，包括多张百万销量的白金唱片。",
+    "content3": "Sumi Jo女士先在祖国学习，后进入罗马圣塞西莉亚音乐学院，并于1986年以优异成绩毕业。她获得的众多荣誉包括国际普契尼奖以及首尔、恩纳、巴塞罗那、那不勒斯和维罗纳国际比赛的一等奖。",
+    "content4": "她是1986年被誉为世纪指挥家的赫伯特·冯·卡拉扬大师和乔治·索尔蒂爵士最喜爱的歌手之一。她为索尔蒂录制了获得格莱美奖的《没有影子的女人》和令人难忘的《魔笛》中的夜后。",
+    "unesco": "联合国教科文组织和平艺术家"
+  },
+  "career": {
+    "title": "职业生涯亮点",
+    "event1": {
+      "year": "1989",
+      "description": "Sumi Jo女士凭借理查德·施特劳斯的《没有影子的女人》荣获格莱美最佳歌剧录音主角独唱奖。"
+    },
+    "event2": {
+      "year": "2000",
+      "description": "她从联合国教科文组织总干事松浦先生手中接受了'联合国教科文组织和平艺术家'称号。"
+    },
+    "event3": {
+      "year": "2015",
+      "description": "庆祝30年职业生涯，她进行了中国、美国、澳大利亚和欧洲巡演。她在索伦蒂诺电影《年轻气盛》中演唱的歌曲获得金球奖和奥斯卡提名。"
+    },
+    "event4": {
+      "year": "2024",
+      "description": "7月15日，Sumi Jo正式启动首届以她名字命名的国际声乐比赛。"
+    }
+  },
+  "festival": {
+    "title": "节日与使命",
+    "intro": "怀着让自己的历程和热情能够激励、支持和发掘其他艺术家才华的愿望，Sumi Jo女士通过SUMI JO国际声乐比赛创造了一种更贴近观众和艺术家的新型节日，基于三个核心价值观。",
+    "ambition": {
+      "title": "雄心",
+      "content": "通过不同形式的活动、试唱、音乐会、大师班，这一周旨在与尽可能广泛的观众分享音乐文化的美丽与多样性。"
+    },
+    "transmission": {
+      "title": "传承",
+      "content": "正如Sumi Jo女士从她杰出的导师那里学到的，经验和热情的分享是延续艺术卓越的基础。"
+    },
+    "emotion": {
+      "title": "情感",
+      "content": "SJISC参赛者将在一个极其浪漫和独特的环境中受益，这种环境有利于激发灵感和艺术卓越。"
+    }
+  },
+  "sponsorship": {
+    "title": "合作伙伴与赞助商",
+    "intro": "成为比赛的合作伙伴或赞助商是一个独特的机会，可以将您的品牌与艺术卓越联系起来，并积极参与这一全球性文化盛事。",
+    "benefits": {
+      "visibility": {
+        "title": "国际知名度",
+        "description": "在国际上提升您品牌的声誉。通过我们所有传播平台的广泛曝光，获得精准的媒体曝光和增强的品牌形象。"
+      },
+      "engagement": {
+        "title": "忠诚度与参与",
+        "description": "加强您与客户和合作伙伴的关系。通过艺术卓越和文化承诺使您的公司脱颖而出，展示对文化发展的深度参与。"
+      },
+      "vip": {
+        "title": "专属VIP体验",
+        "description": "为您的重要客户和合作伙伴提供独特的艺术世界沉浸体验：最佳音乐会座位、与世界知名艺术家的私人会面、以及排练参观机会。"
+      },
+      "networking": {
+        "title": "媒体报道与人脉",
+        "description": "享受国内和国际媒体报道。与文化界有影响力的人物进行战略性交流，参加专属活动以建立新的合作关系。"
+      }
+    },
+    "support": {
+      "title": "支持方式",
+      "subtitle": "三种方式支持我们，为这一非凡赛事的成功做出贡献",
+      "financial": {
+        "tab": "资金",
+        "title": "资金支持",
+        "description": "以具有吸引力的税收优惠为比赛提供资金支持",
+        "items": ["享有税收优惠的赞助", "特定活动赞助", "广告位购买", "捐赠"]
+      },
+      "inKind": {
+        "tab": "实物",
+        "title": "实物支持",
+        "description": "通过服务或物资提供您的贡献",
+        "items": ["交通（配司机的车辆）", "乐器（钢琴、乐器）", "活动物流", "餐饮接待", "宣传材料", "住宿"]
+      },
+      "skills": {
+        "tab": "技能",
+        "title": "技能支持",
+        "description": "分享您的专业知识和技能",
+        "items": ["传播与公共关系", "法律与行政专业知识", "会计与管理", "技术与数字化", "网络动员", "专业志愿服务"]
+      }
+    },
+    "partners": {
+      "title": "2024年合作伙伴",
+      "main": "主要合作伙伴",
+      "institutional": "机构合作伙伴",
+      "private": "私人合作伙伴"
+    },
+    "cta": {
+      "title": "加入我们",
+      "description": "我们随时准备与您讨论合作机会，共同打造符合您目标的项目。",
+      "button": "成为合作伙伴"
+    }
+  },
+  "practical": {
+    "title": "实用信息",
+    "contact": {
+      "title": "联系方式",
+      "email": "contact@sumijo-isc.com",
+      "phone": "电话"
+    },
+    "venue": {
+      "title": "城堡",
+      "name": "Château de la Ferté-Imbault",
+      "address": "41300 La Ferté-Imbault, 法国"
+    },
+    "newsletter": {
+      "title": "订阅通讯",
+      "description": "及时了解即将举行的赛事",
+      "placeholder": "您的邮箱",
+      "subscribe": "订阅"
+    }
+  },
+  "sponsors": {
+    "title": "我们的合作伙伴与赞助商",
+    "main": "主要合作伙伴",
+    "institutional": "机构合作伙伴",
+    "private": "私人合作伙伴",
+    "become": "成为合作伙伴"
+  },
+  "chateau": {
+    "title": "Château de la Ferté-Imbault",
+    "subtitle": "索洛涅心脏地带的非凡场所",
+    "imageCaption": "庄园鸟瞰图",
+    "description": {
+      "paragraph1": "坐落于索洛涅中心，Château de la Ferté-Imbault是16世纪的建筑瑰宝。这个非凡的场所将文艺复兴建筑的优雅与30公顷公园的自然美景相结合，为国际文化活动提供了独特的环境。",
+      "paragraph2": "作为历史古迹，城堡经过精心修复，在提供现代设施的同时保留了其真实特色。其国宾厅、礼拜堂和法式花园构成了举办比赛及相关活动的完美场所。"
+    },
+    "features": {
+      "location": {
+        "title": "位置",
+        "description": "距巴黎2小时，位于索洛涅中心，自然环境得到良好保护"
+      },
+      "history": {
+        "title": "历史",
+        "description": "16世纪历史古迹，见证法国历史"
+      },
+      "capacity": {
+        "title": "容量",
+        "description": "音乐厅、国宾厅和大师班场地"
+      },
+      "heritage": {
+        "title": "遗产",
+        "description": "文艺复兴建筑和列入名录的法式花园"
+      }
+    },
+    "gardens": {
+      "title": "花园",
+      "description": "城堡的法式花园为户外音乐会和参赛者之间的交流提供了迷人的环境。经过精心修复，它们呈现了历史遗产与繁茂自然之间的完美和谐。",
+      "features": [
+        "30公顷法式花园公园",
+        "户外音乐会露天剧场",
+        "修复后的历史橘园",
+        "索洛涅池塘全景"
+      ]
+    }
+  },
+  "jury": {
+    "title": "评审团",
+    "viewDetails": "查看简介",
+    "president": {
+      "name": "Sumi Jo",
+      "role": "女高音",
+      "bio": "世界著名女高音Sumi Jo以其卓越的嗓音在国际歌剧舞台上活跃了36年以上。她曾在世界顶级场馆演出，唱片销量超过50张，包括多张白金唱片。作为联合国教科文组织和平艺术家，她是赫伯特·冯·卡拉扬大师最喜爱的歌手，并凭借理查德·施特劳斯的《没有影子的女人》获得格莱美奖。"
+    },
+    "members": {
+      "operowicz": {
+        "name": "Olivier Ojzerowicz-Medinger",
+        "role": "评审团主席\nChâteau de la Ferté-Imbault所有者",
+        "bio": "评审团主席，Château de la Ferté-Imbault所有者。\n热衷于推广年轻人才，致力于在Château de la Ferté-Imbault这一声望卓著的环境中为新锐艺术家创造非凡机会。"
+      },
+      "friend": {
+        "name": "Jonathan Friend",
+        "role": "大都会歌剧院和爱尔兰国家歌剧院音乐顾问",
+        "bio": "国际知名音乐顾问Jonathan Friend为纽约大都会歌剧院和爱尔兰国家歌剧院提供专业意见。他敏锐的眼光和对歌剧曲目的深入了解使他成为珍贵的评审成员。"
+      },
+      "galoppini": {
+        "name": "Alessandro Galoppini",
+        "role": "斯卡拉歌剧院选角经理",
+        "bio": "作为米兰著名斯卡拉歌剧院的选角经理，Alessandro Galoppini处于发现和选拔世界最优秀歌剧人才的核心位置。他在世界上最严苛的歌剧院之一的经验使他成为不可或缺的专家。"
+      },
+      "lanceron": {
+        "name": "Alain Lanceron",
+        "role": "华纳古典和Erato总裁",
+        "bio": "作为华纳古典和Erato的总裁，Alain Lanceron是古典音乐行业的重要人物。他的艺术眼光和世界级录音制作专业知识为评审团带来了关于音乐事业的独特视角。"
+      },
+      "rhorer": {
+        "name": "Jérémie Rhorer",
+        "role": "指挥家、作曲家、和谐圈总监",
+        "bio": "作为指挥家、作曲家和和谐圈艺术总监，Jérémie Rhorer因其对巴洛克和古典音乐的创新方法而获得国际认可。他深厚的音乐理解为评审团带来了重要的艺术维度。"
+      },
+      "vargas": {
+        "name": "Ramón Vargas",
+        "role": "男高音",
+        "bio": "国际知名墨西哥男高音Ramón Vargas曾在世界最伟大的歌剧舞台上演出。他杰出的职业生涯和对美声唱法的精通使他成为指导和评估年轻人才的理想导师。"
+      }
+    }
+  },
+  "footer": {
+    "navigation": "导航",
+    "followUs": "关注我们",
+    "newsletter": "订阅通讯",
+    "partners": "合作伙伴",
+    "copyright": "© 2025 Sumi Jo International Singing Competition. 保留所有权利。",
+    "legal": "法律声明",
+    "privacy": "隐私政策",
+    "cookies": "Cookie政策"
+  }
+}
