@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import heroImage from '@/assets/hero-sumi-performance.png';
+import heroImage from '@/assets/hero-sumi-2026.jpg';
 
 const HeroSection = () => {
   const { t } = useTranslation();
