@@ -17,49 +17,49 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 35 13% 11%;
 
-    --primary: 35 22% 56%;
-    --primary-foreground: 35 13% 11%;
+    --primary: 355 42% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 20% 40%;
+    --secondary: 350 55% 35%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 35 15% 90%;
-    --muted-foreground: 35 18% 23%;
+    --muted: 355 25% 90%;
+    --muted-foreground: 350 40% 30%;
 
-    --accent: 35 18% 23%;
+    --accent: 350 55% 30%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 80%;
-    --input: 35 20% 80%;
-    --ring: 35 22% 56%;
+    --border: 355 30% 75%;
+    --input: 355 30% 75%;
+    --ring: 355 42% 58%;
 
     --radius: 0.5rem;
     
-    /* Custom design tokens for elegant opera theme */
-    --gold: 35 22% 56%;
-    --gold-light: 35 25% 65%;
-    --gold-dark: 35 20% 40%;
-    --black-deep: 35 13% 11%;
+    /* Custom design tokens matching 2026 poster */
+    --gold: 355 42% 58%;
+    --gold-light: 355 45% 68%;
+    --gold-dark: 350 50% 40%;
+    --black-deep: 0 0% 10%;
     --cream: 0 0% 100%;
-    --beige: 35 20% 40%;
-    --burgundy: 35 18% 23%;
+    --beige: 355 35% 50%;
+    --burgundy: 350 55% 35%;
     
-    /* Rose/Burgundy palette from poster */
-    --rose: 355 35% 58%;
-    --rose-light: 355 40% 72%;
-    --rose-dark: 350 50% 35%;
+    /* Rose/Burgundy palette from poster - main theme colors */
+    --rose: 355 42% 58%;
+    --rose-light: 355 45% 68%;
+    --rose-dark: 350 55% 35%;
     
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(35 22% 56%) 0%, hsl(35 25% 65%) 100%);
-    --gradient-elegant: linear-gradient(180deg, hsl(35 13% 11% / 0.8) 0%, hsl(35 13% 11% / 0.4) 100%);
-    --gradient-hero: linear-gradient(to bottom, transparent 0%, hsl(35 13% 11% / 0.7) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(355 42% 58%) 0%, hsl(355 45% 68%) 100%);
+    --gradient-elegant: linear-gradient(180deg, hsl(350 55% 30% / 0.8) 0%, hsl(350 55% 30% / 0.4) 100%);
+    --gradient-hero: linear-gradient(to bottom, transparent 0%, hsl(350 55% 30% / 0.7) 100%);
     
     /* Shadows */
-    --shadow-gold: 0 10px 40px -10px hsl(35 22% 56% / 0.3);
-    --shadow-elegant: 0 20px 60px -10px hsl(35 13% 11% / 0.2);
+    --shadow-gold: 0 10px 40px -10px hsl(355 42% 58% / 0.3);
+    --shadow-elegant: 0 20px 60px -10px hsl(350 55% 30% / 0.2);
     
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,24 +85,24 @@ All colors MUST be HSL.
     --popover: 35 13% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 35 22% 56%;
-    --primary-foreground: 35 13% 11%;
+    --primary: 355 42% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 20% 40%;
+    --secondary: 350 55% 35%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 35 18% 23%;
-    --muted-foreground: 35 20% 60%;
+    --muted: 350 40% 25%;
+    --muted-foreground: 355 30% 70%;
 
-    --accent: 35 18% 23%;
+    --accent: 350 55% 25%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 30%;
-    --input: 35 20% 30%;
-    --ring: 35 22% 56%;
+    --border: 355 35% 35%;
+    --input: 355 35% 35%;
+    --ring: 355 42% 58%;
     
     --sidebar-background: 35 13% 11%;
     --sidebar-foreground: 0 0% 100%;
