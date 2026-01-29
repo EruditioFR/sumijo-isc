@@ -63,7 +63,7 @@ const Header = () => {
             variant="ghost"
             size="sm"
             onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            className="text-cream hover:text-gold hover:bg-accent/80 bg-accent/90 backdrop-blur-sm rounded-full shadow-lg"
+            className="text-cream hover:text-rose-light hover:bg-rose-dark/80 bg-rose-dark/90 backdrop-blur-sm rounded-full shadow-lg"
           >
             <Globe className="w-4 h-4 mr-2" />
             {i18n.language.toUpperCase()}
@@ -74,13 +74,13 @@ const Header = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute bottom-full right-0 mb-2 bg-accent border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-[60]"
+                className="absolute bottom-full right-0 mb-2 bg-rose-dark border border-rose/30 rounded-lg shadow-elegant overflow-hidden z-[60]"
               >
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="block w-full px-4 py-2 text-left text-sm text-cream hover:bg-gold/10 transition-colors"
+                    className="block w-full px-4 py-2 text-left text-sm text-cream hover:bg-rose/20 transition-colors"
                   >
                     {lang.label}
                   </button>
@@ -94,7 +94,7 @@ const Header = () => {
       {/* Floating burger button for mobile - always visible */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="md:hidden fixed top-4 right-4 z-[60] text-white hover:text-gold transition-colors bg-accent/90 backdrop-blur-sm rounded-full p-3 shadow-lg"
+        className="md:hidden fixed top-4 right-4 z-[60] text-white hover:text-rose-light transition-colors bg-rose-dark/90 backdrop-blur-sm rounded-full p-3 shadow-lg"
       >
         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
@@ -107,7 +107,7 @@ const Header = () => {
             ? (showMobileHeader ? 'translate-y-0' : '-translate-y-full') 
             : 'translate-y-0'
         }`}
-        style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
+        style={{ backgroundColor: 'hsl(var(--rose-dark) / 0.95)' }}
       >
       <div className="container mx-auto px-4 py-[5px]">
         <div className="flex items-center justify-between">
@@ -123,9 +123,9 @@ const Header = () => {
               className="h-16 md:h-20 w-auto object-contain"
             />
             <div className="flex flex-col text-left">
-              <span className="text-gold font-elegant text-lg md:text-2xl tracking-wide">Sumi Jo</span>
+              <span className="text-rose-light font-elegant text-lg md:text-2xl tracking-wide">Sumi Jo</span>
               <span className="text-cream text-xs md:text-sm tracking-wider">International Singing Competition</span>
-              <span className="text-gold-light text-lg md:text-xl font-semibold">2026</span>
+              <span className="text-rose text-lg md:text-xl font-semibold">2026</span>
             </div>
           </button>
 
@@ -133,37 +133,37 @@ const Header = () => {
           <nav className="flex items-center gap-4 md:gap-8">
             <Link
               to="/"
-              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.competition')}
             </Link>
             <Link
               to="/sumi-jo"
-              className="hidden sm:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="hidden sm:block text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.sumijo')}
             </Link>
             <Link
               to="/jury"
-              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.jury')}
             </Link>
             <Link
               to="/chateau"
-              className="hidden sm:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="hidden sm:block text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.chateau')}
             </Link>
             <Link
               to="/partenaires"
-              className="hidden md:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="hidden md:block text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.sponsors')}
             </Link>
             <Link
               to="/contact"
-              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="text-xs md:text-sm text-cream hover:text-rose-light transition-colors"
             >
               {t('nav.contact')}
             </Link>
@@ -173,7 +173,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center">
             <Button
               onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
+              className="bg-gradient-to-r from-rose to-rose-light text-white font-semibold hover:shadow-[0_10px_40px_-10px_hsl(355_42%_58%_/_0.4)] transition-all"
             >
               {t('nav.participate')}
             </Button>
@@ -201,19 +201,19 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-accent z-[60] shadow-2xl overflow-y-auto"
+            className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-rose-dark z-[60] shadow-2xl overflow-y-auto"
           >
             <div className="p-6 space-y-6">
               {/* Close button */}
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-4 right-4 text-cream hover:text-gold transition-colors"
+                className="absolute top-4 right-4 text-cream hover:text-rose-light transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
 
               {/* Logo */}
-              <div className="pt-8 pb-4 border-b border-gold/20 flex justify-center">
+              <div className="pt-8 pb-4 border-b border-rose/30 flex justify-center">
                 <img 
                   src={logoSjisc} 
                   alt="Sumi Jo International Singing Competition" 
@@ -226,55 +226,55 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.competition')}
                 </Link>
                 <Link
                   to="/sumi-jo"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.sumijo')}
                 </Link>
                 <Link
                   to="/jury"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.jury')}
                 </Link>
                 <Link
                   to="/chateau"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.chateau')}
                 </Link>
                 <Link
                   to="/partenaires"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.sponsors')}
                 </Link>
                 <Link
                   to="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                 >
                   {t('nav.contact')}
                 </Link>
               </nav>
 
               {/* Language Selector */}
-              <div className="pt-4 border-t border-gold/20 space-y-2">
+              <div className="pt-4 border-t border-rose/30 space-y-2">
                 <p className="text-sm text-cream/70 mb-2">{t('nav.language')}</p>
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                    className="block w-full text-left text-cream hover:text-rose-light transition-colors py-2"
                   >
                     {lang.label}
                   </button>
@@ -287,7 +287,7 @@ const Header = () => {
                   scrollToSection('contact');
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold"
+                className="w-full bg-gradient-to-r from-rose to-rose-light text-white font-semibold"
               >
                 {t('nav.participate')}
               </Button>
