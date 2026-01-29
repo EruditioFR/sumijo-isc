@@ -20,19 +20,19 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-cream py-12 border-t border-gold/20">
+    <footer className="bg-rose-dark text-cream py-12 border-t border-rose/30">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Navigation */}
           <div>
-            <h3 className="font-elegant text-lg text-gold mb-4">
+            <h3 className="font-elegant text-lg text-rose-light mb-4">
               {t('footer.navigation')}
             </h3>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="hover:text-gold transition-colors"
+                  className="hover:text-rose-light transition-colors"
                 >
                   {t('nav.competition')}
                 </button>
@@ -40,7 +40,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/sumi-jo"
-                  className="hover:text-gold transition-colors"
+                  className="hover:text-rose-light transition-colors"
                 >
                   {t('nav.sumijo')}
                 </Link>
@@ -48,7 +48,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/partenaires"
-                  className="hover:text-gold transition-colors"
+                  className="hover:text-rose-light transition-colors"
                 >
                   {t('nav.sponsors')}
                 </Link>
@@ -57,7 +57,7 @@ const Footer = () => {
                 <Link
                   to="/contact"
                   onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
-                  className="hover:text-gold transition-colors"
+                  className="hover:text-rose-light transition-colors"
                 >
                   {t('nav.contact')}
                 </Link>
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* Social Media */}
           <div>
-            <h3 className="font-elegant text-lg text-gold mb-4">
+            <h3 className="font-elegant text-lg text-rose-light mb-4">
               {t('footer.followUs')}
             </h3>
             <div className="flex gap-4">
@@ -76,9 +76,9 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center hover:bg-gold/20 transition-all hover:scale-110"
+                  className="w-10 h-10 bg-rose/20 rounded-full flex items-center justify-center hover:bg-rose/30 transition-all hover:scale-110"
                 >
-                  <social.icon className="w-5 h-5 text-gold" />
+                  <social.icon className="w-5 h-5 text-rose-light" />
                 </a>
               ))}
             </div>
@@ -86,10 +86,10 @@ const Footer = () => {
 
           {/* Logo/Brand */}
           <div className="md:col-span-2">
-            <div className="font-elegant text-2xl text-gold mb-4">
+            <div className="font-elegant text-2xl text-rose-light mb-4">
               SUMI JO INTERNATIONAL SINGING COMPETITION
             </div>
-            <p className="text-sm text-gold">
+            <p className="text-sm text-cream/80">
               Château de la Ferté-Imbault<br />
               41300 La Ferté-Imbault, France
             </p>
@@ -97,19 +97,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gold/20">
+        <div className="mt-12 pt-8 border-t border-rose/30">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p className="text-cream">
+            <p className="text-cream/80">
               {t('footer.copyright')}
             </p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-gold transition-colors">
+              <a href="#" className="hover:text-rose-light transition-colors">
                 {t('footer.legal')}
               </a>
-              <a href="#" className="hover:text-gold transition-colors">
+              <a href="#" className="hover:text-rose-light transition-colors">
                 {t('footer.privacy')}
               </a>
-              <a href="#" className="hover:text-gold transition-colors">
+              <a href="#" className="hover:text-rose-light transition-colors">
                 {t('footer.cookies')}
               </a>
             </div>
