@@ -59,9 +59,6 @@ const HarmonySection = () => {
                   alt="Château gardens"
                   className="w-full h-[400px] md:h-[550px] object-cover"
                 />
-                {/* Gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-accent/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-gold/10 via-transparent to-gold/10" />
               </div>
 
               {/* Floating badge */}
