@@ -103,9 +103,7 @@ const Header = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
           isScrolled ? 'shadow-elegant' : ''
         } ${
-          isHomepage 
-            ? (showMobileHeader ? 'translate-y-0' : '-translate-y-full') 
-            : 'translate-y-0'
+'translate-y-0'
         }`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
