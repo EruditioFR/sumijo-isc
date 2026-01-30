@@ -1,89 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState, useMemo, useCallback } from 'react';
-
-// Confetti particle component - explodes from center
-const ConfettiParticle = ({ index }: { index: number }) => {
-  const colors = ['#cd7c8b', '#8b3a4a', '#e8a5b0', '#d4949f', '#a85566', '#f5d0d6', '#c46b7a'];
-  const randomColor = useMemo(() => colors[Math.floor(Math.random() * colors.length)], []);
-  const randomAngle = useMemo(() => (Math.random() * 360) * (Math.PI / 180), []);
-  const randomDistance = useMemo(() => 150 + Math.random() * 300, []);
-  const randomDelay = useMemo(() => Math.random() * 0.3, []);
-  const randomDuration = useMemo(() => 1.5 + Math.random() * 1.5, []);
-  const randomRotation = useMemo(() => Math.random() * 1080 - 540, []);
-  const randomSize = useMemo(() => 0.5 + Math.random() * 1, []);
-  const isCircle = useMemo(() => Math.random() > 0.6, []);
-  
-  // Calculate end position based on angle
-  const endX = useMemo(() => Math.cos(randomAngle) * randomDistance, [randomAngle, randomDistance]);
-  const endY = useMemo(() => Math.sin(randomAngle) * randomDistance, [randomAngle, randomDistance]);
-  
-  return (
-    <motion.div
-      className="absolute"
-      style={{
-        left: '50%',
-        top: '50%',
-        width: `${randomSize * 6}px`,
-        height: isCircle ? `${randomSize * 6}px` : `${randomSize * 10}px`,
-        backgroundColor: randomColor,
-        borderRadius: isCircle ? '50%' : '1px',
-        transformOrigin: 'center',
-      }}
-      initial={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 0 }}
-      animate={{
-        opacity: [0, 1, 1, 0],
-        x: [0, endX * 0.3, endX],
-        y: [0, endY * 0.3 - 50, endY + 100],
-        rotate: randomRotation,
-        scale: [0, 1.2, 1, 0.3],
-      }}
-      transition={{
-        duration: randomDuration,
-        delay: randomDelay,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-    />
-  );
-};
-
-// Confetti burst component - centered explosion with two waves
-const ConfettiBurst = ({ show }: { show: boolean }) => {
-  const [showSecondWave, setShowSecondWave] = useState(false);
-  
-  useEffect(() => {
-    if (show) {
-      // Trigger second wave after a delay
-      const timer = setTimeout(() => setShowSecondWave(true), 600);
-      return () => clearTimeout(timer);
-    } else {
-      setShowSecondWave(false);
-    }
-  }, [show]);
-  
-  if (!show) return null;
-  
-  return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-50">
-      {/* First wave - 80 particles */}
-      <div className="relative w-0 h-0">
-        {[...Array(80)].map((_, i) => (
-          <ConfettiParticle key={`wave1-${i}`} index={i} />
-        ))}
-      </div>
-      
-      {/* Second wave - 60 particles with delay */}
-      {showSecondWave && (
-        <div className="relative w-0 h-0">
-          {[...Array(60)].map((_, i) => (
-            <ConfettiParticle key={`wave2-${i}`} index={i} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
+import { useEffect, useState, useMemo } from 'react';
 
 // Sparkle component for decorative particles
 const Sparkle = ({ delay, index }: { delay: number; index: number }) => {
@@ -177,19 +95,9 @@ const StatsSection = () => {
   });
   const [completedCards, setCompletedCards] = useState<Set<number>>(new Set());
   const [showSparkles, setShowSparkles] = useState<Set<number>>(new Set());
-  const [showConfetti, setShowConfetti] = useState(false);
 
-  const handleCardComplete = useCallback((index: number) => {
-    setCompletedCards(prev => {
-      const next = new Set([...prev, index]);
-      // Trigger confetti when all 5 cards are complete
-      if (next.size === 5 && !showConfetti) {
-        setShowConfetti(true);
-        // Hide confetti after animation
-        setTimeout(() => setShowConfetti(false), 4000);
-      }
-      return next;
-    });
+  const handleCardComplete = (index: number) => {
+    setCompletedCards(prev => new Set([...prev, index]));
     setShowSparkles(prev => new Set([...prev, index]));
     // Remove sparkles after animation
     setTimeout(() => {
@@ -199,7 +107,7 @@ const StatsSection = () => {
         return next;
       });
     }, 1500);
-  }, [showConfetti]);
+  };
 
   const stats = [
     {
@@ -232,9 +140,6 @@ const StatsSection = () => {
 
   return (
     <section className="relative py-12 md:py-28 overflow-hidden bg-cream">
-      {/* Global confetti effect */}
-      <ConfettiBurst show={showConfetti} />
-      
       {/* Decorative diagonal stripes - desktop only */}
       <div className="hidden md:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-[400px] h-[800px] rotate-[25deg] origin-top-left">
