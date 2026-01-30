@@ -32,7 +32,7 @@ const HeroSection = () => {
         <img
           src={chateauSilhouette}
           alt=""
-          className="w-[85%] max-w-md object-contain opacity-50 mt-8"
+          className="w-[85%] max-w-md object-contain opacity-80 mt-8 brightness-[10] invert"
         />
       </div>
       
