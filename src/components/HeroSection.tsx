@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Mobile Background - New integrated image */}
-      <div className="absolute inset-0 top-20 md:hidden">
+      <div className="absolute inset-0 md:hidden">
         <img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
@@ -30,7 +30,7 @@ const HeroSection = () => {
       </div>
 
       {/* Desktop Background - Château Layer */}
-      <div className="absolute inset-0 top-24 hidden md:block">
+      <div className="absolute inset-0 hidden md:block">
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
@@ -39,7 +39,7 @@ const HeroSection = () => {
       </div>
       
       {/* Desktop Foreground - Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 top-24 hidden md:block">
+      <div className="absolute inset-0 hidden md:block">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
