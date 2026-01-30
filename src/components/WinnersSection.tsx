@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Music, Globe, User, Award } from 'lucide-react';
+import { Trophy, Globe, User, Award } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import magicTourImage from '@/assets/magic-sumi-jo-winners.jpg';
 import winnerZihaoLi from '@/assets/winner-zihao-li.png';
@@ -65,11 +65,11 @@ const WinnersSection = () => {
     switch (color) {
       case 'gold':
         return {
-          bg: 'bg-gradient-to-br from-gold/20 via-gold-light/10 to-gold/5',
-          border: 'border-gold/40',
-          text: 'text-gold',
-          badge: 'bg-gold text-background',
-          ring: 'ring-gold/30',
+          bg: 'bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5',
+          border: 'border-primary/40',
+          text: 'text-primary',
+          badge: 'bg-primary text-primary-foreground',
+          ring: 'ring-primary/30',
         };
       case 'silver':
         return {
@@ -113,7 +113,7 @@ const WinnersSection = () => {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
               {t('winners.title')}
             </h2>
-            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
+            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               {t('winners.subtitle')}
             </p>
@@ -161,44 +161,47 @@ const WinnersSection = () => {
           >
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-4">
-                <Award className="w-5 h-5 text-gold" />
+                <Award className="w-5 h-5 text-primary" />
                 <h3 className="font-display text-2xl md:text-3xl text-foreground">
                   {t('winners.juryPrize')}
                 </h3>
-                <Award className="w-5 h-5 text-gold" />
+                <Award className="w-5 h-5 text-primary" />
               </div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
               {juryPrizes.map((winner, index) => (
                 <motion.div
                   key={winner.name}
-                  initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="group"
                 >
-                  <div className="bg-card border border-gold/20 rounded-2xl p-8 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300">
-                    <div className="flex items-center gap-6">
-                      {/* Photo placeholder */}
-                      <div className="relative">
-                        <div className="w-28 h-28 rounded-full bg-gradient-to-br from-gold/20 to-gold-light/10 border-2 border-gold/30 flex items-center justify-center overflow-hidden">
+                  <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/30 rounded-3xl p-6 md:p-8 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+                    {/* Badge */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1.5 rounded-full font-display text-sm shadow-lg">
+                      {t('winners.juryPrize')}
+                    </div>
+                    
+                    <div className="pt-4 text-center">
+                      {/* Photo */}
+                      <div className="relative mx-auto mb-6">
+                        <div className="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full bg-gradient-to-br from-muted/50 to-muted border-4 border-primary/30 flex items-center justify-center overflow-hidden ring-4 ring-primary/20 ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-offset-4">
                           {winner.image ? (
                             <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
                           ) : (
-                            <User className="w-10 h-10 text-gold/50" />
+                            <User className="w-12 h-12 md:w-16 md:h-16 text-primary opacity-40" />
                           )}
-                        </div>
-                        <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-gold rounded-full flex items-center justify-center">
-                          <Music className="w-4 h-4 text-background" />
                         </div>
                       </div>
                       
-                      <div className="flex-1">
-                        <h4 className="font-display text-xl text-foreground mb-1">{winner.name}</h4>
-                        <p className="text-gold text-base font-medium mb-0.5">{winner.category}</p>
-                        <p className="text-muted-foreground text-sm">{winner.country}</p>
-                      </div>
+                      {/* Winner info */}
+                      <h4 className="font-display text-xl md:text-2xl text-foreground mb-2">
+                        {winner.name}
+                      </h4>
+                      <p className="text-primary font-medium mb-1">{winner.category}</p>
+                      <p className="text-muted-foreground text-sm">{winner.country}</p>
                     </div>
                   </div>
                 </motion.div>
