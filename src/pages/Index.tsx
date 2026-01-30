@@ -4,6 +4,7 @@ import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
 import StatsSection from '@/components/StatsSection';
 import WinnersSection from '@/components/WinnersSection';
+import PressSection from '@/components/PressSection';
 import FestivalSection from '@/components/FestivalSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -16,6 +17,7 @@ const Index = () => {
         <HeroSection />
         <StatsSection />
         <WinnersSection />
+        <PressSection />
         <IntroductionSection />
         <HarmonySection />
         <FestivalSection />
