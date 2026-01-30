@@ -142,31 +142,31 @@ const StatsSection = () => {
 
   const stats = [
     {
-      value: 150,
+      value: 500,
       suffix: '+',
-      label: t('introduction.participants'),
-      progress: 87,
+      label: 'Candidatures reçues',
+      progress: 100,
       Icon: Trophy
     },
     {
-      value: 25,
+      value: 40,
       suffix: '',
-      label: t('introduction.countries'),
-      progress: 65,
+      label: 'Pays représentés',
+      progress: 100,
       Icon: Globe
     },
     {
-      value: 10,
+      value: 6,
       suffix: '',
-      label: t('introduction.competitionDays'),
-      progress: 92,
+      label: 'Jours de compétition',
+      progress: 100,
       Icon: Star
     },
     {
-      value: 100,
-      suffix: 'K€',
-      label: t('introduction.prizes'),
-      progress: 78,
+      value: 80000,
+      suffix: '€',
+      label: 'Décernés aux lauréats',
+      progress: 100,
       Icon: Award
     }
   ];
