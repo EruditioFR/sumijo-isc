@@ -1,13 +1,26 @@
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
 import chateauImage from '@/assets/hero-chateau.jpg';
 import heroMobileImage from '@/assets/hero-sumi-mobile.jpg';
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  
+  // Parallax speeds: château slowest, Sumi medium, content fastest
+  const chateauY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const sumiY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const scrollToNext = () => {
     const element = document.getElementById('competition');
@@ -17,9 +30,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]">
+    <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]">
       {/* Mobile Background - New integrated image */}
-      <div className="absolute inset-0 top-[70px] md:hidden">
+      <motion.div 
+        style={{ y: sumiY }}
+        className="absolute inset-0 top-[70px] md:hidden"
+      >
         <img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
@@ -27,19 +43,25 @@ const HeroSection = () => {
         />
         {/* Light overlay for text readability */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent,rgba(0,0,0,0.25)_60%,rgba(0,0,0,0.4))]" />
-      </div>
+      </motion.div>
 
-      {/* Desktop Background - Château Layer */}
-      <div className="absolute inset-0 hidden md:block">
+      {/* Desktop Background - Château Layer (slowest parallax) */}
+      <motion.div 
+        style={{ y: chateauY }}
+        className="absolute inset-0 hidden md:block"
+      >
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
           className="w-full h-full object-cover object-center opacity-40"
         />
-      </div>
+      </motion.div>
       
-      {/* Desktop Foreground - Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 top-[90px] hidden md:block">
+      {/* Desktop Foreground - Sumi Jo Image with Overlay (medium parallax) */}
+      <motion.div 
+        style={{ y: sumiY }}
+        className="absolute inset-0 top-[90px] hidden md:block"
+      >
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
@@ -49,10 +71,13 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
-      </div>
+      </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      {/* Content (fastest parallax) */}
+      <motion.div 
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 container mx-auto px-4 text-center"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -127,7 +152,7 @@ const HeroSection = () => {
             </Button>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Enhanced Scroll Indicator */}
       <motion.button
