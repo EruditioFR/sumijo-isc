@@ -40,12 +40,12 @@ const videos: Video[] = [
   },
   {
     id: "3",
-    youtubeId: "dQw4w9WgXcQ",
-    startTime: 0,
-    singer: "Kim Min-jae",
-    description: "Demi-finale - Air de Puccini",
-    duration: "4:19",
-    category: "demi-finale",
+    youtubeId: "WksxeGPBZuM",
+    startTime: 14,
+    singer: "Kiup Lee, Tenor, République de Corée",
+    description: "Gala des lauréats - Au Mont Ida, trois déesses - La belle Hélène, J. Offenbach",
+    duration: "4:20",
+    category: "Gala des lauréats",
   },
   {
     id: "4",
