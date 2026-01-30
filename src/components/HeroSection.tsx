@@ -27,17 +27,17 @@ const HeroSection = () => {
         />
       </div>
       
-      {/* Château Silhouette - Mobile only */}
-      <div className="absolute inset-0 top-20 flex items-start justify-center md:hidden pointer-events-none">
+      {/* Château Silhouette - Mobile only - behind Sumi image */}
+      <div className="absolute inset-0 top-20 flex items-start justify-center md:hidden pointer-events-none z-0">
         <img
           src={chateauSilhouette}
           alt=""
-          className="w-[85%] max-w-md object-contain opacity-80 mt-8 brightness-[10] invert"
+          className="w-[150%] max-w-none object-contain opacity-40 -mt-4 brightness-150 sepia hue-rotate-[-30deg] saturate-50"
         />
       </div>
       
       {/* Foreground Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 top-20 md:top-24">
+      <div className="absolute inset-0 top-20 md:top-24 z-[1]">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
