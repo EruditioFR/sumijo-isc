@@ -23,7 +23,7 @@ const videos: Video[] = [
   {
     id: "1",
     youtubeId: "DaHrBeXB9H0",
-    startTime: 0,
+    startTime: 19,
     singer: "Zihao Li",
     description: 'Finale - "Mein Sehnen, Mein Wähnen - Die Tote Stadt, E. W. Korngold',
     duration: "5:46",
