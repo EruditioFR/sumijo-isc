@@ -13,7 +13,7 @@ import winnerJulietteTacchino from '@/assets/winner-juliette-tacchino.png';
 
 const WinnersSection = () => {
   const { t } = useTranslation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   const winners = [
