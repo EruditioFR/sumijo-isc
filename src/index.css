@@ -157,3 +157,12 @@ All colors MUST be HSL.
     animation: shimmer 3s linear infinite;
   }
 }
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .circle-stat,
+  .circle-stat * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
