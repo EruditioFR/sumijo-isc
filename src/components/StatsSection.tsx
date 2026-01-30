@@ -95,6 +95,9 @@ const StatsSection = () => {
       }} className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-16">
+            <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest mb-2 md:mb-4">
+              Les chiffres de l'édition 2024
+            </span>
             
             
             <motion.h2 initial={{
