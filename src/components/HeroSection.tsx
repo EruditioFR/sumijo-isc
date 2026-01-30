@@ -31,7 +31,7 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 opacity-90 md:opacity-100 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Mobile: wider transparent zone, lower opacity. Desktop: overlay on left for Sumi Jo */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_35%_35%,transparent,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.45))] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
