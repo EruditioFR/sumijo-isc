@@ -110,13 +110,13 @@ const WinnersSection = () => {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
+            <span className="inline-block text-sm md:text-base uppercase tracking-[0.3em] text-primary font-medium mb-4">
+              {t('winners.subtitle')}
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
               {t('winners.title')}
             </h2>
-            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('winners.subtitle')}
-            </p>
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
           </div>
 
           {/* Main Winners - Podium Style */}
