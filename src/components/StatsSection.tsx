@@ -1,95 +1,134 @@
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
+import { Trophy, Globe, Star, Award, LucideIcon } from 'lucide-react';
 
-// Sparkle component for decorative particles
-const Sparkle = ({ delay, index }: { delay: number; index: number }) => {
-  const randomX = useMemo(() => Math.random() * 80 - 40, []);
-  const randomY = useMemo(() => Math.random() * -50 - 10, []);
-  const randomScale = useMemo(() => 0.5 + Math.random() * 1, []);
-  
-  return (
-    <motion.div
-      className="absolute w-2 h-2 bg-gradient-to-r from-primary to-gold rounded-full"
-      style={{ 
-        left: '50%', 
-        top: '50%',
-        filter: 'blur(0.5px)'
-      }}
-      initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-      animate={{ 
-        opacity: [0, 1, 0],
-        scale: [0, randomScale, 0],
-        x: [0, randomX],
-        y: [0, randomY]
-      }}
-      transition={{ 
-        duration: 1,
-        delay: delay + index * 0.08,
-        ease: "easeOut"
-      }}
-    />
-  );
-};
-
-// Dramatic number reveal component
-const DramaticNumber = ({
-  value,
-  suffix = '',
-  inView,
-  delay,
-  onReveal,
-  isHighlight = false
-}: {
-  value: string;
+interface CircleStatProps {
+  value: number;
   suffix?: string;
+  label: string;
+  progress: number;
+  Icon: LucideIcon;
+  index: number;
   inView: boolean;
-  delay: number;
-  onReveal?: () => void;
-  isHighlight?: boolean;
-}) => {
-  const [hasRevealed, setHasRevealed] = useState(false);
+}
+
+const CircleStat = ({ value, suffix = '', label, progress, Icon, index, inView }: CircleStatProps) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const motionValue = useMotionValue(0);
+  
+  // SVG circle calculations - responsive sizes
+  const desktopRadius = 108;
+  const tabletRadius = 90;
+  const mobileRadius = 70;
+  
+  const desktopStrokeWidth = 12;
+  const tabletStrokeWidth = 10;
+  const mobileStrokeWidth = 8;
+  
+  // Use desktop values for calculations (CSS handles responsive)
+  const radius = desktopRadius;
+  const strokeWidth = desktopStrokeWidth;
+  const circumference = 2 * Math.PI * radius;
+  
+  const progressOffset = useMotionValue(circumference);
+  const animatedOffset = useTransform(progressOffset, (v) => v);
+
+  useEffect(() => {
+    if (inView) {
+      // Animate the counter
+      const controls = animate(motionValue, value, {
+        duration: 1.8,
+        delay: 0.3 + index * 0.15,
+        ease: [0.34, 1.56, 0.64, 1],
+        onUpdate: (latest) => {
+          setDisplayValue(Math.round(latest));
+        }
+      });
+
+      // Animate the progress ring
+      const targetOffset = circumference - (progress / 100) * circumference;
+      animate(progressOffset, targetOffset, {
+        duration: 1.8,
+        delay: 0.3 + index * 0.15,
+        ease: [0.16, 1, 0.3, 1]
+      });
+
+      return () => controls.stop();
+    }
+  }, [inView, value, progress, circumference, index, motionValue, progressOffset]);
+
+  const gradientId = `progress-gradient-${index}`;
 
   return (
     <motion.div
-      className="relative"
-      initial={{ 
-        opacity: 0, 
-        scale: 0.3,
-        filter: 'blur(20px)'
+      className="circle-stat flex flex-col items-center"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{
+        duration: 0.6,
+        delay: 0.15 + index * 0.15,
+        ease: [0.16, 1, 0.3, 1]
       }}
-      animate={inView ? { 
-        opacity: 1, 
-        scale: 1,
-        filter: 'blur(0px)'
-      } : {}}
-      transition={{ 
-        duration: 0.8,
-        delay,
-        ease: [0.34, 1.56, 0.64, 1] // Custom elastic easing
-      }}
-      onAnimationComplete={() => {
-        if (inView && !hasRevealed) {
-          setHasRevealed(true);
-          onReveal?.();
-        }
-      }}
+      whileHover={{ scale: 1.05 }}
     >
-      <motion.span
-        className={isHighlight ? 'text-shimmer' : ''}
-        animate={hasRevealed ? {
-          scale: [1, 1.08, 1],
-          textShadow: [
-            '0 0 0px rgba(205, 124, 139, 0)',
-            '0 0 30px rgba(205, 124, 139, 0.8)',
-            '0 0 10px rgba(205, 124, 139, 0.3)'
-          ]
-        } : {}}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+      <div 
+        className="relative w-40 h-40 md:w-[200px] md:h-[200px] lg:w-60 lg:h-60"
+        role="progressbar"
+        aria-valuenow={progress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${label}: ${value}${suffix}`}
       >
-        {value}{suffix}
-      </motion.span>
+        <svg 
+          className="w-full h-full transform -rotate-90"
+          viewBox={`0 0 ${(radius + strokeWidth) * 2} ${(radius + strokeWidth) * 2}`}
+        >
+          <defs>
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#C85A6B" />
+              <stop offset="100%" stopColor="#E89BA6" />
+            </linearGradient>
+          </defs>
+          
+          {/* Background circle */}
+          <circle
+            cx={radius + strokeWidth}
+            cy={radius + strokeWidth}
+            r={radius}
+            fill="none"
+            stroke="hsl(355 25% 90%)"
+            strokeWidth={strokeWidth}
+            className="md:stroke-[10] lg:stroke-[12]"
+          />
+          
+          {/* Progress circle */}
+          <motion.circle
+            cx={radius + strokeWidth}
+            cy={radius + strokeWidth}
+            r={radius}
+            fill="none"
+            stroke={`url(#${gradientId})`}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            style={{ strokeDashoffset: animatedOffset }}
+            className="md:stroke-[10] lg:stroke-[12] drop-shadow-lg"
+          />
+        </svg>
+        
+        {/* Center content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center rotate-0">
+          <Icon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary mb-1 md:mb-2" />
+          <span className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
+            {displayValue}{suffix}
+          </span>
+          <span className="text-xs md:text-sm text-muted-foreground font-medium text-center px-2 leading-tight mt-1">
+            {label}
+          </span>
+        </div>
+      </div>
     </motion.div>
   );
 };
@@ -100,68 +139,52 @@ const StatsSection = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  const [completedCards, setCompletedCards] = useState<Set<number>>(new Set());
-  const [showSparkles, setShowSparkles] = useState<Set<number>>(new Set());
-
-  const handleCardComplete = (index: number) => {
-    setCompletedCards(prev => new Set([...prev, index]));
-    setShowSparkles(prev => new Set([...prev, index]));
-    // Remove sparkles after animation
-    setTimeout(() => {
-      setShowSparkles(prev => {
-        const next = new Set(prev);
-        next.delete(index);
-        return next;
-      });
-    }, 1500);
-  };
 
   const stats = [
     {
-      value: '1 000',
+      value: 150,
       suffix: '+',
-      label: t('introduction.participants')
+      label: t('introduction.participants'),
+      progress: 87,
+      Icon: Trophy
     },
     {
-      value: '40',
-      suffix: '+',
-      label: t('introduction.countries')
+      value: 25,
+      suffix: '',
+      label: t('introduction.countries'),
+      progress: 65,
+      Icon: Globe
     },
     {
-      value: '80 000',
-      suffix: '€',
+      value: 10,
+      suffix: '',
+      label: t('introduction.competitionDays'),
+      progress: 92,
+      Icon: Star
+    },
+    {
+      value: 100,
+      suffix: 'K€',
       label: t('introduction.prizes'),
-      isHighlight: true
-    },
-    {
-      value: '24',
-      suffix: '',
-      label: t('introduction.days')
-    },
-    {
-      value: '6',
-      suffix: '',
-      label: t('introduction.competitionDays')
+      progress: 78,
+      Icon: Award
     }
   ];
 
   return (
-    <section className="relative py-12 md:py-28 overflow-hidden bg-cream">
+    <section className="relative py-16 md:py-24 lg:py-28 overflow-hidden bg-cream">
       {/* Decorative diagonal stripes - desktop only */}
-      <div className="hidden md:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
+      <div className="hidden lg:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-[400px] h-[800px] rotate-[25deg] origin-top-left">
-          <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-b from-gold/60 via-gold/40 to-gold/20" />
-          <div className="absolute top-0 left-20 w-24 h-full bg-gradient-to-b from-rose/50 via-rose/30 to-transparent" />
-          <div className="absolute top-0 left-48 w-32 h-full bg-gradient-to-b from-burgundy/40 via-burgundy/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-b from-primary/40 via-primary/20 to-primary/5" />
+          <div className="absolute top-0 left-20 w-24 h-full bg-gradient-to-b from-rose-dark/30 via-rose-dark/15 to-transparent" />
         </div>
       </div>
 
-      {/* Decorative diagonal stripes - desktop only */}
-      <div className="hidden md:block absolute top-0 right-0 w-1/3 h-full overflow-hidden pointer-events-none">
+      <div className="hidden lg:block absolute top-0 right-0 w-1/3 h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-[500px] h-[900px] -rotate-[25deg] origin-top-right">
-          <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-b from-gold/50 via-gold/30 to-gold/10" />
-          <div className="absolute top-0 right-24 w-28 h-full bg-gradient-to-b from-rose/40 via-rose/25 to-transparent" />
-          <div className="absolute top-0 right-56 w-40 h-full bg-gradient-to-b from-burgundy/35 via-burgundy/15 to-transparent" />
+          <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-b from-primary/30 via-primary/15 to-primary/5" />
+          <div className="absolute top-0 right-24 w-28 h-full bg-gradient-to-b from-rose-dark/25 via-rose-dark/10 to-transparent" />
         </div>
       </div>
 
@@ -174,7 +197,7 @@ const StatsSection = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-8 md:mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -184,160 +207,23 @@ const StatsSection = () => {
               Un concours d'envergure <span className="text-rose-dark">internationale</span>
             </motion.h2>
             <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest">
-              Les chiffres de l'édition 2024
+              Édition 2026
             </span>
           </div>
 
-          {/* Mobile: Compact list layout with slide animations */}
-          <div className="md:hidden space-y-3">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 justify-items-center">
             {stats.map((stat, index) => (
-              <motion.div
+              <CircleStat
                 key={stat.label}
-                initial={{ opacity: 0, x: -40, scale: 0.95 }}
-                animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                  delay: 0.2 + index * 0.1
-                }}
-                className="relative"
-              >
-                <motion.div
-                  className="flex items-center justify-between bg-white rounded-xl px-5 py-4 shadow-md border border-rose/10 overflow-hidden"
-                  animate={completedCards.has(index) ? {
-                    boxShadow: [
-                      "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                      "0 0 30px rgba(205, 124, 139, 0.4)",
-                      "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-                    ]
-                  } : {}}
-                  transition={{ duration: 0.6 }}
-                >
-                  <span className={`font-display text-3xl font-bold ${stat.isHighlight ? 'text-shimmer' : 'text-rose-dark'}`}>
-                    <DramaticNumber
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      inView={inView}
-                      delay={0.3 + index * 0.12}
-                      onReveal={() => handleCardComplete(index)}
-                      isHighlight={stat.isHighlight}
-                    />
-                  </span>
-                  <span className="text-muted-foreground text-sm font-medium text-right">{stat.label}</span>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Desktop: Grid with 3D flip animations */}
-          <div className="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-6 items-end" style={{ perspective: '1000px' }}>
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{
-                  opacity: 0,
-                  rotateX: -60,
-                  scale: 0.8,
-                  y: 60
-                }}
-                animate={inView ? {
-                  opacity: 1,
-                  rotateX: 0,
-                  scale: 1,
-                  y: 0
-                } : {}}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                  delay: 0.2 + index * 0.15
-                }}
-                className={`group ${index % 2 === 1 ? '-mt-4' : ''}`}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <motion.div
-                  className={`relative bg-white rounded-2xl p-6 shadow-xl transition-all duration-500 border overflow-hidden text-center ${
-                    stat.isHighlight ? 'border-primary/30' : 'border-rose/10'
-                  }`}
-                  animate={completedCards.has(index) ? {
-                    boxShadow: [
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                      "0 0 40px rgba(205, 124, 139, 0.5)",
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
-                    ]
-                  } : {}}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {/* Sparkles */}
-                  <AnimatePresence>
-                    {showSparkles.has(index) && (
-                      <>
-                        {[...Array(8)].map((_, i) => (
-                          <Sparkle key={i} delay={0} index={i} />
-                        ))}
-                      </>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Corner decoration */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-rose/5 to-transparent rounded-bl-full" />
-                  
-                  {/* Highlight glow for 80000€ */}
-                  {stat.isHighlight && (
-                    <motion.div
-                      className="absolute inset-0 rounded-2xl"
-                      animate={{
-                        boxShadow: [
-                          "inset 0 0 20px rgba(205, 124, 139, 0)",
-                          "inset 0 0 30px rgba(205, 124, 139, 0.1)",
-                          "inset 0 0 20px rgba(205, 124, 139, 0)"
-                        ]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  )}
-
-                  <div className={`font-display font-bold text-foreground mb-2 tracking-tight relative z-10 ${
-                    stat.isHighlight ? 'text-4xl lg:text-5xl' : 'text-3xl lg:text-4xl'
-                  }`}>
-                    <DramaticNumber
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      inView={inView}
-                      delay={0.3 + index * 0.15}
-                      onReveal={() => handleCardComplete(index)}
-                      isHighlight={stat.isHighlight}
-                    />
-                  </div>
-
-                  <div className="text-rose-dark text-xs font-bold uppercase tracking-wider leading-tight relative z-10">
-                    {stat.label}
-                  </div>
-
-                  {/* Floating animation after complete */}
-                  {completedCards.has(index) && (
-                    <motion.div
-                      className="absolute inset-0 pointer-events-none"
-                      animate={{ y: [0, -3, 0] }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: index * 0.2
-                      }}
-                    />
-                  )}
-                </motion.div>
-              </motion.div>
+                value={stat.value}
+                suffix={stat.suffix}
+                label={stat.label}
+                progress={stat.progress}
+                Icon={stat.Icon}
+                index={index}
+                inView={inView}
+              />
             ))}
           </div>
         </motion.div>
