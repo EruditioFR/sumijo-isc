@@ -1,21 +1,21 @@
-import { useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import heroImage from '@/assets/hero-sumi-2026.jpg';
-import chateauImage from '@/assets/hero-chateau.jpg';
-import heroMobileImage from '@/assets/hero-sumi-mobile.jpg';
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import heroImage from "@/assets/hero-sumi-2026.jpg";
+import chateauImage from "@/assets/hero-chateau.jpg";
+import heroMobileImage from "@/assets/hero-sumi-mobile.jpg";
 
 const HeroSection = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
-  
+
   // Parallax speeds: château slowest, Sumi medium, content fastest
   const chateauY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const sumiY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -23,19 +23,19 @@ const HeroSection = () => {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const scrollToNext = () => {
-    const element = document.getElementById('competition');
+    const element = document.getElementById("competition");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]">
+    <section
+      ref={sectionRef}
+      className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]"
+    >
       {/* Mobile Background - New integrated image */}
-      <motion.div 
-        style={{ y: sumiY }}
-        className="absolute inset-0 top-[70px] md:hidden"
-      >
+      <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[70px] md:hidden">
         <img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
@@ -46,22 +46,16 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Desktop Background - Château Layer (slowest parallax) */}
-      <motion.div 
-        style={{ y: chateauY }}
-        className="absolute inset-0 hidden md:block"
-      >
+      <motion.div style={{ y: chateauY }} className="absolute inset-0 hidden md:block">
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
           className="w-full h-full object-cover object-center opacity-40"
         />
       </motion.div>
-      
+
       {/* Desktop Foreground - Sumi Jo Image with Overlay (medium parallax) */}
-      <motion.div 
-        style={{ y: sumiY }}
-        className="absolute inset-0 top-[90px] hidden md:block"
-      >
+      <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[90px] hidden md:block">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
@@ -74,7 +68,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Content (fastest parallax) */}
-      <motion.div 
+      <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 container mx-auto px-4 text-center"
       >
@@ -95,7 +89,8 @@ const HeroSection = () => {
               SUMI JO
             </h1>
             <h2 className="font-display text-xl md:text-3xl lg:text-4xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-widest leading-relaxed mt-4">
-              INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
+              INTERNATIONAL SINGING
+              <br /> COMPETITION
             </h2>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
           </motion.div>
@@ -112,7 +107,6 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-
           {/* Event Details with cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -122,7 +116,7 @@ const HeroSection = () => {
           >
             <div className="md:backdrop-blur-md md:bg-accent/50 md:border-2 md:border-gold/50 md:rounded-lg px-4 md:px-10 py-2 md:py-5 md:shadow-elegant">
               <p className="text-white md:text-gold-light text-lg md:text-2xl lg:text-3xl font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] tracking-wide">
-                {t('hero.location')}
+                {t("hero.location")}
               </p>
             </div>
           </motion.div>
@@ -136,10 +130,10 @@ const HeroSection = () => {
           >
             <Button
               size="lg"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
             >
-              <span className="relative z-10">{t('hero.participate')}</span>
+              <span className="relative z-10">{t("hero.participate")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
             <Button
@@ -148,7 +142,7 @@ const HeroSection = () => {
               onClick={scrollToNext}
               className="border-2 border-gold text-gold bg-accent/20 backdrop-blur-sm hover:bg-gold hover:text-foreground font-bold text-lg px-10 py-7 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(162,148,124,0.4)]"
             >
-              {t('hero.learnMore')}
+              {t("hero.learnMore")}
             </Button>
           </motion.div>
         </motion.div>
@@ -159,7 +153,7 @@ const HeroSection = () => {
         onClick={scrollToNext}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.5, repeat: Infinity, repeatType: 'reverse', repeatDelay: 0.5 }}
+        transition={{ duration: 1, delay: 1.5, repeat: Infinity, repeatType: "reverse", repeatDelay: 0.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold hover:text-gold-light transition-all duration-300 hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         aria-label="Scroll to next section"
       >
