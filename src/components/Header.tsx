@@ -115,6 +115,11 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="hover:opacity-80 transition-opacity flex items-center gap-3 md:gap-4"
           >
+            <img 
+              src={logoSjisc} 
+              alt="Sumi Jo International Singing Competition" 
+              className="hidden md:block h-16 md:h-20 w-auto object-contain"
+            />
             <div className="flex flex-col text-left">
               <span className="text-rose-light font-elegant text-2xl md:text-3xl tracking-wide font-semibold">Sumi Jo</span>
               <span className="text-cream/80 text-[10px] md:text-xs tracking-widest uppercase">International Singing Competition</span>
