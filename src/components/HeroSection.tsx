@@ -26,26 +26,28 @@ const HeroSection = () => {
           className="w-full h-full object-cover object-center opacity-40"
         />
       </div>
-      {/* Mobile: Château silhouette rose pâle */}
-      <div className="absolute inset-0 top-20 md:hidden flex items-end justify-center pointer-events-none">
-        <img
-          src={chateauSilhouette}
-          alt="Château silhouette"
-          className="w-full max-w-md opacity-30 object-contain"
-        />
-      </div>
+      {/* Mobile: Château silhouette rose pâle (overlay, behind text) */}
       
       {/* Foreground Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 top-20 md:top-24">
+      <div className="absolute inset-0 top-20 md:top-24 z-0">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 opacity-90 md:opacity-100 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 opacity-85 md:opacity-100 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Mobile: wider transparent zone, lower opacity. Desktop: overlay on left for Sumi Jo */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_35%_35%,transparent,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.45))] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
+
+        {/* Mobile: silhouette visible above the shading */}
+        <div className="absolute inset-0 md:hidden flex items-end justify-center pointer-events-none">
+          <img
+            src={chateauSilhouette}
+            alt="Château silhouette"
+            className="w-[120%] max-w-none opacity-45 object-contain translate-y-6"
+          />
+        </div>
       </div>
 
       {/* Content */}
