@@ -24,7 +24,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Lighter overlay on center (subject), darker on edges for text legibility */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_18%,rgba(0,0,0,0.15),rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_25%_40%,rgba(0,0,0,0.1),rgba(0,0,0,0.5)_50%,rgba(0,0,0,0.65))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
