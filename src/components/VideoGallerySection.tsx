@@ -41,7 +41,7 @@ const videos: Video[] = [
   {
     id: "3",
     youtubeId: "WksxeGPBZuM",
-    startTime: 14,
+    startTime: 16,
     singer: "Kiup Lee, Tenor, République de Corée",
     description: "Gala des lauréats - Au Mont Ida, trois déesses - La belle Hélène, J. Offenbach",
     duration: "4:20",
