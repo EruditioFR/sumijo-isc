@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
 import chateauImage from '@/assets/hero-chateau.jpg';
+import chateauSilhouette from '@/assets/chateau-silhouette.png';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -23,6 +24,15 @@ const HeroSection = () => {
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
           className="w-full h-full object-cover object-center opacity-40"
+        />
+      </div>
+      
+      {/* Château Silhouette - Mobile only */}
+      <div className="absolute inset-0 top-20 flex items-end justify-center md:hidden pointer-events-none">
+        <img
+          src={chateauSilhouette}
+          alt=""
+          className="w-[85%] max-w-md object-contain opacity-30 mb-16"
         />
       </div>
       
