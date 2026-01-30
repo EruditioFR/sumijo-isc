@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
 import chateauImage from '@/assets/hero-chateau.jpg';
+import chateauSilhouette from '@/assets/chateau-silhouette-rose.png';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -17,12 +18,20 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
-      {/* Background Château Layer - Desktop only */}
+      {/* Background Château Layer - Desktop: photo, Mobile: rose silhouette */}
       <div className="absolute inset-0 top-24 hidden md:block">
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
           className="w-full h-full object-cover object-center opacity-40"
+        />
+      </div>
+      {/* Mobile: Château silhouette rose pâle */}
+      <div className="absolute inset-0 top-20 md:hidden flex items-end justify-center pointer-events-none">
+        <img
+          src={chateauSilhouette}
+          alt="Château silhouette"
+          className="w-full max-w-md opacity-30 object-contain"
         />
       </div>
       
