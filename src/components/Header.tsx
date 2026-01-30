@@ -178,6 +178,9 @@ const Header = () => {
       </div>
     </header>
 
+     {/* Spacer to prevent content being hidden under fixed header (non-home pages) */}
+     {!isHomepage && <div aria-hidden className="h-[90px] md:h-[110px]" />}
+
     {/* Mobile Sidebar Menu */}
     <AnimatePresence>
       {isMobileMenuOpen && (
