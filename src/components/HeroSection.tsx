@@ -37,17 +37,17 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Main Title with enhanced styling */}
+          {/* Main Title with enhanced styling - positioned lower on mobile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-2"
+            className="space-y-2 mt-24 md:mt-0"
           >
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white/60 tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
               SUMI JO
             </h1>
-            <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
+            <h2 className="font-display text-lg md:text-2xl lg:text-3xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
               INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
             </h2>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
@@ -60,7 +60,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className="space-y-3"
           >
-            <p className="font-display text-3xl md:text-5xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
+            <p className="font-display text-xl md:text-5xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
               du 5 au 11 juillet 2026
             </p>
           </motion.div>
@@ -73,8 +73,8 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1 }}
             className="flex flex-col md:flex-row gap-6 justify-center items-center pt-4"
           >
-            <div className="backdrop-blur-md bg-accent/50 border-2 border-gold/50 rounded-lg px-10 py-5 shadow-elegant">
-              <p className="text-gold-light text-xl md:text-2xl lg:text-3xl font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] tracking-wide">
+            <div className="md:backdrop-blur-md md:bg-accent/50 md:border-2 md:border-gold/50 md:rounded-lg px-4 md:px-10 py-2 md:py-5 md:shadow-elegant">
+              <p className="text-white md:text-gold-light text-lg md:text-2xl lg:text-3xl font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] tracking-wide">
                 {t('hero.location')}
               </p>
             </div>
