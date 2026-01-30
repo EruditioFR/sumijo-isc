@@ -58,12 +58,12 @@ const videos: Video[] = [
   },
   {
     id: "5",
-    youtubeId: "dQw4w9WgXcQ",
-    startTime: 0,
-    singer: "Kim Min-jae",
-    description: "Demi-finale - Air de Puccini",
-    duration: "2:30",
-    category: "demi-finale",
+    youtubeId: "aUvdg50ZR",
+    startTime: 21,
+    singer: "Milan Perišić, Baritone, Serbie",
+    description: "Finale - Look through the port - Billy Budd, B. Britten"
+    duration: "6:17",
+    category: "finale",
   },
   {
     id: "6",
