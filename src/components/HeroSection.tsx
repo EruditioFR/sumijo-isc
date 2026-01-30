@@ -28,11 +28,11 @@ const HeroSection = () => {
       </div>
       
       {/* Château Silhouette - Mobile only */}
-      <div className="absolute inset-0 top-20 flex items-end justify-center md:hidden pointer-events-none">
+      <div className="absolute inset-0 top-20 flex items-start justify-center md:hidden pointer-events-none">
         <img
           src={chateauSilhouette}
           alt=""
-          className="w-[85%] max-w-md object-contain opacity-30 mb-16"
+          className="w-[85%] max-w-md object-contain opacity-50 mt-8"
         />
       </div>
       
