@@ -17,12 +17,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
-      {/* Background Château Layer */}
-      <div className="absolute inset-0 top-20 md:top-24">
+      {/* Background Château Layer - Desktop only */}
+      <div className="absolute inset-0 top-24 hidden md:block">
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
-          className="w-full h-full object-cover object-[85%_center] md:object-center opacity-50 md:opacity-40"
+          className="w-full h-full object-cover object-center opacity-40"
         />
       </div>
       
