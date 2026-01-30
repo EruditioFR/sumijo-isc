@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Quote, Newspaper } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Quote, Newspaper } from "lucide-react";
 
 const PressSection = () => {
   const { t } = useTranslation();
@@ -11,22 +11,22 @@ const PressSection = () => {
     {
       quote: "Un concours qui révèle les futures grandes voix de l'opéra mondial.",
       source: "Le Figaro",
-      year: "2024"
+      year: "2024",
     },
     {
       quote: "L'excellence vocale célébrée dans un cadre d'exception au cœur des châteaux de la Loire.",
       source: "France Musique",
-      year: "2024"
+      year: "2024",
     },
     {
       quote: "Sumi Jo transmet sa passion et son exigence aux jeunes talents du monde entier.",
       source: "Classica",
-      year: "2024"
+      year: "2024",
     },
     {
-      quote: "Une compétition internationale qui place la France au cœur de la scène lyrique.",
-      source: "Diapason",
-      year: "2024"
+      quote: "Un nouveau genre de festival plus proche du public et des artistes",
+      source: "Opera Online",
+      year: "2024",
     },
   ];
 
@@ -35,10 +35,15 @@ const PressSection = () => {
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose/30 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose/30 to-transparent" />
-      
+
       {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02]" 
-           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -59,7 +64,7 @@ const PressSection = () => {
               <Newspaper className="w-4 h-4" />
               <span className="text-sm font-bold tracking-wide">Revue de presse</span>
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -68,7 +73,7 @@ const PressSection = () => {
             >
               La presse <span className="text-rose-dark">parle de nous</span>
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -96,24 +101,18 @@ const PressSection = () => {
                       <Quote className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  
+
                   {/* Quote content */}
                   <div className="pt-4">
-                    <p className="text-foreground text-lg md:text-xl leading-relaxed italic mb-6">
-                      "{item.quote}"
-                    </p>
-                    
+                    <p className="text-foreground text-lg md:text-xl leading-relaxed italic mb-6">"{item.quote}"</p>
+
                     {/* Source */}
                     <div className="flex items-center justify-between border-t border-rose/10 pt-4">
-                      <span className="font-display text-burgundy font-bold text-lg">
-                        {item.source}
-                      </span>
-                      <span className="text-muted-foreground text-sm">
-                        {item.year}
-                      </span>
+                      <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
+                      <span className="text-muted-foreground text-sm">{item.year}</span>
                     </div>
                   </div>
-                  
+
                   {/* Hover accent */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rose via-burgundy to-rose opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-2xl" />
                 </div>
