@@ -58,7 +58,7 @@ const StatsSection = () => {
     { 
       numericValue: 6,
       suffix: '',
-      label: 'jours de compétition',
+      label: t('introduction.competitionDays'),
     },
   ];
 
