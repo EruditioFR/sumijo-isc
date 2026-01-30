@@ -141,9 +141,3 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 }
-
-@layer utilities {
-  .safe-top {
-    padding-top: max(0.5rem, env(safe-area-inset-top));
-  }
-}
