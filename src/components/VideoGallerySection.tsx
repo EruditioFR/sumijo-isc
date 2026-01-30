@@ -10,6 +10,7 @@ type VideoCategory = 'all' | 'demi-finale' | 'finale';
 interface Video {
   id: string;
   youtubeId: string;
+  startTime?: number; // Start time in seconds (e.g., 65 = 1:05)
   singer: string;
   description: string;
   duration: string;
@@ -17,23 +18,24 @@ interface Video {
 }
 
 // Sample video data - replace youtubeId with actual YouTube video IDs
+// startTime is in seconds (e.g., 90 = 1m30s, 125 = 2m05s)
 const videos: Video[] = [
-  { id: '1', youtubeId: 'dQw4w9WgXcQ', singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '3:45', category: 'demi-finale' },
-  { id: '2', youtubeId: 'dQw4w9WgXcQ', singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '4:12', category: 'finale' },
-  { id: '3', youtubeId: 'dQw4w9WgXcQ', singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '4:19', category: 'demi-finale' },
-  { id: '4', youtubeId: 'dQw4w9WgXcQ', singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '5', youtubeId: 'dQw4w9WgXcQ', singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '2:30', category: 'demi-finale' },
-  { id: '6', youtubeId: 'dQw4w9WgXcQ', singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '7', youtubeId: 'dQw4w9WgXcQ', singer: 'Sophie Dubois', description: 'Demi-finale - Air de Mozart', duration: '4:12', category: 'demi-finale' },
-  { id: '8', youtubeId: 'dQw4w9WgXcQ', singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '9', youtubeId: 'dQw4w9WgXcQ', singer: 'Elena Petrova', description: 'Demi-finale - Air de Verdi', duration: '3:55', category: 'demi-finale' },
-  { id: '10', youtubeId: 'dQw4w9WgXcQ', singer: 'Li Wei', description: 'Finale - Air de Donizetti', duration: '4:30', category: 'finale' },
-  { id: '11', youtubeId: 'dQw4w9WgXcQ', singer: 'Anna Schmidt', description: 'Demi-finale - Air de Rossini', duration: '3:20', category: 'demi-finale' },
-  { id: '12', youtubeId: 'dQw4w9WgXcQ', singer: 'Park Ji-young', description: 'Finale - Air de Mozart', duration: '4:45', category: 'finale' },
-  { id: '13', youtubeId: 'dQw4w9WgXcQ', singer: 'Claire Martin', description: 'Demi-finale - Air de Handel', duration: '3:10', category: 'demi-finale' },
-  { id: '14', youtubeId: 'dQw4w9WgXcQ', singer: 'Yuki Tanaka', description: 'Finale - Air de Puccini', duration: '4:05', category: 'finale' },
-  { id: '15', youtubeId: 'dQw4w9WgXcQ', singer: 'Isabella Romano', description: 'Demi-finale - Air de Bellini', duration: '3:35', category: 'demi-finale' },
-  { id: '16', youtubeId: 'dQw4w9WgXcQ', singer: 'Chen Mei', description: 'Finale - Air de Verdi', duration: '4:20', category: 'finale' },
+  { id: '1', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '3:45', category: 'demi-finale' },
+  { id: '2', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '4:12', category: 'finale' },
+  { id: '3', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '4:19', category: 'demi-finale' },
+  { id: '4', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
+  { id: '5', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '2:30', category: 'demi-finale' },
+  { id: '6', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
+  { id: '7', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Demi-finale - Air de Mozart', duration: '4:12', category: 'demi-finale' },
+  { id: '8', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
+  { id: '9', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Elena Petrova', description: 'Demi-finale - Air de Verdi', duration: '3:55', category: 'demi-finale' },
+  { id: '10', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Li Wei', description: 'Finale - Air de Donizetti', duration: '4:30', category: 'finale' },
+  { id: '11', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Anna Schmidt', description: 'Demi-finale - Air de Rossini', duration: '3:20', category: 'demi-finale' },
+  { id: '12', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Park Ji-young', description: 'Finale - Air de Mozart', duration: '4:45', category: 'finale' },
+  { id: '13', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Claire Martin', description: 'Demi-finale - Air de Handel', duration: '3:10', category: 'demi-finale' },
+  { id: '14', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Yuki Tanaka', description: 'Finale - Air de Puccini', duration: '4:05', category: 'finale' },
+  { id: '15', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Isabella Romano', description: 'Demi-finale - Air de Bellini', duration: '3:35', category: 'demi-finale' },
+  { id: '16', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Chen Mei', description: 'Finale - Air de Verdi', duration: '4:20', category: 'finale' },
 ];
 
 const filterOptions: { value: VideoCategory; label: string }[] = [
@@ -165,7 +167,7 @@ const VideoGallerySection = () => {
           {selectedVideo && (
             <div className="aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1${selectedVideo.startTime ? `&start=${selectedVideo.startTime}` : ''}`}
                 title={`${selectedVideo.singer} - ${selectedVideo.description}`}
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
