@@ -50,7 +50,7 @@ const videos: Video[] = [
   {
     id: "4",
     youtubeId: "GdNriy9P1bQ",
-    startTime: 0,
+    startTime: 27,
     singer: "Fanny Valentin, Soprano, France",
     description: "Demi-Finale - Où va la jeune hindoue - Lakmé, L. Delibes",
     duration: "9:05",
