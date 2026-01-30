@@ -127,8 +127,8 @@ const Header = () => {
             </div>
           </button>
 
-          {/* Navigation */}
-          <nav className="flex items-center gap-4 md:gap-8">
+          {/* Navigation - Hidden on mobile, shown on md+ */}
+          <nav className="hidden md:flex items-center gap-4 md:gap-8">
             <Link
               to="/"
               className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
