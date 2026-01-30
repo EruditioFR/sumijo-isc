@@ -39,11 +39,11 @@ const HeroSection = () => {
       </div>
       
       {/* Desktop Foreground - Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 hidden md:block">
+      <div className="absolute inset-0 top-[90px] hidden md:block">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          className="w-full h-full object-cover object-top scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Desktop overlay for text contrast */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
