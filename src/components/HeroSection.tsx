@@ -17,7 +17,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]">
       {/* Mobile Background - New integrated image */}
       <div className="absolute inset-0 md:hidden">
         <img
