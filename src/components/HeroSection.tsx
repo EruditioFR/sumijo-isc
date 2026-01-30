@@ -17,7 +17,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 top-20 md:top-24">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
