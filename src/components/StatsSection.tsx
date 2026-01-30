@@ -1,7 +1,56 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
+
+// Confetti particle component
+const ConfettiParticle = ({ index }: { index: number }) => {
+  const colors = ['#cd7c8b', '#8b3a4a', '#e8a5b0', '#d4949f', '#a85566'];
+  const randomColor = useMemo(() => colors[Math.floor(Math.random() * colors.length)], []);
+  const randomX = useMemo(() => Math.random() * 100, []);
+  const randomDelay = useMemo(() => Math.random() * 0.5, []);
+  const randomDuration = useMemo(() => 2 + Math.random() * 2, []);
+  const randomRotation = useMemo(() => Math.random() * 720 - 360, []);
+  const isSquare = useMemo(() => Math.random() > 0.5, []);
+  
+  return (
+    <motion.div
+      className={`absolute ${isSquare ? 'w-2 h-2' : 'w-1.5 h-3'}`}
+      style={{
+        left: `${randomX}%`,
+        top: '-10px',
+        backgroundColor: randomColor,
+        borderRadius: isSquare ? '2px' : '1px',
+      }}
+      initial={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+      animate={{
+        opacity: [1, 1, 0],
+        y: [0, 300, 500],
+        x: [0, (Math.random() - 0.5) * 100],
+        rotate: randomRotation,
+        scale: [1, 1, 0.5],
+      }}
+      transition={{
+        duration: randomDuration,
+        delay: randomDelay,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+    />
+  );
+};
+
+// Confetti burst component
+const ConfettiBurst = ({ show }: { show: boolean }) => {
+  if (!show) return null;
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-50">
+      {[...Array(50)].map((_, i) => (
+        <ConfettiParticle key={i} index={i} />
+      ))}
+    </div>
+  );
+};
 
 // Sparkle component for decorative particles
 const Sparkle = ({ delay, index }: { delay: number; index: number }) => {
@@ -95,9 +144,19 @@ const StatsSection = () => {
   });
   const [completedCards, setCompletedCards] = useState<Set<number>>(new Set());
   const [showSparkles, setShowSparkles] = useState<Set<number>>(new Set());
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  const handleCardComplete = (index: number) => {
-    setCompletedCards(prev => new Set([...prev, index]));
+  const handleCardComplete = useCallback((index: number) => {
+    setCompletedCards(prev => {
+      const next = new Set([...prev, index]);
+      // Trigger confetti when all 5 cards are complete
+      if (next.size === 5 && !showConfetti) {
+        setShowConfetti(true);
+        // Hide confetti after animation
+        setTimeout(() => setShowConfetti(false), 4000);
+      }
+      return next;
+    });
     setShowSparkles(prev => new Set([...prev, index]));
     // Remove sparkles after animation
     setTimeout(() => {
@@ -107,7 +166,7 @@ const StatsSection = () => {
         return next;
       });
     }, 1500);
-  };
+  }, [showConfetti]);
 
   const stats = [
     {
@@ -140,6 +199,9 @@ const StatsSection = () => {
 
   return (
     <section className="relative py-12 md:py-28 overflow-hidden bg-cream">
+      {/* Global confetti effect */}
+      <ConfettiBurst show={showConfetti} />
+      
       {/* Decorative diagonal stripes - desktop only */}
       <div className="hidden md:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-[400px] h-[800px] rotate-[25deg] origin-top-left">
