@@ -61,7 +61,7 @@ const videos: Video[] = [
     youtubeId: "aUvdg50ZR",
     startTime: 21,
     singer: "Milan Perišić, Baritone, Serbie",
-    description: "Finale - Look through the port - Billy Budd, B. Britten"
+    description: "Finale - Look through the port - Billy Budd, B. Britten",
     duration: "6:17",
     category: "finale",
   },
