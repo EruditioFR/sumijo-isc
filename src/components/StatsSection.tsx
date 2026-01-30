@@ -1,7 +1,34 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Users, Globe2, Trophy, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+// Animated counter component
+const AnimatedCounter = ({ value, suffix = '', inView }: { value: number; suffix?: string; inView: boolean }) => {
+  const spring = useSpring(0, { duration: 2000, bounce: 0 });
+  const display = useTransform(spring, (current) => Math.floor(current).toLocaleString('fr-FR'));
+  const [displayValue, setDisplayValue] = useState('0');
+
+  useEffect(() => {
+    if (inView) {
+      spring.set(value);
+    }
+  }, [inView, spring, value]);
+
+  useEffect(() => {
+    const unsubscribe = display.on('change', (latest) => {
+      setDisplayValue(latest);
+    });
+    return unsubscribe;
+  }, [display]);
+
+  return (
+    <span>
+      {displayValue}{suffix}
+    </span>
+  );
+};
 
 const StatsSection = () => {
   const { t } = useTranslation();
@@ -10,21 +37,24 @@ const StatsSection = () => {
   const stats = [
     { 
       icon: Users, 
-      value: '500+', 
+      numericValue: 500,
+      suffix: '+',
       label: t('introduction.participants'),
       iconColor: 'text-rose-dark',
       labelColor: 'text-rose-dark'
     },
     { 
       icon: Globe2, 
-      value: '20+', 
+      numericValue: 20,
+      suffix: '+',
       label: t('introduction.countries'),
       iconColor: 'text-burgundy',
       labelColor: 'text-burgundy'
     },
     { 
       icon: Trophy, 
-      value: '80 000€', 
+      numericValue: 80000,
+      suffix: '€',
       label: t('introduction.prizes'),
       iconColor: 'text-gold-dark',
       labelColor: 'text-rose-dark'
@@ -122,7 +152,7 @@ const StatsSection = () => {
                   
                   {/* Value */}
                   <div className="font-display text-5xl md:text-6xl font-bold text-foreground mb-3 tracking-tight">
-                    {stat.value}
+                    <AnimatedCounter value={stat.numericValue} suffix={stat.suffix} inView={inView} />
                   </div>
                   
                   {/* Label */}
