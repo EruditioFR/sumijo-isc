@@ -3,32 +3,41 @@ import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 
-// Confetti particle component
+// Confetti particle component - explodes from center
 const ConfettiParticle = ({ index }: { index: number }) => {
-  const colors = ['#cd7c8b', '#8b3a4a', '#e8a5b0', '#d4949f', '#a85566'];
+  const colors = ['#cd7c8b', '#8b3a4a', '#e8a5b0', '#d4949f', '#a85566', '#f5d0d6', '#c46b7a'];
   const randomColor = useMemo(() => colors[Math.floor(Math.random() * colors.length)], []);
-  const randomX = useMemo(() => Math.random() * 100, []);
-  const randomDelay = useMemo(() => Math.random() * 0.5, []);
-  const randomDuration = useMemo(() => 2 + Math.random() * 2, []);
-  const randomRotation = useMemo(() => Math.random() * 720 - 360, []);
-  const isSquare = useMemo(() => Math.random() > 0.5, []);
+  const randomAngle = useMemo(() => (Math.random() * 360) * (Math.PI / 180), []);
+  const randomDistance = useMemo(() => 150 + Math.random() * 300, []);
+  const randomDelay = useMemo(() => Math.random() * 0.3, []);
+  const randomDuration = useMemo(() => 1.5 + Math.random() * 1.5, []);
+  const randomRotation = useMemo(() => Math.random() * 1080 - 540, []);
+  const randomSize = useMemo(() => 0.5 + Math.random() * 1, []);
+  const isCircle = useMemo(() => Math.random() > 0.6, []);
+  
+  // Calculate end position based on angle
+  const endX = useMemo(() => Math.cos(randomAngle) * randomDistance, [randomAngle, randomDistance]);
+  const endY = useMemo(() => Math.sin(randomAngle) * randomDistance, [randomAngle, randomDistance]);
   
   return (
     <motion.div
-      className={`absolute ${isSquare ? 'w-2 h-2' : 'w-1.5 h-3'}`}
+      className="absolute"
       style={{
-        left: `${randomX}%`,
-        top: '-10px',
+        left: '50%',
+        top: '50%',
+        width: `${randomSize * 6}px`,
+        height: isCircle ? `${randomSize * 6}px` : `${randomSize * 10}px`,
         backgroundColor: randomColor,
-        borderRadius: isSquare ? '2px' : '1px',
+        borderRadius: isCircle ? '50%' : '1px',
+        transformOrigin: 'center',
       }}
-      initial={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+      initial={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 0 }}
       animate={{
-        opacity: [1, 1, 0],
-        y: [0, 300, 500],
-        x: [0, (Math.random() - 0.5) * 100],
+        opacity: [0, 1, 1, 0],
+        x: [0, endX * 0.3, endX],
+        y: [0, endY * 0.3 - 50, endY + 100],
         rotate: randomRotation,
-        scale: [1, 1, 0.5],
+        scale: [0, 1.2, 1, 0.3],
       }}
       transition={{
         duration: randomDuration,
@@ -39,15 +48,17 @@ const ConfettiParticle = ({ index }: { index: number }) => {
   );
 };
 
-// Confetti burst component
+// Confetti burst component - centered explosion
 const ConfettiBurst = ({ show }: { show: boolean }) => {
   if (!show) return null;
   
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-50">
-      {[...Array(50)].map((_, i) => (
-        <ConfettiParticle key={i} index={i} />
-      ))}
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-50">
+      <div className="relative w-0 h-0">
+        {[...Array(100)].map((_, i) => (
+          <ConfettiParticle key={i} index={i} />
+        ))}
+      </div>
     </div>
   );
 };
