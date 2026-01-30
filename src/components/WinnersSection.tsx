@@ -178,22 +178,20 @@ const WinnersSection = () => {
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="group"
                 >
-                  <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/30 rounded-3xl p-6 md:p-8 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+                  <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/30 rounded-3xl p-6 md:p-8 hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full flex flex-col items-center justify-center">
                     {/* Badge */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1.5 rounded-full font-display text-sm shadow-lg">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1.5 rounded-full font-display text-sm shadow-lg whitespace-nowrap">
                       {t('winners.juryPrize')}
                     </div>
                     
-                    <div className="pt-4 text-center">
+                    <div className="pt-4 flex flex-col items-center text-center">
                       {/* Photo */}
-                      <div className="relative mx-auto mb-6">
-                        <div className="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full bg-gradient-to-br from-muted/50 to-muted border-4 border-primary/30 flex items-center justify-center overflow-hidden ring-4 ring-primary/20 ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-offset-4">
-                          {winner.image ? (
-                            <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
-                          ) : (
-                            <User className="w-12 h-12 md:w-16 md:h-16 text-primary opacity-40" />
-                          )}
-                        </div>
+                      <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-muted/50 to-muted border-4 border-primary/30 flex items-center justify-center overflow-hidden ring-4 ring-primary/20 ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-offset-4 mb-6">
+                        {winner.image ? (
+                          <img src={winner.image} alt={winner.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <User className="w-12 h-12 md:w-16 md:h-16 text-primary opacity-40" />
+                        )}
                       </div>
                       
                       {/* Winner info */}
