@@ -49,12 +49,12 @@ const videos: Video[] = [
   },
   {
     id: "4",
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "GdNriy9P1bQ",
     startTime: 0,
-    singer: "Sophie Dubois",
-    description: "Finale - Air de Bellini",
-    duration: "2:30",
-    category: "finale",
+    singer: "Fanny Valentin, Soprano, France",
+    description: "Demi-Finale - Où va la jeune hindoue - Lakmé, L. Delibes",
+    duration: "9:05",
+    category: "demi-finale",
   },
   {
     id: "5",
