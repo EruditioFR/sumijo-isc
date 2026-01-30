@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
 import chateauImage from '@/assets/hero-chateau.jpg';
-import chateauSilhouette from '@/assets/chateau-silhouette.png';
+import chateauSilhouette from '@/assets/chateau-silhouette-rose.jpg';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -32,7 +32,7 @@ const HeroSection = () => {
         <img
           src={chateauSilhouette}
           alt=""
-          className="w-[150%] max-w-none object-contain opacity-100 mt-[100px] brightness-150 sepia hue-rotate-[-30deg] saturate-50"
+          className="w-[150%] max-w-none object-contain opacity-100 mt-[100px]"
         />
       </div>
       
