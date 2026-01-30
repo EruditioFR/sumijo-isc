@@ -122,10 +122,10 @@ const StatsSection = () => {
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
                 className="flex items-center justify-between bg-white rounded-xl px-5 py-4 shadow-md border border-rose/10"
               >
-                <span className="text-muted-foreground text-sm font-medium">{stat.label}</span>
                 <span className="font-display text-2xl font-bold text-rose-dark">
                   <AnimatedCounter value={stat.numericValue} suffix={stat.suffix} inView={inView} />
                 </span>
+                <span className="text-muted-foreground text-sm font-medium text-right">{stat.label}</span>
               </motion.div>
             ))}
           </div>
