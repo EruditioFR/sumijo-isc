@@ -95,11 +95,6 @@ const StatsSection = () => {
       }} className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-16">
-            <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest mb-2 md:mb-4">
-              Les chiffres de l'édition 2024
-            </span>
-            
-            
             <motion.h2 initial={{
             opacity: 0,
             y: 20
@@ -112,6 +107,9 @@ const StatsSection = () => {
           }} className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
               Un concours d'envergure <span className="text-rose-dark">internationale</span>
             </motion.h2>
+            <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest">
+              Les chiffres de l'édition 2024
+            </span>
           </div>
 
           {/* Mobile: Compact list layout */}
