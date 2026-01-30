@@ -100,13 +100,11 @@ const Header = () => {
       </button>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 backdrop-blur-md ${
+        className={`sticky top-0 left-0 right-0 z-50 transition-shadow duration-300 backdrop-blur-md ${
           isScrolled ? 'shadow-elegant' : ''
         }`}
         style={{ 
-          backgroundColor: 'hsl(var(--accent) / 0.95)', 
-          transform: 'translate3d(0,0,0)',
-          WebkitTransform: 'translate3d(0,0,0)',
+          backgroundColor: 'hsl(var(--accent) / 0.95)',
           paddingTop: 'env(safe-area-inset-top, 0px)'
         }}
       >
@@ -183,8 +181,6 @@ const Header = () => {
       </div>
     </header>
 
-     {/* Spacer to prevent content being hidden under fixed header (non-home pages) */}
-     {!isHomepage && <div aria-hidden className="h-[90px] md:h-[110px]" />}
 
     {/* Mobile Sidebar Menu */}
     <AnimatePresence>
