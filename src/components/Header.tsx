@@ -100,13 +100,12 @@ const Header = () => {
       </button>
 
       <header
-        className={`sticky top-0 left-0 right-0 z-50 transition-shadow duration-300 backdrop-blur-md ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
           isScrolled ? 'shadow-elegant' : ''
+        } ${
+'translate-y-0'
         }`}
-        style={{ 
-          backgroundColor: 'hsl(var(--accent) / 0.95)',
-          paddingTop: 'env(safe-area-inset-top, 0px)'
-        }}
+        style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
       <div className="container mx-auto px-4 py-[5px]">
         <div className="flex items-center justify-between">
@@ -180,7 +179,6 @@ const Header = () => {
         </div>
       </div>
     </header>
-
 
     {/* Mobile Sidebar Menu */}
     <AnimatePresence>

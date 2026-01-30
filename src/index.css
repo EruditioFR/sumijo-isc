@@ -139,20 +139,5 @@ All colors MUST be HSL.
   
   html {
     scroll-behavior: smooth;
-    /* Fix for mobile browsers dynamic viewport */
-    height: -webkit-fill-available;
-  }
-  
-  body {
-    min-height: 100vh;
-    min-height: 100dvh;
-    min-height: -webkit-fill-available;
-  }
-}
-
-/* Mobile browser safe area and fixed header stability */
-@supports (padding-top: env(safe-area-inset-top)) {
-  .fixed-header-safe {
-    padding-top: env(safe-area-inset-top);
   }
 }
