@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
+import chateauImage from '@/assets/hero-chateau.jpg';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -16,12 +17,21 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
-      {/* Background Image with Overlay */}
+      {/* Background Château Layer */}
+      <div className="absolute inset-0 top-20 md:top-24">
+        <img
+          src={chateauImage}
+          alt="Château de la Ferté-Imbault"
+          className="w-full h-full object-cover object-center opacity-40"
+        />
+      </div>
+      
+      {/* Foreground Sumi Jo Image with Overlay */}
       <div className="absolute inset-0 top-20 md:top-24">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate] brightness-110"
+          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Mobile: wider transparent zone, lower opacity. Desktop: overlay on left for Sumi Jo */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_35%_35%,transparent,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.45))] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
