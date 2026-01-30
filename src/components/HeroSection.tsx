@@ -18,11 +18,12 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Background Château Layer - Mobile only */}
-      <div className="absolute inset-x-0 bottom-0 top-auto md:hidden flex items-end justify-center pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 md:hidden flex items-end justify-center pointer-events-none z-[1]">
         <img
           src={chateauSilhouette}
           alt="Château silhouette"
-          className="w-full max-w-md opacity-20 object-contain"
+          className="w-full opacity-25"
+          style={{ filter: 'brightness(0.3)' }}
         />
       </div>
       
