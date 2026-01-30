@@ -23,7 +23,8 @@ const HeroSection = () => {
           alt="Sumi Jo Performance"
           className="w-full h-full object-cover object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        {/* Lighter overlay on center (subject), darker on edges for text legibility */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_30%,rgba(0,0,0,0.25),rgba(0,0,0,0.6)_70%,rgba(0,0,0,0.7))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
