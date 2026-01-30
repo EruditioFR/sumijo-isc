@@ -44,7 +44,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 opacity-90 md:opacity-100 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
         {/* Mobile: wider transparent zone, lower opacity. Desktop: overlay on left for Sumi Jo */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_35%_35%,transparent,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.45))] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_35%,transparent_20%,rgba(0,0,0,0.8)_70%)] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
