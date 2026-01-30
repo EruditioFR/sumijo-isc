@@ -76,12 +76,12 @@ const videos: Video[] = [
   },
   {
     id: "7",
-    youtubeId: "dQw4w9WgXcQ",
-    startTime: 0,
-    singer: "Sophie Dubois",
-    description: "Demi-finale - Air de Mozart",
-    duration: "4:12",
-    category: "demi-finale",
+    youtubeId: "KuzJJ3kUSrY",
+    startTime: 20,
+    singer: "Daria Lupu, Soprano, Roumanie",
+    description: "Finale - I Go To Him - The Rake's Progress, I. Stravinsky",
+    duration: "3:35",
+    category: "finale",
   },
   {
     id: "8",
