@@ -85,11 +85,11 @@ const videos: Video[] = [
   },
   {
     id: "8",
-    youtubeId: "dQw4w9WgXcQ",
-    startTime: 0,
-    singer: "Maria Rossi",
-    description: "Finale - Air de Bellini",
-    duration: "2:30",
+    youtubeId: "HgGrC7xo",
+    startTime: 27,
+    singer: "Junho Hwang, Tenor, République de Corée",
+    description: "Finale - Total eclipse - Samson, G.F. Haendel",
+    duration: "4:57",
     category: "finale",
   },
   {
