@@ -41,8 +41,8 @@ const HeroSection = () => {
           alt="Sumi Jo International Singing Competition 2026"
           className="w-full h-full object-cover object-center"
         />
-        {/* Light overlay for text readability */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent,rgba(0,0,0,0.25)_60%,rgba(0,0,0,0.4))]" />
+        {/* Overlay to darken background while preserving Sumi Jo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_35%,transparent_20%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.6)_80%)]" />
       </motion.div>
 
       {/* Desktop Background - Château Layer (slowest parallax) */}
