@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 // Sparkle component for decorative particles
 const Sparkle = ({ delay, index }: { delay: number; index: number }) => {
-  const randomX = useMemo(() => Math.random() * 60 - 30, []);
-  const randomY = useMemo(() => Math.random() * -40 - 10, []);
+  const randomX = useMemo(() => Math.random() * 80 - 40, []);
+  const randomY = useMemo(() => Math.random() * -50 - 10, []);
+  const randomScale = useMemo(() => 0.5 + Math.random() * 1, []);
   
   return (
     <motion.div
-      className="absolute w-1.5 h-1.5 bg-primary rounded-full"
+      className="absolute w-2 h-2 bg-gradient-to-r from-primary to-gold rounded-full"
       style={{ 
         left: '50%', 
         top: '50%',
@@ -19,71 +20,77 @@ const Sparkle = ({ delay, index }: { delay: number; index: number }) => {
       initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
       animate={{ 
         opacity: [0, 1, 0],
-        scale: [0, 1.5, 0],
+        scale: [0, randomScale, 0],
         x: [0, randomX],
         y: [0, randomY]
       }}
       transition={{ 
-        duration: 0.8,
-        delay: delay + index * 0.1,
+        duration: 1,
+        delay: delay + index * 0.08,
         ease: "easeOut"
       }}
     />
   );
 };
 
-// Animated counter component with elastic effect
-const AnimatedCounter = ({
+// Dramatic number reveal component
+const DramaticNumber = ({
   value,
   suffix = '',
   inView,
-  onComplete,
+  delay,
+  onReveal,
   isHighlight = false
 }: {
-  value: number;
+  value: string;
   suffix?: string;
   inView: boolean;
-  onComplete?: () => void;
+  delay: number;
+  onReveal?: () => void;
   isHighlight?: boolean;
 }) => {
-  const spring = useSpring(0, {
-    stiffness: 80,
-    damping: 20,
-    restDelta: 0.001
-  });
-  const display = useTransform(spring, current => Math.floor(current).toLocaleString('fr-FR'));
-  const [displayValue, setDisplayValue] = useState('0');
-  const [isComplete, setIsComplete] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      spring.set(value);
-      // Detect when animation is complete
-      const timeout = setTimeout(() => {
-        setIsComplete(true);
-        onComplete?.();
-      }, 2000);
-      return () => clearTimeout(timeout);
-    }
-  }, [inView, spring, value, onComplete]);
-
-  useEffect(() => {
-    const unsubscribe = display.on('change', latest => {
-      setDisplayValue(latest);
-    });
-    return unsubscribe;
-  }, [display]);
+  const [hasRevealed, setHasRevealed] = useState(false);
 
   return (
-    <motion.span
-      className={isHighlight ? 'text-shimmer' : ''}
-      animate={isComplete ? {
-        scale: [1, 1.05, 1],
+    <motion.div
+      className="relative"
+      initial={{ 
+        opacity: 0, 
+        scale: 0.3,
+        filter: 'blur(20px)'
+      }}
+      animate={inView ? { 
+        opacity: 1, 
+        scale: 1,
+        filter: 'blur(0px)'
       } : {}}
-      transition={{ duration: 0.3 }}
+      transition={{ 
+        duration: 0.8,
+        delay,
+        ease: [0.34, 1.56, 0.64, 1] // Custom elastic easing
+      }}
+      onAnimationComplete={() => {
+        if (inView && !hasRevealed) {
+          setHasRevealed(true);
+          onReveal?.();
+        }
+      }}
     >
-      {displayValue}{suffix}
-    </motion.span>
+      <motion.span
+        className={isHighlight ? 'text-shimmer' : ''}
+        animate={hasRevealed ? {
+          scale: [1, 1.08, 1],
+          textShadow: [
+            '0 0 0px rgba(205, 124, 139, 0)',
+            '0 0 30px rgba(205, 124, 139, 0.8)',
+            '0 0 10px rgba(205, 124, 139, 0.3)'
+          ]
+        } : {}}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {value}{suffix}
+      </motion.span>
+    </motion.div>
   );
 };
 
@@ -111,28 +118,28 @@ const StatsSection = () => {
 
   const stats = [
     {
-      numericValue: 1000,
+      value: '1 000',
       suffix: '+',
       label: t('introduction.participants')
     },
     {
-      numericValue: 40,
+      value: '40',
       suffix: '+',
       label: t('introduction.countries')
     },
     {
-      numericValue: 80000,
+      value: '80 000',
       suffix: '€',
       label: t('introduction.prizes'),
       isHighlight: true
     },
     {
-      numericValue: 24,
+      value: '24',
       suffix: '',
       label: t('introduction.days')
     },
     {
-      numericValue: 6,
+      value: '6',
       suffix: '',
       label: t('introduction.competitionDays')
     }
@@ -208,11 +215,12 @@ const StatsSection = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <span className={`font-display text-3xl font-bold ${stat.isHighlight ? 'text-shimmer' : 'text-rose-dark'}`}>
-                    <AnimatedCounter
-                      value={stat.numericValue}
+                    <DramaticNumber
+                      value={stat.value}
                       suffix={stat.suffix}
                       inView={inView}
-                      onComplete={() => handleCardComplete(index)}
+                      delay={0.3 + index * 0.12}
+                      onReveal={() => handleCardComplete(index)}
                       isHighlight={stat.isHighlight}
                     />
                   </span>
@@ -301,11 +309,12 @@ const StatsSection = () => {
                   <div className={`font-display font-bold text-foreground mb-2 tracking-tight relative z-10 ${
                     stat.isHighlight ? 'text-4xl lg:text-5xl' : 'text-3xl lg:text-4xl'
                   }`}>
-                    <AnimatedCounter
-                      value={stat.numericValue}
+                    <DramaticNumber
+                      value={stat.value}
                       suffix={stat.suffix}
                       inView={inView}
-                      onComplete={() => handleCardComplete(index)}
+                      delay={0.3 + index * 0.15}
+                      onReveal={() => handleCardComplete(index)}
                       isHighlight={stat.isHighlight}
                     />
                   </div>
