@@ -122,7 +122,7 @@ const Header = () => {
             />
             <div className="flex flex-col text-left">
               <span className="text-rose-light font-elegant text-2xl md:text-3xl tracking-wide font-semibold">Sumi Jo</span>
-              <span className="text-cream/80 text-[10px] md:text-xs tracking-widest uppercase">International Singing Competition</span>
+              <span className="text-cream/80 text-[12px] md:text-sm tracking-widest">International Singing Competition</span>
               <span className="text-gold text-sm md:text-base font-medium">2026</span>
             </div>
           </button>
