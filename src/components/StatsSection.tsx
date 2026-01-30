@@ -48,17 +48,39 @@ const ConfettiParticle = ({ index }: { index: number }) => {
   );
 };
 
-// Confetti burst component - centered explosion
+// Confetti burst component - centered explosion with two waves
 const ConfettiBurst = ({ show }: { show: boolean }) => {
+  const [showSecondWave, setShowSecondWave] = useState(false);
+  
+  useEffect(() => {
+    if (show) {
+      // Trigger second wave after a delay
+      const timer = setTimeout(() => setShowSecondWave(true), 600);
+      return () => clearTimeout(timer);
+    } else {
+      setShowSecondWave(false);
+    }
+  }, [show]);
+  
   if (!show) return null;
   
   return (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-50">
+      {/* First wave - 80 particles */}
       <div className="relative w-0 h-0">
-        {[...Array(100)].map((_, i) => (
-          <ConfettiParticle key={i} index={i} />
+        {[...Array(80)].map((_, i) => (
+          <ConfettiParticle key={`wave1-${i}`} index={i} />
         ))}
       </div>
+      
+      {/* Second wave - 60 particles with delay */}
+      {showSecondWave && (
+        <div className="relative w-0 h-0">
+          {[...Array(60)].map((_, i) => (
+            <ConfettiParticle key={`wave2-${i}`} index={i} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
