@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { Play } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-type VideoCategory = "all" | "demi-finale" | "finale";
+type VideoCategory = "all" | "demi-finale" | "finale" | "gala";
 
 interface Video {
   id: string;
@@ -45,7 +45,7 @@ const videos: Video[] = [
     singer: "Kiup Lee, Tenor, République de Corée",
     description: "Gala des lauréats - Au Mont Ida, trois déesses - La belle Hélène, J. Offenbach",
     duration: "4:20",
-    category: "Gala des lauréats",
+    category: "gala",
   },
   {
     id: "4",
@@ -170,6 +170,7 @@ const filterOptions: { value: VideoCategory; label: string }[] = [
   { value: "all", label: "Tous" },
   { value: "demi-finale", label: "Demi-finale" },
   { value: "finale", label: "Finale" },
+  { value: "gala", label: "Gala" },
 ];
 
 const VideoGallerySection = () => {
@@ -234,8 +235,15 @@ const VideoGallerySection = () => {
                     alt={`${video.singer} - ${video.description}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Play button overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                  {/* Gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  {/* Singer and description */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                    <h3 className="font-semibold text-sm leading-tight text-rose-light">{video.singer}</h3>
+                    <p className="text-xs text-white/80 leading-tight mt-0.5 line-clamp-2">{video.description}</p>
+                  </div>
+                  {/* Play button overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-rose/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
                       <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
