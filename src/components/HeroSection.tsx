@@ -66,7 +66,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.4 }}
             className="space-y-2 mt-24 md:mt-0"
           >
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white/60 tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
+            <h1 className="font-display text-[3.3rem] md:text-[5rem] lg:text-[6.6rem] text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
               SUMI JO
             </h1>
             <h2 className="font-display text-lg md:text-2xl lg:text-3xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
