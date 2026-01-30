@@ -22,7 +22,7 @@ const HeroSection = () => {
         <img
           src={chateauImage}
           alt="Château de la Ferté-Imbault"
-          className="w-full h-full object-cover object-center opacity-40"
+          className="w-full h-full object-cover object-[85%_center] md:object-center opacity-50 md:opacity-40"
         />
       </div>
       
