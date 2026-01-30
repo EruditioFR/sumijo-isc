@@ -69,7 +69,7 @@ const HeroSection = () => {
             <h1 className="font-display text-[3.3rem] md:text-[5rem] lg:text-[6.6rem] text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
               SUMI JO
             </h1>
-            <h2 className="font-display text-lg md:text-2xl lg:text-3xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide leading-relaxed mt-4">
+            <h2 className="font-display text-xl md:text-3xl lg:text-4xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-widest leading-relaxed mt-4">
               INTERNATIONAL SINGING<br className="md:hidden" /> COMPETITION
             </h2>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
