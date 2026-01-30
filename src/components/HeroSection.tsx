@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
 import chateauImage from '@/assets/hero-chateau.jpg';
+import heroMobileImage from '@/assets/hero-sumi-mobile.jpg';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -17,7 +18,18 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
-      {/* Background Château Layer - Desktop only */}
+      {/* Mobile Background - New integrated image */}
+      <div className="absolute inset-0 top-20 md:hidden">
+        <img
+          src={heroMobileImage}
+          alt="Sumi Jo International Singing Competition 2026"
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Light overlay for text readability */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent,rgba(0,0,0,0.25)_60%,rgba(0,0,0,0.4))]" />
+      </div>
+
+      {/* Desktop Background - Château Layer */}
       <div className="absolute inset-0 top-24 hidden md:block">
         <img
           src={chateauImage}
@@ -26,15 +38,15 @@ const HeroSection = () => {
         />
       </div>
       
-      {/* Foreground Sumi Jo Image with Overlay */}
-      <div className="absolute inset-0 top-20 md:top-24">
+      {/* Desktop Foreground - Sumi Jo Image with Overlay */}
+      <div className="absolute inset-0 top-24 hidden md:block">
         <img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-[10%_30%] md:object-[center_15%] scale-105 opacity-90 md:opacity-100 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          className="w-full h-full object-cover object-[center_15%] scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
         />
-        {/* Mobile: wider transparent zone, lower opacity. Desktop: overlay on left for Sumi Jo */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_35%_35%,transparent,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.45))] md:bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
+        {/* Desktop overlay for text contrast */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
         {/* Decorative overlay pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(162,148,124,0.1),transparent_50%)]" />
       </div>
