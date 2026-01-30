@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Play } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Play } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-type VideoCategory = 'all' | 'demi-finale' | 'finale';
+type VideoCategory = "all" | "demi-finale" | "finale";
 
 interface Video {
   id: string;
@@ -20,42 +20,167 @@ interface Video {
 // Sample video data - replace youtubeId with actual YouTube video IDs
 // startTime is in seconds (e.g., 90 = 1m30s, 125 = 2m05s)
 const videos: Video[] = [
-  { id: '1', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '3:45', category: 'demi-finale' },
-  { id: '2', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '4:12', category: 'finale' },
-  { id: '3', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '4:19', category: 'demi-finale' },
-  { id: '4', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '5', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Kim Min-jae', description: 'Demi-finale - Air de Puccini', duration: '2:30', category: 'demi-finale' },
-  { id: '6', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '7', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Sophie Dubois', description: 'Demi-finale - Air de Mozart', duration: '4:12', category: 'demi-finale' },
-  { id: '8', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Maria Rossi', description: 'Finale - Air de Bellini', duration: '2:30', category: 'finale' },
-  { id: '9', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Elena Petrova', description: 'Demi-finale - Air de Verdi', duration: '3:55', category: 'demi-finale' },
-  { id: '10', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Li Wei', description: 'Finale - Air de Donizetti', duration: '4:30', category: 'finale' },
-  { id: '11', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Anna Schmidt', description: 'Demi-finale - Air de Rossini', duration: '3:20', category: 'demi-finale' },
-  { id: '12', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Park Ji-young', description: 'Finale - Air de Mozart', duration: '4:45', category: 'finale' },
-  { id: '13', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Claire Martin', description: 'Demi-finale - Air de Handel', duration: '3:10', category: 'demi-finale' },
-  { id: '14', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Yuki Tanaka', description: 'Finale - Air de Puccini', duration: '4:05', category: 'finale' },
-  { id: '15', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Isabella Romano', description: 'Demi-finale - Air de Bellini', duration: '3:35', category: 'demi-finale' },
-  { id: '16', youtubeId: 'dQw4w9WgXcQ', startTime: 0, singer: 'Chen Mei', description: 'Finale - Air de Verdi', duration: '4:20', category: 'finale' },
+  {
+    id: "1",
+    youtubeId: "DaHrBeXB9H0",
+    startTime: 0,
+    singer: "Zihao Li",
+    description: 'Finale - "Mein Sehnen, Mein Wähnen - Die Tote Stadt, E. W. Korngold',
+    duration: "5:46",
+    category: "finale",
+  },
+  {
+    id: "2",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Sophie Dubois",
+    description: "Finale - Air de Bellini",
+    duration: "4:12",
+    category: "finale",
+  },
+  {
+    id: "3",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Kim Min-jae",
+    description: "Demi-finale - Air de Puccini",
+    duration: "4:19",
+    category: "demi-finale",
+  },
+  {
+    id: "4",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Sophie Dubois",
+    description: "Finale - Air de Bellini",
+    duration: "2:30",
+    category: "finale",
+  },
+  {
+    id: "5",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Kim Min-jae",
+    description: "Demi-finale - Air de Puccini",
+    duration: "2:30",
+    category: "demi-finale",
+  },
+  {
+    id: "6",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Maria Rossi",
+    description: "Finale - Air de Bellini",
+    duration: "2:30",
+    category: "finale",
+  },
+  {
+    id: "7",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Sophie Dubois",
+    description: "Demi-finale - Air de Mozart",
+    duration: "4:12",
+    category: "demi-finale",
+  },
+  {
+    id: "8",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Maria Rossi",
+    description: "Finale - Air de Bellini",
+    duration: "2:30",
+    category: "finale",
+  },
+  {
+    id: "9",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Elena Petrova",
+    description: "Demi-finale - Air de Verdi",
+    duration: "3:55",
+    category: "demi-finale",
+  },
+  {
+    id: "10",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Li Wei",
+    description: "Finale - Air de Donizetti",
+    duration: "4:30",
+    category: "finale",
+  },
+  {
+    id: "11",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Anna Schmidt",
+    description: "Demi-finale - Air de Rossini",
+    duration: "3:20",
+    category: "demi-finale",
+  },
+  {
+    id: "12",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Park Ji-young",
+    description: "Finale - Air de Mozart",
+    duration: "4:45",
+    category: "finale",
+  },
+  {
+    id: "13",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Claire Martin",
+    description: "Demi-finale - Air de Handel",
+    duration: "3:10",
+    category: "demi-finale",
+  },
+  {
+    id: "14",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Yuki Tanaka",
+    description: "Finale - Air de Puccini",
+    duration: "4:05",
+    category: "finale",
+  },
+  {
+    id: "15",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Isabella Romano",
+    description: "Demi-finale - Air de Bellini",
+    duration: "3:35",
+    category: "demi-finale",
+  },
+  {
+    id: "16",
+    youtubeId: "dQw4w9WgXcQ",
+    startTime: 0,
+    singer: "Chen Mei",
+    description: "Finale - Air de Verdi",
+    duration: "4:20",
+    category: "finale",
+  },
 ];
 
 const filterOptions: { value: VideoCategory; label: string }[] = [
-  { value: 'all', label: 'Tous' },
-  { value: 'demi-finale', label: 'Demi-finale' },
-  { value: 'finale', label: 'Finale' },
+  { value: "all", label: "Tous" },
+  { value: "demi-finale", label: "Demi-finale" },
+  { value: "finale", label: "Finale" },
 ];
 
 const VideoGallerySection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [activeFilter, setActiveFilter] = useState<VideoCategory>('all');
+  const [activeFilter, setActiveFilter] = useState<VideoCategory>("all");
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
-  const filteredVideos = activeFilter === 'all' 
-    ? videos 
-    : videos.filter(v => v.category === activeFilter);
+  const filteredVideos = activeFilter === "all" ? videos : videos.filter((v) => v.category === activeFilter);
 
-  const getYoutubeThumbnail = (youtubeId: string) => 
-    `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`;
+  const getYoutubeThumbnail = (youtubeId: string) => `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`;
 
   return (
     <section className="py-12 md:py-20 bg-cream">
@@ -68,9 +193,7 @@ const VideoGallerySection = () => {
         >
           {/* Header */}
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground italic mb-3">
-              Édition 2024
-            </h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground italic mb-3">Édition 2024</h2>
             <h2 className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
               Découvrez les <span className="text-rose-dark">performances</span> de nos candidats
             </h2>
@@ -85,8 +208,8 @@ const VideoGallerySection = () => {
                 onClick={() => setActiveFilter(filter.value)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                   activeFilter === filter.value
-                    ? 'bg-rose text-white shadow-md'
-                    : 'bg-white text-muted-foreground border border-rose/20 hover:border-rose/40'
+                    ? "bg-rose text-white shadow-md"
+                    : "bg-white text-muted-foreground border border-rose/20 hover:border-rose/40"
                 }`}
               >
                 {filter.label}
@@ -167,7 +290,7 @@ const VideoGallerySection = () => {
           {selectedVideo && (
             <div className="aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1${selectedVideo.startTime ? `&start=${selectedVideo.startTime}` : ''}`}
+                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1${selectedVideo.startTime ? `&start=${selectedVideo.startTime}` : ""}`}
                 title={`${selectedVideo.singer} - ${selectedVideo.description}`}
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
