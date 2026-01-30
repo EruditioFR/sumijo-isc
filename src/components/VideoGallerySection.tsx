@@ -127,6 +127,9 @@ const VideoGallerySection = () => {
             <h2 className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
               Découvrez les <span className="text-rose-dark">performances</span> de nos candidats
             </h2>
+            <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest">
+              Lors de l'édition 2024
+            </span>
             <div className="h-0.5 w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-rose to-transparent mt-6" />
           </div>
 
