@@ -67,11 +67,11 @@ const videos: Video[] = [
   },
   {
     id: "6",
-    youtubeId: "dQw4w9WgXcQ",
-    startTime: 0,
-    singer: "Maria Rossi",
-    description: "Finale - Air de Bellini",
-    duration: "2:30",
+    youtubeId: "WQNV147L20g",
+    startTime: 27,
+    singer: "Alexandre Baldo, Baryton-Basse, France",
+    description: "Finale - Per questa bella mano - Concert aria, W.A. Mozart",
+    duration: "7:09",
     category: "finale",
   },
   {
