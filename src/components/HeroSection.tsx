@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-sumi-2026.jpg';
-import chateauImage from '@/assets/hero-chateau.jpg';
+import chateauSilhouette from '@/assets/chateau-silhouette.png';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -18,11 +18,11 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Background Château Layer - Mobile only */}
-      <div className="absolute inset-0 top-20 md:hidden">
+      <div className="absolute inset-x-0 bottom-0 top-auto md:hidden flex items-end justify-center pointer-events-none">
         <img
-          src={chateauImage}
-          alt="Château de la Ferté-Imbault"
-          className="w-full h-full object-cover object-center opacity-30"
+          src={chateauSilhouette}
+          alt="Château silhouette"
+          className="w-full max-w-md opacity-20 object-contain"
         />
       </div>
       
