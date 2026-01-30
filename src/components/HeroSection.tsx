@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]">
       {/* Mobile Background - New integrated image */}
-      <div className="absolute inset-0 md:hidden">
+      <div className="absolute inset-0 top-[70px] md:hidden">
         <img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
