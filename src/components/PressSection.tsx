@@ -12,7 +12,7 @@ const PressSection = () => {
       quote: "La légendaire Sumi Jo lance un concours international de chant en Sologne",
       source: "France Info",
       year: "2024",
-      url: "https://www.francetvinfo.fr/culture/musique/classique/la-legendaire-sumi-jo-lance-un-concours-international-de-chant-en-sologne_6644048.html",
+      url: "https://france3-regions.franceinfo.fr/centre-val-de-loire/loir-cher/la-legendaire-sumi-jo-lance-un-concours-international-de-chant-en-sologne-le-premier-prix-s-eleve-a-50-000-3003500.html",
     },
     {
       quote:
