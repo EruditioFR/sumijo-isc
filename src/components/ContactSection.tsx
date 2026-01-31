@@ -210,9 +210,9 @@ const ContactSection = () => {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
+                      className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-gold transition-all"
                     >
-                      <Send className="w-4 h-4 mr-2" />
+                      <Send className="w-4 h-4 mr-2 text-white" />
                       Envoyer le message
                     </Button>
                   </form>
