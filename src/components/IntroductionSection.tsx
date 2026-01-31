@@ -22,7 +22,7 @@ const IntroductionSection = () => {
         duration: 0.8
       }} className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="font-display text-4xl md:text-5xl text-foreground">
-            {t('introduction.title')}
+            {t('introduction.title')} <span className="text-rose-dark">2026</span>
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
           
