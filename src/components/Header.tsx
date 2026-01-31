@@ -111,8 +111,8 @@ const Header = () => {
         <div className="flex items-center justify-between">
 
           {/* Logo - Center */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link
+            to="/"
             className="hover:opacity-80 transition-opacity flex items-center gap-3 md:gap-4"
           >
             <img 
@@ -125,7 +125,7 @@ const Header = () => {
               <span className="text-cream/80 text-[12px] md:text-sm tracking-widest">International Singing Competition</span>
               <span className="text-gold text-sm md:text-base font-medium">2026</span>
             </div>
-          </button>
+          </Link>
 
           {/* Navigation - Hidden on mobile, shown on md+ */}
           <nav className="hidden md:flex items-center gap-4 md:gap-8">
