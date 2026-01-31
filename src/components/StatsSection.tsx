@@ -181,7 +181,7 @@ const StatsSection = () => {
           }} className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
               Un concours d'envergure <span className="text-rose-dark">internationale</span>
             </motion.h2>
-            <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest">ÉDITION 2024</span>
+            <span className="inline-block text-rose-dark font-medium text-sm md:text-base tracking-widest">Les chiffres de l'édition 2024</span>
           </div>
 
           {/* Stats Grid */}
