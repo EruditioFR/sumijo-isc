@@ -10,10 +10,8 @@ import TourSection from '@/components/TourSection';
 import FestivalSection from '@/components/FestivalSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-
 const Index = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       <main>
         <HeroSection />
@@ -24,12 +22,10 @@ const Index = () => {
         <IntroductionSection />
         <HarmonySection />
         <FestivalSection />
-        <TourSection />
+        
       </main>
       <Footer />
       <ScrollToTop />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
