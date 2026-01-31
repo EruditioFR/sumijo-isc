@@ -27,12 +27,15 @@ const IntroductionSection = () => {
           <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
           
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            {t('introduction.content1')}
+          </p>
+
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {t('introduction.content2')}
           </p>
 
-          {/* Intro text above poster */}
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed pt-8">
-            {t('introduction.intro')} <span className="font-bold text-rose-dark">{t('introduction.introDate')}</span>.
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            {t('introduction.content3')}
           </p>
 
           {/* Competition Poster */}
