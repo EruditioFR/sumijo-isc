@@ -30,10 +30,10 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden pt-[70px] md:pt-[90px]"
+      className="relative h-screen flex items-center justify-center overflow-hidden pt-0 md:pt-[90px]"
     >
       {/* Mobile Background - New integrated image */}
-      <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[70px] md:hidden">
+      <motion.div style={{ y: sumiY }} className="absolute inset-0 top-0 md:hidden">
         <motion.img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
