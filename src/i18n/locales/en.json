@@ -18,7 +18,9 @@
     "notify": "NOTIFY ME",
     "smallPrint": "Seats will be limited",
     "success": "Notification registered! You will be alerted on March 1st.",
-    "error": "Please enter a valid email address"
+    "error": "Please enter a valid email address",
+    "alreadyRegistered": "This email address is already registered",
+    "errorGeneric": "An error occurred. Please try again."
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
