@@ -115,15 +115,17 @@ const PressSection = () => {
                     <div className="flex items-center justify-between border-t border-rose/10 pt-4">
                       <div className="flex flex-col gap-1">
                         <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-rose-dark hover:text-burgundy transition-colors text-sm font-medium"
-                        >
-                          Lire l'article
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
+                        {item.url && (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-rose-dark hover:text-burgundy transition-colors text-sm font-medium"
+                          >
+                            Lire l'article
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
                       </div>
                       <span className="text-muted-foreground text-sm">{item.year}</span>
                     </div>
