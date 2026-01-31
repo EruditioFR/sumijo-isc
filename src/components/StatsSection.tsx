@@ -22,7 +22,6 @@ const CircleStat = ({
   inView
 }: CircleStatProps) => {
   const [displayValue, setDisplayValue] = useState(0);
-  const motionValue = useMotionValue(0);
 
   // SVG circle calculations - responsive sizes
   const desktopRadius = 108;
@@ -39,27 +38,31 @@ const CircleStat = ({
   const progressOffset = useMotionValue(circumference);
   const animatedOffset = useTransform(progressOffset, v => v);
   useEffect(() => {
+    // Reset values when component mounts
+    setDisplayValue(0);
+    progressOffset.set(circumference);
+    
     if (inView) {
-      // Animate the counter
-      const controls = animate(motionValue, value, {
-        duration: 1.8,
+      // Animate the counter from 0 to value
+      const controls = animate(0, value, {
+        duration: 2,
         delay: 0.3 + index * 0.15,
-        ease: [0.34, 1.56, 0.64, 1],
+        ease: [0.16, 1, 0.3, 1],
         onUpdate: latest => {
           setDisplayValue(Math.round(latest));
         }
       });
 
-      // Animate the progress ring
+      // Animate the progress ring from full offset to target
       const targetOffset = circumference - progress / 100 * circumference;
       animate(progressOffset, targetOffset, {
-        duration: 1.8,
+        duration: 2,
         delay: 0.3 + index * 0.15,
         ease: [0.16, 1, 0.3, 1]
       });
       return () => controls.stop();
     }
-  }, [inView, value, progress, circumference, index, motionValue, progressOffset]);
+  }, [inView, value, progress, circumference, index, progressOffset]);
   const gradientId = `progress-gradient-${index}`;
   return <motion.div className="circle-stat flex flex-col items-center" initial={{
     opacity: 0,
