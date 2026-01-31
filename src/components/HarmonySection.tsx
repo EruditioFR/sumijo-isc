@@ -68,7 +68,7 @@ const HarmonySection = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="absolute -bottom-6 left-8 md:left-12 bg-gold px-6 py-3 shadow-xl"
               >
-                <p className="text-accent font-display text-sm md:text-base tracking-widest uppercase">
+                <p className="text-white font-display text-sm md:text-base tracking-widest uppercase">
                   Château de la Ferté-Imbault
                 </p>
               </motion.div>
