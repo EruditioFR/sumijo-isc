@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Quote, Newspaper } from "lucide-react";
+import { Quote, Newspaper, ExternalLink } from "lucide-react";
 
 const PressSection = () => {
   const { t } = useTranslation();
@@ -12,23 +12,27 @@ const PressSection = () => {
       quote: "La légendaire Sumi Jo lance un concours international de chant en Sologne",
       source: "France Info",
       year: "2024",
+      url: "https://www.francetvinfo.fr/culture/musique/classique/la-legendaire-sumi-jo-lance-un-concours-international-de-chant-en-sologne_6644048.html",
     },
     {
       quote:
         "Nous avons été frappés par l'excellent niveau d'ensemble de cette compétition aux dotations particulièrement généreuse. Parfaitement organisée, la compétition se tiendra tous les deux ans.",
       source: "Opera Magazine, Thierry Guyenne",
       year: "2024",
+      url: "https://www.opera-magazine.com/",
     },
     {
       quote:
         "Rarement il a été donné de voir et d'entendre un niveau aussi excellent lors d'un concours de chant ainsi qu'autant d'audace dans le choix des airs",
       source: "Opera Online, Elodie Martinez",
       year: "2024",
+      url: "https://www.opera-online.com/",
     },
     {
       quote: "Plein succès pour ce premier concours qui s'est révélé être d'un excellent niveau",
       source: "Première Loge",
       year: "2024",
+      url: "https://www.music-opera.com/magazine/premiere-loge",
     },
   ];
 
@@ -110,7 +114,18 @@ const PressSection = () => {
 
                     {/* Source */}
                     <div className="flex items-center justify-between border-t border-rose/10 pt-4">
-                      <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
+                      <div className="flex flex-col gap-1">
+                        <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-rose-dark hover:text-burgundy transition-colors text-sm font-medium"
+                        >
+                          Lire l'article
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
                       <span className="text-muted-foreground text-sm">{item.year}</span>
                     </div>
                   </div>
