@@ -40,7 +40,7 @@ const HeroSection = () => {
           initial={{ scale: 1.0, opacity: 0 }}
           animate={{ scale: 1.08, opacity: 1 }}
           transition={{ duration: 3, ease: "easeOut" }}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center origin-top"
         />
         {/* Overlay to darken background while preserving Sumi Jo */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_35%,transparent_20%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.6)_80%)]" />
