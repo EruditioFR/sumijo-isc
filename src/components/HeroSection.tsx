@@ -135,12 +135,12 @@ const HeroSection = () => {
             <Button
               asChild
               size="lg"
-              className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
+              className="group relative bg-gradient-to-r from-rose-dark via-rose to-rose-dark font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
             >
               <Link to="/billetterie" className="flex flex-col items-center leading-tight">
                 <span className="relative z-10">{t("hero.buyTickets")}</span>
                 <span className="relative z-10 text-xs font-normal opacity-90 -mt-0.5">{t("hero.ticketsDate")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-rose to-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
             </Button>
           </motion.div>
