@@ -1,55 +1,134 @@
 
 
-# Ajouter un effet de zoom progressif sur l'image de Sumi Jo
+# Plan d'implémentation : Page Billetterie "Coming Soon"
 
 ## Objectif
-Ajouter un effet de zoom elegant au chargement de la page, partant d'une echelle legere (1.0) vers un zoom subtil (1.08), creant une impression cinematographique et dynamique.
+Creer une nouvelle page `/billetterie` elegante et minimaliste annoncant l'ouverture de la billetterie le 1er mars 2026, avec un formulaire de notification par email.
 
-## Etat actuel
-L'image desktop utilise deja une animation alternee infinie :
-```
-scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]
-```
+---
 
-Cette animation fait osciller l'image, mais n'est pas un zoom progressif au chargement.
+## Structure de la page
 
-## Solution proposee
-Utiliser Framer Motion pour animer l'image avec un zoom progressif unique au chargement, plus elegant et controle.
+La page suivra exactement le design du cahier des charges avec :
 
-## Modifications techniques
-
-### Fichier : `src/components/HeroSection.tsx`
-
-**1. Remplacer l'animation CSS par une animation Framer Motion**
-
-Transformer les balises `<img>` en `<motion.img>` pour les images desktop et mobile, avec les proprietes suivantes :
-
-```tsx
-<motion.img
-  src={heroImage}
-  alt="Sumi Jo Performance"
-  initial={{ scale: 1.0, opacity: 0 }}
-  animate={{ scale: 1.08, opacity: 1 }}
-  transition={{ duration: 3, ease: "easeOut" }}
-  className="w-full h-full object-cover object-top"
-/>
+```text
++--------------------------------------------------+
+|              [Header standard du site]            |
++--------------------------------------------------+
+|                                                  |
+|            ─────── BILLETTERIE ───────           |
+|                                                  |
+|                   1er Mars                       |
+|                     2026                         |
+|                                                  |
+|      Ouverture de la billetterie en ligne        |
+|                                                  |
+|   [votre adresse email]  [NOTIFY ME →]          |
+|                                                  |
+|         Les places seront limitees               |
+|                                                  |
++--------------------------------------------------+
+|                    [Footer]                      |
++--------------------------------------------------+
 ```
 
-**2. Appliquer le meme effet sur mobile**
+---
 
-L'image mobile (`heroMobileImage`) recevra egalement l'effet de zoom progressif pour une coherence visuelle.
+## Fichiers a creer/modifier
 
-## Details de l'animation
+### 1. Nouveau composant : `src/components/TicketingAnnouncement.tsx`
+- Structure semantique accessible
+- Animations d'entree echelonnees avec Framer Motion
+- Formulaire de notification avec validation email (zod)
+- Etats : loading, success, error
+- Responsive : desktop, tablet, mobile
+- Ligne decorative rose sous le label "BILLETTERIE"
 
-| Propriete | Depart | Arrivee | Duree |
-|-----------|--------|---------|-------|
-| Scale | 1.0 | 1.08 | 3s |
-| Opacity | 0 | 1 | 3s |
-| Easing | - | easeOut | - |
+### 2. Nouvelle page : `src/pages/Billetterie.tsx`
+- Integration du Header, TicketingAnnouncement et Footer
+- Style off-white (#F5F1ED) pour le fond
+- Section pleine hauteur centree verticalement
 
-## Resultat attendu
-- Au chargement, l'image de Sumi Jo apparait avec un leger fondu et un zoom progressif subtil
-- L'effet dure 3 secondes et s'arrete (pas de boucle infinie)
-- L'effet s'applique sur desktop et mobile
-- Cree une impression cinematographique et elegante
+### 3. Routing : `src/App.tsx`
+- Ajout de la route `/billetterie`
+
+### 4. Navigation : `src/components/Header.tsx`
+- Ajout du lien "Billetterie" dans le menu desktop et mobile
+
+### 5. Traductions : fichiers i18n (fr, en, kr, zh)
+- Nouvelles cles pour la section billetterie :
+  - `nav.ticketing` : "Billetterie"
+  - `ticketing.label` : "BILLETTERIE"
+  - `ticketing.date` : "1er Mars"
+  - `ticketing.year` : "2026"
+  - `ticketing.description` : "Ouverture de la billetterie en ligne"
+  - `ticketing.emailPlaceholder` : "votre adresse email"
+  - `ticketing.notify` : "NOTIFY ME"
+  - `ticketing.smallPrint` : "Les places seront limitees"
+  - `ticketing.success` : "Notification enregistree ! Vous serez alerte le 1er mars."
+  - `ticketing.error` : "Veuillez entrer une adresse email valide"
+
+---
+
+## Specifications techniques
+
+### Design System
+| Element | Valeur |
+|---------|--------|
+| Fond | `#F5F1ED` (off-white) |
+| Rose principal | `#C85A6B` |
+| Texte charcoal | `#3A3A3A` |
+| Texte gris clair | `#9E9E9E` |
+| Police titres | Playfair Display (via Google Fonts) ou font-elegant existante |
+| Police body | Montserrat (via Google Fonts) ou font-sans existante |
+
+### Tailles typographiques
+- Label "BILLETTERIE" : 13px, lettres espacees, avec ligne decorative rose
+- Date "1er Mars" : 96px desktop, 64px mobile, 56px petit mobile
+- Annee "2026" : 36px desktop, 24px mobile
+- Description : 18px desktop, 15px mobile
+- Bouton : 16px
+
+### Formulaire
+- Input email avec bordure grise `#E0E0E0`
+- Focus : bordure rose `#C85A6B` + shadow subtile
+- Bouton rose plein avec texte blanc
+- Hover : rose plus fonce `#B04A5B` + legere elevation
+- Disposition : inline sur desktop, vertical sur mobile
+
+### Animations (Framer Motion)
+- Apparition echelonnee des elements au scroll
+- Transition douce sur les etats du formulaire
+- Support `prefers-reduced-motion`
+
+---
+
+## Validation et accessibilite
+
+- Validation email cote client avec zod
+- Messages d'erreur/succes clairs
+- ARIA labels sur les inputs
+- Navigation clavier complete
+- Focus visible sur tous les elements interactifs
+- Contraste WCAG AA respecte
+
+---
+
+## Notes pour l'implementation future du backend
+
+Le formulaire sera prepare pour une integration backend ulterieure :
+- Interface `NotificationFormData` avec champ email
+- Fonction `handleSubmit` prete a appeler une API
+- Pour l'instant : simulation locale avec toast de succes
+
+---
+
+## Ordre d'implementation
+
+1. Ajouter les polices Playfair Display et Montserrat (optionnel si font-elegant suffit)
+2. Creer le composant `TicketingAnnouncement.tsx`
+3. Creer la page `Billetterie.tsx`
+4. Ajouter la route dans `App.tsx`
+5. Ajouter les traductions dans les 4 fichiers de langue
+6. Ajouter le lien dans le Header
 
