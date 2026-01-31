@@ -104,6 +104,12 @@ const ContactSection = () => {
                       <p className="text-muted-foreground">
                         {t('practical.venue.address')}
                       </p>
+                      <a 
+                        href="mailto:contact@aacfi.fr" 
+                        className="text-gold hover:text-gold-light transition-colors"
+                      >
+                        contact@aacfi.fr
+                      </a>
                     </div>
                   </div>
                 </div>
