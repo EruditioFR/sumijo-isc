@@ -78,7 +78,7 @@ const SumiJoSection = () => {
                 <div className="text-center bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-gold/20">
                   <Star className="w-8 h-8 text-gold mx-auto mb-2" />
                   <div className="text-2xl font-display text-gold">40</div>
-                  <div className="text-xs text-muted-foreground">Years</div>
+                  <div className="text-xs text-muted-foreground">{t('sumijo.stats.years')}</div>
                 </div>
               </div>
             </motion.div>
