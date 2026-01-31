@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -132,12 +133,15 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToNext}
               className="border-2 border-gold text-gold bg-accent/20 backdrop-blur-sm hover:bg-gold hover:text-foreground font-bold text-lg px-10 py-7 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(162,148,124,0.4)]"
             >
-              {t("hero.learnMore")}
+              <Link to="/billetterie" className="flex flex-col items-center gap-1">
+                <span>{t("hero.buyTickets")}</span>
+                <span className="text-xs font-normal opacity-80">{t("hero.ticketsDate")}</span>
+              </Link>
             </Button>
           </motion.div>
         </motion.div>
