@@ -106,7 +106,7 @@ const TicketingAnnouncement = () => {
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-12 bg-rose" />
             <span 
-              className="text-[13px] tracking-[0.3em] text-[#3A3A3A] font-medium"
+              className="text-base md:text-lg tracking-[0.3em] text-[#3A3A3A] font-medium"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               {t('ticketing.label')}
