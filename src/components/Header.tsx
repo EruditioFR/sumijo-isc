@@ -56,8 +56,8 @@ const Header = () => {
 
   return (
     <>
-      {/* Floating language selector - positioned above scroll-to-top button */}
-      <div className="fixed bottom-24 right-8 z-50">
+      {/* Floating language selector - desktop: bottom right, mobile: below hamburger */}
+      <div className="fixed md:bottom-24 md:top-auto top-20 right-4 md:right-8 z-50">
         <div className="relative">
           <Button
             variant="ghost"
@@ -71,10 +71,10 @@ const Header = () => {
           <AnimatePresence>
             {isLangMenuOpen && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="absolute bottom-full right-0 mb-2 bg-accent border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-[60]"
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute md:bottom-full md:top-auto top-full right-0 md:mb-2 mt-2 md:mt-0 bg-accent border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-[60]"
               >
                 {languages.map((lang) => (
                   <button
