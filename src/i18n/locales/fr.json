@@ -15,7 +15,7 @@
     "year": "2026",
     "description": "Ouverture de la billetterie en ligne",
     "emailPlaceholder": "votre adresse email",
-    "notify": "NOTIFY ME",
+    "notify": "Alertez-moi par mail",
     "smallPrint": "Les places seront limitées",
     "success": "Notification enregistrée ! Vous serez alerté le 1er mars.",
     "error": "Veuillez entrer une adresse email valide",
