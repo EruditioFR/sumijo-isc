@@ -18,7 +18,9 @@
     "notify": "通知我",
     "smallPrint": "座位数量有限",
     "success": "通知已注册！我们将在3月1日提醒您。",
-    "error": "请输入有效的电子邮箱地址"
+    "error": "请输入有效的电子邮箱地址",
+    "alreadyRegistered": "该电子邮箱已注册",
+    "errorGeneric": "发生错误，请重试。"
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",

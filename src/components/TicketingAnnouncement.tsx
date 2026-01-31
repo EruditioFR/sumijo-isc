@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const emailSchema = z.string().trim().email().max(255);
 
@@ -29,15 +30,32 @@ const TicketingAnnouncement = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsLoading(false);
-    setIsSuccess(true);
-    toast({
-      title: t('ticketing.success'),
-      duration: 5000,
-    });
+    try {
+      const { error: dbError } = await supabase
+        .from('ticketing_notifications')
+        .insert({ email: result.data });
+
+      if (dbError) {
+        // Handle duplicate email
+        if (dbError.code === '23505') {
+          setError(t('ticketing.alreadyRegistered'));
+          setIsLoading(false);
+          return;
+        }
+        throw dbError;
+      }
+
+      setIsSuccess(true);
+      toast({
+        title: t('ticketing.success'),
+        duration: 5000,
+      });
+    } catch (err) {
+      console.error('Error subscribing:', err);
+      setError(t('ticketing.errorGeneric'));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const containerVariants = {
