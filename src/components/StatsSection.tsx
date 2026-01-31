@@ -96,7 +96,7 @@ const CircleStat = ({
         </svg>
         
         {/* Center content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center rotate-0">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pb-4 md:pb-6">
           <Icon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary mb-1 md:mb-2" />
           <span className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
             {displayValue.toLocaleString('fr-FR')}{suffix}
