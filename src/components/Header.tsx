@@ -154,6 +154,12 @@ const Header = () => {
               {t('nav.sponsors')}
             </Link>
             <Link
+              to="/billetterie"
+              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
+            >
+              {t('nav.ticketing')}
+            </Link>
+            <Link
               to="/contact"
               className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
@@ -249,6 +255,13 @@ const Header = () => {
                   className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
                 >
                   {t('nav.sponsors')}
+                </Link>
+                <Link
+                  to="/billetterie"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                >
+                  {t('nav.ticketing')}
                 </Link>
                 <Link
                   to="/contact"

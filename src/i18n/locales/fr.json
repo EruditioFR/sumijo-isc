@@ -6,7 +6,19 @@
     "participate": "Participer",
     "sponsors": "Partenaires",
     "chateau": "Le château",
-    "contact": "Contact"
+    "contact": "Contact",
+    "ticketing": "Billetterie"
+  },
+  "ticketing": {
+    "label": "BILLETTERIE",
+    "date": "1er Mars",
+    "year": "2026",
+    "description": "Ouverture de la billetterie en ligne",
+    "emailPlaceholder": "votre adresse email",
+    "notify": "NOTIFY ME",
+    "smallPrint": "Les places seront limitées",
+    "success": "Notification enregistrée ! Vous serez alerté le 1er mars.",
+    "error": "Veuillez entrer une adresse email valide"
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",

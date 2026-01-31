@@ -6,7 +6,19 @@
     "participate": "参赛",
     "sponsors": "合作伙伴",
     "chateau": "城堡",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "ticketing": "购票"
+  },
+  "ticketing": {
+    "label": "购票",
+    "date": "3月1日",
+    "year": "2026",
+    "description": "在线售票即将开始",
+    "emailPlaceholder": "您的电子邮箱",
+    "notify": "通知我",
+    "smallPrint": "座位数量有限",
+    "success": "通知已注册！我们将在3月1日提醒您。",
+    "error": "请输入有效的电子邮箱地址"
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
