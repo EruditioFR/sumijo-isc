@@ -21,10 +21,10 @@ const Index = () => {
         <VideoGallerySection />
         <WinnersSection />
         <PressSection />
-        <TourSection />
         <IntroductionSection />
         <HarmonySection />
         <FestivalSection />
+        <TourSection />
       </main>
       <Footer />
       <ScrollToTop />
