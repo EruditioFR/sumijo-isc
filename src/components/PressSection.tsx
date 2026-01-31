@@ -25,7 +25,7 @@ const PressSection = () => {
         "Rarement il a été donné de voir et d'entendre un niveau aussi excellent lors d'un concours de chant ainsi qu'autant d'audace dans le choix des airs",
       source: "Opera Online, Elodie Martinez",
       year: "2024",
-      url: "https://www.opera-online.com/",
+      url: "https://www.opera-online.com/fr/articles/non-pas-un-mais-trois-noms-supplementaires-pour-la-finale-de-la-sumi-jo-international-singing-competition",
     },
     {
       quote: "Plein succès pour ce premier concours qui s'est révélé être d'un excellent niveau",
