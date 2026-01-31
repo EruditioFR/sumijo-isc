@@ -9,23 +9,25 @@ const PressSection = () => {
 
   const pressItems = [
     {
-      quote: "Un concours qui révèle les futures grandes voix de l'opéra mondial.",
-      source: "Le Figaro",
+      quote: "La légendaire Sumi Jo lance un concours international de chant en Sologne",
+      source: "France Info",
       year: "2024",
     },
     {
-      quote: "L'excellence vocale célébrée dans un cadre d'exception au cœur des châteaux de la Loire.",
-      source: "France Musique",
+      quote:
+        "Nous avons été frappés par l'excellent niveau d'ensemble de cette compétition aux dotations particulièrement généreuse. Parfaitement organisée, la compétition se tiendra tous les deux ans.",
+      source: "Opera Magazine, Thierry Guyenne",
       year: "2024",
     },
     {
-      quote: "Sumi Jo transmet sa passion et son exigence aux jeunes talents du monde entier.",
-      source: "Classica",
+      quote:
+        "Rarement il a été donné de voir et d'entendre un niveau aussi excellent lors d'un concours de chant ainsi qu'autant d'audace dans le choix des airs",
+      source: "Opera Online, Elodie Martinez",
       year: "2024",
     },
     {
-      quote: "Un nouveau genre de festival plus proche du public et des artistes",
-      source: "Opera Online",
+      quote: "Plein succès pour ce premier concours qui s'est révélé être d'un excellent niveau",
+      source: "Première Loge",
       year: "2024",
     },
   ];
