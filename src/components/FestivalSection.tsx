@@ -57,7 +57,7 @@ const FestivalSection = () => {
               >
                 {/* Icon */}
                 <div className="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <value.icon className="w-8 h-8 text-foreground" />
+                  <value.icon className="w-8 h-8 text-white" />
                 </div>
 
                 {/* Title */}
