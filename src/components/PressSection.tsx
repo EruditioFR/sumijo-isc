@@ -39,12 +39,6 @@ const PressSection = () => {
       year: "2024",
       url: "https://www.olyrix.com/articles/actu-des-operas/7754/concours-international-de-chant-lyrique-sumi-jo-la-finale",
     },
-    {
-      quote: "Renowned soprano Sumi Jo has successfully launched her first international vocal competition in France, drawing hundreds of aspiring singers from across the globe.",
-      source: "Yohnap News Agency (Corée),
-      year: "2024",
-      url: "https://en.yna.co.kr/view/AEN20240713000800315",
-    },
   ];
 
   return (
