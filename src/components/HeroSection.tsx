@@ -34,9 +34,12 @@ const HeroSection = () => {
     >
       {/* Mobile Background - New integrated image */}
       <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[70px] md:hidden">
-        <img
+        <motion.img
           src={heroMobileImage}
           alt="Sumi Jo International Singing Competition 2026"
+          initial={{ scale: 1.0, opacity: 0 }}
+          animate={{ scale: 1.08, opacity: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
           className="w-full h-full object-cover object-center"
         />
         {/* Overlay to darken background while preserving Sumi Jo */}
@@ -45,10 +48,13 @@ const HeroSection = () => {
 
       {/* Desktop Background - Sumi Jo Image with Overlay (medium parallax) */}
       <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[90px] hidden md:block">
-        <img
+        <motion.img
           src={heroImage}
           alt="Sumi Jo Performance"
-          className="w-full h-full object-cover object-top scale-105 animate-[scale-in_20s_ease-out_infinite_alternate]"
+          initial={{ scale: 1.0, opacity: 0 }}
+          animate={{ scale: 1.08, opacity: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
+          className="w-full h-full object-cover object-top"
         />
         {/* Desktop overlay for text contrast */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_70%_at_20%_25%,transparent,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.6))]" />
