@@ -19,7 +19,6 @@ const PressSection = () => {
         "Nous avons été frappés par l'excellent niveau d'ensemble de cette compétition aux dotations particulièrement généreuse. Parfaitement organisée, la compétition se tiendra tous les deux ans.",
       source: "Opera Magazine, Thierry Guyenne",
       year: "2024",
-      url: "https://www.opera-magazine.com/",
     },
     {
       quote:
