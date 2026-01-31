@@ -13,26 +13,19 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const [showMobileHeader, setShowMobileHeader] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      // Afficher le header après avoir scrollé 100vh
-      const scrollThreshold = window.innerHeight;
-      
-      // Une fois le header affiché après le seuil, le garder visible tant qu'on a scrollé
-      if (window.scrollY > scrollThreshold) {
-        setShowMobileHeader(true);
-      } else if (window.scrollY < 50) {
-        // Ne cacher que si on est vraiment en haut de la page
-        setShowMobileHeader(false);
+      // Sur mobile : afficher le header dès le premier scroll
+      if (window.scrollY > 10 && !hasScrolled) {
+        setHasScrolled(true);
       }
-      // Si entre 50px et le seuil, garder l'état actuel (ne pas changer)
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hasScrolled]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -100,8 +93,10 @@ const Header = () => {
       </button>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md ${
           isScrolled ? 'shadow-elegant' : ''
+        } ${
+          !hasScrolled ? 'md:translate-y-0 -translate-y-full' : 'translate-y-0'
         }`}
         style={{ backgroundColor: 'hsl(var(--accent) / 0.95)' }}
       >
