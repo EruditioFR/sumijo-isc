@@ -56,40 +56,76 @@ const Header = () => {
 
   return (
     <>
-      {/* Floating language selector - desktop: bottom right, mobile: below hamburger */}
+      {/* Floating language button - desktop: bottom right, mobile: below hamburger */}
       <div className="fixed md:bottom-24 md:top-auto top-20 right-4 md:right-8 z-50">
-        <div className="relative">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            className="text-cream hover:text-gold hover:bg-accent/80 bg-accent/90 backdrop-blur-sm rounded-full shadow-lg"
-          >
-            <Globe className="w-4 h-4 mr-2" />
-            {i18n.language.toUpperCase()}
-          </Button>
-          <AnimatePresence>
-            {isLangMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="absolute md:bottom-full md:top-auto top-full right-0 md:mb-2 mt-2 md:mt-0 bg-accent border border-gold/20 rounded-lg shadow-elegant overflow-hidden z-[60]"
-              >
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
-                    className="block w-full px-4 py-2 text-left text-sm text-cream hover:bg-gold/10 transition-colors"
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+          className="text-cream hover:text-gold hover:bg-accent/80 bg-accent/90 backdrop-blur-sm rounded-full shadow-lg"
+        >
+          <Globe className="w-4 h-4 mr-2" />
+          {i18n.language.toUpperCase()}
+        </Button>
       </div>
+
+      {/* Language selector side panel */}
+      <AnimatePresence>
+        {isLangMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/40 z-[65]"
+              onClick={() => setIsLangMenuOpen(false)}
+            />
+            
+            {/* Side panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-64 bg-accent z-[70] shadow-2xl"
+            >
+              <div className="p-6">
+                {/* Close button */}
+                <button
+                  onClick={() => setIsLangMenuOpen(false)}
+                  className="absolute top-4 right-4 text-cream hover:text-gold transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Title */}
+                <div className="pt-8 pb-6 border-b border-gold/20">
+                  <div className="flex items-center gap-3 text-cream">
+                    <Globe className="w-5 h-5 text-gold" />
+                    <span className="font-medium tracking-wide">Langue / Language</span>
+                  </div>
+                </div>
+
+                {/* Language options */}
+                <nav className="pt-4 space-y-1">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`block w-full text-left px-4 py-3 rounded-lg text-cream hover:bg-gold/10 transition-colors ${
+                        i18n.language === lang.code ? 'bg-gold/20 text-gold' : ''
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Floating burger button for mobile - always visible */}
       <button
