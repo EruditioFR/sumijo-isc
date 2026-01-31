@@ -137,7 +137,7 @@ const StatsSection = () => {
   }, {
     value: 80000,
     suffix: '€',
-    label: 'Décernés aux lauréats',
+    label: 'de prix',
     progress: 100,
     Icon: Award
   }];
