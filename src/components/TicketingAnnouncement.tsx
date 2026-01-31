@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const emailSchema = z.string().trim().email().max(255);
 
@@ -82,13 +84,23 @@ const TicketingAnnouncement = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 pt-32">
       <motion.div
-        className="text-center max-w-2xl mx-auto"
+        className="text-center max-w-4xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
+        {/* Poster */}
+        <motion.div variants={itemVariants} className="mb-12 max-w-sm mx-auto">
+          <AspectRatio ratio={3/4} className="overflow-hidden rounded-lg shadow-elegant">
+            <img 
+              src={posterImage} 
+              alt="Sumi Jo International Singing Competition 2026" 
+              className="w-full h-full object-cover"
+            />
+          </AspectRatio>
+        </motion.div>
         {/* Label with decorative line */}
         <motion.div variants={itemVariants} className="mb-12">
           <div className="flex items-center justify-center gap-4">

@@ -21,12 +21,18 @@ const Header = () => {
       const isInHeroZone = window.scrollY < heroHeight - 100;
       
       setIsScrolled(window.scrollY > 50);
-      // Masquer le header quand on est dans la zone du hero
-      setHasScrolled(!isInHeroZone);
+      // Masquer le header quand on est dans la zone du hero (homepage seulement)
+      setHasScrolled(!isInHeroZone || !isHomepage);
     };
+    
+    // Sur les pages autres que l'accueil, le header est toujours visible
+    if (!isHomepage) {
+      setHasScrolled(true);
+    }
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomepage]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
