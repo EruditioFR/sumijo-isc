@@ -116,6 +116,15 @@ const TicketingAnnouncement = () => {
           <div className="mt-3 mx-auto w-16 h-0.5 bg-rose" />
         </motion.div>
 
+        {/* Description */}
+        <motion.p 
+          variants={itemVariants}
+          className="text-[15px] md:text-[18px] text-[#3A3A3A] mb-4"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
+          {t('ticketing.description')}
+        </motion.p>
+
         {/* Date */}
         <motion.h1 
           variants={itemVariants}
@@ -127,19 +136,10 @@ const TicketingAnnouncement = () => {
         {/* Year */}
         <motion.p 
           variants={itemVariants}
-          className="text-[24px] md:text-[36px] text-[#3A3A3A] mt-2 font-light tracking-wide"
+          className="text-[24px] md:text-[36px] text-[#3A3A3A] mt-2 font-light tracking-wide mb-10"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
         >
           {t('ticketing.year')}
-        </motion.p>
-
-        {/* Description */}
-        <motion.p 
-          variants={itemVariants}
-          className="text-[15px] md:text-[18px] text-[#3A3A3A] mt-8 mb-10"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
-          {t('ticketing.description')}
         </motion.p>
 
         {/* Form */}
