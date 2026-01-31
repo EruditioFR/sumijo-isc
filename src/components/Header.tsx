@@ -56,18 +56,16 @@ const Header = () => {
 
   return (
     <>
-      {/* Floating language button - desktop: bottom right, mobile: below hamburger */}
-      <div className="fixed md:bottom-24 md:top-auto top-20 right-4 md:right-8 z-50">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-          className="text-cream hover:text-gold hover:bg-accent/80 bg-accent/90 backdrop-blur-sm rounded-full shadow-lg"
-        >
-          <Globe className="w-4 h-4 mr-2" />
+      {/* Language tab on screen edge */}
+      <button
+        onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-accent/95 backdrop-blur-sm text-cream hover:text-gold transition-all duration-300 shadow-lg rounded-l-lg py-3 px-2 flex flex-col items-center gap-1 hover:pr-3"
+      >
+        <Globe className="w-4 h-4" />
+        <span className="text-xs font-medium tracking-wide" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
           {i18n.language.toUpperCase()}
-        </Button>
-      </div>
+        </span>
+      </button>
 
       {/* Language selector side panel */}
       <AnimatePresence>
