@@ -119,7 +119,7 @@ const StatsSection = () => {
   const stats = [{
     value: 500,
     suffix: '+',
-    label: 'Candidatures reçues',
+    label: 'Candidatures',
     progress: 100,
     Icon: Trophy
   }, {
