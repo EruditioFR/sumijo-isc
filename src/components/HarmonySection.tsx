@@ -91,7 +91,7 @@ const HarmonySection = () => {
               className="flex items-center gap-3"
             >
               <Sparkles className="w-5 h-5 text-gold" />
-              <span className="text-gold text-sm tracking-[0.3em] uppercase font-medium">
+              <span className="text-white text-sm tracking-[0.3em] uppercase font-medium">
                 {t('harmony.label')}
               </span>
             </motion.div>
