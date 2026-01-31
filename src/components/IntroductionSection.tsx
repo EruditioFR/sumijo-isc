@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import competitionPoster from '@/assets/competition-2026-poster.jpg';
+import anniversaryImage from '@/assets/edition-2026-anniversary.png';
 const IntroductionSection = () => {
   const {
     t
@@ -49,7 +49,7 @@ const IntroductionSection = () => {
           duration: 0.8,
           delay: 0.5
         }} className="pt-4">
-            <img src={competitionPoster} alt="Sumi Jo International Singing Competition 2026" className="mx-auto max-w-md md:max-w-lg rounded-lg shadow-lg" />
+            <img src={anniversaryImage} alt="Sumi Jo International Singing Competition 2026 - 40 ans de carrière, 140 ans d'amitié franco-coréenne" className="mx-auto max-w-2xl md:max-w-4xl rounded-lg shadow-lg w-full" />
           </motion.div>
         </motion.div>
       </div>
