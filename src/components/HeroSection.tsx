@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import heroImage from "@/assets/hero-sumi-2026.jpg";
-import chateauImage from "@/assets/hero-chateau.jpg";
 import heroMobileImage from "@/assets/hero-sumi-mobile.jpg";
 
 const HeroSection = () => {
@@ -16,8 +15,7 @@ const HeroSection = () => {
     offset: ["start start", "end start"],
   });
 
-  // Parallax speeds: château slowest, Sumi medium, content fastest
-  const chateauY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  // Parallax speeds: Sumi medium, content fastest
   const sumiY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -45,16 +43,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_35%,transparent_20%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.6)_80%)]" />
       </motion.div>
 
-      {/* Desktop Background - Château Layer (slowest parallax) */}
-      <motion.div style={{ y: chateauY }} className="absolute inset-0 hidden md:block">
-        <img
-          src={chateauImage}
-          alt="Château de la Ferté-Imbault"
-          className="w-full h-full object-cover object-center opacity-40"
-        />
-      </motion.div>
-
-      {/* Desktop Foreground - Sumi Jo Image with Overlay (medium parallax) */}
+      {/* Desktop Background - Sumi Jo Image with Overlay (medium parallax) */}
       <motion.div style={{ y: sumiY }} className="absolute inset-0 top-[90px] hidden md:block">
         <img
           src={heroImage}
