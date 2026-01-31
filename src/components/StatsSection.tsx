@@ -99,7 +99,7 @@ const CircleStat = ({
         <div className="absolute inset-0 flex flex-col items-center justify-center rotate-0">
           <Icon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary mb-1 md:mb-2" />
           <span className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-            {displayValue}{suffix}
+            {displayValue.toLocaleString('fr-FR')}{suffix}
           </span>
           <span className="text-xs md:text-sm text-muted-foreground font-medium text-center px-2 leading-tight mt-1">
             {label}
