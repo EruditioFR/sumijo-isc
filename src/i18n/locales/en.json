@@ -15,7 +15,7 @@
     "year": "2026",
     "description": "Online ticket sales opening",
     "emailPlaceholder": "your email address",
-    "notify": "NOTIFY ME",
+    "notify": "Alert me by email",
     "smallPrint": "Seats will be limited",
     "success": "Notification registered! You will be alerted on March 1st.",
     "error": "Please enter a valid email address",

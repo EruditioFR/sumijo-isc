@@ -15,7 +15,7 @@
     "year": "2026",
     "description": "온라인 티켓 판매 오픈",
     "emailPlaceholder": "이메일 주소",
-    "notify": "알림 받기",
+    "notify": "이메일로 알림 받기",
     "smallPrint": "좌석은 제한됩니다",
     "success": "알림이 등록되었습니다! 3월 1일에 알려드리겠습니다.",
     "error": "올바른 이메일 주소를 입력해 주세요",
