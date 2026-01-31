@@ -51,13 +51,49 @@
     "content1": "Situé dans la vallée de la Loire à moins de deux heures de Paris et érigé sur des fondations de l'An 980, le domaine de la Ferté-Imbault présente un ensemble remarquablement préservé des XVIème et XVIIème siècles, comprenant le château principal, les grands communs, les pavillons, les douves, la double terrasse, les jardins et le parc. Achevé en 1627 et présentant une composition harmonieuse de bâti et de paysage, son architecture est une synthèse manifeste de son histoire : à la fois forteresse (d'où le nom Ferté) à l'imposante silhouette évocatrice d'un passé militaire glorieux, et château élégant aux larges fenêtres et façades sculptées révélant tout le raffinement de l'esprit de la Renaissance et du siècle des lumières."
   },
   "sumijo": {
-    "title": "SUMI JO",
-    "subtitle": "SOPRANO DE RENOMMÉE MONDIALE",
-    "content1": "Pendant les 36 ans d'une carrière exceptionnellement riche et couronnée de succès, elle a été louée sans discontinuer, aussi bien par la presse que par les spectateurs, pour la remarquable musicalité de sa voix, son agilité, sa précision et la pureté de son timbre.",
-    "content2": "Elle s'est produite dans les plus importants opéras et théâtres du monde entier et est l'une des artistes classiques à avoir vendu le plus de disques de toute l'Histoire de la musique, avec plus de 50 enregistrements à son actif incluant plusieurs disques de platine récompensant le million d'exemplaires.",
-    "content3": "Mlle Jo a d'abord étudié dans son pays natal avant de rejoindre le Conservatoire de l'Accademia di Santa Cecilia à Rome, dont elle sort diplômée avec les honneurs en 1986. Les nombreuses accolades qu'elle a reçues incluent l'International Puccini award et le premier prix aux concours internationaux de Seoul, d'Enna, de Barcelone, de Naples et de Vérone.",
-    "content4": "Elle était l'une des chanteuses préférées du Maestro Herbert von Karajan, nommé chef d'orchestre du Siècle en 1986, et de Sir Georg Solti pour lequel elle enregistre une Femme sans Ombre récompensée d'un Grammy Award et une inoubliable Reine de la Nuit dans la Flûte Enchantée.",
-    "unesco": "Artiste UNESCO de la Paix"
+    "title": "Sumi Jo",
+    "subtitle": "« La Voix venue du Ciel »",
+    "intro": "Icône internationale de l'opéra, Sumi Jo incarne l'excellence vocale et la passion artistique depuis quatre décennies.",
+    "career40": {
+      "title": "Une Carrière Éblouissante de 40 Ans",
+      "content": "Originaire de Corée du Sud, Sumi Jo s'est imposée comme l'une des sopranos les plus accomplies de notre époque. Sa carrière, d'une richesse exceptionnelle, est saluée par la critique et le public pour la musicalité remarquable de sa voix, son agilité, sa précision et la pureté unique de son timbre. Elle est aujourd'hui l'une des artistes classiques ayant vendu le plus d'albums dans l'histoire de la musique, avec plus de 50 enregistrements à son actif, dont plusieurs disques de platine."
+    },
+    "formation": {
+      "title": "Formation et Reconnaissance Internationale",
+      "content": "Après des études initiales en Corée, Sumi Jo a perfectionné son art au Conservatorio dell'Accademia di Santa Cecilia à Rome, dont elle est sortie diplômée avec les honneurs en 1986. Son ascension fulgurante a été marquée par :",
+      "items": [
+        "Le Prix International Puccini",
+        "Des premiers prix dans les plus prestigieux concours internationaux",
+        "Une collaboration privilégiée avec le chef d'orchestre du siècle, Herbert von Karajan, qui l'a surnommée « La Voix venue du Ciel »",
+        "Un Grammy Award pour son enregistrement de Die Frau ohne Schatten sous la direction de Sir Georg Solti"
+      ]
+    },
+    "repertoire": {
+      "title": "Un Répertoire d'une Ampleur Exceptionnelle",
+      "content": "Sumi Jo a foulé les scènes des plus grands opéras du monde, interprétant des rôles iconiques du répertoire lyrique :",
+      "venues": [
+        "Metropolitan Opera de New York : Lucia di Lammermoor, Gilda (Rigoletto), Olympia (Les Contes d'Hoffmann)",
+        "La Scala de Milan : Rôles de Bel Canto tels que Le Comte Ory ou Fra Diavolo",
+        "Wiener Staatsoper : Ses débuts mémorables en Reine de la Nuit (La Flûte enchantée) et Zerbinetta",
+        "Opéra de Paris : Olympia"
+      ],
+      "composers": "Son répertoire s'étend de Mozart et Rossini à Donizetti, Bellini, Strauss et Gounod, incluant même des œuvres contemporaines comme Nixon in China."
+    },
+    "beyond": {
+      "title": "Au-delà de l'Opéra : Discographie et Distinctions",
+      "content": "La diversité de son talent s'exprime à travers une discographie variée allant du baroque aux comédies musicales américaines. Elle a notamment été nommée aux Oscars et aux Golden Globes pour sa chanson Simple Song #3 dans le film Youth de Sorrentino, où elle joue son propre rôle.",
+      "honors": "Ses contributions culturelles et humanitaires lui ont valu des titres prestigieux :",
+      "titles": [
+        "Artiste de l'UNESCO pour la Paix",
+        "Commandeur de l'Ordre des Arts et des Lettres (France, 2025)",
+        "Chevalier de l'Ordre de l'Étoile d'Italie (2019)",
+        "Ambassadrice honoraire de la Corée du Sud"
+      ]
+    },
+    "transmission": {
+      "title": "Transmission et Vocation : Le SJISC",
+      "content": "Aujourd'hui, Sumi Jo se consacre à la transmission de son expérience aux nouvelles générations. À travers le Sumi Jo International Singing Competition (SJISC), elle a créé un concours d'un genre nouveau, basé sur l'ambition, l'émotion et la générosité. Son objectif est d'offrir un tremplin aux jeunes talents tout en promouvant la diversité et l'inclusion dans le monde de l'opéra."
+    }
   },
   "career": {
     "title": "MOMENTS D'UNE CARRIÈRE",

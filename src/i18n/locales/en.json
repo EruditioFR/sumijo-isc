@@ -51,13 +51,49 @@
     "content1": "Located in the Loire Valley less than two hours from Paris and built on foundations dating back to 980 AD, the estate of La Ferté-Imbault features a remarkably preserved ensemble from the 16th and 17th centuries, including the main château, the outbuildings, the pavilions, the moats, the double terrace, the gardens and the park. Completed in 1627 and presenting a harmonious composition of architecture and landscape, its design is a manifest synthesis of its history: both a fortress (hence the name Ferté) with an imposing silhouette evocative of a glorious military past, and an elegant château with large windows and sculpted facades revealing all the refinement of the Renaissance spirit and the Age of Enlightenment."
   },
   "sumijo": {
-    "title": "SUMI JO",
-    "subtitle": "WORLD-RENOWNED SOPRANO",
-    "content1": "During 36 years of an exceptionally rich and successful career, she has been praised continuously, both by the press and by audiences, for the remarkable musicality of her voice, her agility, precision and the purity of her tone.",
-    "content2": "She has performed in the most important opera houses and theaters around the world and is one of the classical artists who has sold the most records in the history of music, with more than 50 recordings to her credit including several platinum records rewarding one million copies.",
-    "content3": "Miss Jo first studied in her native country before joining the Conservatory of the Accademia di Santa Cecilia in Rome, from which she graduated with honors in 1986. The numerous accolades she has received include the International Puccini award and first prize at the international competitions of Seoul, Enna, Barcelona, Naples and Verona.",
-    "content4": "She was one of the favorite singers of Maestro Herbert von Karajan, named conductor of the Century in 1986, and of Sir Georg Solti for whom she recorded a Woman Without a Shadow rewarded with a Grammy Award and an unforgettable Queen of the Night in The Magic Flute.",
-    "unesco": "UNESCO Artist for Peace"
+    "title": "Sumi Jo",
+    "subtitle": "\"The Voice from Heaven\"",
+    "intro": "An international icon of opera, Sumi Jo embodies vocal excellence and artistic passion for four decades.",
+    "career40": {
+      "title": "A Dazzling 40-Year Career",
+      "content": "Originally from South Korea, Sumi Jo has established herself as one of the most accomplished sopranos of our time. Her exceptionally rich career is acclaimed by critics and audiences alike for the remarkable musicality of her voice, her agility, precision, and the unique purity of her timbre. She is today one of the classical artists who has sold the most albums in the history of music, with over 50 recordings to her credit, including several platinum albums."
+    },
+    "formation": {
+      "title": "Training and International Recognition",
+      "content": "After initial studies in Korea, Sumi Jo perfected her art at the Conservatorio dell'Accademia di Santa Cecilia in Rome, graduating with honors in 1986. Her meteoric rise was marked by:",
+      "items": [
+        "The International Puccini Prize",
+        "First prizes in the most prestigious international competitions",
+        "A privileged collaboration with the conductor of the century, Herbert von Karajan, who nicknamed her \"The Voice from Heaven\"",
+        "A Grammy Award for her recording of Die Frau ohne Schatten under Sir Georg Solti"
+      ]
+    },
+    "repertoire": {
+      "title": "An Exceptionally Broad Repertoire",
+      "content": "Sumi Jo has graced the stages of the world's greatest opera houses, performing iconic roles from the lyric repertoire:",
+      "venues": [
+        "Metropolitan Opera in New York: Lucia di Lammermoor, Gilda (Rigoletto), Olympia (Les Contes d'Hoffmann)",
+        "La Scala in Milan: Bel Canto roles such as Le Comte Ory or Fra Diavolo",
+        "Wiener Staatsoper: Her memorable debuts as Queen of the Night (The Magic Flute) and Zerbinetta",
+        "Opéra de Paris: Olympia"
+      ],
+      "composers": "Her repertoire spans from Mozart and Rossini to Donizetti, Bellini, Strauss, and Gounod, even including contemporary works like Nixon in China."
+    },
+    "beyond": {
+      "title": "Beyond Opera: Discography and Distinctions",
+      "content": "The diversity of her talent is expressed through a varied discography ranging from baroque to American musicals. She was notably nominated for Oscars and Golden Globes for her song Simple Song #3 in Sorrentino's film Youth, where she plays herself.",
+      "honors": "Her cultural and humanitarian contributions have earned her prestigious titles:",
+      "titles": [
+        "UNESCO Artist for Peace",
+        "Commander of the Order of Arts and Letters (France, 2025)",
+        "Knight of the Order of the Star of Italy (2019)",
+        "Honorary Ambassador of South Korea"
+      ]
+    },
+    "transmission": {
+      "title": "Transmission and Vocation: The SJISC",
+      "content": "Today, Sumi Jo dedicates herself to passing on her experience to new generations. Through the Sumi Jo International Singing Competition (SJISC), she has created a new kind of competition, based on ambition, emotion, and generosity. Her goal is to offer a springboard to young talents while promoting diversity and inclusion in the world of opera."
+    }
   },
   "career": {
     "title": "CAREER HIGHLIGHTS",
