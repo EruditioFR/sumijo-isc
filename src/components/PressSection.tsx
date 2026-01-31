@@ -31,7 +31,13 @@ const PressSection = () => {
       quote: "Plein succès pour ce premier concours qui s'est révélé être d'un excellent niveau",
       source: "Première Loge",
       year: "2024",
-      url: "https://www.music-opera.com/magazine/premiere-loge",
+      url: "https://www.premiereloge-opera.com/article/compte-rendu/concert/2024/07/14/concours-de-chant-international-sumi-jo-4-4-soiree-de-gala-les-laureats-en-concert-zihao-li-marie-lombard-et-juliette-tacchino-george-virban/",
+    },
+    {
+      quote: "Le public savoure la qualité de cette jeunesse et de cet événement dans un lieu prestigieux",
+      source: "Olyrix",
+      year: "2024",
+      url: "https://www.olyrix.com/articles/actu-des-operas/7754/concours-international-de-chant-lyrique-sumi-jo-la-finale",
     },
   ];
 
