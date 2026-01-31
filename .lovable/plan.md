@@ -1,121 +1,26 @@
 
+# Supprimer l'image du château en arrière-plan du Hero
 
-# Implémentation des Cercles Statistiques Animés
+## Probleme identifie
+Au chargement de la page, l'image du Chateau de La Ferte-Imbault (`hero-chateau.jpg`) apparait brievement en arriere-plan avant que l'image principale de Sumi Jo ne se charge. Cette couche d'arriere-plan a 40% d'opacite n'est plus souhaitee.
 
-## Objectif
-Remplacer la section statistiques actuelle par des indicateurs circulaires animés avec progression SVG, conformément au cahier des charges fourni.
+## Solution proposee
+Supprimer completement la couche d'arriere-plan du chateau sur desktop, en conservant uniquement l'image principale de Sumi Jo.
 
----
+## Modifications techniques
 
-## Aperçu Visuel
+### Fichier : `src/components/HeroSection.tsx`
 
-La nouvelle section affichera 4 cercles avec :
-- Un anneau de progression SVG animé (gradient rose)
-- Une icône au centre (Trophy, Globe, Star, Award)
-- Le chiffre avec animation de compteur
-- Le label descriptif
+1. **Supprimer l'import de l'image du chateau** (ligne 7)
+   - Retirer : `import chateauImage from "@/assets/hero-chateau.jpg";`
 
----
+2. **Supprimer la variable de parallaxe du chateau** (ligne 20)
+   - Retirer : `const chateauY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);`
 
-## Données à Intégrer
+3. **Supprimer le bloc JSX de la couche chateau** (lignes 48-55)
+   - Retirer tout le bloc `motion.div` contenant l'image du chateau
 
-| Valeur | Suffixe | Label | Progression | Icône |
-|--------|---------|-------|-------------|-------|
-| 150 | + | Candidats | 87% | Trophy |
-| 25 | | Pays Représentés | 65% | Globe |
-| 10 | | Jours de Compétition | 92% | Star |
-| 100K€ | | Prix Total | 78% | Award |
-
----
-
-## Modifications Techniques
-
-### Fichier : `src/components/StatsSection.tsx`
-
-Réécriture complète avec les nouveaux composants :
-
-**Composant CircleStat :**
-- Cercle SVG avec deux anneaux (fond rose pale + progression gradient)
-- Animation de progression de 0% vers la valeur finale
-- Compteur numérique animé avec easing personnalisé
-- Icône centrée au-dessus du chiffre
-- Effet hover avec scale et drop-shadow
-
-**Spécifications SVG :**
-- Rayon : 108px (desktop), ajusté pour tablet/mobile
-- Stroke width : 12px (desktop), 8px (mobile)
-- Gradient de #C85A6B vers #E89BA6
-- Animation démarrant à -90° (12h)
-
-**Animations Framer Motion :**
-- Entrée avec fade + scale (0.8 → 1)
-- Effet cascade avec délai de 150ms entre chaque cercle
-- Progression circulaire sur 1.5-2 secondes
-- Hover scale 1.05 sur desktop
-
-**Layout Responsive :**
-- Desktop (≥1024px) : Grille 4 colonnes, cercles 240x240px
-- Tablet (768-1023px) : Grille 2 colonnes, cercles 200x200px
-- Mobile (<768px) : Grille 2 colonnes, cercles 160x160px
-
-### Fichier : `src/index.css`
-
-**Ajout d'un gradient SVG réutilisable :**
-```css
-.progress-ring-gradient {
-  stop-color: #C85A6B;
-}
-```
-
-**Support reduced-motion :**
-```css
-@media (prefers-reduced-motion: reduce) {
-  .circle-stat { animation: none !important; }
-}
-```
-
----
-
-## Structure du Composant
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│              Section Stats (bg cream)                        │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│     ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │
-│     │  ○○○○○  │  │  ○○○○○  │  │  ○○○○○  │  │  ○○○○○  │     │
-│     │ Trophy  │  │ Globe   │  │ Star    │  │ Award   │     │
-│     │  150+   │  │   25    │  │   10    │  │  100K€  │     │
-│     │Candidats│  │  Pays   │  │ Jours   │  │  Prix   │     │
-│     └─────────┘  └─────────┘  └─────────┘  └─────────┘     │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Accessibilité
-
-- Attributs ARIA sur les cercles pour les lecteurs d'écran
-- Support `prefers-reduced-motion` pour désactiver les animations
-- Couleurs avec contraste suffisant
-
----
-
-## Points Clés d'Implémentation
-
-1. **Gradient SVG unique** : Définir un `<defs>` avec un ID unique pour éviter les conflits
-2. **Calcul circumference** : `2 * PI * radius = 2 * 3.14159 * 108 = 678.58`
-3. **Offset pour progression** : `circumference - (progress / 100) * circumference`
-4. **Animation synchronisée** : Le compteur et l'anneau démarrent ensemble après le fade-in
-
----
-
-## Fichiers Modifiés
-
-| Fichier | Action |
-|---------|--------|
-| `src/components/StatsSection.tsx` | Réécriture complète |
-| `src/index.css` | Ajout styles reduced-motion |
-
+## Resultat attendu
+- Au chargement, seule l'image de Sumi Jo apparaitra en arriere-plan sur desktop
+- L'effet de parallaxe sera simplifie (2 couches au lieu de 3)
+- Le temps de chargement sera legerement ameliore (une image de moins a charger)
