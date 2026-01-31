@@ -17,15 +17,16 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const heroHeight = window.innerHeight;
+      const isInHeroZone = window.scrollY < heroHeight - 100;
+      
       setIsScrolled(window.scrollY > 50);
-      // Sur mobile : afficher le header dès le premier scroll
-      if (window.scrollY > 10 && !hasScrolled) {
-        setHasScrolled(true);
-      }
+      // Masquer le header quand on est dans la zone du hero
+      setHasScrolled(!isInHeroZone);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasScrolled]);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
