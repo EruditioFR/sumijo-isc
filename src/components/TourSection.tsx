@@ -41,7 +41,7 @@ const TourSection = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Tour dates */}
                 <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-6 border border-gold/10">
-                  <h4 className="font-display text-lg text-gold mb-4">Dates et lieux des concerts</h4>
+                  <h4 className="font-display text-lg text-gold mb-4">{t('winners.tour.datesTitle')}</h4>
                   <div className="space-y-3 text-sm">
                     {[
                       { date: '10 juin 2025', location: 'Shijiazhuang, China' },
@@ -73,7 +73,7 @@ const TourSection = () => {
                       className="max-w-xs w-full rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-gold/20 transition-all duration-300 group-hover:scale-[1.02]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                      <span className="text-white text-sm font-medium">Cliquez pour agrandir</span>
+                      <span className="text-white text-sm font-medium">{t('winners.tour.clickToEnlarge')}</span>
                     </div>
                   </div>
                 </div>

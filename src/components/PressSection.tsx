@@ -73,7 +73,7 @@ const PressSection = () => {
               className="inline-flex items-center gap-2 bg-burgundy/10 text-burgundy rounded-full px-6 py-2.5 mb-8"
             >
               <Newspaper className="w-4 h-4" />
-              <span className="text-sm font-bold tracking-wide">Revue de presse</span>
+              <span className="text-sm font-bold tracking-wide">{t('press.badge')}</span>
             </motion.div>
 
             <motion.h2
@@ -82,7 +82,7 @@ const PressSection = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-4"
             >
-              La presse <span className="text-rose-dark">parle de nous</span>
+              {t('press.title')} <span className="text-rose-dark">{t('press.titleHighlight')}</span>
             </motion.h2>
 
             <motion.p
@@ -91,7 +91,7 @@ const PressSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-muted-foreground text-lg max-w-2xl mx-auto"
             >
-              Les médias saluent l'excellence et le rayonnement international du concours
+              {t('press.description')}
             </motion.p>
           </div>
 
@@ -117,24 +117,24 @@ const PressSection = () => {
                   <div className="pt-4">
                     <p className="text-foreground text-lg md:text-xl leading-relaxed italic mb-6">"{item.quote}"</p>
 
-                    {/* Source */}
-                    <div className="flex items-center justify-between border-t border-rose/10 pt-4">
-                      <div className="flex flex-col gap-1">
-                        <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
-                        {item.url && (
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-rose-dark hover:text-burgundy transition-colors text-sm font-medium"
-                          >
-                            Lire l'article
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        )}
+                      {/* Source */}
+                      <div className="flex items-center justify-between border-t border-rose/10 pt-4">
+                        <div className="flex flex-col gap-1">
+                          <span className="font-display text-burgundy font-bold text-lg">{item.source}</span>
+                          {item.url && (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-rose-dark hover:text-burgundy transition-colors text-sm font-medium"
+                            >
+                              {t('press.readArticle')}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                        <span className="text-muted-foreground text-sm">{item.year}</span>
                       </div>
-                      <span className="text-muted-foreground text-sm">{item.year}</span>
-                    </div>
                   </div>
 
                   {/* Hover accent */}

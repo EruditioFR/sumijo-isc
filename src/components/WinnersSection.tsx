@@ -19,24 +19,24 @@ const WinnersSection = () => {
     name: 'Zihao Li',
     category: t('winners.baritone'),
     country: t('winners.china'),
-    prize: '1er',
-    prizeLabel: t('winners.firstPrize'),
+    prize: t('winners.firstPrize'),
+    prizeLabel: t('winners.prizeLabel'),
     color: 'gold',
     image: winnerZihaoLi
   }, {
     name: 'George Virban',
     category: t('winners.tenor'),
     country: t('winners.romania'),
-    prize: '2ème',
-    prizeLabel: t('winners.secondPrize'),
+    prize: t('winners.secondPrize'),
+    prizeLabel: t('winners.prizeLabel'),
     color: 'silver',
     image: winnerGeorgeVirban
   }, {
     name: 'Kiup Lee',
     category: t('winners.tenor'),
     country: t('winners.southKorea'),
-    prize: '3ème',
-    prizeLabel: t('winners.thirdPrize'),
+    prize: t('winners.thirdPrize'),
+    prizeLabel: t('winners.prizeLabel'),
     color: 'bronze',
     image: winnerKiupLee
   }];
@@ -233,7 +233,7 @@ const WinnerCard = ({
 }: WinnerCardProps) => <div className={`relative ${colors.bg} border ${colors.border} rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 group`}>
     {/* Prize badge */}
     <div className={`absolute -top-3 left-1/2 -translate-x-1/2 ${colors.badge} px-4 py-1.5 rounded-full font-display text-sm shadow-lg`}>
-      {winner.prize} Prix
+      {winner.prize} {winner.prizeLabel}
     </div>
     
     <div className="pt-4 text-center">

@@ -29,7 +29,8 @@
     "participate": "참가하기",
     "learnMore": "더 알아보기",
     "buyTickets": "티켓 구매하기",
-    "ticketsDate": "2026년 3월 1일부터"
+    "ticketsDate": "2026년 3월 1일부터",
+    "eventDates": "2026년 7월 5-11일"
   },
   "introduction": {
     "title": "특별한 에디션",
@@ -54,10 +55,16 @@
     "southKorea": "대한민국",
     "france": "프랑스",
     "juryPrize": "심사위원 특별상 (공동수상)",
+    "firstPrize": "1위",
+    "secondPrize": "2위",
+    "thirdPrize": "3위",
+    "prizeLabel": "상",
     "tour": {
       "title": "2024년 수상자들, Sumi Jo와 함께 투어",
       "dates": "콘서트 일정 및 장소:\n2025년 6월 10일: 스자좡, 중국\n2025년 6월 12일: 선전, 중국\n2025년 6월 19일: 전주, 대한민국\n2025년 6월 21일: 성남, 대한민국\n2025년 6월 22일: 서울, 대한민국\n2025년 6월 24일: 춘천, 대한민국",
-      "description": "콩쿠르 이후, 수상자들은 Sumi Jo와 그녀의 팀의 지속적인 지원을 받으며 경력을 발전시켰습니다. 이 특별한 투어는 기자 회견과 TV 프로그램 출연을 포함하여 세계적으로 유명한 소프라노와 함께 국제적 가시성을 제공했습니다."
+      "description": "콩쿠르 이후, 수상자들은 Sumi Jo와 그녀의 팀의 지속적인 지원을 받으며 경력을 발전시켰습니다. 이 특별한 투어는 기자 회견과 TV 프로그램 출연을 포함하여 세계적으로 유명한 소프라노와 함께 국제적 가시성을 제공했습니다.",
+      "datesTitle": "콘서트 일정 및 장소",
+      "clickToEnlarge": "클릭하여 확대"
     }
   },
   "harmony": {
@@ -317,5 +324,52 @@
     "legal": "법적 고지",
     "privacy": "개인정보 보호정책",
     "cookies": "쿠키"
+  },
+  "stats": {
+    "title": "국제적 규모의",
+    "titleHighlight": "대회",
+    "subtitle": "2024년 에디션 수치",
+    "applications": "지원",
+    "countries": "참가국",
+    "days": "대회 일수",
+    "prizes": "상금"
+  },
+  "videos": {
+    "title": "참가자들의",
+    "titleHighlight": "공연",
+    "titleEnd": "감상하세요",
+    "subtitle": "2024년 에디션",
+    "filters": {
+      "all": "전체",
+      "semifinal": "준결승",
+      "final": "결승",
+      "gala": "갈라"
+    }
+  },
+  "contact": {
+    "formTitle": "문의하기",
+    "name": "이름",
+    "namePlaceholder": "이름을 입력하세요",
+    "email": "이메일",
+    "emailPlaceholder": "your@email.com",
+    "subject": "제목",
+    "subjectPlaceholder": "메시지 제목",
+    "message": "메시지",
+    "messagePlaceholder": "메시지를 입력하세요...",
+    "send": "메시지 보내기",
+    "success": "메시지가 성공적으로 전송되었습니다!",
+    "validation": {
+      "nameMin": "이름은 2자 이상이어야 합니다",
+      "emailInvalid": "유효하지 않은 이메일",
+      "subjectMin": "제목은 3자 이상이어야 합니다",
+      "messageMin": "메시지는 10자 이상이어야 합니다"
+    }
+  },
+  "press": {
+    "badge": "언론 보도",
+    "title": "언론이",
+    "titleHighlight": "말하다",
+    "description": "언론이 대회의 우수성과 국제적 영향력을 칭송합니다",
+    "readArticle": "기사 읽기"
   }
 }

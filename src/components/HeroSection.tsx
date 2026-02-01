@@ -99,7 +99,7 @@ const HeroSection = () => {
             className="space-y-3"
           >
             <p className="font-display text-xl md:text-5xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-bold tracking-wider">
-              du 5 au 11 juillet 2026
+              {t('hero.eventDates')}
             </p>
           </motion.div>
 

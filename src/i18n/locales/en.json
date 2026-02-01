@@ -29,7 +29,8 @@
     "participate": "PARTICIPATE",
     "learnMore": "LEARN MORE",
     "buyTickets": "Buy your tickets",
-    "ticketsDate": "from March 1st, 2026"
+    "ticketsDate": "from March 1st, 2026",
+    "eventDates": "July 5-11, 2026"
   },
   "introduction": {
     "title": "An Exceptional Edition",
@@ -54,10 +55,16 @@
     "southKorea": "South Korea",
     "france": "France",
     "juryPrize": "Special Jury Prize (ex-aequo)",
+    "firstPrize": "1st",
+    "secondPrize": "2nd",
+    "thirdPrize": "3rd",
+    "prizeLabel": "Prize",
     "tour": {
       "title": "The 2024 winners on tour with Sumi Jo",
       "dates": "Concert dates and venues:\nJune 10, 2025: Shijiazhuang, China\nJune 12, 2025: Shenzhen, China\nJune 19, 2025: Jeonju, South Korea\nJune 21, 2025: Seongnam, South Korea\nJune 22, 2025: Seoul, South Korea\nJune 24, 2025: Chuncheon, South Korea",
-      "description": "Since the competition, the winners have developed their careers with continuous support from Sumi Jo and her team. This exceptional tour has offered them international visibility alongside the world-renowned soprano, including press conferences and television appearances."
+      "description": "Since the competition, the winners have developed their careers with continuous support from Sumi Jo and her team. This exceptional tour has offered them international visibility alongside the world-renowned soprano, including press conferences and television appearances.",
+      "datesTitle": "Concert dates and venues",
+      "clickToEnlarge": "Click to enlarge"
     }
   },
   "harmony": {
@@ -317,5 +324,52 @@
     "legal": "Legal Notice",
     "privacy": "Privacy Policy",
     "cookies": "Cookies"
+  },
+  "stats": {
+    "title": "An international",
+    "titleHighlight": "competition",
+    "subtitle": "2024 Edition figures",
+    "applications": "Applications",
+    "countries": "Countries represented",
+    "days": "Competition days",
+    "prizes": "in prizes"
+  },
+  "videos": {
+    "title": "Discover our candidates'",
+    "titleHighlight": "performances",
+    "titleEnd": "",
+    "subtitle": "From the 2024 edition",
+    "filters": {
+      "all": "All",
+      "semifinal": "Semi-final",
+      "final": "Final",
+      "gala": "Gala"
+    }
+  },
+  "contact": {
+    "formTitle": "Contact us",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "Subject of your message",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send message",
+    "success": "Your message has been sent successfully!",
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Invalid email",
+      "subjectMin": "Subject must be at least 3 characters",
+      "messageMin": "Message must be at least 10 characters"
+    }
+  },
+  "press": {
+    "badge": "Press review",
+    "title": "Press",
+    "titleHighlight": "coverage",
+    "description": "The media praise the excellence and international reach of the competition",
+    "readArticle": "Read article"
   }
 }

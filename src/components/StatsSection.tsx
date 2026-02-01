@@ -119,25 +119,25 @@ const StatsSection = () => {
   const stats = [{
     value: 500,
     suffix: '+',
-    label: 'Candidatures',
+    label: t('stats.applications'),
     progress: 100,
     Icon: Trophy
   }, {
     value: 47,
     suffix: '',
-    label: 'Pays représentés',
+    label: t('stats.countries'),
     progress: 100,
     Icon: Globe
   }, {
     value: 6,
     suffix: '',
-    label: 'Jours de compétition',
+    label: t('stats.days'),
     progress: 100,
     Icon: Star
   }, {
     value: 80000,
     suffix: '€',
-    label: 'de prix',
+    label: t('stats.prizes'),
     progress: 100,
     Icon: Award
   }];
@@ -179,9 +179,9 @@ const StatsSection = () => {
             duration: 0.6,
             delay: 0.1
           }} className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
-              Un concours d'envergure <span className="text-rose-dark">internationale</span>
+              {t('stats.title')} <span className="text-rose-dark">{t('stats.titleHighlight')}</span>
             </motion.h2>
-            <span className="inline-block text-rose-dark font-medium text-sm md:text-base tracking-widest">Les chiffres de l'édition 2024</span>
+            <span className="inline-block text-rose-dark font-medium text-sm md:text-base tracking-widest">{t('stats.subtitle')}</span>
           </div>
 
           {/* Stats Grid */}
