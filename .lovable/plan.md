@@ -1,134 +1,155 @@
 
-
-# Plan d'implémentation : Page Billetterie "Coming Soon"
+# Plan d'internationalisation complète du site
 
 ## Objectif
-Creer une nouvelle page `/billetterie` elegante et minimaliste annoncant l'ouverture de la billetterie le 1er mars 2026, avec un formulaire de notification par email.
+S'assurer que toutes les sections du site sont entièrement traduites dans les 4 langues supportées (FR, EN, KR, ZH).
 
----
+## Sections identifiées avec du texte hardcodé
 
-## Structure de la page
+### 1. Section Statistiques (`StatsSection.tsx`)
+**Textes à internationaliser :**
+- Labels des statistiques : "Candidatures", "Pays représentés", "Jours de compétition", "de prix"
+- Titre : "Un concours d'envergure internationale"
+- Sous-titre : "Les chiffres de l'édition 2024"
 
-La page suivra exactement le design du cahier des charges avec :
-
-```text
-+--------------------------------------------------+
-|              [Header standard du site]            |
-+--------------------------------------------------+
-|                                                  |
-|            ─────── BILLETTERIE ───────           |
-|                                                  |
-|                   1er Mars                       |
-|                     2026                         |
-|                                                  |
-|      Ouverture de la billetterie en ligne        |
-|                                                  |
-|   [votre adresse email]  [NOTIFY ME →]          |
-|                                                  |
-|         Les places seront limitees               |
-|                                                  |
-+--------------------------------------------------+
-|                    [Footer]                      |
-+--------------------------------------------------+
+**Clés de traduction à ajouter :**
+```
+stats.title
+stats.subtitle
+stats.applications
+stats.countries
+stats.days
+stats.prizes
 ```
 
----
+### 2. Section Galerie Vidéo (`VideoGallerySection.tsx`)
+**Textes à internationaliser :**
+- Titre : "Découvrez les performances de nos candidats"
+- Sous-titre : "Lors de l'édition 2024"
+- Filtres : "Tous", "Demi-finale", "Finale", "Gala"
 
-## Fichiers a creer/modifier
+**Clés de traduction à ajouter :**
+```
+videos.title
+videos.subtitle
+videos.filters.all
+videos.filters.semifinal
+videos.filters.final
+videos.filters.gala
+```
 
-### 1. Nouveau composant : `src/components/TicketingAnnouncement.tsx`
-- Structure semantique accessible
-- Animations d'entree echelonnees avec Framer Motion
-- Formulaire de notification avec validation email (zod)
-- Etats : loading, success, error
-- Responsive : desktop, tablet, mobile
-- Ligne decorative rose sous le label "BILLETTERIE"
+### 3. Section Presse (`PressSection.tsx`)
+**Textes à internationaliser :**
+- Badge : "Revue de presse"
+- Titre : "La presse parle de nous"
+- Description : "Les médias saluent l'excellence..."
+- Lien : "Lire l'article"
 
-### 2. Nouvelle page : `src/pages/Billetterie.tsx`
-- Integration du Header, TicketingAnnouncement et Footer
-- Style off-white (#F5F1ED) pour le fond
-- Section pleine hauteur centree verticalement
+**Clés de traduction à ajouter :**
+```
+press.badge
+press.title
+press.description
+press.readArticle
+```
 
-### 3. Routing : `src/App.tsx`
-- Ajout de la route `/billetterie`
+### 4. Section Tournée (`TourSection.tsx`)
+**Textes à internationaliser :**
+- Titre : "Dates et lieux des concerts"
+- Infobulle : "Cliquez pour agrandir"
+- Dates au format localisé
 
-### 4. Navigation : `src/components/Header.tsx`
-- Ajout du lien "Billetterie" dans le menu desktop et mobile
+**Clés de traduction à ajouter :**
+```
+winners.tour.datesTitle
+winners.tour.clickToEnlarge
+```
 
-### 5. Traductions : fichiers i18n (fr, en, kr, zh)
-- Nouvelles cles pour la section billetterie :
-  - `nav.ticketing` : "Billetterie"
-  - `ticketing.label` : "BILLETTERIE"
-  - `ticketing.date` : "1er Mars"
-  - `ticketing.year` : "2026"
-  - `ticketing.description` : "Ouverture de la billetterie en ligne"
-  - `ticketing.emailPlaceholder` : "votre adresse email"
-  - `ticketing.notify` : "NOTIFY ME"
-  - `ticketing.smallPrint` : "Les places seront limitees"
-  - `ticketing.success` : "Notification enregistree ! Vous serez alerte le 1er mars."
-  - `ticketing.error` : "Veuillez entrer une adresse email valide"
+### 5. Section Hero (`HeroSection.tsx`)
+**Texte à internationaliser :**
+- Date de l'événement : "du 5 au 11 juillet 2026"
 
----
+**Clé de traduction à ajouter :**
+```
+hero.eventDates
+```
 
-## Specifications techniques
+### 6. Section Contact (`ContactSection.tsx`)
+**Textes à internationaliser :**
+- Titre du formulaire : "Contactez-nous"
+- Labels : "Nom", "Email", "Sujet", "Message"
+- Placeholders : "Votre nom", "votre@email.com", "Sujet de votre message", "Votre message..."
+- Bouton : "Envoyer le message"
+- Messages de validation et toast
 
-### Design System
-| Element | Valeur |
-|---------|--------|
-| Fond | `#F5F1ED` (off-white) |
-| Rose principal | `#C85A6B` |
-| Texte charcoal | `#3A3A3A` |
-| Texte gris clair | `#9E9E9E` |
-| Police titres | Playfair Display (via Google Fonts) ou font-elegant existante |
-| Police body | Montserrat (via Google Fonts) ou font-sans existante |
+**Clés de traduction à ajouter :**
+```
+contact.formTitle
+contact.name
+contact.namePlaceholder
+contact.email
+contact.emailPlaceholder
+contact.subject
+contact.subjectPlaceholder
+contact.message
+contact.messagePlaceholder
+contact.send
+contact.success
+contact.validation.nameMin
+contact.validation.emailInvalid
+contact.validation.subjectMin
+contact.validation.messageMin
+```
 
-### Tailles typographiques
-- Label "BILLETTERIE" : 13px, lettres espacees, avec ligne decorative rose
-- Date "1er Mars" : 96px desktop, 64px mobile, 56px petit mobile
-- Annee "2026" : 36px desktop, 24px mobile
-- Description : 18px desktop, 15px mobile
-- Bouton : 16px
+### 7. Section Lauréats (`WinnersSection.tsx`)
+**Textes à internationaliser :**
+- Labels des prix : "1er", "2ème", "3ème", "Prix"
 
-### Formulaire
-- Input email avec bordure grise `#E0E0E0`
-- Focus : bordure rose `#C85A6B` + shadow subtile
-- Bouton rose plein avec texte blanc
-- Hover : rose plus fonce `#B04A5B` + legere elevation
-- Disposition : inline sur desktop, vertical sur mobile
+**Clés de traduction à ajouter :**
+```
+winners.firstPrize
+winners.secondPrize
+winners.thirdPrize
+winners.prizeLabel
+```
 
-### Animations (Framer Motion)
-- Apparition echelonnee des elements au scroll
-- Transition douce sur les etats du formulaire
-- Support `prefers-reduced-motion`
+## Fichiers à modifier
 
----
+### Fichiers de traduction (4 fichiers)
+- `src/i18n/locales/fr.json`
+- `src/i18n/locales/en.json`
+- `src/i18n/locales/kr.json`
+- `src/i18n/locales/zh.json`
 
-## Validation et accessibilite
+### Composants React (7 fichiers)
+- `src/components/StatsSection.tsx`
+- `src/components/VideoGallerySection.tsx`
+- `src/components/PressSection.tsx`
+- `src/components/TourSection.tsx`
+- `src/components/HeroSection.tsx`
+- `src/components/ContactSection.tsx`
+- `src/components/WinnersSection.tsx`
 
-- Validation email cote client avec zod
-- Messages d'erreur/succes clairs
-- ARIA labels sur les inputs
-- Navigation clavier complete
-- Focus visible sur tous les elements interactifs
-- Contraste WCAG AA respecte
+## Traductions prévues
 
----
+| Clé | FR | EN | KR | ZH |
+|-----|----|----|----|----|
+| stats.title | Un concours d'envergure | An international competition | 국제적 규모의 대회 | 国际规模的比赛 |
+| stats.subtitle | Les chiffres de l'édition 2024 | 2024 Edition figures | 2024년 에디션 수치 | 2024年赛事数据 |
+| videos.title | Découvrez les performances | Discover the performances | 공연 영상 감상 | 欣赏演出 |
+| press.title | La presse parle de nous | Press coverage | 언론 보도 | 媒体报道 |
+| hero.eventDates | du 5 au 11 juillet 2026 | July 5-11, 2026 | 2026년 7월 5-11일 | 2026年7月5日至11日 |
+| contact.send | Envoyer le message | Send message | 메시지 보내기 | 发送消息 |
 
-## Notes pour l'implementation future du backend
+## Notes techniques
 
-Le formulaire sera prepare pour une integration backend ulterieure :
-- Interface `NotificationFormData` avec champ email
-- Fonction `handleSubmit` prete a appeler une API
-- Pour l'instant : simulation locale avec toast de succes
+1. **Dates localisées** : Pour la section Tournée, les dates seront formatées via la bibliothèque `date-fns` avec les locales appropriées.
 
----
+2. **Citations de presse** : Les citations de la presse restent en français dans toutes les versions car ce sont des citations originales de médias français.
 
-## Ordre d'implementation
+3. **Noms propres** : Conformément à la politique du projet, les noms "Sumi Jo", "Château de La Ferté-Imbault" et "SUMI JO INTERNATIONAL SINGING COMPETITION" ne sont jamais traduits.
 
-1. Ajouter les polices Playfair Display et Montserrat (optionnel si font-elegant suffit)
-2. Creer le composant `TicketingAnnouncement.tsx`
-3. Creer la page `Billetterie.tsx`
-4. Ajouter la route dans `App.tsx`
-5. Ajouter les traductions dans les 4 fichiers de langue
-6. Ajouter le lien dans le Header
-
+## Estimation
+- Environ 50 nouvelles clés de traduction à ajouter
+- 7 composants React à modifier
+- 4 fichiers de traduction à mettre à jour
