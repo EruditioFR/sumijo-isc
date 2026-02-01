@@ -19,18 +19,20 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-const contactSchema = z.object({
-  name: z.string().trim().min(2, { message: "Le nom doit contenir au moins 2 caractères" }).max(100),
-  email: z.string().trim().email({ message: "Email invalide" }).max(255),
-  subject: z.string().trim().min(3, { message: "Le sujet doit contenir au moins 3 caractères" }).max(200),
-  message: z.string().trim().min(10, { message: "Le message doit contenir au moins 10 caractères" }).max(1000),
+const createContactSchema = (t: (key: string) => string) => z.object({
+  name: z.string().trim().min(2, { message: t('contact.validation.nameMin') }).max(100),
+  email: z.string().trim().email({ message: t('contact.validation.emailInvalid') }).max(255),
+  subject: z.string().trim().min(3, { message: t('contact.validation.subjectMin') }).max(200),
+  message: z.string().trim().min(10, { message: t('contact.validation.messageMin') }).max(1000),
 });
 
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = z.infer<ReturnType<typeof createContactSchema>>;
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const contactSchema = createContactSchema(t);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -44,7 +46,7 @@ const ContactSection = () => {
 
   const onSubmit = (data: ContactFormData) => {
     console.log('Contact form submitted:', data);
-    toast.success('Votre message a été envoyé avec succès !');
+    toast.success(t('contact.success'));
     form.reset();
   };
 
@@ -136,7 +138,7 @@ const ContactSection = () => {
               
               <div className="relative z-10">
                 <h3 className="font-elegant text-2xl text-gold mb-6">
-                  Contactez-nous
+                  {t('contact.formTitle')}
                 </h3>
                 
                 <Form {...form}>
@@ -146,10 +148,10 @@ const ContactSection = () => {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Nom</FormLabel>
+                          <FormLabel className="text-muted-foreground">{t('contact.name')}</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Votre nom" 
+                              placeholder={t('contact.namePlaceholder')} 
                               {...field} 
                               className="border-gold/30 focus:border-gold bg-background/50"
                             />
@@ -164,11 +166,11 @@ const ContactSection = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Email</FormLabel>
+                          <FormLabel className="text-muted-foreground">{t('contact.email')}</FormLabel>
                           <FormControl>
                             <Input 
                               type="email"
-                              placeholder="votre@email.com" 
+                              placeholder={t('contact.emailPlaceholder')} 
                               {...field} 
                               className="border-gold/30 focus:border-gold bg-background/50"
                             />
@@ -183,10 +185,10 @@ const ContactSection = () => {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Sujet</FormLabel>
+                          <FormLabel className="text-muted-foreground">{t('contact.subject')}</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Sujet de votre message" 
+                              placeholder={t('contact.subjectPlaceholder')} 
                               {...field} 
                               className="border-gold/30 focus:border-gold bg-background/50"
                             />
@@ -201,10 +203,10 @@ const ContactSection = () => {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Message</FormLabel>
+                          <FormLabel className="text-muted-foreground">{t('contact.message')}</FormLabel>
                           <FormControl>
                             <Textarea 
-                              placeholder="Votre message..." 
+                              placeholder={t('contact.messagePlaceholder')} 
                               {...field} 
                               className="border-gold/30 focus:border-gold bg-background/50 min-h-[120px]"
                             />
@@ -219,7 +221,7 @@ const ContactSection = () => {
                       className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-gold transition-all"
                     >
                       <Send className="w-4 h-4 mr-2 text-white" />
-                      Envoyer le message
+                      {t('contact.send')}
                     </Button>
                   </form>
                 </Form>

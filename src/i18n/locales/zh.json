@@ -29,7 +29,8 @@
     "participate": "立即报名",
     "learnMore": "了解更多",
     "buyTickets": "购买门票",
-    "ticketsDate": "2026年3月1日起"
+    "ticketsDate": "2026年3月1日起",
+    "eventDates": "2026年7月5日至11日"
   },
   "introduction": {
     "title": "非凡的一届",
@@ -54,10 +55,16 @@
     "southKorea": "韩国",
     "france": "法国",
     "juryPrize": "评审团特别奖（并列）",
+    "firstPrize": "第一",
+    "secondPrize": "第二",
+    "thirdPrize": "第三",
+    "prizeLabel": "奖",
     "tour": {
       "title": "2024年获奖者与Sumi Jo巡演",
       "dates": "音乐会日期和地点：\n2025年6月10日：石家庄，中国\n2025年6月12日：深圳，中国\n2025年6月19日：全州，韩国\n2025年6月21日：城南，韩国\n2025年6月22日：首尔，韩国\n2025年6月24日：春川，韩国",
-      "description": "比赛结束后，获奖者在Sumi Jo及其团队的持续支持下发展事业。这次非凡的巡演为他们提供了与世界著名女高音同台的国际曝光机会，包括新闻发布会和电视节目亮相。"
+      "description": "比赛结束后，获奖者在Sumi Jo及其团队的持续支持下发展事业。这次非凡的巡演为他们提供了与世界著名女高音同台的国际曝光机会，包括新闻发布会和电视节目亮相。",
+      "datesTitle": "音乐会日期和地点",
+      "clickToEnlarge": "点击放大"
     }
   },
   "harmony": {
@@ -317,5 +324,52 @@
     "legal": "法律声明",
     "privacy": "隐私政策",
     "cookies": "Cookie政策"
+  },
+  "stats": {
+    "title": "国际规模的",
+    "titleHighlight": "比赛",
+    "subtitle": "2024年赛事数据",
+    "applications": "申请",
+    "countries": "参赛国家",
+    "days": "比赛天数",
+    "prizes": "奖金"
+  },
+  "videos": {
+    "title": "欣赏选手们的",
+    "titleHighlight": "表演",
+    "titleEnd": "",
+    "subtitle": "2024年赛事",
+    "filters": {
+      "all": "全部",
+      "semifinal": "半决赛",
+      "final": "决赛",
+      "gala": "晚会"
+    }
+  },
+  "contact": {
+    "formTitle": "联系我们",
+    "name": "姓名",
+    "namePlaceholder": "您的姓名",
+    "email": "电子邮箱",
+    "emailPlaceholder": "your@email.com",
+    "subject": "主题",
+    "subjectPlaceholder": "消息主题",
+    "message": "消息",
+    "messagePlaceholder": "您的消息...",
+    "send": "发送消息",
+    "success": "您的消息已成功发送！",
+    "validation": {
+      "nameMin": "姓名至少需要2个字符",
+      "emailInvalid": "无效的电子邮箱",
+      "subjectMin": "主题至少需要3个字符",
+      "messageMin": "消息至少需要10个字符"
+    }
+  },
+  "press": {
+    "badge": "媒体报道",
+    "title": "媒体",
+    "titleHighlight": "评价",
+    "description": "媒体赞扬比赛的卓越性和国际影响力",
+    "readArticle": "阅读文章"
   }
 }

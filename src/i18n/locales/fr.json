@@ -29,7 +29,8 @@
     "participate": "Candidater",
     "learnMore": "EN SAVOIR PLUS",
     "buyTickets": "Achetez vos places",
-    "ticketsDate": "à partir du 1er mars 2026"
+    "ticketsDate": "à partir du 1er mars 2026",
+    "eventDates": "du 5 au 11 juillet 2026"
   },
   "introduction": {
     "title": "Une édition exceptionnelle",
@@ -54,10 +55,16 @@
     "southKorea": "Corée du Sud",
     "france": "France",
     "juryPrize": "Prix Spécial du Jury (ex-aequo)",
+    "firstPrize": "1er",
+    "secondPrize": "2ème",
+    "thirdPrize": "3ème",
+    "prizeLabel": "Prix",
     "tour": {
       "title": "Les lauréats 2024 en tournée avec Sumi Jo",
       "dates": "Dates et lieux des concerts :\n10 juin 2025 : Shijiazhuang, China\n12 juin 2025 : Shenzhen, China\n19 juin 2025 : Jeonju, South Korea\n21 juin 2025 : Seongnam, South Korea\n22 juin 2025 : Seoul, South Korea\n24 juin 2025 : Chuncheon, South Korea",
-      "description": "Depuis le concours, les lauréats ont développé leur carrière avec un soutien continu de Sumi Jo et de son équipe. Cette tournée exceptionnelle leur a offert une visibilité internationale aux côtés de la soprano de renommée mondiale avec notamment l'organisation de conférences de presse et la participation à des émissions de télévision."
+      "description": "Depuis le concours, les lauréats ont développé leur carrière avec un soutien continu de Sumi Jo et de son équipe. Cette tournée exceptionnelle leur a offert une visibilité internationale aux côtés de la soprano de renommée mondiale avec notamment l'organisation de conférences de presse et la participation à des émissions de télévision.",
+      "datesTitle": "Dates et lieux des concerts",
+      "clickToEnlarge": "Cliquez pour agrandir"
     }
   },
   "harmony": {
@@ -317,5 +324,52 @@
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "cookies": "Cookies"
+  },
+  "stats": {
+    "title": "Un concours d'envergure",
+    "titleHighlight": "internationale",
+    "subtitle": "Les chiffres de l'édition 2024",
+    "applications": "Candidatures",
+    "countries": "Pays représentés",
+    "days": "Jours de compétition",
+    "prizes": "de prix"
+  },
+  "videos": {
+    "title": "Découvrez les",
+    "titleHighlight": "performances",
+    "titleEnd": "de nos candidats",
+    "subtitle": "Lors de l'édition 2024",
+    "filters": {
+      "all": "Tous",
+      "semifinal": "Demi-finale",
+      "final": "Finale",
+      "gala": "Gala"
+    }
+  },
+  "contact": {
+    "formTitle": "Contactez-nous",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "Email",
+    "emailPlaceholder": "votre@email.com",
+    "subject": "Sujet",
+    "subjectPlaceholder": "Sujet de votre message",
+    "message": "Message",
+    "messagePlaceholder": "Votre message...",
+    "send": "Envoyer le message",
+    "success": "Votre message a été envoyé avec succès !",
+    "validation": {
+      "nameMin": "Le nom doit contenir au moins 2 caractères",
+      "emailInvalid": "Email invalide",
+      "subjectMin": "Le sujet doit contenir au moins 3 caractères",
+      "messageMin": "Le message doit contenir au moins 10 caractères"
+    }
+  },
+  "press": {
+    "badge": "Revue de presse",
+    "title": "La presse",
+    "titleHighlight": "parle de nous",
+    "description": "Les médias saluent l'excellence et le rayonnement international du concours",
+    "readArticle": "Lire l'article"
   }
 }

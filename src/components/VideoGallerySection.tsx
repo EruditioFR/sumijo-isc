@@ -84,19 +84,19 @@ const videos: Video[] = [{
 }];
 const filterOptions: {
   value: VideoCategory;
-  label: string;
+  labelKey: string;
 }[] = [{
   value: "all",
-  label: "Tous"
+  labelKey: "videos.filters.all"
 }, {
   value: "demi-finale",
-  label: "Demi-finale"
+  labelKey: "videos.filters.semifinal"
 }, {
   value: "finale",
-  label: "Finale"
+  labelKey: "videos.filters.final"
 }, {
   value: "gala",
-  label: "Gala"
+  labelKey: "videos.filters.gala"
 }];
 const VideoGallerySection = () => {
   const {
@@ -125,10 +125,10 @@ const VideoGallerySection = () => {
           <div className="text-center mb-8 md:mb-12">
             
             <h2 className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
-              Découvrez les <span className="text-rose-dark">performances</span> de nos candidats
+              {t('videos.title')} <span className="text-rose-dark">{t('videos.titleHighlight')}</span> {t('videos.titleEnd')}
             </h2>
             <span className="inline-block text-rose-dark font-medium text-sm md:text-base uppercase tracking-widest">
-              Lors de l'édition 2024
+              {t('videos.subtitle')}
             </span>
             <div className="h-0.5 w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-rose to-transparent mt-6" />
           </div>
@@ -136,7 +136,7 @@ const VideoGallerySection = () => {
           {/* Mobile Filter Pills */}
           <div className="flex md:hidden justify-center gap-2 mb-6">
             {filterOptions.map(filter => <button key={filter.value} onClick={() => setActiveFilter(filter.value)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === filter.value ? "bg-rose text-white shadow-md" : "bg-white text-muted-foreground border border-rose/20 hover:border-rose/40"}`}>
-                {filter.label}
+                {t(filter.labelKey)}
               </button>)}
           </div>
 
