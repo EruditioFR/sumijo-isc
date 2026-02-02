@@ -10,6 +10,7 @@ import Partenaires from "./pages/Partenaires";
 import Jury from "./pages/Jury";
 import Contact from "./pages/Contact";
 import Billetterie from "./pages/Billetterie";
+import AdminGallery from "./pages/AdminGallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/jury" element={<Jury />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/billetterie" element={<Billetterie />} />
+          <Route path="/admin/gallery" element={<AdminGallery />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
