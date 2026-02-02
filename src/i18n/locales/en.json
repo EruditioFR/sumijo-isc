@@ -382,7 +382,8 @@
       "chateau": "Château",
       "candidats": "Candidates",
       "jury": "Jury",
-      "backstage": "Backstage"
+      "backstage": "Backstage",
+      "sponsors": "Sponsors"
     },
     "showing": "Showing {{count}} of {{total}} photos",
     "loading": "Loading...",

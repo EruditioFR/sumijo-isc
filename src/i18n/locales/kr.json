@@ -382,7 +382,8 @@
       "chateau": "성",
       "candidats": "참가자",
       "jury": "심사위원",
-      "backstage": "백스테이지"
+      "backstage": "백스테이지",
+      "sponsors": "스폰서"
     },
     "showing": "{{total}}장 중 {{count}}장 표시",
     "loading": "로딩 중...",
