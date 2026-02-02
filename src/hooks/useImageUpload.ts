@@ -97,6 +97,13 @@ export function useImageUpload({ onUploadComplete }: UseImageUploadOptions = {})
         // Get image dimensions (optional, can be done client-side)
         const dimensions = await getImageDimensions(uploadFile.file);
 
+        // Get the next display order (use a simple incrementing counter)
+        const { count } = await supabase
+          .from('gallery_images')
+          .select('*', { count: 'exact', head: true });
+        
+        const nextOrder = (count || 0) + i + 1;
+
         // Create database record
         const { error: dbError } = await supabase
           .from('gallery_images')
@@ -112,7 +119,7 @@ export function useImageUpload({ onUploadComplete }: UseImageUploadOptions = {})
             height: dimensions.height,
             file_size: uploadFile.file.size,
             is_published: false,
-            display_order: Date.now()
+            display_order: nextOrder
           });
 
         if (dbError) throw dbError;
