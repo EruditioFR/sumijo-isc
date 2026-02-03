@@ -96,67 +96,95 @@ const JurySection = () => {
   return (
     <>
       {/* Jury 2026 Section */}
-      <section id="jury-2026" className="py-20 bg-muted">
-        <div className="container mx-auto px-4" ref={ref}>
-          <motion.h2
+      <section id="jury-2026" className="py-20 bg-gradient-to-b from-muted via-muted to-background relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-rose/5 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-4 relative z-10" ref={ref}>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-display text-center mb-16 text-foreground"
+            className="text-center mb-16"
           >
-            {t('jury.title2026')}
-          </motion.h2>
+            <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-4 block">
+              Édition 2026
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display text-foreground">
+              {t('jury.title2026')}
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
+          </motion.div>
 
           {/* Jury 2026 Members Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {jury2026Members.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                className="group"
               >
-                <Card 
-                  className="overflow-hidden cursor-pointer transition-all hover:shadow-xl hover:shadow-gold/10 border-gold/20 h-full relative group"
+                <div 
+                  className="relative cursor-pointer h-full"
                   onClick={() => setSelectedMember(member)}
                 >
-                  {/* Animated Border Gradient */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold bg-[length:200%_100%] animate-gradient" 
-                         style={{ 
-                           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                           maskComposite: 'exclude',
-                           WebkitMaskComposite: 'xor',
-                           padding: '2px'
-                         }} 
-                    />
-                  </div>
-                  <CardContent className="p-0 relative">
-                    <div className="relative group overflow-hidden">
+                  {/* Card with luxury styling */}
+                  <div className="relative bg-card rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-gold/20 border border-gold/10 group-hover:border-gold/30 h-full">
+                    {/* Image container with overlay */}
+                    <div className="relative overflow-hidden">
                       <img
                         src={member.image}
                         alt={member.name}
                         loading="lazy"
                         decoding="async"
                         width="400"
-                        height="288"
-                        className="w-full h-72 object-cover object-top transition-transform group-hover:scale-105"
+                        height="320"
+                        className="w-full h-80 object-cover object-top transition-all duration-700 group-hover:scale-110"
                       />
+                      {/* Gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                      
+                      {/* Gold accent line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     </div>
-                    <div className="p-6">
-                      <h4 className="text-lg font-display text-foreground mb-2 line-clamp-1">
+                    
+                    {/* Content */}
+                    <div className="p-5 relative">
+                      {/* Decorative corner accent */}
+                      <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+                        <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-bl from-gold/20 to-transparent rotate-45 transform origin-bottom-left" />
+                      </div>
+                      
+                      <h4 className="text-lg font-display text-foreground mb-2 line-clamp-1 group-hover:text-gold transition-colors duration-300">
                         {member.name}
                       </h4>
-                      <p className="text-xs text-muted-foreground font-sans mb-4 line-clamp-2 min-h-[2.5rem]">
+                      <p className="text-xs text-muted-foreground font-sans mb-4 line-clamp-2 min-h-[2.5rem] leading-relaxed">
                         {member.role}
                       </p>
-                      <Button variant="ghost" size="sm" className="text-gold hover:text-gold hover:bg-gold/10 w-full">
-                        {t('jury.viewDetails')}
-                      </Button>
+                      
+                      {/* Elegant CTA */}
+                      <div className="flex items-center gap-2 text-gold/70 group-hover:text-gold transition-colors duration-300">
+                        <span className="text-xs font-medium tracking-wide uppercase">
+                          {t('jury.viewDetails')}
+                        </span>
+                        <svg 
+                          className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                  
+                  {/* Glow effect on hover */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-gold/0 via-gold/10 to-gold/0 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
+                </div>
               </motion.div>
             ))}
           </div>
