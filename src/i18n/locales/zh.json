@@ -386,7 +386,8 @@
       "candidats": "参赛者",
       "jury": "评委",
       "backstage": "后台",
-      "sponsors": "赞助商"
+      "sponsors": "赞助商",
+      "laureats": "获奖者"
     },
     "showing": "显示 {{total}} 张照片中的 {{count}} 张",
     "loading": "加载中...",
