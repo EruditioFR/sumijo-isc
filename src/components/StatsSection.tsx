@@ -141,7 +141,7 @@ const StatsSection = () => {
     progress: 100,
     Icon: Award
   }];
-  return <section className="relative py-16 md:py-24 lg:py-28 overflow-hidden bg-cream">
+  return <section id="stats" className="relative py-16 md:py-24 lg:py-28 overflow-hidden bg-cream">
       {/* Decorative diagonal stripes - desktop only */}
       <div className="hidden lg:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-[400px] h-[800px] rotate-[25deg] origin-top-left">
