@@ -14,7 +14,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/sumijoisc', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Youtube, href: 'https://www.youtube.com/@SumijoISC', label: 'YouTube' },
   ];
 
   return (
