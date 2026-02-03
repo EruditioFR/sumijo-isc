@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import anniversaryImage from '@/assets/edition-2026-anniversary.png';
+import franceKoreaLogo from '@/assets/140-france-korea-logo.png';
+
 const IntroductionSection = () => {
   const {
     t
@@ -33,6 +35,20 @@ const IntroductionSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {t('introduction.content2')}
           </p>
+
+          {/* Logo 140 ans France-Corée */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="py-4"
+          >
+            <img 
+              src={franceKoreaLogo} 
+              alt="140 ans d'amitié France-Corée 1886-2026" 
+              className="mx-auto max-w-xs md:max-w-md w-full" 
+            />
+          </motion.div>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {t('introduction.content3')}
