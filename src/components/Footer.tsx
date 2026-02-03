@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -13,10 +13,8 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/sumijoisc', label: 'Instagram' },
     { icon: Youtube, href: '#', label: 'YouTube' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
   ];
 
   return (
