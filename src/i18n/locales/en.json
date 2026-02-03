@@ -358,7 +358,9 @@
     "message": "Message",
     "messagePlaceholder": "Your message...",
     "send": "Send message",
+    "sending": "Sending...",
     "success": "Your message has been sent successfully!",
+    "errorSending": "An error occurred while sending. Please try again.",
     "validation": {
       "nameMin": "Name must be at least 2 characters",
       "emailInvalid": "Invalid email",

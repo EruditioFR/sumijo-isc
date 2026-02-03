@@ -358,7 +358,9 @@
     "message": "Message",
     "messagePlaceholder": "Votre message...",
     "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
     "success": "Votre message a été envoyé avec succès !",
+    "errorSending": "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
     "validation": {
       "nameMin": "Le nom doit contenir au moins 2 caractères",
       "emailInvalid": "Email invalide",

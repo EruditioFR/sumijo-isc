@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -44,10 +45,35 @@ const ContactSection = () => {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    console.log('Contact form submitted:', data);
-    toast.success(t('contact.success'));
-    form.reset();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      toast.success(t('contact.success'));
+      form.reset();
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      toast.error(t('contact.errorSending'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -218,10 +244,20 @@ const ContactSection = () => {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-gold transition-all"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-gold transition-all disabled:opacity-50"
                     >
-                      <Send className="w-4 h-4 mr-2 text-white" />
-                      {t('contact.send')}
+                      {isSubmitting ? (
+                        <span className="flex items-center gap-2">
+                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          {t('contact.sending')}
+                        </span>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2 text-white" />
+                          {t('contact.send')}
+                        </>
+                      )}
                     </Button>
                   </form>
                 </Form>
