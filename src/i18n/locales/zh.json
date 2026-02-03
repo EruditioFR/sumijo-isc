@@ -358,7 +358,9 @@
     "message": "消息",
     "messagePlaceholder": "您的消息...",
     "send": "发送消息",
+    "sending": "发送中...",
     "success": "您的消息已成功发送！",
+    "errorSending": "发送时出错。请重试。",
     "validation": {
       "nameMin": "姓名至少需要2个字符",
       "emailInvalid": "无效的电子邮箱",
