@@ -210,10 +210,16 @@ const Header = () => {
           {/* CTA Button - Right */}
           <div className="hidden lg:flex items-center">
             <Button
-              onClick={() => scrollToSection('contact')}
+              asChild
               className="bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold hover:shadow-gold transition-all"
             >
-              {t('nav.participate')}
+              <a 
+                href="https://applicationform.sumijo-isc.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                {t('nav.apply')}
+              </a>
             </Button>
           </div>
         </div>
