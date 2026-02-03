@@ -125,12 +125,18 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
             <Button
+              asChild
               size="lg"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
             >
-              <span className="relative z-10">{t("hero.participate")}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <a 
+                href="https://applicationform.sumijo-isc.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <span className="relative z-10">{t("hero.participate")}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
             </Button>
             <Button
               asChild
