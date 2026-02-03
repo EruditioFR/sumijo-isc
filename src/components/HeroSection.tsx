@@ -22,7 +22,7 @@ const HeroSection = () => {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const scrollToNext = () => {
-    const element = document.getElementById("competition");
+    const element = document.getElementById("stats");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
