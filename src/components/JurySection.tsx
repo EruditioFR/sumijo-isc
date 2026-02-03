@@ -35,6 +35,7 @@ const JurySection = () => {
   });
   const [selectedMember, setSelectedMember] = useState<JuryMember | null>(null);
 
+  // All jury members (used for 2024)
   const juryMembers: JuryMember[] = [
     {
       id: 'operowicz',
@@ -87,6 +88,11 @@ const JurySection = () => {
     },
   ];
 
+  // Jury 2026 - excludes Galoppini, Rhorer, and Vargas
+  const jury2026Members = juryMembers.filter(
+    member => !['galoppini', 'rhorer', 'vargas'].includes(member.id)
+  );
+
   return (
     <>
       {/* Jury 2026 Section */}
@@ -102,8 +108,8 @@ const JurySection = () => {
           </motion.h2>
 
           {/* Jury 2026 Members Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {juryMembers.map((member, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {jury2026Members.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 20 }}
