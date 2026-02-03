@@ -7,7 +7,8 @@ export type GalleryCategory =
   | 'candidats'
   | 'jury'
   | 'backstage'
-  | 'sponsors';
+  | 'sponsors'
+  | 'laureats';
 
 export interface CategoryItem {
   id: string;

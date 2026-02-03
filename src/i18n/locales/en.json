@@ -386,7 +386,8 @@
       "candidats": "Candidates",
       "jury": "Jury",
       "backstage": "Backstage",
-      "sponsors": "Sponsors"
+      "sponsors": "Sponsors",
+      "laureats": "Winners"
     },
     "showing": "Showing {{count}} of {{total}} photos",
     "loading": "Loading...",
