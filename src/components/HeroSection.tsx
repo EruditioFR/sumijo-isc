@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-sumi-2026.jpg";
 import heroMobileImage from "@/assets/hero-sumi-mobile.jpg";
 
 const HeroSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -130,7 +130,7 @@ const HeroSection = () => {
               className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
             >
               <a 
-                href="https://applicationform.sumijo-isc.com" 
+                href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
