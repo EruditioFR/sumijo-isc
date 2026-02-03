@@ -42,7 +42,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Sumi Jo ISC <onboarding@resend.dev>', // Use your verified domain in production
+        from: 'Sumi Jo ISC <noreply@sumijo-isc.com>',
         to: ['contact@sumijo-isc.com'], // Recipient email
         reply_to: email,
         subject: `[Contact] ${subject}`,
