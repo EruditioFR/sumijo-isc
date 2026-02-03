@@ -244,36 +244,73 @@ const JurySection = () => {
         </div>
       </section>
 
-      {/* Modal Dialog */}
+      {/* Modal Dialog - Luxury Design */}
       <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-b from-card via-card to-muted/50 border-gold/20">
           {selectedMember && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-6 mb-4">
-                  <img
-                    src={selectedMember.image}
-                    alt={selectedMember.name}
-                    loading="lazy"
-                    decoding="async"
-                    width="96"
-                    height="96"
-                    className="w-24 h-24 object-cover rounded-lg border-2 border-gold shadow-md"
-                  />
-                  <div>
-                    <DialogTitle className="text-2xl font-display mb-1">
-                      {selectedMember.name}
-                    </DialogTitle>
-                    <p className="text-sm text-muted-foreground font-sans">
-                      {selectedMember.role}
-                    </p>
+            <div className="relative">
+              {/* Decorative header background */}
+              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-gold/10 via-rose/5 to-transparent" />
+              <div className="absolute top-4 right-4 w-24 h-24 bg-gold/5 rounded-full blur-2xl" />
+              <div className="absolute top-8 left-8 w-16 h-16 bg-rose/5 rounded-full blur-xl" />
+              
+              {/* Content */}
+              <div className="relative z-10 p-8">
+                <DialogHeader className="mb-6">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                    {/* Profile image with decorative ring */}
+                    <div className="relative flex-shrink-0">
+                      <div className="absolute -inset-1 bg-gradient-to-br from-gold via-gold/50 to-rose/30 rounded-xl blur-sm opacity-60" />
+                      <img
+                        src={selectedMember.image}
+                        alt={selectedMember.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="128"
+                        height="128"
+                        className="relative w-28 h-28 sm:w-32 sm:h-32 object-cover object-top rounded-xl border-2 border-gold/40 shadow-xl"
+                      />
+                      {/* Corner accent */}
+                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gold rounded-full border-2 border-card flex items-center justify-center">
+                        <svg className="w-3 h-3 text-background" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                    
+                    {/* Name and role */}
+                    <div className="text-center sm:text-left flex-1">
+                      <DialogTitle className="text-2xl sm:text-3xl font-display text-foreground mb-3 leading-tight">
+                        {selectedMember.name}
+                      </DialogTitle>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 rounded-full border border-gold/20">
+                        <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                        <p className="text-sm text-gold font-medium">
+                          {selectedMember.role}
+                        </p>
+                      </div>
+                    </div>
                   </div>
+                </DialogHeader>
+                
+                {/* Decorative separator */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+                  <div className="w-2 h-2 bg-gold/40 rotate-45" />
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
                 </div>
-              </DialogHeader>
-              <DialogDescription className="text-foreground font-sans leading-relaxed text-base">
-                {selectedMember.bio}
-              </DialogDescription>
-            </>
+                
+                {/* Biography */}
+                <DialogDescription className="text-foreground/90 font-sans leading-relaxed text-base sm:text-lg whitespace-pre-line">
+                  {selectedMember.bio}
+                </DialogDescription>
+                
+                {/* Bottom decorative element */}
+                <div className="mt-8 flex justify-center">
+                  <div className="w-16 h-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent rounded-full" />
+                </div>
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
