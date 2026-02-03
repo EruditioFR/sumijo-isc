@@ -89,7 +89,8 @@ const JurySection = () => {
 
   return (
     <>
-      <section id="jury" className="py-20 bg-muted">
+      {/* Jury 2026 Section */}
+      <section id="jury-2026" className="py-20 bg-muted">
         <div className="container mx-auto px-4" ref={ref}>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -97,10 +98,10 @@ const JurySection = () => {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-display text-center mb-16 text-foreground"
           >
-            {t('jury.title')}
+            {t('jury.title2026')}
           </motion.h2>
 
-          {/* Jury Members Grid */}
+          {/* Jury 2026 Members Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {juryMembers.map((member, index) => (
               <motion.div
@@ -147,6 +148,59 @@ const JurySection = () => {
                       <Button variant="ghost" size="sm" className="text-gold hover:text-gold hover:bg-gold/10 w-full">
                         {t('jury.viewDetails')}
                       </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Jury 2024 Section - Compact Grid */}
+      <section id="jury-2024" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-display text-center mb-12 text-foreground"
+          >
+            {t('jury.title')}
+          </motion.h2>
+
+          {/* Jury 2024 Compact Grid - 3 columns x 2 rows */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {juryMembers.map((member, index) => (
+              <motion.div
+                key={`2024-${member.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.05 }}
+              >
+                <Card 
+                  className="overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:shadow-gold/10 border-gold/20 h-full relative group"
+                  onClick={() => setSelectedMember(member)}
+                >
+                  <CardContent className="p-0 relative">
+                    <div className="relative group overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="200"
+                        height="160"
+                        className="w-full h-40 object-cover object-top transition-transform group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-3">
+                      <h4 className="text-sm font-display text-foreground mb-1 line-clamp-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground font-sans line-clamp-1">
+                        {member.role}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
