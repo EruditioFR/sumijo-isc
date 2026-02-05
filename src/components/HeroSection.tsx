@@ -131,17 +131,18 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
             <TooltipProvider>
-              <Tooltip>
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Button
-                    size="lg"
-                    disabled
-                    className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed"
-                  >
-                    <span className="relative z-10">{t("hero.participate")}</span>
-                  </Button>
+                  <span className="inline-block">
+                    <Button
+                      size="lg"
+                      className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
+                    >
+                      <span className="relative z-10">{t("hero.participate")}</span>
+                    </Button>
+                  </span>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
                   <p>{t("hero.comingSoon")}</p>
                 </TooltipContent>
               </Tooltip>

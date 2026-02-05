@@ -216,16 +216,17 @@ const Header = () => {
           {/* CTA Button - Right */}
           <div className="hidden lg:flex items-center">
             <TooltipProvider>
-              <Tooltip>
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Button
-                    disabled
-                    className="bg-gradient-to-r from-gold/50 to-gold-light/50 text-white/70 font-semibold transition-all tracking-wider cursor-not-allowed"
-                  >
-                    {t('nav.apply')}
-                  </Button>
+                  <span className="inline-block">
+                    <Button
+                      className="bg-gradient-to-r from-gold/50 to-gold-light/50 text-white/70 font-semibold transition-all tracking-wider cursor-not-allowed pointer-events-none"
+                    >
+                      {t('nav.apply')}
+                    </Button>
+                  </span>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
                   <p>{t('nav.comingSoon')}</p>
                 </TooltipContent>
               </Tooltip>
