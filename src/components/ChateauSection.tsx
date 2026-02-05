@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, Calendar, Users, Award } from 'lucide-react';
+import { MapPin, Calendar, Castle, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import chateauDroneImage from '@/assets/chateau-drone.jpg';
 import { useRef } from 'react';
@@ -28,7 +28,7 @@ const ChateauSection = () => {
       description: t('chateau.features.history.description'),
     },
     {
-      icon: Users,
+      icon: Castle,
       title: t('chateau.features.capacity.title'),
       description: t('chateau.features.capacity.description'),
     },
@@ -51,9 +51,9 @@ const ChateauSection = () => {
         >
           {/* Header */}
           <div className="text-center space-y-6">
-            <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            <h1 className="font-display text-4xl md:text-5xl text-foreground">
               {t('chateau.title')}
-            </h2>
+            </h1>
             <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
               {t('chateau.subtitle')}
@@ -76,18 +76,18 @@ const ChateauSection = () => {
             />
           </motion.div>
 
-          {/* Description */}
+          {/* Introduction */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6 text-center max-w-4xl mx-auto"
+            className="prose prose-lg max-w-4xl mx-auto"
           >
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              {t('chateau.description.paragraph1')}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+              {t('chateau.introduction')}
             </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              {t('chateau.description.paragraph2')}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify mt-6">
+              {t('chateau.currentChateau')}
             </p>
           </motion.div>
 
@@ -101,7 +101,6 @@ const ChateauSection = () => {
                 transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
               >
                 <Card className="h-full bg-card border-gold/20 hover:shadow-gold transition-all duration-300 group relative overflow-hidden">
-                  {/* Animated Border Gradient */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold bg-[length:200%_100%] animate-[gradient_3s_ease_infinite]" 
                          style={{ 
@@ -126,6 +125,114 @@ const ChateauSection = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* History Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="space-y-12"
+          >
+            <div className="text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                {t('chateau.history.title')}
+              </h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-gold to-gold-light mx-auto" />
+            </div>
+
+            <div className="prose prose-lg max-w-4xl mx-auto space-y-6">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.history.origins')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.history.medieval')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.history.hundredYearsWar')}
+              </p>
+              <p className="text-base md:text-lg text-gold font-semibold text-center italic">
+                {t('chateau.history.jeanneDArc')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.history.renaissance')}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Maréchal Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="space-y-8"
+          >
+            <div className="text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                {t('chateau.marechal.title')}
+              </h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-gold to-gold-light mx-auto" />
+            </div>
+
+            <div className="prose prose-lg max-w-4xl mx-auto space-y-6">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.marechal.content')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.marechal.legacy')}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Marquise Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="space-y-8"
+          >
+            <div className="text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                {t('chateau.marquise.title')}
+              </h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-gold to-gold-light mx-auto" />
+            </div>
+
+            <div className="prose prose-lg max-w-4xl mx-auto space-y-6">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.marquise.content')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.marquise.culture')}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Modern History Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="space-y-8"
+          >
+            <div className="text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                {t('chateau.modernHistory.title')}
+              </h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-gold to-gold-light mx-auto" />
+            </div>
+
+            <div className="prose prose-lg max-w-4xl mx-auto space-y-6">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.modernHistory.revolution')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.modernHistory.english')}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify">
+                {t('chateau.modernHistory.recent')}
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

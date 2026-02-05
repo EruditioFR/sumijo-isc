@@ -260,11 +260,33 @@
   },
   "chateau": {
     "title": "Le Château de la Ferté-Imbault",
-    "subtitle": "Un écrin d'exception au cœur de la Sologne",
+    "subtitle": "Plus grand château en briques de Sologne, érigé en l'an 980",
     "imageCaption": "Vue aérienne du domaine",
-    "description": {
-      "paragraph1": "Niché au cœur de la Sologne, le Château de la Ferté-Imbault est un joyau architectural du XVIe siècle. Ce lieu d'exception allie l'élégance de son architecture Renaissance à la beauté naturelle de son parc de 30 hectares, offrant un cadre unique pour des événements culturels d'envergure internationale.",
-      "paragraph2": "Classé Monument Historique, le château a été méticuleusement restauré pour préserver son caractère authentique tout en offrant des infrastructures modernes. Ses salons d'apparat, sa chapelle et ses jardins à la française constituent un écrin parfait pour accueillir le concours et ses événements annexes."
+    "introduction": "Le château de la Ferté-Imbault (Loir-et-Cher) est le plus grand château en briques de Sologne, et l'un des plus anciens, érigé en l'an 980 sur une ancienne motte nivelée, en une succession de deux terrasses au-dessus des douves. Riche d'une histoire millénaire, son architecture, synthèse de médiéval et de Renaissance, évoque à la fois son passé militaire de forteresse et la grandeur du siècle des Lumières.",
+    "currentChateau": "Le château actuel est celui restauré par le maréchal d'Estampes pendant le premier quart du XVIIe siècle et achevé en 1627. Plusieurs grandes fenêtres de la façade orientale conservent un décor exceptionnel de la première Renaissance fait de grotesques et de plus de 30 médaillons historiés représentant des empereurs romains et le roi François Ier. Des cygnes noirs habitent les douves du château, et rappellent la légende de l'un de ses seigneurs, Geoffroy de Brabant, transformé en cygne suite à un maléfice, qui servit d'inspiration à Richard Wagner pour composer l'un de ses plus célèbres opéras, Lohengrin.",
+    "history": {
+      "title": "Histoire du château",
+      "origins": "À l'origine il y avait une occupation romaine. Une première forteresse (Ferté) a été achevée vers l'an Mille par Humbold (ou Hunbault) Le Tortu, seigneur de Vierzon, donnant ainsi son nom au village actuel.",
+      "medieval": "En 1280 Jeanne de Vierzon, héritière des terres de La Ferté-Imbault, épouse Geoffroy de Brabant, beau-frère du roi de France, Philippe III Le Hardi. Leur fille Alix épouse Jean III d'Harcourt en 1302. Jeanne d'Harcourt, dame de La Ferté-Imbault, épouse Hugues de Montmorency. Leurs fils Louis et Antoine décèdent à la bataille d'Azincourt en 1415 pour le premier et à celle de Verneuil en 1424 pour le second. Leur sœur Catherine de Montmorency hérite des terres de La Ferté-Imbault à leur mort.",
+      "hundredYearsWar": "Lors de la guerre de Cent Ans le château est pris et partiellement détruit par les troupes du Prince Noir. Après avoir appartenu sans discontinuer pendant plusieurs siècles à la dynastie de Humbold Le Tortu, seigneur de Vierzon, par l'alliance des familles de Brabant, d'Harcourt et de Montmorency, le domaine est finalement cédé par Catherine de Montmorency à Robert II d'Estampes, seigneur de Valençay, en 1424.",
+      "jeanneDArc": "Jeanne d'Arc se rendra à la Ferté-Imbault le 4 mars 1429.",
+      "renaissance": "Le château est reconstruit à la Renaissance. Le pouvoir royal se tient à proximité, à Blois, et François Ier vient de Romorantin galamment voisiner sur les terres de La Ferté-Imbault. Partiellement détruit par un incendie lors des guerres de religion en 1562, le château est reconstruit et agrandi (par l'addition de deux ailes et de grands communs) au début du XVIIe siècle par le maréchal Jacques d'Estampes, marquis de Mauny, qui est le petit-fils de Guillaume de Hautemer, duc de Grancey, pair de France, plus connu sous le nom de Maréchal de Fervaques (Stendhal utilisera ce nom pour l'un des personnages du Rouge et le Noir, la Maréchale de Fervaques)."
+    },
+    "marechal": {
+      "title": "Le Maréchal Jacques d'Estampes",
+      "content": "Jacques d'Estampes, chef de nom et d'armes de la Maison d'Estampes, sera également le premier marquis de La Ferté-Imbault. Né sous le règne d'Henri IV, qui honorera son grand-père de son amitié, le marquis de La Ferté-Imbault s'éteindra sous le règne de Louis XIV, après avoir combattu aux côtés de Louis XIII (dont le buste orne toujours l'ancien pavillon du corps de garde du château). Il fut notamment ambassadeur en Angleterre (1641-1643), lieutenant-général de l'Orléanais, du Vendômois et du Dunois (1645), et maréchal de France (1651). Louis XIV le fait chevalier de l'ordre du Saint-Esprit (1661). Son amitié avec Gaston de France, duc d'Orléans et frère de Louis XIII (Monsieur, frère du Roi), fut sans faille tout au long de sa vie, et c'est en qualité de lieutenant de la compagnie des Gendarmes du duc d'Orléans (en 1620) qu'il fait construire des immenses communs au château de La Ferté-Imbault pour accueillir sa compagnie. Son épouse, Catherine-Blanche de Choiseul (dont les parrains sont le Grand Sully et le prince de Rohan, et dont le père est le maréchal Charles de Choiseul, marquis de Praslin, conseiller de Marie de Médicis, l'un des hommes les plus remarquables de la fin du XVIe siècle), sera première dame d'honneur de la duchesse d'Orléans.",
+      "legacy": "L'histoire du château connaît son apogée au Grand-Siècle. Les cœurs du Maréchal et de son épouse reposent toujours à La Ferté-Imbault, dans la chapelle Saint-Taurin, sous une émouvante épitaphe. Le portrait en pied du maréchal d'Estampes de La Ferté-Imbault fut réalisé, en 1835, par Jean-Léonard Lugardon sur commande du roi Louis-Philippe. Il se trouve dans la sixième salle des Maréchaux, au musée historique du château de Versailles."
+    },
+    "marquise": {
+      "title": "La Marquise de La Ferté-Imbault",
+      "content": "Figure admirable, remarquable de modernité et d'esprit, à la fois femme d'affaires, de lettres et de Cour, Marie-Thérèse Geoffrin d'Estampes (1715-1791) fut la dernière marquise de La Ferté-Imbault. Fille de l'illustre Madame Geoffrin – dont le salon littéraire de la rue Saint-Honoré rayonnait dans toute l'Europe et jusqu'en Russie où l'Impératrice Catherine II lui écrivait en amie – elle est l'héritière majoritaire de la Manufacture Royale des Glaces et épouse en 1733 le jeune Philippe-Charles d'Estampes de La Ferté (1712-1737). La belle marquise, dont le magnifique tableau par Nattier est exposé à Tokyo au Fuji Art Museum, appréciera au château « la fraîcheur des grands marronniers qui étendent leurs ombrages à l'extrémité des communs ». Sa présence est toutefois mandée à Versailles, où sur les recommandations de la gouvernante des enfants de France, la comtesse de Marsan, Louis XV lui demande d'enseigner la philosophie à ses petites-filles, les princesses Élisabeth et Clotilde de France (sœurs du duc de Berry, futur Louis XVI). Elle fournit également à Madame de Marsan des textes pour les petites comédies jouées par les princesses auxquelles le dauphin et la dauphine (Marie-Antoinette) assistent. Madame de La Ferté-Imbault sera invitée au sacre de Louis XVI à Reims le 11 juin 1775.",
+      "culture": "Intelligente, femme de lettres ayant régulièrement fréquenté dans le salon de sa mère la plupart des grands esprits des Lumières (Diderot, Voltaire, Fontenelle, Montesquieu qui fut son précepteur, d'Alembert…), et ne s'étant jamais remariée malgré son jeune veuvage (et plusieurs demandes en mariage dont celle de Stanislas Leszczynski, roi de Pologne et père de la reine de France Marie Leszczynska, qui l'appelle « son Imbault »), la marquise de La Ferté-Imbault est reconnue pour sa culture et ses qualités morales. Reine du « Sublime Ordre des Lanturelus », confrérie de beaux esprits, elle sait résister aux intrigues de la Cour, et s'attacher l'amitié de la famille royale (dont Madame Élisabeth qui lui écrit « Il faut aimer, disait une princesse. Je vais plus loin, car je vous aime, Imbault, et je défie et critique et rivaux, de trouver rien à dire à ma tendresse », et Louis-Joseph de Bourbon, prince de Condé, qui l'entraîne à Chantilly et cherchera toujours auprès d'elle des conseils, des secours et des consolations), de courtisans et de favorites comme la marquise de Pompadour qui fut son amie."
+    },
+    "modernHistory": {
+      "title": "Du XIXe siècle à nos jours",
+      "revolution": "La Révolution entraînera la chute de la maison d'Estampes. Le marquis de Pierrecourt, fils de Sophie d'Estampes (sœur héritière de Philippe-Charles et belle-sœur de Marie-Thérèse Geoffrin), propriétaire du château, est emprisonné pendant la Terreur. Il vend le domaine en 1807 au comte de Belmont. La veuve de ce dernier le vend en 1819 à la comtesse de Grandeffe.",
+      "english": "En mai 1824, une riche famille anglaise, les Lee-Kirby originaires de Leeds, acquiert la terre de La Ferté-Imbault et s'installe au château. Elle modernise l'agriculture locale en adoptant les innovations culturales anglaises (plantes fourragères et cultures améliorantes, tels le trèfle et la luzerne) dans ses nombreuses fermes étendues sur 5 000 hectares. La présence de cette famille étrangère reste néanmoins mal appréciée dans le village. Par exemple, lors de la Révolution de 1830, la population de La Ferté-Imbault, armée de fourches et de piques, envahit le château et cherche à lyncher le propriétaire mis en fuite. La pratique protestante de la famille, assortie d'un fort prosélytisme, entraîne de graves oppositions à la communauté villageoise tout au long du XIXe siècle, comme en 1868 lors de la construction de la nouvelle église paroissiale Saint-Taurin, édifiée face à l'entrée du château.",
+      "recent": "Le château sera racheté à la fin du XIXe siècle par le comte Fresson. Sa nièce, Marie Say, l'une des plus riches héritières de France et propriétaire du château de Chaumont-sur-Loire, épouse le prince Henri-Amédée de Broglie, puis le prince Louis-Ferdinand d'Orléans-Bourbon, Infant d'Espagne. De nombreux voyages seront entrepris entre ces deux châteaux unis par des liens familiaux."
     },
     "features": {
       "location": {
@@ -273,15 +295,15 @@
       },
       "history": {
         "title": "Histoire",
-        "description": "Monument historique du XVIe siècle, témoin de l'histoire de France"
+        "description": "Fondations de l'An 980, plus d'un millénaire d'histoire"
       },
       "capacity": {
-        "title": "Capacité",
-        "description": "Salles de concerts, salons d'apparat et espaces pour masterclasses"
+        "title": "Architecture",
+        "description": "Synthèse de médiéval et de Renaissance, forteresse et élégance"
       },
       "heritage": {
         "title": "Patrimoine",
-        "description": "Architecture Renaissance et jardins à la française classés"
+        "description": "Plus grand château en briques de Sologne"
       }
     },
     "gardens": {
