@@ -551,5 +551,49 @@
        "title": "Complaint to the CNIL",
        "content": "If you believe that the processing of your personal data constitutes a violation of the GDPR, you have the right to lodge a complaint with the French Data Protection Authority (CNIL): www.cnil.fr"
      }
+   },
+   "legal": {
+     "title": "Legal Notice",
+     "lastUpdated": "Last updated: January 2026",
+     "editor": {
+       "title": "Website Publisher",
+       "name": "L'association du château de La Ferté-Imbault",
+       "type": "French non-profit association (Law 1901)",
+       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+       "email": "Email: contact@aacfi.fr",
+       "rna": "RNA Number: W412004953"
+     },
+     "director": {
+       "title": "Publication Director",
+       "content": "The publication director is Mr. Olivier Ojzerowicz-Medinger, in his capacity as President of L'association du château de La Ferté-Imbault."
+     },
+     "hosting": {
+       "title": "Hosting",
+       "name": "Lovable",
+       "address": "Cloud hosting service",
+       "website": "www.lovable.dev"
+     },
+     "intellectualProperty": {
+       "title": "Intellectual Property",
+       "content1": "All content on this website (texts, images, videos, logos, graphics, icons, sounds, software, etc.) is the exclusive property of L'association du château de La Ferté-Imbault or its partners and is protected by French and international intellectual property laws.",
+       "content2": "Any reproduction, representation, modification, publication, or adaptation of all or part of the website elements, regardless of the means or process used, is prohibited without prior written authorization from the association. Any unauthorized use of the website or its content will be considered as counterfeiting and prosecuted in accordance with the provisions of articles L.335-2 and following of the French Intellectual Property Code."
+     },
+     "liability": {
+       "title": "Limitation of Liability",
+       "content1": "L'association du château de La Ferté-Imbault strives to ensure the accuracy and updating of information published on this website. However, it cannot guarantee the accuracy, precision, or completeness of the information made available on this site.",
+       "content2": "Consequently, the association declines all responsibility for any inaccuracies, errors, or omissions in the information available on this website. Users acknowledge that they use this information at their own risk."
+     },
+     "links": {
+       "title": "Hyperlinks",
+       "content": "This website may contain hyperlinks to other websites. L'association du château de La Ferté-Imbault has no control over these sites and declines all responsibility for their content. The existence of a hyperlink to another site does not constitute validation of that site or its content."
+     },
+     "law": {
+       "title": "Applicable Law",
+       "content": "These legal notices are governed by French law. In case of dispute, and after failure of any attempt to find an amicable solution, French courts shall have sole jurisdiction to hear the dispute."
+     },
+     "contact": {
+       "title": "Contact",
+       "content": "For any questions regarding these legal notices or the website, you can contact us:"
+     }
    }
 }

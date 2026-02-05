@@ -101,9 +101,9 @@ const Footer = () => {
               {t('footer.copyright')}
             </p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-gold transition-colors">
+              <Link to="/mentions-legales" className="hover:text-gold transition-colors">
                 {t('footer.legal')}
-              </a>
+              </Link>
               <Link to="/politique-confidentialite" className="hover:text-gold transition-colors">
                 {t('footer.privacy')}
               </Link>

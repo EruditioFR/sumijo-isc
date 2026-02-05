@@ -551,5 +551,49 @@
        "title": "向CNIL投诉",
        "content": "如果您认为对您个人数据的处理违反了GDPR，您有权向法国数据保护机构（CNIL）提出投诉：www.cnil.fr"
      }
+   },
+   "legal": {
+     "title": "法律声明",
+     "lastUpdated": "最后更新：2026年1月",
+     "editor": {
+       "title": "网站发布者",
+       "name": "L'association du château de La Ferté-Imbault",
+       "type": "法国非营利协会（1901年法律）",
+       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
+       "email": "电子邮件：contact@aacfi.fr",
+       "rna": "RNA编号：W412004953"
+     },
+     "director": {
+       "title": "出版负责人",
+       "content": "出版负责人为L'association du château de La Ferté-Imbault主席Olivier Ojzerowicz-Medinger先生。"
+     },
+     "hosting": {
+       "title": "网站托管",
+       "name": "Lovable",
+       "address": "云托管服务",
+       "website": "www.lovable.dev"
+     },
+     "intellectualProperty": {
+       "title": "知识产权",
+       "content1": "本网站所有内容（文字、图片、视频、标志、图形、图标、声音、软件等）均为L'association du château de La Ferté-Imbault或其合作伙伴的专有财产，受法国和国际知识产权法保护。",
+       "content2": "未经协会事先书面授权，禁止以任何方式或方法复制、展示、修改、出版或改编网站元素的全部或部分内容。对网站或其内容的任何未经授权的使用将被视为侵权行为，并根据法国知识产权法典L.335-2条及后续条款予以追诉。"
+     },
+     "liability": {
+       "title": "责任限制",
+       "content1": "L'association du château de La Ferté-Imbault努力确保本网站发布信息的准确性和时效性。但是，不能保证本网站提供信息的准确性、精确性或完整性。",
+       "content2": "因此，协会对本网站提供信息中的任何不准确、错误或遗漏不承担任何责任。用户承认其自行承担使用这些信息的风险。"
+     },
+     "links": {
+       "title": "超链接",
+       "content": "本网站可能包含指向其他网站的超链接。L'association du château de La Ferté-Imbault对这些网站没有控制权，对其内容不承担任何责任。指向其他网站的超链接的存在并不构成对该网站或其内容的认可。"
+     },
+     "law": {
+       "title": "适用法律",
+       "content": "本法律声明受法国法律管辖。如发生争议，在寻求友好解决方案失败后，法国法院将拥有审理该争议的唯一管辖权。"
+     },
+     "contact": {
+       "title": "联系我们",
+       "content": "如对本法律声明或网站有任何疑问，请联系我们："
+     }
    }
 }
