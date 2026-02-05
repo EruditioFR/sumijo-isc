@@ -37,12 +37,7 @@ const LegalNotice = () => {
            </section>
            
            {/* Publication Director */}
-           <section className="mb-12">
-             <h2 className="font-elegant text-2xl text-foreground mb-4">
-               {t('legal.director.title')}
-             </h2>
-             
-           </section>
+           
            
            {/* Hosting */}
            <section className="mb-12">
