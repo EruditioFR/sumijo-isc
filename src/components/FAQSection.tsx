@@ -12,15 +12,8 @@ const FAQSection = () => {
   const { t } = useTranslation();
 
   const faqItems = [
-    { key: 'eligibility' },
-    { key: 'categories' },
     { key: 'dates' },
     { key: 'location' },
-    { key: 'prizes' },
-    { key: 'application' },
-    { key: 'repertoire' },
-    { key: 'accommodation' },
-    { key: 'language' },
     { key: 'tickets' },
   ];
 
