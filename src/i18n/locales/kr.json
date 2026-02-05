@@ -551,5 +551,49 @@
        "title": "CNIL에 민원 제기",
        "content": "귀하의 개인정보 처리가 GDPR을 위반한다고 판단되는 경우, 프랑스 개인정보보호위원회(CNIL)에 민원을 제기할 권리가 있습니다: www.cnil.fr"
      }
+   },
+   "legal": {
+     "title": "법적 고지",
+     "lastUpdated": "최종 업데이트: 2026년 1월",
+     "editor": {
+       "title": "웹사이트 발행인",
+       "name": "L'association du château de La Ferté-Imbault",
+       "type": "프랑스 비영리 협회 (1901년 법)",
+       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+       "email": "이메일: contact@aacfi.fr",
+       "rna": "RNA 번호: W412004953"
+     },
+     "director": {
+       "title": "발행 책임자",
+       "content": "발행 책임자는 L'association du château de La Ferté-Imbault 회장인 올리비에 오즈제로비치-메딩거(Olivier Ojzerowicz-Medinger) 씨입니다."
+     },
+     "hosting": {
+       "title": "호스팅",
+       "name": "Lovable",
+       "address": "클라우드 호스팅 서비스",
+       "website": "www.lovable.dev"
+     },
+     "intellectualProperty": {
+       "title": "지적 재산권",
+       "content1": "본 웹사이트의 모든 콘텐츠(텍스트, 이미지, 비디오, 로고, 그래픽, 아이콘, 사운드, 소프트웨어 등)는 L'association du château de La Ferté-Imbault 또는 파트너의 독점 재산이며 프랑스 및 국제 지적 재산권법의 보호를 받습니다.",
+       "content2": "협회의 사전 서면 승인 없이 사용된 수단이나 방법에 관계없이 웹사이트 요소의 전체 또는 일부를 복제, 표현, 수정, 게시 또는 개작하는 것은 금지됩니다. 웹사이트 또는 그 콘텐츠의 무단 사용은 위조로 간주되어 프랑스 지적재산권법 L.335-2조 및 후속 조항에 따라 기소됩니다."
+     },
+     "liability": {
+       "title": "책임의 제한",
+       "content1": "L'association du château de La Ferté-Imbault는 본 웹사이트에 게시된 정보의 정확성과 최신성을 보장하기 위해 노력합니다. 그러나 본 사이트에서 제공되는 정보의 정확성, 정밀성 또는 완전성을 보장할 수 없습니다.",
+       "content2": "따라서 협회는 본 웹사이트에서 제공되는 정보의 부정확성, 오류 또는 누락에 대한 모든 책임을 거부합니다. 사용자는 자신의 책임 하에 이 정보를 사용함을 인정합니다."
+     },
+     "links": {
+       "title": "하이퍼링크",
+       "content": "본 웹사이트에는 다른 웹사이트로의 하이퍼링크가 포함될 수 있습니다. L'association du château de La Ferté-Imbault는 이러한 사이트에 대한 통제권이 없으며 해당 콘텐츠에 대한 모든 책임을 거부합니다. 다른 사이트로의 하이퍼링크 존재는 해당 사이트 또는 그 콘텐츠의 승인을 의미하지 않습니다."
+     },
+     "law": {
+       "title": "준거법",
+       "content": "본 법적 고지는 프랑스 법률의 적용을 받습니다. 분쟁 발생 시, 우호적 해결 시도 실패 후 프랑스 법원만이 해당 분쟁을 심리할 관할권을 갖습니다."
+     },
+     "contact": {
+       "title": "연락처",
+       "content": "본 법적 고지 또는 웹사이트에 관한 문의 사항이 있으시면 연락해 주십시오:"
+     }
    }
 }

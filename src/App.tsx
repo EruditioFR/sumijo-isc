@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Billetterie from "./pages/Billetterie";
 import AdminGallery from "./pages/AdminGallery";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
+ import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/billetterie" element={<Billetterie />} />
           <Route path="/admin/gallery" element={<AdminGallery />} />
            <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+           <Route path="/mentions-legales" element={<LegalNotice />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
