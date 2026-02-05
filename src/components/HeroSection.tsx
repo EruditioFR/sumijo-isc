@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import heroImage from "@/assets/hero-sumi-2026.jpg";
 import heroMobileImage from "@/assets/hero-sumi-mobile.jpg";
 
@@ -124,20 +130,22 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
-            <Button
-              asChild
-              size="lg"
-              className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(162,148,124,0.6)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
-            >
-              <a 
-                href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <span className="relative z-10">{t("hero.participate")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </a>
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="lg"
+                    disabled
+                    className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed"
+                  >
+                    <span className="relative z-10">{t("hero.participate")}</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t("hero.comingSoon")}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <Button
               asChild
               size="lg"
@@ -161,7 +169,7 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 1.5, repeat: Infinity, repeatType: "reverse", repeatDelay: 0.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold hover:text-gold-light transition-all duration-300 hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         aria-label="Scroll to next section"
-      >
+              >
         <ChevronDown className="w-10 h-10" />
       </motion.button>
     </section>

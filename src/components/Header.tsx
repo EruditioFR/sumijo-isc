@@ -4,6 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import logoSjisc from '@/assets/logo-sjisc.jpg';
 
 const Header = () => {
@@ -209,18 +215,21 @@ const Header = () => {
 
           {/* CTA Button - Right */}
           <div className="hidden lg:flex items-center">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-gold transition-all tracking-wider"
-            >
-              <a 
-                href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                {t('nav.apply')}
-              </a>
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    disabled
+                    className="bg-gradient-to-r from-gold/50 to-gold-light/50 text-white/70 font-semibold transition-all tracking-wider cursor-not-allowed"
+                  >
+                    {t('nav.apply')}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('nav.comingSoon')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       </div>
