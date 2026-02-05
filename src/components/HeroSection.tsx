@@ -130,23 +130,36 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
-            <TooltipProvider>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <span className="inline-block">
-                    <Button
-                      size="lg"
-                      className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
-                    >
-                      <span className="relative z-10">{t("hero.participate")}</span>
-                    </Button>
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
-                  <p>{t("hero.comingSoon")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            {/* Desktop: Tooltip on hover */}
+            <div className="hidden sm:block">
+              <TooltipProvider>
+                <Tooltip delayDuration={0}>
+                  <TooltipTrigger asChild>
+                    <span className="inline-block">
+                      <Button
+                        size="lg"
+                        className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
+                      >
+                        <span className="relative z-10">{t("hero.participate")}</span>
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
+                    <p>{t("hero.comingSoon")}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            {/* Mobile: Label visible below button */}
+            <div className="flex flex-col items-center sm:hidden">
+              <Button
+                size="lg"
+                className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
+              >
+                <span className="relative z-10">{t("hero.participate")}</span>
+              </Button>
+              <span className="text-gold/80 text-sm mt-2 italic">{t("hero.comingSoon")}</span>
+            </div>
             <Button
               asChild
               size="lg"
