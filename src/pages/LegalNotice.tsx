@@ -1,14 +1,13 @@
- import { useTranslation } from 'react-i18next';
- import Header from "@/components/Header";
- import Footer from "@/components/Footer";
- import ScrollToTop from "@/components/ScrollToTop";
- import { Separator } from "@/components/ui/separator";
- 
- const LegalNotice = () => {
-   const { t } = useTranslation();
- 
-   return (
-     <div className="min-h-screen bg-cream">
+import { useTranslation } from 'react-i18next';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import { Separator } from "@/components/ui/separator";
+const LegalNotice = () => {
+  const {
+    t
+  } = useTranslation();
+  return <div className="min-h-screen bg-cream">
        <Header />
        <ScrollToTop />
        
@@ -42,9 +41,7 @@
              <h2 className="font-elegant text-2xl text-foreground mb-4">
                {t('legal.director.title')}
              </h2>
-             <p className="text-muted-foreground leading-relaxed">
-               {t('legal.director.content')}
-             </p>
+             
            </section>
            
            {/* Hosting */}
@@ -121,8 +118,6 @@
        </main>
        
        <Footer />
-     </div>
-   );
- };
- 
- export default LegalNotice;
+     </div>;
+};
+export default LegalNotice;
