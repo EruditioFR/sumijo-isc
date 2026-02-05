@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://www.sumijo-isc.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sumi Jo -->
+  <url>
+    <loc>https://www.sumijo-isc.com/sumi-jo</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/sumi-jo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/sumi-jo?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/sumi-jo?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/sumi-jo?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/sumi-jo"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Jury -->
+  <url>
+    <loc>https://www.sumijo-isc.com/jury</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/jury"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/jury?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/jury?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/jury?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/jury"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Château -->
+  <url>
+    <loc>https://www.sumijo-isc.com/chateau</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/chateau"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/chateau?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/chateau?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/chateau?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/chateau"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Partenaires -->
+  <url>
+    <loc>https://www.sumijo-isc.com/partenaires</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/partenaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/partenaires?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/partenaires?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/partenaires?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/partenaires"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Billetterie -->
+  <url>
+    <loc>https://www.sumijo-isc.com/billetterie</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/billetterie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/billetterie?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/billetterie?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/billetterie?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/billetterie"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contact -->
+  <url>
+    <loc>https://www.sumijo-isc.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sumijo-isc.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sumijo-isc.com/contact?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.sumijo-isc.com/contact?lang=kr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sumijo-isc.com/contact?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sumijo-isc.com/contact"/>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Politique de confidentialité -->
+  <url>
+    <loc>https://www.sumijo-isc.com/politique-confidentialite</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Mentions légales -->
+  <url>
+    <loc>https://www.sumijo-isc.com/mentions-legales</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

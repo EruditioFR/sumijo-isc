@@ -12,10 +12,33 @@ import PosterSection from '@/components/PosterSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import SEOHead from '@/components/SEOHead';
+import {
+  getOrganizationSchema,
+  getEventSchema,
+  getFAQSchema,
+  getWebSiteSchema,
+  defaultFAQItems,
+} from '@/lib/structuredData';
 
 const Index = () => {
+  const jsonLdSchemas = [
+    getWebSiteSchema(),
+    getOrganizationSchema(),
+    getEventSchema(),
+    getFAQSchema(defaultFAQItems),
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="SUMI JO International Singing Competition 2026 | Concours de chant lyrique"
+        description="Concours international de chant lyrique au Château de la Ferté-Imbault, Val de Loire. Présidé par Sumi Jo, soprano de renommée mondiale. Du 5 au 11 juillet 2026."
+        keywords="Sumi Jo, concours chant lyrique, opéra, competition, Château Ferté-Imbault, Val de Loire, soprano, musique classique"
+        path="/"
+        type="event"
+        jsonLd={jsonLdSchemas}
+      />
       <Header />
       <main>
         <HeroSection />
