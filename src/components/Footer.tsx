@@ -104,9 +104,9 @@ const Footer = () => {
               <a href="#" className="hover:text-gold transition-colors">
                 {t('footer.legal')}
               </a>
-              <a href="#" className="hover:text-gold transition-colors">
+              <Link to="/politique-confidentialite" className="hover:text-gold transition-colors">
                 {t('footer.privacy')}
-              </a>
+              </Link>
               <a href="#" className="hover:text-gold transition-colors">
                 {t('footer.cookies')}
               </a>

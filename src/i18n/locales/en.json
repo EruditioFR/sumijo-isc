@@ -398,8 +398,8 @@
     "error": "Error loading images"
   },
   "admin": {
-    "title": "Gallery Management",
-    "images": "Images",
+     "title": "Gallery Management",
+     "images": "Images",
     "upload": "Upload",
     "categories": "Categories",
     "login": "Admin Login",
@@ -434,5 +434,122 @@
     "imagePhotographer": "Photographer",
     "imageOrder": "Display order",
     "noImages": "No images in this category"
-  }
+   },
+   "privacy": {
+     "title": "Privacy Policy",
+     "lastUpdated": "Last updated: January 2026",
+     "intro": {
+       "title": "Introduction",
+       "content": "The association of Château de la Ferté-Imbault, organizer of the SUMI JO International Singing Competition (hereinafter \"the Competition\"), is committed to protecting the privacy and personal data of its users, candidates, partners, and visitors. This privacy policy describes how we collect, use, store, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and French data protection law."
+     },
+     "controller": {
+       "title": "Data Controller",
+       "content": "The data controller for personal data is:",
+       "name": "Association du Château de la Ferté-Imbault",
+       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+       "email": "Email: contact@sumijo-isc.com"
+     },
+     "dataCollected": {
+       "title": "Data Collected",
+       "intro": "We collect different types of personal data depending on your interactions with our website and the Competition:",
+       "contact": {
+         "title": "Contact data:",
+         "item1": "First and last name",
+         "item2": "Email address",
+         "item3": "Message sent via the contact form"
+       },
+       "application": {
+         "title": "Application data:",
+         "item1": "Identity information (name, date of birth, nationality)",
+         "item2": "Contact details (address, phone, email)",
+         "item3": "Artistic and musical background (CV, biography, recordings)",
+         "item4": "Photos and performance videos"
+       },
+       "technical": {
+         "title": "Technical data:",
+         "item1": "IP address",
+         "item2": "Browser type and operating system",
+         "item3": "Navigation data (pages visited, time spent)"
+       }
+     },
+     "purpose": {
+       "title": "Purpose of Processing",
+       "item1": "Manage Competition applications and communicate with candidates",
+       "item2": "Respond to contact and information requests",
+       "item3": "Send information about the Competition (with your consent)",
+       "item4": "Manage relationships with our partners and sponsors",
+       "item5": "Improve our website and services"
+     },
+     "legalBasis": {
+       "title": "Legal Basis for Processing",
+       "intro": "The processing of your personal data is based on the following legal grounds:",
+       "item1": "Your consent (for sending communications)",
+       "item2": "Performance of a contract (for managing applications)",
+       "item3": "Our legitimate interest (for improving our services and ensuring security)"
+     },
+     "retention": {
+       "title": "Data Retention Period",
+       "content": "Your personal data is kept for the time necessary to fulfill the purposes for which it was collected. Candidate data is kept for 5 years after the end of the relevant Competition. Contact data is kept for 3 years after the last contact. Technical data is kept for a maximum of 13 months."
+     },
+     "sharing": {
+       "title": "Data Sharing",
+       "intro": "Your personal data may be shared with:",
+       "item1": "Jury members and the Competition organizing team",
+       "item2": "Our technical service providers (hosting, email sending)",
+       "item3": "Competent authorities in case of legal obligation"
+     },
+     "transfers": {
+       "title": "International Transfers",
+       "content": "As part of an international competition, some data may be transferred to countries outside the European Union. In such cases, we ensure that appropriate safeguards are in place (standard contractual clauses, adequacy decisions)."
+     },
+     "rights": {
+       "title": "Your Rights",
+       "intro": "In accordance with the GDPR, you have the following rights regarding your personal data:",
+       "access": {
+         "title": "Right of access:",
+         "desc": "obtain a copy of your personal data"
+       },
+       "rectification": {
+         "title": "Right to rectification:",
+         "desc": "correct inaccurate or incomplete data"
+       },
+       "erasure": {
+         "title": "Right to erasure:",
+         "desc": "request the deletion of your data"
+       },
+       "restriction": {
+         "title": "Right to restriction:",
+         "desc": "restrict the processing of your data"
+       },
+       "portability": {
+         "title": "Right to portability:",
+         "desc": "receive your data in a structured format"
+       },
+       "objection": {
+         "title": "Right to object:",
+         "desc": "object to the processing of your data"
+       },
+       "howTo": "To exercise these rights, contact us at contact@sumijo-isc.com. We will respond to your request within one month."
+     },
+     "cookies": {
+       "title": "Cookies",
+       "content": "Our website uses technical cookies necessary for its operation and analytical cookies to measure audience (with your consent). You can manage your cookie preferences at any time through your browser settings."
+     },
+     "security": {
+       "title": "Data Security",
+       "content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, modification, disclosure, or destruction. These measures include data encryption, strict access controls, and regular security audits."
+     },
+     "changes": {
+       "title": "Policy Changes",
+       "content": "We reserve the right to modify this privacy policy at any time. Any changes will be posted on this page with an updated date. We encourage you to review this page regularly."
+     },
+     "contactSection": {
+       "title": "Contact Us",
+       "content": "For any questions regarding this privacy policy or the processing of your personal data, you can contact us:"
+     },
+     "cnil": {
+       "title": "Complaint to the CNIL",
+       "content": "If you believe that the processing of your personal data constitutes a violation of the GDPR, you have the right to lodge a complaint with the French Data Protection Authority (CNIL): www.cnil.fr"
+     }
+   }
 }
