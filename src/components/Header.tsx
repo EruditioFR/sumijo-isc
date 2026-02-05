@@ -343,15 +343,14 @@ const Header = () => {
               </div>
 
               {/* CTA Button */}
-              <Button
-                onClick={() => {
-                  scrollToSection('contact');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full bg-gradient-to-r from-gold to-gold-light text-foreground font-semibold"
-              >
-                {t('nav.participate')}
-              </Button>
+              <div className="flex flex-col items-center">
+                <Button
+                  className="w-full bg-gradient-to-r from-gold/50 to-gold-light/50 text-cream/70 font-semibold cursor-not-allowed pointer-events-none"
+                >
+                  {t('nav.apply')}
+                </Button>
+                <span className="text-gold/80 text-sm mt-2 italic">{t('nav.comingSoon')}</span>
+              </div>
             </div>
           </motion.div>
         </>
