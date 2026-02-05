@@ -398,8 +398,8 @@
     "error": "图片加载错误"
   },
   "admin": {
-    "title": "画廊管理",
-    "images": "图片",
+     "title": "画廊管理",
+     "images": "图片",
     "upload": "上传",
     "categories": "分类",
     "login": "管理员登录",
@@ -434,5 +434,122 @@
     "imagePhotographer": "摄影师",
     "imageOrder": "显示顺序",
     "noImages": "此分类没有图片"
-  }
+   },
+   "privacy": {
+     "title": "隐私政策",
+     "lastUpdated": "最后更新：2026年1月",
+     "intro": {
+       "title": "简介",
+       "content": "Château de la Ferté-Imbault协会作为SUMI JO International Singing Competition（以下简称「大赛」）的主办方，致力于保护用户、参赛者、合作伙伴和访问者的隐私和个人数据。本隐私政策描述了我们如何根据《通用数据保护条例》（GDPR）和法国数据保护法收集、使用、存储和保护您的个人数据。"
+     },
+     "controller": {
+       "title": "数据控制者",
+       "content": "个人数据的处理负责人为：",
+       "name": "Association du Château de la Ferté-Imbault",
+       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
+       "email": "电子邮件：contact@sumijo-isc.com"
+     },
+     "dataCollected": {
+       "title": "收集的数据",
+       "intro": "我们根据您与本网站和大赛的互动情况收集不同类型的个人数据：",
+       "contact": {
+         "title": "联系信息：",
+         "item1": "姓名",
+         "item2": "电子邮箱",
+         "item3": "通过联系表单发送的消息"
+       },
+       "application": {
+         "title": "申请信息：",
+         "item1": "身份信息（姓名、出生日期、国籍）",
+         "item2": "联系方式（地址、电话、电子邮件）",
+         "item3": "艺术和音乐背景（简历、个人简介、录音）",
+         "item4": "照片和表演视频"
+       },
+       "technical": {
+         "title": "技术信息：",
+         "item1": "IP地址",
+         "item2": "浏览器类型和操作系统",
+         "item3": "浏览数据（访问页面、访问时间）"
+       }
+     },
+     "purpose": {
+       "title": "处理目的",
+       "item1": "管理大赛申请并与参赛者沟通",
+       "item2": "回复联系和信息请求",
+       "item3": "发送大赛相关信息（经您同意）",
+       "item4": "管理与合作伙伴和赞助商的关系",
+       "item5": "改进我们的网站和服务"
+     },
+     "legalBasis": {
+       "title": "处理的法律依据",
+       "intro": "我们处理您个人数据的法律依据包括：",
+       "item1": "您的同意（用于发送通讯）",
+       "item2": "合同履行（用于管理申请）",
+       "item3": "我们的合法利益（用于改进服务和确保安全）"
+     },
+     "retention": {
+       "title": "数据保留期限",
+       "content": "您的个人数据将在实现收集目的所需的时间内保留。参赛者数据在相关大赛结束后保留5年。联系数据在最后一次联系后保留3年。技术数据最多保留13个月。"
+     },
+     "sharing": {
+       "title": "数据共享",
+       "intro": "您的个人数据可能会与以下方共享：",
+       "item1": "评审团成员和大赛组织团队",
+       "item2": "我们的技术服务提供商（托管、电子邮件发送）",
+       "item3": "在法律义务情况下的主管当局"
+     },
+     "transfers": {
+       "title": "国际传输",
+       "content": "作为国际赛事的一部分，某些数据可能会传输到欧盟以外的国家。在这种情况下，我们确保采取适当的保障措施（标准合同条款、充分性决定）。"
+     },
+     "rights": {
+       "title": "您的权利",
+       "intro": "根据GDPR，您对个人数据享有以下权利：",
+       "access": {
+         "title": "访问权：",
+         "desc": "获取您个人数据的副本"
+       },
+       "rectification": {
+         "title": "更正权：",
+         "desc": "更正不准确或不完整的数据"
+       },
+       "erasure": {
+         "title": "删除权：",
+         "desc": "要求删除您的数据"
+       },
+       "restriction": {
+         "title": "限制处理权：",
+         "desc": "限制对您数据的处理"
+       },
+       "portability": {
+         "title": "数据可携权：",
+         "desc": "以结构化格式接收您的数据"
+       },
+       "objection": {
+         "title": "反对权：",
+         "desc": "反对对您数据的处理"
+       },
+       "howTo": "如需行使这些权利，请通过 contact@sumijo-isc.com 联系我们。我们将在一个月内回复您的请求。"
+     },
+     "cookies": {
+       "title": "Cookie",
+       "content": "我们的网站使用运行所需的技术Cookie和用于衡量受众的分析Cookie（经您同意）。您可以随时通过浏览器设置管理Cookie偏好设置。"
+     },
+     "security": {
+       "title": "数据安全",
+       "content": "我们采取适当的技术和组织措施，保护您的个人数据免受未经授权的访问、修改、披露或销毁。这些措施包括数据加密、严格的访问控制和定期的安全审计。"
+     },
+     "changes": {
+       "title": "政策变更",
+       "content": "我们保留随时修改本隐私政策的权利。任何变更都将在本页面上发布并标注更新日期。我们建议您定期查看此页面。"
+     },
+     "contactSection": {
+       "title": "联系我们",
+       "content": "如对本隐私政策或个人数据处理有任何疑问，请联系我们："
+     },
+     "cnil": {
+       "title": "向CNIL投诉",
+       "content": "如果您认为对您个人数据的处理违反了GDPR，您有权向法国数据保护机构（CNIL）提出投诉：www.cnil.fr"
+     }
+   }
 }
