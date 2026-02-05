@@ -9,6 +9,7 @@ import PressSection from '@/components/PressSection';
 import GallerySection from '@/components/GallerySection';
 import FestivalSection from '@/components/FestivalSection';
 import PosterSection from '@/components/PosterSection';
+import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -26,6 +27,7 @@ const Index = () => {
         <IntroductionSection />
         <HarmonySection />
         <FestivalSection />
+        <FAQSection />
         <PosterSection />
       </main>
       <Footer />

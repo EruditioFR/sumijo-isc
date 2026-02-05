@@ -1,4 +1,50 @@
 {
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "Retrouvez les réponses aux questions les plus courantes sur le concours",
+    "items": {
+      "eligibility": {
+        "question": "Quelles sont les conditions d'éligibilité pour participer ?",
+        "answer": "Le concours est ouvert à tous les chanteurs lyriques du monde entier, sans limite de nationalité. Les candidats doivent avoir entre 18 et 35 ans au moment des inscriptions. Une formation vocale classique et une expérience scénique sont recommandées mais non obligatoires."
+      },
+      "categories": {
+        "question": "Quelles catégories vocales sont acceptées ?",
+        "answer": "Le concours est ouvert à toutes les catégories vocales : soprano, mezzo-soprano, contralto, ténor, baryton et basse. Chaque voix est évaluée selon ses propres critères d'excellence."
+      },
+      "dates": {
+        "question": "Quelles sont les dates du concours 2026 ?",
+        "answer": "L'édition 2026 du SUMI JO International Singing Competition se déroulera du 5 au 11 juillet 2026 au Château de la Ferté-Imbault. La semaine comprend les auditions, demi-finales, finale et concerts."
+      },
+      "location": {
+        "question": "Où se déroule le concours ?",
+        "answer": "Le concours se tient au Château de la Ferté-Imbault, situé dans la vallée de la Loire à moins de deux heures de Paris. Ce monument historique du XVIe siècle offre un cadre exceptionnel pour l'événement."
+      },
+      "prizes": {
+        "question": "Quels prix sont décernés aux lauréats ?",
+        "answer": "Les lauréats reçoivent des prix en numéraire ainsi que des opportunités de carrière exceptionnelles : concerts avec Sumi Jo, tournées internationales en Asie et en Europe, visibilité médiatique et accompagnement professionnel continu."
+      },
+      "application": {
+        "question": "Comment puis-je déposer ma candidature ?",
+        "answer": "Les inscriptions pour l'édition 2026 ouvriront prochainement. Les candidats devront soumettre un dossier comprenant leur CV artistique, des enregistrements vidéo de leurs performances et une lettre de motivation. Inscrivez-vous à notre newsletter pour être alerté de l'ouverture des candidatures."
+      },
+      "repertoire": {
+        "question": "Quel répertoire dois-je préparer ?",
+        "answer": "Le répertoire sera précisé dans le règlement officiel. En général, les candidats doivent préparer des airs d'opéra et mélodies couvrant différentes époques et styles, du baroque au XXe siècle. Un accompagnement au piano sera fourni."
+      },
+      "accommodation": {
+        "question": "L'hébergement est-il prévu pour les candidats ?",
+        "answer": "L'organisation peut aider les candidats à trouver un hébergement à proximité du château. Des partenariats avec des hôtels locaux offrent des tarifs préférentiels pour les participants au concours."
+      },
+      "language": {
+        "question": "Dans quelle langue se déroule le concours ?",
+        "answer": "Le concours se déroule principalement en français et en anglais. Les candidats peuvent chanter dans toutes les langues selon le répertoire choisi (italien, allemand, français, russe, etc.)."
+      },
+      "tickets": {
+        "question": "Comment acheter des billets pour assister au concours ?",
+        "answer": "La billetterie en ligne ouvrira le 1er mars 2026. Les places pour les auditions, demi-finales, finale et concerts seront disponibles à la vente. Inscrivez-vous à notre notification par email pour être alerté de l'ouverture."
+      }
+    }
+  },
   "nav": {
     "competition": "Le concours",
     "sumijo": "Sumi Jo",
