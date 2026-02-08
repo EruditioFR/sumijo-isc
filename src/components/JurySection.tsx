@@ -111,6 +111,11 @@ const JurySection = () => {
     member => !['galoppini', 'rhorer', 'vargas'].includes(member.id)
   );
 
+  // Jury 2024 - excludes Allemendinger and Gavazzeni (they only joined in 2026)
+  const jury2024Members = juryMembers.filter(
+    member => !['allemendinger', 'gavazzeni'].includes(member.id)
+  );
+
   return (
     <>
       {/* Jury 2026 Section */}
@@ -233,7 +238,7 @@ const JurySection = () => {
 
           {/* Jury 2024 Compact Grid - 3 columns x 2 rows */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {juryMembers.map((member, index) => (
+            {jury2024Members.map((member, index) => (
               <motion.div
                 key={`2024-${member.id}`}
                 initial={{ opacity: 0, y: 20 }}
