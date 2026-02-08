@@ -334,6 +334,16 @@
         "name": "Ramón Vargas",
         "role": "男高音",
         "bio": "国际知名墨西哥男高音Ramón Vargas曾在世界最伟大的歌剧舞台上演出。他杰出的职业生涯和对美声唱法的精通使他成为指导和评估年轻人才的理想导师。"
+      },
+      "allemendinger": {
+        "name": "Mélanie Allmendinger",
+        "role": "伦敦皇家歌剧院艺术行政官",
+        "bio": "简历即将发布"
+      },
+      "gavazzeni": {
+        "name": "Paolo Gavazzeni",
+        "role": "斯卡拉歌剧院选角经理",
+        "bio": "简历即将发布"
       }
     }
   },

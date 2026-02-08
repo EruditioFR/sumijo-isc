@@ -334,6 +334,16 @@
         "name": "Ramón Vargas",
         "role": "Tenor",
         "bio": "Internationally renowned Mexican tenor, Ramón Vargas has performed on the world's greatest operatic stages. His exceptional career and mastery of bel canto make him an ideal mentor to guide and evaluate young talent."
+      },
+      "allemendinger": {
+        "name": "Mélanie Allmendinger",
+        "role": "Artistic Administrator at the Royal Opera House in London",
+        "bio": "Biography coming soon"
+      },
+      "gavazzeni": {
+        "name": "Paolo Gavazzeni",
+        "role": "Casting Manager at La Scala",
+        "bio": "Biography coming soon"
       }
     }
   },
