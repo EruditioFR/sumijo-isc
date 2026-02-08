@@ -28,7 +28,7 @@ interface JuryMember {
   name: string;
   role: string;
   bio: string;
-  image: string;
+  image: string | null;
 }
 
 const JurySection = () => {
@@ -102,7 +102,7 @@ const JurySection = () => {
       name: t('jury.members.gavazzeni.name'),
       role: t('jury.members.gavazzeni.role'),
       bio: t('jury.members.gavazzeni.bio'),
-      image: placeholderImage,
+      image: null,
     },
   ];
 
@@ -153,15 +153,23 @@ const JurySection = () => {
                   <div className="relative bg-card rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-gold/20 border border-gold/10 group-hover:border-gold/30 h-full">
                     {/* Image container with overlay */}
                     <div className="relative overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        loading="lazy"
-                        decoding="async"
-                        width="400"
-                        height="320"
-                        className="w-full h-80 object-cover object-top transition-all duration-700 group-hover:scale-110"
-                      />
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          loading="lazy"
+                          decoding="async"
+                          width="400"
+                          height="320"
+                          className="w-full h-80 object-cover object-top transition-all duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-80 bg-gradient-to-b from-muted to-muted/80 flex items-center justify-center transition-all duration-700 group-hover:scale-110">
+                          <svg className="w-24 h-24 text-gold/30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                          </svg>
+                        </div>
+                      )}
                       {/* Gradient overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                       
