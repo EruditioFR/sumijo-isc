@@ -161,10 +161,10 @@ const JurySection = () => {
                           decoding="async"
                           width="400"
                           height="320"
-                          className="w-full h-80 object-cover object-[center_20%] transition-all duration-700 group-hover:scale-110"
+                          className="w-full h-40 object-cover object-[center_20%] transition-all duration-700 group-hover:scale-110"
                         />
                       ) : (
-                        <div className="w-full h-80 bg-gradient-to-b from-muted to-muted/80 flex items-center justify-center transition-all duration-700 group-hover:scale-110">
+                        <div className="w-full h-40 bg-gradient-to-b from-muted to-muted/80 flex items-center justify-center transition-all duration-700 group-hover:scale-110">
                           <svg className="w-24 h-24 text-gold/30" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                           </svg>
