@@ -106,9 +106,9 @@ const JurySection = () => {
     },
   ];
 
-  // Jury 2026 - excludes Galoppini, Rhorer, and Vargas
+  // Jury 2026 - excludes Galoppini, Rhorer, Vargas, and Gavazzeni (pending photo)
   const jury2026Members = juryMembers.filter(
-    member => !['galoppini', 'rhorer', 'vargas'].includes(member.id)
+    member => !['galoppini', 'rhorer', 'vargas', 'gavazzeni'].includes(member.id)
   );
 
   return (
