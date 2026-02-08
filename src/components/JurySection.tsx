@@ -18,6 +18,10 @@ import alainLanceronImage from '@/assets/jury-alain-lanceron.png';
 import alessandroGaloppiniImage from '@/assets/jury-alessandro-galoppini.png';
 import jonathanFriendImage from '@/assets/jury-jonathan-friend.png';
 import olivierOperowiczImage from '@/assets/jury-olivier-operowicz.png';
+import melanieAllemendinger from '@/assets/jury-melanie-allemendinger.jpg';
+
+// Placeholder for jury members without photos yet
+const placeholderImage = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face&auto=format&q=80';
 
 interface JuryMember {
   id: string;
@@ -85,6 +89,20 @@ const JurySection = () => {
       role: t('jury.members.vargas.role'),
       bio: t('jury.members.vargas.bio'),
       image: ramonVargasImage,
+    },
+    {
+      id: 'allemendinger',
+      name: t('jury.members.allemendinger.name'),
+      role: t('jury.members.allemendinger.role'),
+      bio: t('jury.members.allemendinger.bio'),
+      image: melanieAllemendinger,
+    },
+    {
+      id: 'gavazzeni',
+      name: t('jury.members.gavazzeni.name'),
+      role: t('jury.members.gavazzeni.role'),
+      bio: t('jury.members.gavazzeni.bio'),
+      image: placeholderImage,
     },
   ];
 
