@@ -161,7 +161,7 @@ const JurySection = () => {
                           decoding="async"
                           width="400"
                           height="320"
-                          className="w-full h-80 object-cover object-top transition-all duration-700 group-hover:scale-110"
+                          className="w-full h-80 object-cover object-[center_20%] transition-all duration-700 group-hover:scale-110"
                         />
                       ) : (
                         <div className="w-full h-80 bg-gradient-to-b from-muted to-muted/80 flex items-center justify-center transition-all duration-700 group-hover:scale-110">
