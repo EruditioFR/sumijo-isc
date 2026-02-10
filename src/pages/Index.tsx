@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import AnnouncementVideoSection from '@/components/AnnouncementVideoSection';
 import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
 import StatsSection from '@/components/StatsSection';
@@ -42,6 +43,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <AnnouncementVideoSection />
         <StatsSection />
         <VideoGallerySection />
         <WinnersSection />
