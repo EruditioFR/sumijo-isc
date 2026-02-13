@@ -12,11 +12,23 @@ const resources = {
   zh: { translation: zh },
 };
 
+// Read ?lang= parameter from URL for hreflang support
+const getInitialLanguage = (): string => {
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang && ['fr', 'en', 'kr', 'zh'].includes(lang)) {
+      return lang;
+    }
+  }
+  return 'fr';
+};
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'fr',
+    lng: getInitialLanguage(),
     fallbackLng: 'fr',
     interpolation: {
       escapeValue: false,

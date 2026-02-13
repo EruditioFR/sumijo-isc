@@ -2,12 +2,19 @@ import { useTranslation } from 'react-i18next';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import SEOHead from "@/components/SEOHead";
 import { Separator } from "@/components/ui/separator";
 const LegalNotice = () => {
   const {
     t
   } = useTranslation();
   return <div className="min-h-screen bg-cream">
+       <SEOHead
+         title={t('legal.title') + ' | SJISC'}
+         description="Mentions légales du Concours International de Chant Sumi Jo"
+         path="/mentions-legales"
+         noIndex={true}
+       />
        <Header />
        <ScrollToTop />
        
