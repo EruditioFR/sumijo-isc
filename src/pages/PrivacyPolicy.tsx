@@ -1,16 +1,23 @@
- import { useTranslation } from 'react-i18next';
- import Header from "@/components/Header";
- import Footer from "@/components/Footer";
- import ScrollToTop from "@/components/ScrollToTop";
- import { Separator } from "@/components/ui/separator";
- 
- const PrivacyPolicy = () => {
-   const { t } = useTranslation();
- 
-   return (
-     <div className="min-h-screen bg-cream">
-       <Header />
-       <ScrollToTop />
+import { useTranslation } from 'react-i18next';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import SEOHead from "@/components/SEOHead";
+import { Separator } from "@/components/ui/separator";
+
+const PrivacyPolicy = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="min-h-screen bg-cream">
+      <SEOHead
+        title={t('privacy.title') + ' | SJISC'}
+        description="Politique de confidentialité du Concours International de Chant Sumi Jo"
+        path="/politique-confidentialite"
+        noIndex={true}
+      />
+      <Header />
+      <ScrollToTop />
        
        <main className="pt-32 pb-20">
          <div className="container mx-auto px-4 max-w-4xl">

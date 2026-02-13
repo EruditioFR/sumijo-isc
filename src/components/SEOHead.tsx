@@ -23,7 +23,9 @@ const SEOHead = ({
   jsonLd,
   noIndex = false,
 }: SEOHeadProps) => {
-  const canonicalUrl = `${BASE_URL}${path}`;
+  // Ensure consistent trailing slash for canonical URLs
+  const normalizedPath = path === '' ? '/' : path;
+  const canonicalUrl = `${BASE_URL}${normalizedPath}`;
   const imageUrl = image.startsWith('http') ? image : `${BASE_URL}${image}`;
 
   // Generate hreflang links for all supported languages
