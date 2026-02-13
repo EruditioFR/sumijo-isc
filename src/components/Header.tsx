@@ -4,12 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import logoSjisc from '@/assets/logo-sjisc.jpg';
 
 const Header = () => {
@@ -215,22 +209,14 @@ const Header = () => {
 
           {/* CTA Button - Right */}
           <div className="hidden lg:flex items-center">
-            <TooltipProvider>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <span className="inline-block">
-                    <Button
-                      className="bg-gradient-to-r from-gold/50 to-gold-light/50 text-white/70 font-semibold transition-all tracking-wider cursor-not-allowed pointer-events-none"
-                    >
-                      {t('nav.apply')}
-                    </Button>
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
-                  <p>{t('nav.comingSoon')}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Button
+              asChild
+              className="bg-gradient-to-r from-gold to-gold-light text-white font-semibold transition-all tracking-wider hover:shadow-[0_0_20px_rgba(162,148,124,0.4)] hover:scale-105"
+            >
+              <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
+                {t('nav.apply')}
+              </a>
+            </Button>
           </div>
         </div>
       </div>
@@ -345,11 +331,13 @@ const Header = () => {
               {/* CTA Button */}
               <div className="flex flex-col items-center">
                 <Button
-                  className="w-full bg-gradient-to-r from-gold/50 to-gold-light/50 text-cream/70 font-semibold cursor-not-allowed pointer-events-none"
+                  asChild
+                  className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-[0_0_20px_rgba(162,148,124,0.4)]"
                 >
-                  {t('nav.apply')}
+                  <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
+                    {t('nav.apply')}
+                  </a>
                 </Button>
-                <span className="text-gold/80 text-sm mt-2 italic">{t('nav.comingSoon')}</span>
               </div>
             </div>
           </motion.div>
