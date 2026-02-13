@@ -4,12 +4,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import heroImage from "@/assets/hero-sumi-2026.jpg";
 import heroMobileImage from "@/assets/hero-sumi-mobile.jpg";
 
@@ -130,36 +124,17 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
-            {/* Desktop: Dépôt de candidature with tooltip */}
-            <div className="hidden sm:block">
-              <TooltipProvider>
-                <Tooltip delayDuration={0}>
-                  <TooltipTrigger asChild>
-                    <span className="inline-block">
-                      <Button
-                        size="lg"
-                        className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
-                      >
-                        <span className="relative z-10">{t("hero.participate")}</span>
-                      </Button>
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-accent border-gold/30 text-cream z-[100]">
-                    <p>{t("hero.comingSoon")}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            {/* Mobile: Dépôt de candidature with label */}
-            <div className="flex flex-col items-center sm:hidden">
-              <Button
-                size="lg"
-                className="group relative bg-gradient-to-r from-gold/50 via-gold-light/50 to-gold/50 font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white/70 cursor-not-allowed pointer-events-none"
-              >
+            {/* Dépôt de candidature - Active */}
+            <Button
+              asChild
+              size="lg"
+              className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white hover:shadow-[0_0_30px_rgba(162,148,124,0.5)] hover:scale-105"
+            >
+              <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
                 <span className="relative z-10">{t("hero.participate")}</span>
-              </Button>
-              <span className="text-gold/80 text-sm mt-2 italic">{t("hero.comingSoon")}</span>
-            </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+            </Button>
             {/* Achetez vos places */}
             <Button
               asChild
