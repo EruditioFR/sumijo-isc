@@ -125,16 +125,21 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
             {/* Dépôt de candidature - Active */}
-            <Button
-              asChild
-              size="lg"
-              className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-lg px-10 py-7 transition-all duration-300 overflow-hidden text-white hover:shadow-[0_0_30px_rgba(162,148,124,0.5)] hover:scale-105"
+            <motion.div
+              animate={{ scale: [1, 1.045, 1] }}
+              transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
             >
-              <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
-                <span className="relative z-10">{t("hero.participate")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </a>
-            </Button>
+              <Button
+                asChild
+                size="lg"
+                className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl transition-all duration-300 overflow-hidden text-white shadow-[0_0_25px_rgba(162,148,124,0.35)] hover:shadow-[0_0_45px_rgba(162,148,124,0.6)] hover:scale-105 ring-2 ring-gold-light/30"
+              >
+                <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
+                  <span className="relative z-10">{t("hero.participate")}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </a>
+              </Button>
+            </motion.div>
             {/* Achetez vos places */}
             <Button
               asChild
