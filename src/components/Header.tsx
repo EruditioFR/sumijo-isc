@@ -211,7 +211,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center">
             <Button
               asChild
-              className="bg-gradient-to-r from-gold to-gold-light text-white font-semibold transition-all tracking-wider hover:shadow-[0_0_20px_rgba(162,148,124,0.4)] hover:scale-105"
+              className="bg-gradient-to-r from-gold to-gold-light text-white font-bold text-base px-6 py-5 tracking-wider transition-all shadow-[0_0_15px_rgba(162,148,124,0.3)] hover:shadow-[0_0_25px_rgba(162,148,124,0.5)] hover:scale-105 animate-pulse-subtle"
             >
               <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
                 {t('nav.apply')}
