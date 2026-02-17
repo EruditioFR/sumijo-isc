@@ -122,36 +122,47 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
+            className="flex flex-col items-center gap-4 pt-8"
           >
-            {/* Dépôt de candidature - Active */}
-            <motion.div
-              animate={{ scale: [1, 1.045, 1] }}
-              transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
-            >
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              {/* Dépôt de candidature - Active */}
+              <motion.div
+                animate={{ scale: [1, 1.045, 1] }}
+                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl transition-all duration-300 overflow-hidden text-white shadow-[0_0_25px_rgba(162,148,124,0.35)] hover:shadow-[0_0_45px_rgba(162,148,124,0.6)] hover:scale-105 ring-2 ring-gold-light/30"
+                >
+                  <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
+                    <span className="relative z-10">{t("hero.participate")}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </a>
+                </Button>
+              </motion.div>
+              {/* Achetez vos places */}
               <Button
                 asChild
                 size="lg"
-                className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl transition-all duration-300 overflow-hidden text-white shadow-[0_0_25px_rgba(162,148,124,0.35)] hover:shadow-[0_0_45px_rgba(162,148,124,0.6)] hover:scale-105 ring-2 ring-gold-light/30"
+                className="group relative bg-gradient-to-r from-rose-dark via-rose to-rose-dark font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
               >
-                <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
-                  <span className="relative z-10">{t("hero.participate")}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </a>
+                <Link to="/billetterie" className="flex flex-col items-center leading-tight">
+                  <span className="relative z-10">{t("hero.buyTickets")}</span>
+                  <span className="relative z-10 text-xs font-normal opacity-90 -mt-0.5">{t("hero.ticketsDate")}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-rose to-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
               </Button>
-            </motion.div>
-            {/* Achetez vos places */}
-            <Button
-              asChild
-              size="lg"
-              className="group relative bg-gradient-to-r from-rose-dark via-rose to-rose-dark font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
+            </div>
+            {/* Lien vers le règlement */}
+            <a
+              href={i18n.language === 'fr' ? '/documents/Reglement_Sumi_Jo_ISC_FR.pdf' : '/documents/Regulations_Sumi_Jo_ISC_EN.pdf'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/80 hover:text-gold text-sm md:text-base underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
             >
-              <Link to="/billetterie" className="flex flex-col items-center leading-tight">
-                <span className="relative z-10">{t("hero.buyTickets")}</span>
-                <span className="relative z-10 text-xs font-normal opacity-90 -mt-0.5">{t("hero.ticketsDate")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-rose to-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
-            </Button>
+              {t("hero.regulations", "Consulter le règlement")}
+            </a>
           </motion.div>
         </motion.div>
       </motion.div>
