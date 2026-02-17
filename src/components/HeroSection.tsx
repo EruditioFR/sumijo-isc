@@ -124,6 +124,15 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col items-center gap-4 pt-8"
           >
+            {/* Lien vers le règlement */}
+            <a
+              href={i18n.language === 'fr' ? '/documents/Reglement_Sumi_Jo_ISC_FR.pdf' : '/documents/Regulations_Sumi_Jo_ISC_EN.pdf'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/80 hover:text-gold text-sm md:text-base underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            >
+              {t("hero.regulations", "Consulter le règlement")}
+            </a>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               {/* Dépôt de candidature - Active */}
               <motion.div
@@ -154,15 +163,6 @@ const HeroSection = () => {
                 </Link>
               </Button>
             </div>
-            {/* Lien vers le règlement */}
-            <a
-              href={i18n.language === 'fr' ? '/documents/Reglement_Sumi_Jo_ISC_FR.pdf' : '/documents/Regulations_Sumi_Jo_ISC_EN.pdf'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cream/80 hover:text-gold text-sm md:text-base underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-            >
-              {t("hero.regulations", "Consulter le règlement")}
-            </a>
           </motion.div>
         </motion.div>
       </motion.div>
