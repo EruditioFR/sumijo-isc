@@ -363,13 +363,18 @@
         "role": "Artistic Administrator au Royal Opera House de Londres",
         "bio": "Biographie à venir"
       },
-      "gavazzeni": {
-        "name": "Paolo Gavazzeni",
-        "role": "Directeur de casting à la Scala de Milan",
-        "bio": "Biographie à venir"
-      }
-    }
-  },
+       "gavazzeni": {
+         "name": "Paolo Gavazzeni",
+         "role": "Directeur de casting à la Scala de Milan",
+         "bio": "Biographie à venir"
+       },
+       "alvarez": {
+         "name": "Marcelo Álvarez",
+         "role": "Ténor",
+         "bio": "Biographie à venir"
+       }
+     }
+   },
   "footer": {
     "navigation": "NAVIGATION",
     "followUs": "SUIVEZ-NOUS",

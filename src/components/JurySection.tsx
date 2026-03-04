@@ -97,14 +97,21 @@ const JurySection = () => {
       bio: t('jury.members.allemendinger.bio'),
       image: null,
     },
-    {
-      id: 'gavazzeni',
-      name: t('jury.members.gavazzeni.name'),
-      role: t('jury.members.gavazzeni.role'),
-      bio: t('jury.members.gavazzeni.bio'),
-      image: null,
-    },
-  ];
+     {
+       id: 'gavazzeni',
+       name: t('jury.members.gavazzeni.name'),
+       role: t('jury.members.gavazzeni.role'),
+       bio: t('jury.members.gavazzeni.bio'),
+       image: null,
+     },
+     {
+       id: 'alvarez',
+       name: t('jury.members.alvarez.name'),
+       role: t('jury.members.alvarez.role'),
+       bio: t('jury.members.alvarez.bio'),
+       image: null,
+     },
+   ];
 
   // Jury 2026 - excludes Galoppini, Rhorer, and Vargas
   const jury2026Members = juryMembers.filter(
