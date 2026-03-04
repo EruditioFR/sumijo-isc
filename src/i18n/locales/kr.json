@@ -341,13 +341,18 @@
         "role": "런던 로열 오페라 하우스 예술 행정관",
         "bio": "약력 준비 중"
       },
-      "gavazzeni": {
-        "name": "Paolo Gavazzeni",
-        "role": "라 스칼라 캐스팅 매니저",
-        "bio": "약력 준비 중"
-      }
-    }
-  },
+       "gavazzeni": {
+         "name": "Paolo Gavazzeni",
+         "role": "라 스칼라 캐스팅 매니저",
+         "bio": "약력 준비 중"
+       },
+       "alvarez": {
+         "name": "Marcelo Álvarez",
+         "role": "테너",
+         "bio": "약력 준비 중"
+       }
+     }
+   },
   "footer": {
     "navigation": "탐색",
     "followUs": "팔로우하기",

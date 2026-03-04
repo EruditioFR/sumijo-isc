@@ -341,13 +341,18 @@
         "role": "伦敦皇家歌剧院艺术行政官",
         "bio": "简历即将发布"
       },
-      "gavazzeni": {
-        "name": "Paolo Gavazzeni",
-        "role": "斯卡拉歌剧院选角经理",
-        "bio": "简历即将发布"
-      }
-    }
-  },
+       "gavazzeni": {
+         "name": "Paolo Gavazzeni",
+         "role": "斯卡拉歌剧院选角经理",
+         "bio": "简历即将发布"
+       },
+       "alvarez": {
+         "name": "Marcelo Álvarez",
+         "role": "男高音",
+         "bio": "简历即将发布"
+       }
+     }
+   },
   "footer": {
     "navigation": "导航",
     "followUs": "关注我们",
