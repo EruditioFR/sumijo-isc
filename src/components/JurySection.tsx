@@ -95,7 +95,7 @@ const JurySection = () => {
       name: t('jury.members.allemendinger.name'),
       role: t('jury.members.allemendinger.role'),
       bio: t('jury.members.allemendinger.bio'),
-      image: null,
+      image: melanieAllemendinger,
     },
      {
        id: 'gavazzeni',
