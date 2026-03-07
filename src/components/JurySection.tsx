@@ -18,7 +18,7 @@ import alainLanceronImage from '@/assets/jury-alain-lanceron.png';
 import alessandroGaloppiniImage from '@/assets/jury-alessandro-galoppini.png';
 import jonathanFriendImage from '@/assets/jury-jonathan-friend.png';
 import olivierOperowiczImage from '@/assets/jury-olivier-operowicz.png';
-import melanieAllemendinger from '@/assets/jury-melanie-allemendinger.jpg';
+import melanieAllemendinger from '@/assets/jury-melanie-allmendinger.jpg';
 
 // Placeholder for jury members without photos yet
 const placeholderImage = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face&auto=format&q=80';
