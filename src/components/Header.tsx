@@ -14,6 +14,9 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isCompetitionOpen, setIsCompetitionOpen] = useState(false);
+  const [isMobileCompetitionOpen, setIsMobileCompetitionOpen] = useState(false);
+  const competitionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
