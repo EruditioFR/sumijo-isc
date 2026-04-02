@@ -209,6 +209,92 @@ const Programme = () => {
               ))}
             </div>
 
+            {/* Détails des événements */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-20"
+            >
+              <div className="text-center mb-12">
+                <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-4 block">
+                  En détail
+                </span>
+                <h2 className="text-3xl md:text-4xl font-display text-foreground">
+                  Les événements
+                </h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
+              </div>
+
+              <div className="max-w-4xl mx-auto space-y-8">
+                {[
+                  {
+                    title: 'Auditions',
+                    dates: 'Lundi 6 et mardi 7',
+                    horaires: '14h - 17h',
+                    details: "Les deux premières journées d'auditions, hautes en surprises et émotions lyriques pour 12 demi-finalistes chaque jour. À l'issue de ces auditions, 8 candidats seront sélectionnés par le Jury.",
+                  },
+                  {
+                    title: 'Récitals',
+                    dates: 'Lundi 6, mardi 7 et mercredi 8',
+                    horaires: '20h - 22h',
+                    details: "Du lundi au mercredi, des récitals avec nos candidats de 2024 auront lieu chaque soir à 20h dans la grande galerie des miroirs, culminant le mercredi soir avec un récital de Sumi Jo et de nos gagnants de l'édition 2024.",
+                  },
+                  {
+                    title: 'Petite finale',
+                    dates: 'Jeudi 9',
+                    horaires: '20h - 22h30',
+                    details: "Le jeudi soir, aura lieu la Petite finale des 16 challengers, durant laquelle le public choisira un gagnant qui participera à la grande finale du lendemain. La soirée sera sublimée par un entracte cocktail dans la cour d'honneur du Château.",
+                    highlight: true,
+                  },
+                  {
+                    title: 'Grande finale',
+                    dates: 'Vendredi 10',
+                    horaires: '20h - 22h45',
+                    details: "La Grande finale des candidats sélectionnés le mercredi et le jeudi permet aux artistes d'accéder aux grands prix. Le public pourra profiter d'un entr'acte cocktail dans la cour d'honneur du Château. La soirée se conclura avec la délibération du Jury et les remises des prix dans la grande galerie des miroirs.",
+                    highlight: true,
+                  },
+                  {
+                    title: 'Concert de gala',
+                    dates: 'Samedi 11',
+                    horaires: '20h - 22h',
+                    details: "Pour conclure l'édition 2026, un dernier concert aura lieu dans la grande galerie des miroirs avec Sumi Jo et les gagnants 2026. La soirée sera sublimée par un entracte cocktail dans la cour d'honneur du Château.",
+                    highlight: true,
+                  },
+                ].map((event, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                    className={`relative bg-card rounded-xl overflow-hidden shadow-lg border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/10 ${
+                      event.highlight ? 'bg-gold/5' : ''
+                    }`}
+                  >
+                    <div className="p-6 md:p-8">
+                      <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+                        {event.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-4 mb-4">
+                        <div className="flex items-center gap-2">
+                          <span className="text-gold text-xs font-semibold tracking-wide uppercase">Dates :</span>
+                          <span className="text-muted-foreground text-sm">{event.dates}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-gold text-xs font-semibold tracking-wide uppercase">Horaires :</span>
+                          <span className="text-muted-foreground text-sm">{event.horaires}</span>
+                        </div>
+                      </div>
+                      <div className="h-px bg-gradient-to-r from-gold/20 via-gold/10 to-transparent mb-4" />
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {event.details}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Ornamental separator */}
             <div className="flex items-center justify-center gap-3 mt-16 mb-8">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/40" />
