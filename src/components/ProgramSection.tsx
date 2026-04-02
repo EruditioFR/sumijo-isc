@@ -171,11 +171,7 @@ const ProgramSection = () => {
                     }`}>
                       <span className="text-gold text-xs font-semibold whitespace-nowrap mt-0.5">{slot.time}</span>
                       <div>
-                        <p className={`font-display text-sm font-bold ${
-                          ['Petite finale', 'Grande finale', 'Concert de gala'].includes(slot.title)
-                            ? 'text-gold'
-                            : 'text-foreground'
-                        }`}>{slot.title}</p>
+                        <p className="font-display text-sm font-bold text-foreground">{slot.title}</p>
                         {slot.desc && <p className="text-muted-foreground text-xs">{slot.desc}</p>}
                       </div>
                     </div>
