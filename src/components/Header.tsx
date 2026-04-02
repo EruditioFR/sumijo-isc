@@ -322,21 +322,59 @@ const Header = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
                 >
-                  {t('nav.competition')}
+                  {t('nav.home')}
                 </Link>
+                {/* Competition with sub-items */}
+                <div>
+                  <button
+                    onClick={() => setIsMobileCompetitionOpen(!isMobileCompetitionOpen)}
+                    className="w-full text-left text-cream hover:text-gold transition-colors py-2 flex items-center justify-between"
+                  >
+                    {t('nav.competition')}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isMobileCompetitionOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isMobileCompetitionOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden pl-4 space-y-1"
+                      >
+                        <Link
+                          to="/programme"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.programme')}
+                        </Link>
+                        <Link
+                          to="/jury"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.jury')}
+                        </Link>
+                        <a
+                          href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.rules')}
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
                 <Link
                   to="/sumi-jo"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
                 >
                   {t('nav.sumijo')}
-                </Link>
-                <Link
-                  to="/jury"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                >
-                  {t('nav.jury')}
                 </Link>
                 <Link
                   to="/chateau"
