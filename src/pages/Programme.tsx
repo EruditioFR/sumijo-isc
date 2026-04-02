@@ -315,7 +315,7 @@ const Programme = () => {
                   Achetez vos places
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="font-bold text-base px-8 py-6 border-gold/20 hover:border-gold/40 hover:bg-gold/5">
+              <Button asChild variant="outline" size="lg" className="font-bold text-base px-8 py-6 border-rose/30 hover:border-rose hover:bg-rose hover:text-white transition-all duration-300">
                 <Link to="/">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Retour à l'accueil
