@@ -86,7 +86,7 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                className="bg-beige/15 border-b-2 border-beige/30 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-foreground/60"
+                className="bg-muted/40 border-b-2 border-gold/40 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-muted-foreground"
               >
                 {col.day}
               </motion.div>
@@ -99,7 +99,7 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + 0.05 * i }}
-                className={`bg-beige/8 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                className={`bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
                   col.slots[0] ? '' : ''
                 }`}
               >
@@ -124,9 +124,9 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + 0.05 * i }}
-                className={`bg-beige/8 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                className={`bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
                   ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1]?.title || '')
-                    ? 'bg-beige/15'
+                    ? 'bg-gold/5'
                     : ''
                 }`}
               >
