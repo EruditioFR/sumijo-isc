@@ -109,7 +109,7 @@ const JurySection = () => {
        name: t('jury.members.alvarez.name'),
        role: t('jury.members.alvarez.role'),
        bio: t('jury.members.alvarez.bio'),
-       image: null,
+        image: marceloAlvarezImg,
      },
    ];
 
