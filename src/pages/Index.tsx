@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import ProgramSection from '@/components/ProgramSection';
 import AnnouncementVideoSection from '@/components/AnnouncementVideoSection';
 import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
