@@ -184,9 +184,13 @@ const Header = () => {
               {t('nav.home')}
             </Link>
             {/* Competition dropdown */}
-            <div ref={competitionRef} className="relative">
+            <div
+              ref={competitionRef}
+              className="relative"
+              onMouseEnter={() => setIsCompetitionOpen(true)}
+              onMouseLeave={() => setIsCompetitionOpen(false)}
+            >
               <button
-                onClick={() => setIsCompetitionOpen(!isCompetitionOpen)}
                 className="text-xs md:text-sm text-cream hover:text-gold transition-colors flex items-center gap-1"
               >
                 {t('nav.competition')}
