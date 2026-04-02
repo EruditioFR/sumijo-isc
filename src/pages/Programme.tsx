@@ -15,7 +15,7 @@ const programData = [
   {
     day: 'Lundi 6 juillet',
     slots: [
-      { time: '14h - 17h', title: 'AUDITIONS', desc: 'des 12 premiers candidats' },
+      { time: '14h - 17h', title: 'Auditions', desc: 'des 12 premiers candidats' },
       { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
     ],
   },
