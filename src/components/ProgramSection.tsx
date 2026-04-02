@@ -78,7 +78,7 @@ const ProgramSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="hidden md:block overflow-x-auto"
         >
-          <div className="grid grid-cols-6 gap-3 min-w-[900px]">
+          <div className="grid grid-cols-6 gap-2 min-w-[900px]">
             {/* Headers */}
             {programData.map((col, i) => (
               <motion.div
@@ -86,7 +86,7 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                className="bg-foreground text-background rounded-t-lg px-3 py-4 text-center font-display text-sm font-bold tracking-wide"
+                className="bg-muted/40 border-b-2 border-gold/40 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-muted-foreground"
               >
                 {col.day}
               </motion.div>
@@ -99,8 +99,8 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + 0.05 * i }}
-                className={`border border-border/50 rounded-lg px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
-                  col.slots[0] ? 'bg-card shadow-sm' : 'bg-muted/30'
+                className={`bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                  col.slots[0] ? '' : ''
                 }`}
               >
                 {col.slots[0] ? (
@@ -112,7 +112,7 @@ const ProgramSection = () => {
                     <p className="text-gold text-xs font-semibold mt-2">{col.slots[0].time}</p>
                   </>
                 ) : (
-                  <p className="text-muted-foreground/40 text-sm italic">—</p>
+                  <p className="text-muted-foreground/30 text-sm italic">—</p>
                 )}
               </motion.div>
             ))}
@@ -124,11 +124,9 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + 0.05 * i }}
-                className={`border border-border/50 rounded-lg rounded-b-lg px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
-                  col.slots[1] ? 'bg-card shadow-sm' : 'bg-muted/30'
-                } ${
+                className={`bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
                   ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1]?.title || '')
-                    ? 'border-gold/30 bg-gradient-to-b from-card to-gold/5'
+                    ? 'bg-gold/5'
                     : ''
                 }`}
               >
@@ -147,7 +145,7 @@ const ProgramSection = () => {
                     <p className="text-gold text-xs font-semibold mt-2">{col.slots[1].time}</p>
                   </>
                 ) : (
-                  <p className="text-muted-foreground/40 text-sm italic">—</p>
+                  <p className="text-muted-foreground/30 text-sm italic">—</p>
                 )}
               </motion.div>
             ))}
