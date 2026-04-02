@@ -258,7 +258,7 @@ const Programme = () => {
                     title: 'Concert de gala',
                     dates: 'Samedi 11',
                     horaires: '20h - 22h',
-                    details: "Pour conclure l'édition 2026, un dernier concert aura lieu dans la grande galerie des miroirs avec Sumi Jo et les gagnants 2026. La soirée sera sublimée par un entracte cocktail dans la cour d'honneur du Château.",
+                    details: "Pour conclure l'édition 2026, un dernier concert aura lieu dans la grande galerie des miroirs. La soirée sera sublimée par un entracte cocktail dans la cour d'honneur du Château.",
                     highlight: true,
                   },
                 ].map((event, i) => (
