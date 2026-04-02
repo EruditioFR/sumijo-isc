@@ -238,7 +238,7 @@ const Programme = () => {
                     title: 'Récitals',
                     dates: 'Lundi 6, mardi 7 et mercredi 8',
                     horaires: '20h - 22h',
-                    details: "Du lundi au mercredi, des récitals avec nos candidats de 2024 auront lieu chaque soir à 20h dans la grande galerie des miroirs, culminant le mercredi soir avec un récital de Sumi Jo et de nos gagnants de l'édition 2024.",
+                    details: "Du lundi au mercredi, des récitals avec nos candidats de 2024 auront lieu chaque soir à 20h dans la grande galerie des miroirs, culminant le mercredi soir avec un récital de nos gagnants de l'édition 2024.",
                   },
                   {
                     title: 'Petite finale',
