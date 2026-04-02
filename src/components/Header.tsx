@@ -37,6 +37,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomepage]);
 
+  // Close competition dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (competitionRef.current && !competitionRef.current.contains(e.target as Node)) {
+        setIsCompetitionOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
