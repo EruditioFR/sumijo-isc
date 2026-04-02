@@ -30,7 +30,8 @@
     "sponsors": "合作伙伴",
     "chateau": "城堡",
     "contact": "联系我们",
-    "ticketing": "购票"
+    "ticketing": "购票",
+    "language": "语言"
   },
   "ticketing": {
     "label": "购票",
