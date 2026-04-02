@@ -30,7 +30,8 @@
     "sponsors": "파트너",
     "chateau": "성",
     "contact": "연락처",
-    "ticketing": "티켓"
+    "ticketing": "티켓",
+    "language": "언어"
   },
   "ticketing": {
     "label": "티켓",

@@ -30,7 +30,8 @@
     "sponsors": "Partners",
     "chateau": "The château",
     "contact": "Contact",
-    "ticketing": "Tickets"
+    "ticketing": "Tickets",
+    "language": "Language"
   },
   "ticketing": {
     "label": "TICKETS",
