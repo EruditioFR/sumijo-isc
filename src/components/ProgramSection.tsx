@@ -1,0 +1,220 @@
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { CalendarDays, Ticket } from 'lucide-react';
+
+const programData = [
+  {
+    day: 'Lundi 6 juillet',
+    slots: [
+      { time: '14h - 17h', title: 'AUDITIONS', desc: 'des 12 premiers candidats' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
+    ],
+  },
+  {
+    day: 'Mardi 7 juillet',
+    slots: [
+      { time: '14h - 17h', title: 'AUDITIONS', desc: 'des 12 candidats restants' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
+    ],
+  },
+  {
+    day: 'Mercredi 8 juillet',
+    slots: [
+      null,
+      { time: '20h - 22h', title: 'Récital', desc: 'des lauréats 2024' },
+    ],
+  },
+  {
+    day: 'Jeudi 9 juillet',
+    slots: [
+      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '20h - 22h30', title: 'Petite finale', desc: '' },
+    ],
+  },
+  {
+    day: 'Vendredi 10 juillet',
+    slots: [
+      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '20h - 22h45', title: 'Grande finale', desc: '' },
+    ],
+  },
+  {
+    day: 'Samedi 11 juillet',
+    slots: [
+      null,
+      { time: '20h - 22h', title: 'Concert de gala', desc: '' },
+    ],
+  },
+];
+
+const ProgramSection = () => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  return (
+    <section id="programme" className="py-20 md:py-28 bg-accent/30">
+      <div className="container mx-auto px-4">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-6 mb-12"
+        >
+          <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            Le programme <span className="text-gold">2026</span>
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Du lundi 6 au samedi 11 juillet — Château de la Ferté-Imbault
+          </p>
+        </motion.div>
+
+        {/* Desktop table */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="hidden md:block overflow-x-auto"
+        >
+          <div className="grid grid-cols-6 gap-3 min-w-[900px]">
+            {/* Headers */}
+            {programData.map((col, i) => (
+              <motion.div
+                key={`header-${i}`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 * i }}
+                className="bg-foreground text-background rounded-t-lg px-3 py-4 text-center font-display text-sm font-bold tracking-wide"
+              >
+                {col.day}
+              </motion.div>
+            ))}
+
+            {/* Row 1 - Après-midi */}
+            {programData.map((col, i) => (
+              <motion.div
+                key={`r1-${i}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + 0.05 * i }}
+                className={`border border-border/50 rounded-lg px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                  col.slots[0] ? 'bg-card shadow-sm' : 'bg-muted/30'
+                }`}
+              >
+                {col.slots[0] ? (
+                  <>
+                    <p className="font-display text-base font-bold text-foreground">{col.slots[0].title}</p>
+                    {col.slots[0].desc && (
+                      <p className="text-muted-foreground text-sm mt-1">{col.slots[0].desc}</p>
+                    )}
+                    <p className="text-gold text-xs font-semibold mt-2">{col.slots[0].time}</p>
+                  </>
+                ) : (
+                  <p className="text-muted-foreground/40 text-sm italic">—</p>
+                )}
+              </motion.div>
+            ))}
+
+            {/* Row 2 - Soirée */}
+            {programData.map((col, i) => (
+              <motion.div
+                key={`r2-${i}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.5 + 0.05 * i }}
+                className={`border border-border/50 rounded-lg rounded-b-lg px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                  col.slots[1] ? 'bg-card shadow-sm' : 'bg-muted/30'
+                } ${
+                  ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1]?.title || '')
+                    ? 'border-gold/30 bg-gradient-to-b from-card to-gold/5'
+                    : ''
+                }`}
+              >
+                {col.slots[1] ? (
+                  <>
+                    <p className={`font-display text-base font-bold ${
+                      ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1].title)
+                        ? 'text-gold'
+                        : 'text-foreground'
+                    }`}>
+                      {col.slots[1].title}
+                    </p>
+                    {col.slots[1].desc && (
+                      <p className="text-muted-foreground text-sm mt-1">{col.slots[1].desc}</p>
+                    )}
+                    <p className="text-gold text-xs font-semibold mt-2">{col.slots[1].time}</p>
+                  </>
+                ) : (
+                  <p className="text-muted-foreground/40 text-sm italic">—</p>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Mobile cards */}
+        <div className="md:hidden space-y-4">
+          {programData.map((col, i) => (
+            <motion.div
+              key={`mobile-${i}`}
+              initial={{ opacity: 0, x: -20 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 * i }}
+              className="bg-card border border-border/50 rounded-xl p-4 shadow-sm"
+            >
+              <h3 className="font-display text-lg font-bold text-foreground border-b border-border/30 pb-2 mb-3">
+                {col.day}
+              </h3>
+              <div className="space-y-3">
+                {col.slots.map((slot, j) =>
+                  slot ? (
+                    <div key={j} className={`flex items-start gap-3 ${
+                      ['Petite finale', 'Grande finale', 'Concert de gala'].includes(slot.title)
+                        ? 'bg-gold/5 rounded-lg p-2 -mx-2'
+                        : ''
+                    }`}>
+                      <span className="text-gold text-xs font-semibold whitespace-nowrap mt-0.5">{slot.time}</span>
+                      <div>
+                        <p className={`font-display text-sm font-bold ${
+                          ['Petite finale', 'Grande finale', 'Concert de gala'].includes(slot.title)
+                            ? 'text-gold'
+                            : 'text-foreground'
+                        }`}>{slot.title}</p>
+                        {slot.desc && <p className="text-muted-foreground text-xs">{slot.desc}</p>}
+                      </div>
+                    </div>
+                  ) : null
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12"
+        >
+          <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 font-bold text-base px-8 py-6">
+            <Link to="/programme">
+              <CalendarDays className="w-5 h-5 mr-2" />
+              Découvrir les détails du programme
+            </Link>
+          </Button>
+          <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold text-base px-8 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
+            <Link to="/billetterie">
+              <Ticket className="w-5 h-5 mr-2" />
+              Achetez vos places
+            </Link>
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default ProgramSection;
