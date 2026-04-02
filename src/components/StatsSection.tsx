@@ -142,20 +142,9 @@ const StatsSection = () => {
     Icon: Award
   }];
   return <section id="stats" className="relative py-16 md:py-24 lg:py-28 overflow-hidden bg-cream">
-      {/* Decorative diagonal stripes - desktop only */}
-      <div className="hidden lg:block absolute top-0 left-0 w-1/3 h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-[400px] h-[800px] rotate-[25deg] origin-top-left">
-          <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-b from-primary/40 via-primary/20 to-primary/5" />
-          <div className="absolute top-0 left-20 w-24 h-full bg-gradient-to-b from-rose-dark/30 via-rose-dark/15 to-transparent" />
-        </div>
-      </div>
-
-      <div className="hidden lg:block absolute top-0 right-0 w-1/3 h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-[500px] h-[900px] -rotate-[25deg] origin-top-right">
-          <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-b from-primary/30 via-primary/15 to-primary/5" />
-          <div className="absolute top-0 right-24 w-28 h-full bg-gradient-to-b from-rose-dark/25 via-rose-dark/10 to-transparent" />
-        </div>
-      </div>
+      {/* Subtle decorative accents */}
+      <div className="hidden lg:block absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose-dark/15 to-transparent" />
+      <div className="hidden lg:block absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose-dark/10 to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div ref={ref} initial={{
