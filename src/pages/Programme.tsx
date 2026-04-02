@@ -5,57 +5,53 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Ticket, ArrowLeft, Music, Mic2, Trophy, Star } from 'lucide-react';
+import { Ticket, ArrowLeft } from 'lucide-react';
 
 const Header = lazy(() => import('@/components/Header'));
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 
-const programDetails = [
+const programData = [
   {
     day: 'Lundi 6 juillet',
-    icon: Mic2,
-    events: [
-      { time: '14h - 17h', title: 'AUDITIONS des 12 premiers candidats', description: 'Première session d\'auditions au Château de la Ferté-Imbault.' },
-      { time: '20h - 22h', title: 'Récital des candidats', description: 'Les candidats du jour se produisent en récital.' },
+    slots: [
+      { time: '14h - 17h', title: 'AUDITIONS', desc: 'des 12 premiers candidats' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
     ],
   },
   {
     day: 'Mardi 7 juillet',
-    icon: Mic2,
-    events: [
-      { time: '14h - 17h', title: 'AUDITIONS des 12 candidats restants', description: 'Seconde session d\'auditions.' },
-      { time: '20h - 22h', title: 'Récital des candidats', description: 'Les candidats du jour se produisent en récital.' },
+    slots: [
+      { time: '14h - 17h', title: 'AUDITIONS', desc: 'des 12 candidats restants' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
     ],
   },
   {
     day: 'Mercredi 8 juillet',
-    icon: Music,
-    events: [
-      { time: '20h - 22h', title: 'Récital des lauréats 2024', description: 'Retrouvez les lauréats de l\'édition précédente sur scène.' },
+    slots: [
+      null,
+      { time: '20h - 22h', title: 'Récital', desc: 'des lauréats 2024' },
     ],
   },
   {
     day: 'Jeudi 9 juillet',
-    icon: Trophy,
-    events: [
-      { time: 'Horaires à définir', title: 'Masterclass', description: 'Masterclass ouverte au public.' },
-      { time: '20h - 22h30', title: 'Petite finale', description: 'Les candidats sélectionnés s\'affrontent pour accéder à la grande finale.' },
+    slots: [
+      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '20h - 22h30', title: 'Petite finale', desc: '' },
     ],
   },
   {
     day: 'Vendredi 10 juillet',
-    icon: Trophy,
-    events: [
-      { time: 'Horaires à définir', title: 'Masterclass', description: 'Masterclass ouverte au public.' },
-      { time: '20h - 22h45', title: 'Grande finale', description: 'La grande finale du SUMI JO International Singing Competition 2026.' },
+    slots: [
+      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '20h - 22h45', title: 'Grande finale', desc: '' },
     ],
   },
   {
     day: 'Samedi 11 juillet',
-    icon: Star,
-    events: [
-      { time: '20h - 22h', title: 'Concert de gala', description: 'Soirée de clôture exceptionnelle avec les lauréats et invités d\'honneur.' },
+    slots: [
+      null,
+      { time: '20h - 22h', title: 'Concert de gala', desc: '' },
     ],
   },
 ];
@@ -80,13 +76,12 @@ const Programme = () => {
       </Suspense>
       <main className="pt-8">
         <section className="relative py-20 md:py-28 overflow-hidden">
-          {/* Decorative elements matching jury page */}
+          {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-rose/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/3 rounded-full blur-3xl" />
 
           <div className="container mx-auto px-4 relative z-10" ref={ref}>
-            {/* Header matching jury style */}
+            {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -105,63 +100,113 @@ const Programme = () => {
               </p>
             </motion.div>
 
-            {/* Programme cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {programDetails.map((day, i) => {
-                const IconComponent = day.icon;
-                return (
+            {/* Desktop table */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden md:block overflow-x-auto"
+            >
+              <div className="grid grid-cols-6 gap-2 min-w-[900px]">
+                {/* Headers */}
+                {programData.map((col, i) => (
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                    animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                    className="group"
+                    key={`header-${i}`}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.1 * i }}
+                    className="bg-muted/40 border-b-2 border-gold/40 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-muted-foreground"
                   >
-                    <div className="relative bg-card rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-gold/20 border border-gold/10 group-hover:border-gold/30 h-full">
-                      {/* Day header with icon */}
-                      <div className="relative bg-gradient-to-r from-foreground via-foreground to-foreground/95 text-background px-6 py-5 flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                          <IconComponent className="w-5 h-5 text-gold" />
-                        </div>
-                        <div>
-                          <h2 className="font-display text-xl md:text-2xl font-bold">{day.day}</h2>
-                        </div>
-                        {/* Decorative corner accent */}
-                        <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                          <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-bl from-gold/20 to-transparent rotate-45 transform origin-bottom-left" />
-                        </div>
-                      </div>
-
-                      {/* Gold accent line */}
-                      <div className="h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent" />
-
-                      {/* Events */}
-                      <div className="divide-y divide-border/30">
-                        {day.events.map((event, j) => {
-                          const isHighlight = ['Petite finale', 'Grande finale', 'Concert de gala'].includes(event.title);
-                          return (
-                            <div key={j} className={`px-6 py-5 transition-colors duration-300 ${
-                              isHighlight ? 'bg-gold/5' : 'hover:bg-muted/30'
-                            }`}>
-                              <div className="flex items-center gap-2 mb-2">
-                                <span className="text-gold font-semibold text-xs tracking-wide uppercase whitespace-nowrap">
-                                  {event.time}
-                                </span>
-                              </div>
-                              <h3 className={`font-display text-lg font-bold mb-1 ${
-                                isHighlight ? 'text-gold' : 'text-foreground'
-                              }`}>
-                                {event.title}
-                              </h3>
-                              <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+                    {col.day}
                   </motion.div>
-                );
-              })}
+                ))}
+
+                {/* Row 1 - Après-midi */}
+                {programData.map((col, i) => (
+                  <motion.div
+                    key={`r1-${i}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 + 0.05 * i }}
+                    className="bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center"
+                  >
+                    {col.slots[0] ? (
+                      <>
+                        <p className="font-display text-base font-bold text-foreground">{col.slots[0].title}</p>
+                        {col.slots[0].desc && (
+                          <p className="text-muted-foreground text-sm mt-1">{col.slots[0].desc}</p>
+                        )}
+                        <p className="text-gold text-xs font-semibold mt-2">{col.slots[0].time}</p>
+                      </>
+                    ) : (
+                      <p className="text-muted-foreground/30 text-sm italic">—</p>
+                    )}
+                  </motion.div>
+                ))}
+
+                {/* Row 2 - Soirée */}
+                {programData.map((col, i) => (
+                  <motion.div
+                    key={`r2-${i}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.5 + 0.05 * i }}
+                    className={`bg-muted/20 px-3 py-5 text-center min-h-[120px] flex flex-col justify-center ${
+                      ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1]?.title || '')
+                        ? 'bg-gold/5'
+                        : ''
+                    }`}
+                  >
+                    {col.slots[1] ? (
+                      <>
+                        <p className="font-display text-base font-bold text-foreground">
+                          {col.slots[1].title}
+                        </p>
+                        {col.slots[1].desc && (
+                          <p className="text-muted-foreground text-sm mt-1">{col.slots[1].desc}</p>
+                        )}
+                        <p className="text-gold text-xs font-semibold mt-2">{col.slots[1].time}</p>
+                      </>
+                    ) : (
+                      <p className="text-muted-foreground/30 text-sm italic">—</p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Mobile cards */}
+            <div className="md:hidden space-y-4">
+              {programData.map((col, i) => (
+                <motion.div
+                  key={`mobile-${i}`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                  className="bg-card border border-border/50 rounded-xl p-4 shadow-sm"
+                >
+                  <h3 className="font-display text-lg font-bold text-foreground border-b border-border/30 pb-2 mb-3">
+                    {col.day}
+                  </h3>
+                  <div className="space-y-3">
+                    {col.slots.map((slot, j) =>
+                      slot ? (
+                        <div key={j} className={`flex items-start gap-3 ${
+                          ['Petite finale', 'Grande finale', 'Concert de gala'].includes(slot.title)
+                            ? 'bg-gold/5 rounded-lg p-2 -mx-2'
+                            : ''
+                        }`}>
+                          <span className="text-gold text-xs font-semibold whitespace-nowrap mt-0.5">{slot.time}</span>
+                          <div>
+                            <p className="font-display text-sm font-bold text-foreground">{slot.title}</p>
+                            {slot.desc && <p className="text-muted-foreground text-xs">{slot.desc}</p>}
+                          </div>
+                        </div>
+                      ) : null
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             {/* Ornamental separator */}
