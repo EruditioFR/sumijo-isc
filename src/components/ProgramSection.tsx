@@ -86,7 +86,7 @@ const ProgramSection = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                className="bg-muted/40 border-b-2 border-gold/40 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-muted-foreground"
+                className="bg-beige/15 border-b-2 border-beige/30 px-3 py-4 text-center font-display text-xs font-bold tracking-widest uppercase text-foreground/60"
               >
                 {col.day}
               </motion.div>
