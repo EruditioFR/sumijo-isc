@@ -18,9 +18,12 @@
     }
   },
   "nav": {
+    "home": "首页",
     "competition": "比赛",
-    "sumijo": "Sumi Jo",
+    "programme": "日程",
     "jury": "评审团",
+    "rules": "规则",
+    "sumijo": "Sumi Jo",
     "participate": "参赛",
     "apply": "提交申请",
     "comingSoon": "2026年2月14日起开放",

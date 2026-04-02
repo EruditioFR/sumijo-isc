@@ -18,9 +18,12 @@
     }
   },
   "nav": {
+    "home": "홈",
     "competition": "대회",
-    "sumijo": "Sumi Jo",
+    "programme": "프로그램",
     "jury": "심사위원단",
+    "rules": "규정",
+    "sumijo": "Sumi Jo",
     "participate": "참가하기",
     "apply": "지원서 제출",
     "comingSoon": "2026년 2월 14일부터",

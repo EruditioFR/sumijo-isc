@@ -18,9 +18,12 @@
     }
   },
   "nav": {
+    "home": "Home",
     "competition": "The Competition",
+    "programme": "Programme",
+    "jury": "The Jury",
+    "rules": "Rules",
     "sumijo": "Sumi Jo",
-    "jury": "The jury",
     "participate": "Participate",
     "apply": "Apply Now",
     "comingSoon": "From February 14, 2026",
