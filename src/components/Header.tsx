@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoSjisc from '@/assets/logo-sjisc.jpg';
 
@@ -14,6 +14,9 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isCompetitionOpen, setIsCompetitionOpen] = useState(false);
+  const [isMobileCompetitionOpen, setIsMobileCompetitionOpen] = useState(false);
+  const competitionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +36,17 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomepage]);
+
+  // Close competition dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (competitionRef.current && !competitionRef.current.contains(e.target as Node)) {
+        setIsCompetitionOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -167,19 +181,59 @@ const Header = () => {
               to="/"
               className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
-              {t('nav.competition')}
+              {t('nav.home')}
             </Link>
+            {/* Competition dropdown */}
+            <div ref={competitionRef} className="relative">
+              <button
+                onClick={() => setIsCompetitionOpen(!isCompetitionOpen)}
+                className="text-xs md:text-sm text-cream hover:text-gold transition-colors flex items-center gap-1"
+              >
+                {t('nav.competition')}
+                <ChevronDown className={`w-3 h-3 transition-transform ${isCompetitionOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {isCompetitionOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-2 w-48 rounded-lg shadow-xl overflow-hidden"
+                    style={{ backgroundColor: 'hsl(var(--accent))' }}
+                  >
+                    <Link
+                      to="/programme"
+                      onClick={() => setIsCompetitionOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-cream hover:text-gold hover:bg-gold/10 transition-colors"
+                    >
+                      {t('nav.programme')}
+                    </Link>
+                    <Link
+                      to="/jury"
+                      onClick={() => setIsCompetitionOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-cream hover:text-gold hover:bg-gold/10 transition-colors"
+                    >
+                      {t('nav.jury')}
+                    </Link>
+                    <a
+                      href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsCompetitionOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-cream hover:text-gold hover:bg-gold/10 transition-colors"
+                    >
+                      {t('nav.rules')}
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <Link
               to="/sumi-jo"
               className="hidden sm:block text-xs md:text-sm text-cream hover:text-gold transition-colors"
             >
               {t('nav.sumijo')}
-            </Link>
-            <Link
-              to="/jury"
-              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
-            >
-              {t('nav.jury')}
             </Link>
             <Link
               to="/chateau"
@@ -268,21 +322,59 @@ const Header = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
                 >
-                  {t('nav.competition')}
+                  {t('nav.home')}
                 </Link>
+                {/* Competition with sub-items */}
+                <div>
+                  <button
+                    onClick={() => setIsMobileCompetitionOpen(!isMobileCompetitionOpen)}
+                    className="w-full text-left text-cream hover:text-gold transition-colors py-2 flex items-center justify-between"
+                  >
+                    {t('nav.competition')}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isMobileCompetitionOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isMobileCompetitionOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden pl-4 space-y-1"
+                      >
+                        <Link
+                          to="/programme"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.programme')}
+                        </Link>
+                        <Link
+                          to="/jury"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.jury')}
+                        </Link>
+                        <a
+                          href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
+                        >
+                          {t('nav.rules')}
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
                 <Link
                   to="/sumi-jo"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
                 >
                   {t('nav.sumijo')}
-                </Link>
-                <Link
-                  to="/jury"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
-                >
-                  {t('nav.jury')}
                 </Link>
                 <Link
                   to="/chateau"

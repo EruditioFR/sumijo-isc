@@ -18,9 +18,12 @@
     }
   },
   "nav": {
+    "home": "Accueil",
     "competition": "Le concours",
-    "sumijo": "Sumi Jo",
+    "programme": "Le programme",
     "jury": "Le jury",
+    "rules": "Le règlement",
+    "sumijo": "Sumi Jo",
     "participate": "Participer",
     "apply": "Dépôt de candidature",
     "comingSoon": "À partir du 14 février 2026",
