@@ -132,11 +132,7 @@ const ProgramSection = () => {
               >
                 {col.slots[1] ? (
                   <>
-                    <p className={`font-display text-base font-bold ${
-                      ['Petite finale', 'Grande finale', 'Concert de gala'].includes(col.slots[1].title)
-                        ? 'text-gold'
-                        : 'text-foreground'
-                    }`}>
+                    <p className="font-display text-base font-bold text-foreground">
                       {col.slots[1].title}
                     </p>
                     {col.slots[1].desc && (
