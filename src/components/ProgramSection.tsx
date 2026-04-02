@@ -203,6 +203,8 @@ const ProgramSection = () => {
           </Button>
         </motion.div>
       </div>
+      {/* Smooth transition gradient */}
+      <div className="h-24 md:h-32 bg-gradient-to-b from-background to-accent/30 -mb-px" />
     </section>
   );
 };
