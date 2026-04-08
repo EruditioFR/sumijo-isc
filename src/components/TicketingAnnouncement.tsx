@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -6,30 +6,55 @@ import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TicketingAnnouncement = () => {
   const { t, i18n } = useTranslation();
-  const widgetRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Map site language to Billetweb locale
-  const billetwebLocale = (() => {
+  const getBilletwebLocale = useCallback(() => {
     switch (i18n.language) {
       case 'en': return 'en';
       case 'zh': return 'zh';
-      case 'kr': return 'en'; // Billetweb doesn't support Korean, fallback to English
+      case 'kr': return 'en';
       default: return 'fr';
     }
-  })();
+  }, [i18n.language]);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Clear previous widget content
+    container.innerHTML = '';
+
+    const locale = getBilletwebLocale();
+    const url = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${locale}`;
+
+    // Create the anchor element that Billetweb will transform into an iframe
+    const anchor = document.createElement('a');
+    anchor.title = 'Vente de billets en ligne';
+    anchor.href = url;
+    anchor.className = 'shop_frame';
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.setAttribute('data-src', url);
+    anchor.setAttribute('data-max-width', '100%');
+    anchor.setAttribute('data-initial-height', '600');
+    anchor.setAttribute('data-scrolling', 'no');
+    anchor.setAttribute('data-id', 'sumi-jo-international-singing-competition1');
+    anchor.setAttribute('data-resize', '1');
+    anchor.textContent = 'Vente de billets en ligne';
+
+    container.appendChild(anchor);
+
     // Load Billetweb script
     const script = document.createElement('script');
     script.src = 'https://www.billetweb.fr/js/export.js';
     script.type = 'text/javascript';
     script.async = true;
-    document.body.appendChild(script);
+    container.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      container.innerHTML = '';
     };
-  }, []);
+  }, [getBilletwebLocale]);
 
   return (
     <section className="min-h-screen pt-28 pb-20 px-4" style={{ backgroundColor: '#F5F1ED' }}>
@@ -65,28 +90,12 @@ const TicketingAnnouncement = () => {
 
       {/* Billetweb Widget */}
       <motion.div
-        ref={widgetRef}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-elegant p-4 md:p-8"
       >
-        <a
-          key={billetwebLocale}
-          title="Vente de billets en ligne"
-          href={`https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${billetwebLocale}`}
-          className="shop_frame"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-src={`https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${billetwebLocale}`}
-          data-max-width="100%"
-          data-initial-height="600"
-          data-scrolling="no"
-          data-id="sumi-jo-international-singing-competition1"
-          data-resize="1"
-        >
-          Vente de billets en ligne
-        </a>
+        <div ref={containerRef} />
       </motion.div>
     </section>
   );
