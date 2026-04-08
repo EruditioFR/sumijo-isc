@@ -5,8 +5,18 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TicketingAnnouncement = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const widgetRef = useRef<HTMLDivElement>(null);
+
+  // Map site language to Billetweb locale
+  const billetwebLocale = (() => {
+    switch (i18n.language) {
+      case 'en': return 'en';
+      case 'zh': return 'zh';
+      case 'kr': return 'en'; // Billetweb doesn't support Korean, fallback to English
+      default: return 'fr';
+    }
+  })();
 
   useEffect(() => {
     // Load Billetweb script
