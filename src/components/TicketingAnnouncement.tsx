@@ -72,12 +72,13 @@ const TicketingAnnouncement = () => {
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-elegant p-4 md:p-8"
       >
         <a
+          key={billetwebLocale}
           title="Vente de billets en ligne"
-          href="https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1"
+          href={`https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${billetwebLocale}`}
           className="shop_frame"
           target="_blank"
           rel="noopener noreferrer"
-          data-src="https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1"
+          data-src={`https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${billetwebLocale}`}
           data-max-width="100%"
           data-initial-height="600"
           data-scrolling="no"
