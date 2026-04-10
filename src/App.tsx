@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Billetterie from "./pages/Billetterie";
 import Programme from "./pages/Programme";
 import AdminGallery from "./pages/AdminGallery";
+import AdminTicketing from "./pages/AdminTicketing";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
  import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/billetterie" element={<Billetterie />} />
             <Route path="/programme" element={<Programme />} />
             <Route path="/admin/gallery" element={<AdminGallery />} />
+            <Route path="/admin/billetterie" element={<AdminTicketing />} />
             <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

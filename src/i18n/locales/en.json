@@ -438,7 +438,8 @@
     "error": "Error loading images"
   },
   "admin": {
-     "title": "Gallery Management",
+     "title": "Administration",
+     "ticketing": "Ticketing",
      "images": "Images",
     "upload": "Upload",
     "categories": "Categories",

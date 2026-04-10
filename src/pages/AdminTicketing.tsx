@@ -1,15 +1,15 @@
 import { AdminAuthProvider } from '@/hooks/useAdminAuth';
 import AdminLayout from '@/components/admin/AdminLayout';
-import ImageManager from '@/components/admin/ImageManager';
+import TicketingAdmin from '@/components/admin/TicketingAdmin';
 
-const AdminGallery = () => {
+const AdminTicketing = () => {
   return (
     <AdminAuthProvider>
       <AdminLayout>
-        <ImageManager />
+        <TicketingAdmin />
       </AdminLayout>
     </AdminAuthProvider>
   );
 };
 
-export default AdminGallery;
+export default AdminTicketing;
