@@ -2,49 +2,30 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ImageIcon, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { useAdminCategories } from '@/hooks/useAdminImages';
 import { ImageUploader } from './ImageUploader';
 import { ImageList } from './ImageList';
 import { GalleryCategory } from '@/types/gallery.types';
 import { Skeleton } from '@/components/ui/skeleton';
 
-type AdminView = 'images' | 'upload' | 'categories';
+type AdminView = 'images' | 'upload';
 
 export const ImageManager = () => {
   const { t } = useTranslation();
-  const { user, isAdmin, isLoading: authLoading, signOut } = useAdminAuth();
   const { categories, isLoading: categoriesLoading, fetchCategories } = useAdminCategories();
   
   const [currentView, setCurrentView] = useState<AdminView>('images');
   const [selectedCategory, setSelectedCategory] = useState<GalleryCategory>('tous');
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (isAdmin) {
-      fetchCategories();
-    }
-  }, [isAdmin, fetchCategories]);
+    fetchCategories();
+  }, [fetchCategories]);
 
   const handleUploadComplete = () => {
     setRefreshTrigger(prev => prev + 1);
     setCurrentView('images');
   };
-
-  // Loading state
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-muted/30 flex items-center justify-center">
-        <Skeleton className="w-96 h-64 rounded-xl" />
-      </div>
-    );
-  }
-
-  // Not logged in or not admin
-  if (!user || !isAdmin) {
-    return <AdminLogin />;
-  }
 
   const navItems = [
     { id: 'images' as const, icon: ImageIcon, label: t('admin.images') },
