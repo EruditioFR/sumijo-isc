@@ -222,7 +222,7 @@ const ReservationsTab = () => {
     });
     return Array.from(map.entries()).map(([orderId, items]) => ({
       orderId,
-      buyer: `${items[0].order_firstname || items[0].firstname} ${items[0].name}`,
+      buyer: `${items[0].firstname} ${items[0].name}`,
       email: items[0].email,
       date: items[0].order_date,
       totalPrice: items[0].order_price,
