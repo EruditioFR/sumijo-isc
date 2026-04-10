@@ -53,69 +53,23 @@ export const ImageManager = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-muted/30">
-      {/* Header */}
-      <header className="bg-background border-b sticky top-0 z-40">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-            
-            <h1 className="text-xl font-display text-foreground">{t('admin.title')}</h1>
-          </div>
-
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center gap-2">
-            {navItems.map(item => (
-              <Button
-                key={item.id}
-                variant={currentView === item.id ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setCurrentView(item.id)}
-              >
-                <item.icon className="w-4 h-4 mr-2" />
-                {item.label}
-              </Button>
-            ))}
-          </nav>
-
-          <Button variant="ghost" size="sm" onClick={signOut}>
-            <LogOut className="w-4 h-4 mr-2" />
-            {t('admin.logout')}
+    <div>
+      {/* Gallery sub-navigation */}
+      <div className="flex items-center gap-2 mb-6">
+        {navItems.map(item => (
+          <Button
+            key={item.id}
+            variant={currentView === item.id ? 'default' : 'ghost'}
+            size="sm"
+            onClick={() => setCurrentView(item.id)}
+          >
+            <item.icon className="w-4 h-4 mr-2" />
+            {item.label}
           </Button>
-        </div>
+        ))}
+      </div>
 
-        {/* Mobile navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden border-t p-4 flex flex-col gap-2">
-            {navItems.map(item => (
-              <Button
-                key={item.id}
-                variant={currentView === item.id ? 'default' : 'ghost'}
-                className="justify-start"
-                onClick={() => {
-                  setCurrentView(item.id);
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                <item.icon className="w-4 h-4 mr-2" />
-                {item.label}
-              </Button>
-            ))}
-          </nav>
-        )}
-      </header>
-
-      {/* Main content */}
-      <main className="container mx-auto px-4 py-8">
-        {categoriesLoading ? (
+      {categoriesLoading ? (
           <div className="space-y-4">
             <Skeleton className="h-10 w-48" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

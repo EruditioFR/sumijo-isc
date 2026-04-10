@@ -1,10 +1,13 @@
 import { AdminAuthProvider } from '@/hooks/useAdminAuth';
+import AdminLayout from '@/components/admin/AdminLayout';
 import ImageManager from '@/components/admin/ImageManager';
 
 const AdminGallery = () => {
   return (
     <AdminAuthProvider>
-      <ImageManager />
+      <AdminLayout>
+        <ImageManager />
+      </AdminLayout>
     </AdminAuthProvider>
   );
 };
