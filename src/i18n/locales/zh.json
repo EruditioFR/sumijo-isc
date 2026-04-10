@@ -438,7 +438,8 @@
     "error": "图片加载错误"
   },
   "admin": {
-     "title": "画廊管理",
+     "title": "管理",
+     "ticketing": "票务",
      "images": "图片",
     "upload": "上传",
     "categories": "分类",

@@ -438,7 +438,8 @@
     "error": "이미지 로딩 오류"
   },
   "admin": {
-     "title": "갤러리 관리",
+     "title": "관리",
+     "ticketing": "티켓팅",
      "images": "이미지",
     "upload": "업로드",
     "categories": "카테고리",

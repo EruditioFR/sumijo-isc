@@ -460,7 +460,8 @@
     "error": "Erreur lors du chargement des images"
   },
   "admin": {
-    "title": "Gestion de la Galerie",
+    "title": "Administration",
+    "ticketing": "Billetterie",
     "images": "Images",
     "upload": "Upload",
     "categories": "Catégories",
