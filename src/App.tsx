@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Billetterie from "./pages/Billetterie";
 import Programme from "./pages/Programme";
 import AdminGallery from "./pages/AdminGallery";
+import AdminTicketing from "./pages/AdminTicketing";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
  import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";

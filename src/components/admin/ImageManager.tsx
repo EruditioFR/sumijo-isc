@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ImageIcon, Upload, Grid, LogOut, Menu, X } from 'lucide-react';
+import { ImageIcon, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { useAdminCategories } from '@/hooks/useAdminImages';
-import { AdminLogin } from './AdminLogin';
 import { ImageUploader } from './ImageUploader';
 import { ImageList } from './ImageList';
 import { GalleryCategory } from '@/types/gallery.types';
