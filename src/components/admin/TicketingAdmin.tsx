@@ -294,7 +294,7 @@ const ReservationsTab = () => {
 
       {/* Seat map */}
       {!isLoading && (
-        <SeatMapPreview soldCount={attendees.filter(a => a.disabled === '0').length} />
+        <SeatMapPreview attendees={attendees.map(a => ({ category: a.category, disabled: a.disabled }))} />
       )}
 
       {/* Availability by category */}
