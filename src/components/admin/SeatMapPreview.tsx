@@ -78,13 +78,6 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
         {/* Category filter chips */}
         {categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            <Badge
-              variant={selectedCategory === null ? 'default' : 'outline'}
-              className="cursor-pointer"
-              onClick={() => setSelectedCategory(null)}
-            >
-              Toutes ({activeAttendees.length})
-            </Badge>
             {categories.map(cat => {
               const isActive = selectedCategory === cat.name;
               return (
