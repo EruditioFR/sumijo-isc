@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
 const TOTAL_SEATS = 300;
@@ -15,11 +15,28 @@ interface AttendeeInfo {
   disabled: string;
 }
 
-interface SeatMapPreviewProps {
-  attendees?: AttendeeInfo[];
+interface AvailabilityCategory {
+  name?: string;
+  id?: string;
 }
 
-export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
+interface SeatMapPreviewProps {
+  attendees?: AttendeeInfo[];
+  allCategories?: AvailabilityCategory[];
+}
+
+// Parse date from category string like "Samedi 11 juillet 2026 - Concert de Gala"
+const parseCategoryDate = (name: string): Date | null => {
+  const months: Record<string, number> = {
+    janvier: 0, février: 1, mars: 2, avril: 3, mai: 4, juin: 5,
+    juillet: 6, août: 7, septembre: 8, octobre: 9, novembre: 10, décembre: 11,
+  };
+  const match = name.match(/(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/i);
+  if (!match) return null;
+  return new Date(parseInt(match[3]), months[match[2].toLowerCase()], parseInt(match[1]));
+};
+
+export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPreviewProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const activeAttendees = useMemo(
@@ -27,16 +44,27 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
     [attendees]
   );
 
-  // Unique categories with counts
+  // Build sorted list of all categories (from availability), with reservation counts
   const categories = useMemo(() => {
-    const map = new Map<string, number>();
+    const countMap = new Map<string, number>();
     activeAttendees.forEach(a => {
-      map.set(a.category, (map.get(a.category) || 0) + 1);
+      countMap.set(a.category, (countMap.get(a.category) || 0) + 1);
     });
-    return Array.from(map.entries())
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
-  }, [activeAttendees]);
+
+    // Use allCategories if available, otherwise fall back to attendee categories
+    const names = allCategories.length > 0
+      ? [...new Set(allCategories.map(c => c.name).filter(Boolean) as string[])]
+      : [...countMap.keys()];
+
+    return names
+      .map(name => ({ name, count: countMap.get(name) || 0, date: parseCategoryDate(name) }))
+      .sort((a, b) => {
+        if (a.date && b.date) return a.date.getTime() - b.date.getTime();
+        if (a.date) return -1;
+        if (b.date) return 1;
+        return a.name.localeCompare(b.name);
+      });
+  }, [activeAttendees, allCategories]);
 
   // Auto-select first category on load
   useEffect(() => {
@@ -98,22 +126,24 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Category filter chips */}
+        {/* Category dropdown */}
         {categories.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {categories.map(cat => {
-              const isActive = selectedCategory === cat.name;
-              return (
-                <Badge
-                  key={cat.name}
-                  variant={isActive ? 'default' : 'outline'}
-                  className="cursor-pointer"
-                  onClick={() => setSelectedCategory(isActive ? null : cat.name)}
-                >
-                  {cat.name} ({cat.count})
-                </Badge>
-              );
-            })}
+          <div className="mb-4">
+            <Select
+              value={selectedCategory || ''}
+              onValueChange={(val) => setSelectedCategory(val)}
+            >
+              <SelectTrigger className="w-full max-w-md">
+                <SelectValue placeholder="Sélectionner une date…" />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map(cat => (
+                  <SelectItem key={cat.name} value={cat.name}>
+                    {cat.name} {cat.count > 0 ? `(${cat.count} billets)` : '(aucune résa)'}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         )}
 
