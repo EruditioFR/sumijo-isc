@@ -37,31 +37,43 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       .sort((a, b) => b.count - a.count);
   }, [activeAttendees]);
 
-  // Filtered count
-  const filteredAttendees = useMemo(
-    () => selectedCategory
+  // Split attendees into premium (category contains "Premium") and standard
+  const { premiumAttendees, standardAttendees } = useMemo(() => {
+    const source = selectedCategory
       ? activeAttendees.filter(a => a.category === selectedCategory)
-      : activeAttendees,
-    [activeAttendees, selectedCategory]
-  );
+      : activeAttendees;
+    const premium = source.filter(a => a.category.toLowerCase().includes('premium'));
+    const standard = source.filter(a => !a.category.toLowerCase().includes('premium'));
+    return { premiumAttendees: premium, standardAttendees: standard };
+  }, [activeAttendees, selectedCategory]);
 
-  const soldCount = filteredAttendees.length;
+  const soldCount = premiumAttendees.length + standardAttendees.length;
 
-  // Generate seat grid
+  const PREMIUM_CAPACITY = PREMIUM_ROWS * SEATS_PER_ROW; // 100
+  const STANDARD_CAPACITY = TOTAL_SEATS - PREMIUM_CAPACITY; // 200
+
+  // Generate seat grid with premium in first 10 rows, standard in remaining 20
   const seats = useMemo(() => {
     const result: ('sold' | 'available')[][] = [];
-    let remaining = Math.min(soldCount, TOTAL_SEATS);
+    let remainingPremium = Math.min(premiumAttendees.length, PREMIUM_CAPACITY);
+    let remainingStandard = Math.min(standardAttendees.length, STANDARD_CAPACITY);
 
     for (let row = 0; row < TOTAL_ROWS; row++) {
       const rowSeats: ('sold' | 'available')[] = [];
+      const isPremiumRow = row < PREMIUM_ROWS;
       for (let seat = 0; seat < SEATS_PER_ROW; seat++) {
-        rowSeats.push(remaining > 0 ? 'sold' : 'available');
-        if (remaining > 0) remaining--;
+        if (isPremiumRow) {
+          rowSeats.push(remainingPremium > 0 ? 'sold' : 'available');
+          if (remainingPremium > 0) remainingPremium--;
+        } else {
+          rowSeats.push(remainingStandard > 0 ? 'sold' : 'available');
+          if (remainingStandard > 0) remainingStandard--;
+        }
       }
       result.push(rowSeats);
     }
     return result;
-  }, [soldCount]);
+  }, [premiumAttendees.length, standardAttendees.length, PREMIUM_CAPACITY, STANDARD_CAPACITY]);
 
   const occupancyPct = Math.round((soldCount / TOTAL_SEATS) * 100);
 
