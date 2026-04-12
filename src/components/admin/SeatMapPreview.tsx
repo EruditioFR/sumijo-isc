@@ -44,6 +44,8 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       : activeAttendees;
     const premium = source.filter(a => a.category.toLowerCase().includes('premium'));
     const standard = source.filter(a => !a.category.toLowerCase().includes('premium'));
+    console.log('[SeatMap] Categories found:', [...new Set(source.map(a => a.category))]);
+    console.log('[SeatMap] Premium:', premium.length, 'Standard:', standard.length);
     return { premiumAttendees: premium, standardAttendees: standard };
   }, [activeAttendees, selectedCategory]);
 
