@@ -45,11 +45,17 @@ export const SeatMapPreview = ({ soldCount = 0 }: SeatMapPreviewProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-4 items-stretch">
+        <div className="flex flex-col gap-4 items-center">
+          {/* Stage indicator (top) */}
+          <div className="bg-muted border-2 border-primary/30 rounded-lg px-8 py-2 flex items-center justify-center w-fit">
+            <span className="text-xs font-semibold text-primary/70 tracking-widest uppercase">
+              SCÈNE
+            </span>
+          </div>
+
           {/* Seat grid */}
-          <div className="flex-1 overflow-x-auto">
+          <div className="overflow-x-auto">
             <div className="inline-flex flex-col gap-[3px] min-w-fit">
-              {/* Row labels + seats */}
               {seats.map((row, rowIdx) => (
                 <div key={rowIdx} className="flex items-center gap-[3px]">
                   <span className="w-6 text-[10px] text-muted-foreground text-right shrink-0">
@@ -85,18 +91,6 @@ export const SeatMapPreview = ({ soldCount = 0 }: SeatMapPreviewProps) => {
                   ))}
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Stage indicator (right side) */}
-          <div className="flex items-center justify-center">
-            <div className="bg-muted border-2 border-primary/30 rounded-lg px-3 py-8 writing-mode-vertical flex items-center justify-center">
-              <span
-                className="text-xs font-semibold text-primary/70 tracking-widest uppercase"
-                style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-              >
-                SCÈNE
-              </span>
             </div>
           </div>
         </div>
