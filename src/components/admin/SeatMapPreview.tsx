@@ -151,14 +151,14 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
 
         {/* Summary table */}
         {categories.length > 0 && (
-          <div className="rounded-md border overflow-x-auto mb-4">
+          <div className="rounded-md border overflow-x-auto mb-4 text-xs">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead>Date / Événement</TableHead>
-                  <TableHead className="text-center">Premium</TableHead>
-                  <TableHead className="text-center">Classique</TableHead>
-                  <TableHead className="text-center">Total</TableHead>
+                <TableRow className="h-8">
+                  <TableHead className="py-1.5 text-xs">Date</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-16">Prem.</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-16">Class.</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-16">Total</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -170,25 +170,25 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                   return (
                     <TableRow
                       key={cat.name}
-                      className={cn("cursor-pointer", isSelected && "bg-muted")}
+                      className={cn("cursor-pointer h-7", isSelected && "bg-muted")}
                       onClick={() => setSelectedCategory(cat.name)}
                     >
-                      <TableCell className="text-sm font-medium">{cat.name}</TableCell>
-                      <TableCell className="text-center">
-                        {prem > 0 ? <Badge variant="default" className="bg-amber-500 hover:bg-amber-600">{prem}</Badge> : <span className="text-muted-foreground">0</span>}
+                      <TableCell className="py-1 text-xs">{cat.name}</TableCell>
+                      <TableCell className="py-1 text-center">
+                        {prem > 0 ? <span className="text-amber-600 font-semibold">{prem}</span> : <span className="text-muted-foreground">0</span>}
                       </TableCell>
-                      <TableCell className="text-center">
-                        {std > 0 ? <Badge variant="default">{std}</Badge> : <span className="text-muted-foreground">0</span>}
+                      <TableCell className="py-1 text-center">
+                        {std > 0 ? <span className="font-semibold">{std}</span> : <span className="text-muted-foreground">0</span>}
                       </TableCell>
-                      <TableCell className="text-center font-semibold">{cat.count}</TableCell>
+                      <TableCell className="py-1 text-center font-bold">{cat.count}</TableCell>
                     </TableRow>
                   );
                 })}
-                <TableRow className="bg-muted/50 font-semibold">
-                  <TableCell>Total</TableCell>
-                  <TableCell className="text-center">{activeAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length}</TableCell>
-                  <TableCell className="text-center">{activeAttendees.filter(a => !a.ticket.toLowerCase().includes('premium')).length}</TableCell>
-                  <TableCell className="text-center">{activeAttendees.length}</TableCell>
+                <TableRow className="bg-muted/50 h-7">
+                  <TableCell className="py-1 text-xs font-bold">Total</TableCell>
+                  <TableCell className="py-1 text-center font-bold text-amber-600">{activeAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length}</TableCell>
+                  <TableCell className="py-1 text-center font-bold">{activeAttendees.filter(a => !a.ticket.toLowerCase().includes('premium')).length}</TableCell>
+                  <TableCell className="py-1 text-center font-bold">{activeAttendees.length}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
