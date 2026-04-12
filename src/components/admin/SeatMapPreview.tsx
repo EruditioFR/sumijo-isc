@@ -11,6 +11,7 @@ const TOTAL_ROWS = TOTAL_SEATS / SEATS_PER_ROW;
 
 interface AttendeeInfo {
   category: string;
+  ticket: string;
   disabled: string;
 }
 
