@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 const TOTAL_SEATS = 300;
 const SEATS_PER_ROW = 10;
 const SEATS_PER_SIDE = 5;
+const PREMIUM_ROWS = 10;
 const TOTAL_ROWS = TOTAL_SEATS / SEATS_PER_ROW;
 
 interface AttendeeInfo {
@@ -110,27 +111,37 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
                   <span className="w-6 text-[10px] text-muted-foreground text-right shrink-0">
                     R{rowIdx + 1}
                   </span>
-                  {row.slice(0, SEATS_PER_SIDE).map((status, seatIdx) => (
-                    <div
-                      key={seatIdx}
-                      className={cn(
-                        "w-4 h-4 rounded-sm transition-colors",
-                        status === 'sold' ? "bg-primary" : "bg-muted border border-border"
-                      )}
-                      title={`Rang ${rowIdx + 1}, Place ${seatIdx + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
-                    />
-                  ))}
+                  {row.slice(0, SEATS_PER_SIDE).map((status, seatIdx) => {
+                    const isPremium = rowIdx < PREMIUM_ROWS;
+                    return (
+                      <div
+                        key={seatIdx}
+                        className={cn(
+                          "w-4 h-4 rounded-sm transition-colors",
+                          status === 'sold'
+                            ? isPremium ? "bg-amber-500" : "bg-primary"
+                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
+                        )}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                      />
+                    );
+                  })}
                   <div className="w-3" />
-                  {row.slice(SEATS_PER_SIDE).map((status, seatIdx) => (
-                    <div
-                      key={seatIdx + SEATS_PER_SIDE}
-                      className={cn(
-                        "w-4 h-4 rounded-sm transition-colors",
-                        status === 'sold' ? "bg-primary" : "bg-muted border border-border"
-                      )}
-                      title={`Rang ${rowIdx + 1}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
-                    />
-                  ))}
+                  {row.slice(SEATS_PER_SIDE).map((status, seatIdx) => {
+                    const isPremium = rowIdx < PREMIUM_ROWS;
+                    return (
+                      <div
+                        key={seatIdx + SEATS_PER_SIDE}
+                        className={cn(
+                          "w-4 h-4 rounded-sm transition-colors",
+                          status === 'sold'
+                            ? isPremium ? "bg-amber-500" : "bg-primary"
+                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
+                        )}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                      />
+                    );
+                  })}
                 </div>
               ))}
             </div>
@@ -140,12 +151,20 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
         {/* Legend */}
         <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-amber-500" />
+            Premium réservée
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-amber-200/60 border border-amber-300" />
+            Premium disponible
+          </div>
+          <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-primary" />
-            Vendue{selectedCategory ? ` (${selectedCategory})` : ''}
+            Standard réservée{selectedCategory ? ` (${selectedCategory})` : ''}
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-muted border border-border" />
-            Disponible
+            Standard disponible
           </div>
         </div>
 
