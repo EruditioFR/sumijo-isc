@@ -151,12 +151,20 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
         {/* Legend */}
         <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-amber-500" />
+            Premium réservée
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-amber-200/60 border border-amber-300" />
+            Premium disponible
+          </div>
+          <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-primary" />
-            Vendue{selectedCategory ? ` (${selectedCategory})` : ''}
+            Standard réservée{selectedCategory ? ` (${selectedCategory})` : ''}
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-muted border border-border" />
-            Disponible
+            Standard disponible
           </div>
         </div>
 
