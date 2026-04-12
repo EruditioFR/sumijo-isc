@@ -21,7 +21,13 @@ interface SeatMapPreviewProps {
 
 export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [initialized, setInitialized] = useState(false);
+
+  // Auto-select first category on load
+  useEffect(() => {
+    if (categories.length > 0 && selectedCategory === null) {
+      setSelectedCategory(categories[0].name);
+    }
+  }, [categories]);
 
   const activeAttendees = useMemo(
     () => attendees.filter(a => a.disabled === '0'),
