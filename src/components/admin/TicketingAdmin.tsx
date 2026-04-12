@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Download, RefreshCw, Users, Mail, Ticket, Calendar, Euro, CheckCircle, Clock } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { SeatMapPreview } from './SeatMapPreview';
 import { cn } from '@/lib/utils';
 
 // ── Types ──
