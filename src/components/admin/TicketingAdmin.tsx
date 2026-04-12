@@ -292,6 +292,11 @@ const ReservationsTab = () => {
         <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : orders.filter(o => o.paid).length} />
       </div>
 
+      {/* Seat map */}
+      {!isLoading && (
+        <SeatMapPreview soldCount={attendees.filter(a => a.disabled === '0').length} />
+      )}
+
       {/* Availability by category */}
       {!isLoading && categories.length > 0 && (
         <Card>
