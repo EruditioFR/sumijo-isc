@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -37,6 +37,13 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count);
   }, [activeAttendees]);
+
+  // Auto-select first category on load
+  useEffect(() => {
+    if (categories.length > 0 && selectedCategory === null) {
+      setSelectedCategory(categories[0].name);
+    }
+  }, [categories, selectedCategory]);
 
   // Split attendees into premium (ticket name contains "Premium") and standard
   const { premiumAttendees, standardAttendees } = useMemo(() => {
