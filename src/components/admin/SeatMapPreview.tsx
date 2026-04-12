@@ -8,16 +8,6 @@ const SEATS_PER_ROW = 10;
 const SEATS_PER_SIDE = 5;
 const TOTAL_ROWS = TOTAL_SEATS / SEATS_PER_ROW;
 
-// Color palette for categories
-const CATEGORY_COLORS = [
-  { bg: 'bg-primary', label: 'text-primary-foreground' },
-  { bg: 'bg-chart-1', label: 'text-primary-foreground' },
-  { bg: 'bg-chart-2', label: 'text-primary-foreground' },
-  { bg: 'bg-chart-3', label: 'text-primary-foreground' },
-  { bg: 'bg-chart-4', label: 'text-primary-foreground' },
-  { bg: 'bg-chart-5', label: 'text-primary-foreground' },
-];
-
 interface AttendeeInfo {
   category: string;
   disabled: string;
@@ -46,15 +36,6 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       .sort((a, b) => b.count - a.count);
   }, [activeAttendees]);
 
-  // Build color map
-  const categoryColorMap = useMemo(() => {
-    const map = new Map<string, typeof CATEGORY_COLORS[0]>();
-    categories.forEach((cat, i) => {
-      map.set(cat.name, CATEGORY_COLORS[i % CATEGORY_COLORS.length]);
-    });
-    return map;
-  }, [categories]);
-
   // Filtered count
   const filteredAttendees = useMemo(
     () => selectedCategory
@@ -82,9 +63,6 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
   }, [soldCount]);
 
   const occupancyPct = Math.round((soldCount / TOTAL_SEATS) * 100);
-  const activeColor = selectedCategory
-    ? categoryColorMap.get(selectedCategory)?.bg || 'bg-primary'
-    : 'bg-primary';
 
   return (
     <Card>
@@ -108,13 +86,12 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
               Toutes ({activeAttendees.length})
             </Badge>
             {categories.map(cat => {
-              const color = categoryColorMap.get(cat.name);
               const isActive = selectedCategory === cat.name;
               return (
                 <Badge
                   key={cat.name}
                   variant={isActive ? 'default' : 'outline'}
-                  className={cn("cursor-pointer", isActive && color?.bg)}
+                  className="cursor-pointer"
                   onClick={() => setSelectedCategory(isActive ? null : cat.name)}
                 >
                   {cat.name} ({cat.count})
@@ -145,7 +122,7 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
                       key={seatIdx}
                       className={cn(
                         "w-4 h-4 rounded-sm transition-colors",
-                        status === 'sold' ? activeColor : "bg-muted border border-border"
+                        status === 'sold' ? "bg-primary" : "bg-muted border border-border"
                       )}
                       title={`Rang ${rowIdx + 1}, Place ${seatIdx + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
                     />
@@ -156,7 +133,7 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
                       key={seatIdx + SEATS_PER_SIDE}
                       className={cn(
                         "w-4 h-4 rounded-sm transition-colors",
-                        status === 'sold' ? activeColor : "bg-muted border border-border"
+                        status === 'sold' ? "bg-primary" : "bg-muted border border-border"
                       )}
                       title={`Rang ${rowIdx + 1}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
                     />
@@ -170,7 +147,7 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
         {/* Legend */}
         <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
-            <div className={cn("w-3 h-3 rounded-sm", activeColor)} />
+            <div className="w-3 h-3 rounded-sm bg-primary" />
             Vendue{selectedCategory ? ` (${selectedCategory})` : ''}
           </div>
           <div className="flex items-center gap-1.5">
@@ -184,7 +161,7 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
           <div
             className={cn(
               "h-full rounded-full transition-all",
-              occupancyPct > 80 ? "bg-destructive" : occupancyPct > 50 ? activeColor : "bg-emerald-500"
+              occupancyPct > 80 ? "bg-destructive" : "bg-primary"
             )}
             style={{ width: `${occupancyPct}%` }}
           />
