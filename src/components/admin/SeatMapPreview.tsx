@@ -21,6 +21,7 @@ interface SeatMapPreviewProps {
 
 export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
 
   const activeAttendees = useMemo(
     () => attendees.filter(a => a.disabled === '0'),
