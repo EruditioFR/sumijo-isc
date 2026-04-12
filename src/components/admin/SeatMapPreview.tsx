@@ -1,5 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
@@ -144,6 +146,52 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                 ))}
               </SelectContent>
             </Select>
+          </div>
+        )}
+
+        {/* Summary table */}
+        {categories.length > 0 && (
+          <div className="rounded-md border overflow-x-auto mb-4">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Date / Événement</TableHead>
+                  <TableHead className="text-center">Premium</TableHead>
+                  <TableHead className="text-center">Classique</TableHead>
+                  <TableHead className="text-center">Total</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {categories.map(cat => {
+                  const catAttendees = activeAttendees.filter(a => a.category === cat.name);
+                  const prem = catAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length;
+                  const std = catAttendees.length - prem;
+                  const isSelected = selectedCategory === cat.name;
+                  return (
+                    <TableRow
+                      key={cat.name}
+                      className={cn("cursor-pointer", isSelected && "bg-muted")}
+                      onClick={() => setSelectedCategory(cat.name)}
+                    >
+                      <TableCell className="text-sm font-medium">{cat.name}</TableCell>
+                      <TableCell className="text-center">
+                        {prem > 0 ? <Badge variant="default" className="bg-amber-500 hover:bg-amber-600">{prem}</Badge> : <span className="text-muted-foreground">0</span>}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        {std > 0 ? <Badge variant="default">{std}</Badge> : <span className="text-muted-foreground">0</span>}
+                      </TableCell>
+                      <TableCell className="text-center font-semibold">{cat.count}</TableCell>
+                    </TableRow>
+                  );
+                })}
+                <TableRow className="bg-muted/50 font-semibold">
+                  <TableCell>Total</TableCell>
+                  <TableCell className="text-center">{activeAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length}</TableCell>
+                  <TableCell className="text-center">{activeAttendees.filter(a => !a.ticket.toLowerCase().includes('premium')).length}</TableCell>
+                  <TableCell className="text-center">{activeAttendees.length}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         )}
 
