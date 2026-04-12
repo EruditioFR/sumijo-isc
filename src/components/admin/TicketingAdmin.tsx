@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Download, RefreshCw, Users, Mail, Ticket, Calendar, Euro, CheckCircle, Clock } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { SeatMapPreview } from './SeatMapPreview';
 import { cn } from '@/lib/utils';
 
 // ── Types ──
@@ -290,6 +291,11 @@ const ReservationsTab = () => {
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
         <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : orders.filter(o => o.paid).length} />
       </div>
+
+      {/* Seat map */}
+      {!isLoading && (
+        <SeatMapPreview soldCount={attendees.filter(a => a.disabled === '0').length} />
+      )}
 
       {/* Availability by category */}
       {!isLoading && categories.length > 0 && (
