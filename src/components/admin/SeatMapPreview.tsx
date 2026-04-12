@@ -22,13 +22,6 @@ interface SeatMapPreviewProps {
 export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Auto-select first category on load
-  useEffect(() => {
-    if (categories.length > 0 && selectedCategory === null) {
-      setSelectedCategory(categories[0].name);
-    }
-  }, [categories, selectedCategory]);
-
   const activeAttendees = useMemo(
     () => attendees.filter(a => a.disabled === '0'),
     [attendees]
@@ -44,6 +37,13 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count);
   }, [activeAttendees]);
+
+  // Auto-select first category on load
+  useEffect(() => {
+    if (categories.length > 0 && selectedCategory === null) {
+      setSelectedCategory(categories[0].name);
+    }
+  }, [categories, selectedCategory]);
 
   // Split attendees into premium (ticket name contains "Premium") and standard
   const { premiumAttendees, standardAttendees } = useMemo(() => {
