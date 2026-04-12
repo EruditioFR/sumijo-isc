@@ -11,6 +11,7 @@ const TOTAL_ROWS = TOTAL_SEATS / SEATS_PER_ROW;
 
 interface AttendeeInfo {
   category: string;
+  ticket: string;
   disabled: string;
 }
 
@@ -37,14 +38,14 @@ export const SeatMapPreview = ({ attendees = [] }: SeatMapPreviewProps) => {
       .sort((a, b) => b.count - a.count);
   }, [activeAttendees]);
 
-  // Split attendees into premium (category contains "Premium") and standard
+  // Split attendees into premium (ticket name contains "Premium") and standard
   const { premiumAttendees, standardAttendees } = useMemo(() => {
     const source = selectedCategory
       ? activeAttendees.filter(a => a.category === selectedCategory)
       : activeAttendees;
-    const premium = source.filter(a => a.category.toLowerCase().includes('premium'));
-    const standard = source.filter(a => !a.category.toLowerCase().includes('premium'));
-    console.log('[SeatMap] Categories found:', [...new Set(source.map(a => a.category))]);
+    const premium = source.filter(a => a.ticket.toLowerCase().includes('premium'));
+    const standard = source.filter(a => !a.ticket.toLowerCase().includes('premium'));
+    console.log('[SeatMap] Ticket names:', [...new Set(source.map(a => a.ticket))]);
     console.log('[SeatMap] Premium:', premium.length, 'Standard:', standard.length);
     return { premiumAttendees: premium, standardAttendees: standard };
   }, [activeAttendees, selectedCategory]);
