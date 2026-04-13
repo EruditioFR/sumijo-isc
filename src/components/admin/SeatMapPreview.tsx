@@ -251,19 +251,19 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-amber-500" />
-            Premium réservée
+            Premium résa
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-amber-200/60 border border-amber-300" />
-            Premium disponible
+            Premium dispo
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-primary" />
-            Standard réservée{selectedCategory ? ` (${selectedCategory})` : ''}
+            Standard résa
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-muted border border-border" />
-            Standard disponible
+            Standard dispo
           </div>
         </div>
 
