@@ -95,12 +95,17 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
 
   // Generate seat grid with premium in first 10 rows, standard in remaining 20
   const seats = useMemo(() => {
-    const result: ('sold' | 'available')[][] = [];
+    const result: ('sold' | 'available' | 'gap')[][] = [];
     let remainingPremium = Math.min(premiumAttendees.length, PREMIUM_CAPACITY);
     let remainingStandard = Math.min(standardAttendees.length, STANDARD_CAPACITY);
 
     for (let row = 0; row < TOTAL_ROWS; row++) {
-      const rowSeats: ('sold' | 'available')[] = [];
+      const isGapRow = row >= PREMIUM_ROWS && row < PREMIUM_ROWS + GAP_ROWS;
+      if (isGapRow) {
+        result.push(Array(SEATS_PER_ROW).fill('gap'));
+        continue;
+      }
+      const rowSeats: ('sold' | 'available' | 'gap')[] = [];
       const isPremiumRow = row < PREMIUM_ROWS;
       for (let seat = 0; seat < SEATS_PER_ROW; seat++) {
         if (isPremiumRow) {
