@@ -212,7 +212,12 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
           {/* Seat grid */}
           <div className="overflow-x-auto">
             <div className="inline-flex flex-col gap-[3px] min-w-fit">
-              {seats.map((row, rowIdx) => (
+              {seats.map((row, rowIdx) => {
+                const isGap = row[0] === 'gap';
+                if (isGap) {
+                  return <div key={rowIdx} className="h-2" />;
+                }
+                return (
                 <div key={rowIdx} className="flex items-center gap-[3px]">
                   <span className="w-6 text-[10px] text-muted-foreground text-right shrink-0">
                     R{rowIdx + 1}
@@ -249,7 +254,8 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                     );
                   })}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
