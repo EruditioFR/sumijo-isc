@@ -8,7 +8,9 @@ const TOTAL_SEATS = 300;
 const SEATS_PER_ROW = 10;
 const SEATS_PER_SIDE = 5;
 const PREMIUM_ROWS = 10;
-const TOTAL_ROWS = TOTAL_SEATS / SEATS_PER_ROW;
+const GAP_ROWS = 3;
+const STANDARD_ROWS = 20;
+const TOTAL_ROWS = PREMIUM_ROWS + GAP_ROWS + STANDARD_ROWS;
 
 interface AttendeeInfo {
   category: string;
@@ -93,12 +95,17 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
 
   // Generate seat grid with premium in first 10 rows, standard in remaining 20
   const seats = useMemo(() => {
-    const result: ('sold' | 'available')[][] = [];
+    const result: ('sold' | 'available' | 'gap')[][] = [];
     let remainingPremium = Math.min(premiumAttendees.length, PREMIUM_CAPACITY);
     let remainingStandard = Math.min(standardAttendees.length, STANDARD_CAPACITY);
 
     for (let row = 0; row < TOTAL_ROWS; row++) {
-      const rowSeats: ('sold' | 'available')[] = [];
+      const isGapRow = row >= PREMIUM_ROWS && row < PREMIUM_ROWS + GAP_ROWS;
+      if (isGapRow) {
+        result.push(Array(SEATS_PER_ROW).fill('gap'));
+        continue;
+      }
+      const rowSeats: ('sold' | 'available' | 'gap')[] = [];
       const isPremiumRow = row < PREMIUM_ROWS;
       for (let seat = 0; seat < SEATS_PER_ROW; seat++) {
         if (isPremiumRow) {
@@ -205,7 +212,12 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
           {/* Seat grid */}
           <div className="overflow-x-auto">
             <div className="inline-flex flex-col gap-[3px] min-w-fit">
-              {seats.map((row, rowIdx) => (
+              {seats.map((row, rowIdx) => {
+                const isGap = row[0] === 'gap';
+                if (isGap) {
+                  return <div key={rowIdx} className="h-2" />;
+                }
+                return (
                 <div key={rowIdx} className="flex items-center gap-[3px]">
                   <span className="w-6 text-[10px] text-muted-foreground text-right shrink-0">
                     R{rowIdx + 1}
@@ -242,7 +254,8 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                     );
                   })}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
