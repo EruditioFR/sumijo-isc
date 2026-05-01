@@ -134,22 +134,14 @@ const HeroSection = () => {
               {t("hero.regulations", "Consulter le règlement")}
             </a>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              {/* Dépôt de candidature - Active */}
-              <motion.div
-                animate={{ scale: [1, 1.045, 1] }}
-                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+              {/* Dépôt de candidature - Closed */}
+              <Button
+                size="lg"
+                disabled
+                className="relative bg-gradient-to-r from-muted via-muted to-muted font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl text-white/80 shadow-none ring-2 ring-white/20 cursor-not-allowed opacity-90 disabled:opacity-90"
               >
-                <Button
-                  asChild
-                  size="lg"
-                  className="group relative bg-gradient-to-r from-gold via-gold-light to-gold font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl transition-all duration-300 overflow-hidden text-white shadow-[0_0_25px_rgba(162,148,124,0.35)] hover:shadow-[0_0_45px_rgba(162,148,124,0.6)] hover:scale-105 ring-2 ring-gold-light/30"
-                >
-                  <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
-                    <span className="relative z-10">{t("hero.participate")}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </a>
-                </Button>
-              </motion.div>
+                <span className="relative z-10">{t("nav.applicationsClosed")}</span>
+              </Button>
               {/* Achetez vos places */}
               <Button
                 asChild
