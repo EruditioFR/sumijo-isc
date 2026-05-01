@@ -424,14 +424,12 @@ const Header = () => {
 
               {/* CTA Button */}
               <div className="flex flex-col items-center">
-                <Button
-                  asChild
-                  className="w-full bg-gradient-to-r from-gold to-gold-light text-white font-semibold hover:shadow-[0_0_20px_rgba(162,148,124,0.4)]"
+                <span
+                  aria-disabled="true"
+                  className="w-full text-center bg-muted text-white/80 font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
                 >
-                  <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
-                    {t('nav.apply')}
-                  </a>
-                </Button>
+                  {t('nav.applicationsClosed')}
+                </span>
               </div>
             </div>
           </motion.div>
