@@ -269,7 +269,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center">
             <span
               aria-disabled="true"
-              className="bg-muted text-white/80 font-bold text-base px-6 py-3 rounded-md tracking-wider ring-1 ring-white/20 cursor-not-allowed select-none"
+              className="bg-rose-dark text-white font-bold text-base px-6 py-3 rounded-md tracking-wider ring-1 ring-rose-dark/50 cursor-not-allowed select-none"
             >
               {t('nav.applicationsClosed')}
             </span>
@@ -426,7 +426,7 @@ const Header = () => {
               <div className="flex flex-col items-center">
                 <span
                   aria-disabled="true"
-                  className="w-full text-center bg-muted text-white/80 font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
+                  className="w-full text-center bg-rose-dark text-white font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
                 >
                   {t('nav.applicationsClosed')}
                 </span>
