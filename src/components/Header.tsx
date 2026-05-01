@@ -267,14 +267,12 @@ const Header = () => {
 
           {/* CTA Button - Right */}
           <div className="hidden lg:flex items-center">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-gold to-gold-light text-white font-bold text-base px-6 py-5 tracking-wider transition-all shadow-[0_0_15px_rgba(162,148,124,0.3)] hover:shadow-[0_0_25px_rgba(162,148,124,0.5)] hover:scale-105 animate-pulse-subtle"
+            <span
+              aria-disabled="true"
+              className="bg-muted text-white/80 font-bold text-base px-6 py-3 rounded-md tracking-wider ring-1 ring-white/20 cursor-not-allowed select-none"
             >
-              <a href={`https://applicationform.sumijo-isc.com?lang=${i18n.language}`} target="_blank" rel="noopener noreferrer">
-                {t('nav.apply')}
-              </a>
-            </Button>
+              {t('nav.applicationsClosed')}
+            </span>
           </div>
         </div>
       </div>
