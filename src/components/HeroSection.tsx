@@ -138,7 +138,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 disabled
-                className="relative bg-gradient-to-r from-muted via-muted to-muted font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl text-white/80 shadow-none ring-2 ring-white/20 cursor-not-allowed opacity-90 disabled:opacity-90"
+                className="relative bg-gradient-to-r from-rose-dark via-rose-dark to-rose-dark font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl text-white shadow-[0_0_25px_rgba(120,30,50,0.35)] ring-2 ring-rose-dark/40 cursor-not-allowed opacity-100 disabled:opacity-100"
               >
                 <span className="relative z-10">{t("nav.applicationsClosed")}</span>
               </Button>
