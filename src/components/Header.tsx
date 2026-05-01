@@ -426,7 +426,7 @@ const Header = () => {
               <div className="flex flex-col items-center">
                 <span
                   aria-disabled="true"
-                  className="w-full text-center bg-muted text-white/80 font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
+                  className="w-full text-center bg-rose-dark text-white font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
                 >
                   {t('nav.applicationsClosed')}
                 </span>
