@@ -665,7 +665,7 @@
     "stats": {
       "selectedLabel": "selected artists",
       "candidatesLabel": "candidates",
-      "countriesLabel": "countries"
+      "fromCountries": "from 55 countries"
     }
   }
 }

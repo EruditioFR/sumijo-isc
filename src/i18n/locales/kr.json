@@ -665,7 +665,7 @@
     "stats": {
       "selectedLabel": "선발된 아티스트",
       "candidatesLabel": "지원자",
-      "countriesLabel": "국가"
+      "fromCountries": "55개국에서"
     }
   }
 }
