@@ -108,6 +108,26 @@ const SemiFinalistsSection = () => {
           </motion.div>
 
         </div>
+
+        {/* World map of selected candidates */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-12 md:mt-16 max-w-6xl mx-auto"
+        >
+          <h3 className="font-display text-2xl md:text-3xl text-foreground text-center mb-6">
+            {t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
+          </h3>
+          <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
+            <iframe
+              src="https://applicationform.sumijo-isc.com/carte-candidats"
+              title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
+              loading="lazy"
+              className="w-full h-[600px] md:h-[800px] border-0"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
