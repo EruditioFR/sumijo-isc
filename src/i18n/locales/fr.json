@@ -687,7 +687,7 @@
     "stats": {
       "selectedLabel": "artistes sélectionnés",
       "candidatesLabel": "candidats",
-      "countriesLabel": "pays"
+      "fromCountries": "provenant de 55 pays"
     }
   }
 }

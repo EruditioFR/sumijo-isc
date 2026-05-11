@@ -665,7 +665,7 @@
     "stats": {
       "selectedLabel": "入选艺术家",
       "candidatesLabel": "候选人",
-      "countriesLabel": "国家"
+      "fromCountries": "来自55个国家"
     }
   }
 }
