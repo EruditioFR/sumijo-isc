@@ -58,31 +58,14 @@ const SemiFinalistsSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-2 order-3 lg:order-1"
           >
-            <div className="bg-white/70 backdrop-blur-sm border border-gold/30 rounded-2xl p-6 md:p-8 shadow-elegant">
-              <div className="flex items-baseline gap-3">
-                <span className="font-display text-6xl md:text-7xl font-bold text-rose-dark leading-none">24</span>
-                <span className="text-base md:text-lg text-muted-foreground">
-                  {t("semifinalists.stats.selectedLabel", "artistes retenus")}
-                </span>
-              </div>
-              <div className="h-px w-full bg-gradient-to-r from-gold/40 via-gold/10 to-transparent my-5" />
-              <div className="flex items-baseline gap-3">
-                <span className="font-display text-6xl md:text-7xl font-bold text-gold leading-none">500</span>
-                <span className="text-base md:text-lg text-muted-foreground">
-                  {t("semifinalists.stats.candidatesLabel", "candidats")}{" "}
-                  <span className="text-gold font-medium">
-                    {t("semifinalists.stats.fromCountries", "provenant de 55 pays")}
-                  </span>
-                </span>
-              </div>
-
+            <div className="bg-white/70 backdrop-blur-sm border border-gold/30 rounded-2xl p-4 md:p-5 shadow-elegant">
               {/* World map in stats column */}
-              <div className="mt-5 relative rounded-xl overflow-hidden ring-1 ring-gold/30 bg-white">
+              <div className="relative rounded-xl overflow-hidden ring-1 ring-gold/30 bg-white">
                 <iframe
                   src="/candidats.html"
                   title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
                   loading="lazy"
-                  className="w-full h-[220px] md:h-[260px] border-0"
+                  className="w-full h-[320px] md:h-[420px] border-0"
                 />
               </div>
             </div>
