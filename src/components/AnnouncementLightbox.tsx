@@ -47,9 +47,12 @@ const AnnouncementLightbox = () => {
             </button>
             <video
               src="/videos/annonce-24-demi-finalistes-2026.mp4"
+              poster="/videos/annonce-24-demi-finalistes-2026-poster.jpg"
               autoPlay
+              muted
               playsInline
               controls
+              preload="auto"
               className="w-full h-full object-cover bg-black"
             />
           </motion.div>
