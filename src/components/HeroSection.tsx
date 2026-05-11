@@ -134,14 +134,7 @@ const HeroSection = () => {
               {t("hero.regulations", "Consulter le règlement")}
             </a>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              {/* Dépôt de candidature - Closed */}
-              <Button
-                size="lg"
-                disabled
-                className="relative bg-gradient-to-r from-rose-dark via-rose-dark to-rose-dark font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl text-white shadow-[0_0_25px_rgba(120,30,50,0.35)] ring-2 ring-rose-dark/40 cursor-not-allowed opacity-100 disabled:opacity-100"
-              >
-                <span className="relative z-10">{t("nav.applicationsClosed")}</span>
-              </Button>
+              {/* Dépôt de candidature - Closed (removed) */}
               {/* Achetez vos places */}
               <Button
                 asChild
