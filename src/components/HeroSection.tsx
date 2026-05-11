@@ -134,19 +134,28 @@ const HeroSection = () => {
               {t("hero.regulations", "Consulter le règlement")}
             </a>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              {/* Dépôt de candidature - Closed (removed) */}
-              {/* Achetez vos places */}
-              <Button
-                asChild
-                size="lg"
-                className="group relative bg-gradient-to-r from-rose-dark via-rose to-rose-dark font-bold text-lg px-10 py-7 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden text-white"
+              {/* Achetez vos places — CTA principal */}
+              <motion.div
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
               >
-                <Link to="/billetterie" className="flex flex-col items-center leading-tight">
-                  <span className="relative z-10">{t("hero.buyTickets")}</span>
-                  <span className="relative z-10 text-xs font-normal opacity-90 -mt-0.5">{t("hero.ticketsDate")}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-rose to-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </Link>
-              </Button>
+                {/* Halo doré pulsant */}
+                <span className="absolute -inset-1 rounded-2xl bg-gold/40 blur-xl opacity-70 animate-pulse pointer-events-none" />
+                <Button
+                  asChild
+                  size="lg"
+                  className="group relative bg-gradient-to-r from-rose-dark via-rose to-rose-dark font-bold text-xl md:text-2xl px-14 md:px-16 py-8 md:py-9 rounded-2xl text-white shadow-[0_0_40px_rgba(212,175,55,0.55)] ring-2 ring-gold/70 hover:ring-gold hover:shadow-[0_0_55px_rgba(212,175,55,0.8)] transition-all duration-300 hover:scale-[1.06] overflow-hidden"
+                >
+                  <Link to="/billetterie" className="flex flex-col items-center leading-tight">
+                    <span className="relative z-10 tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t("hero.buyTickets")}</span>
+                    <span className="relative z-10 text-xs md:text-sm font-normal opacity-95 mt-0.5 text-cream">{t("hero.ticketsDate")}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-rose to-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Reflet brillant */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
