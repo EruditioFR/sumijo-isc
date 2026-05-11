@@ -109,7 +109,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
-            className="flex flex-col md:flex-row gap-6 justify-center items-center pt-4"
+            className="flex flex-col md:flex-row gap-6 justify-center lg:justify-start items-center pt-4"
           >
             <div className="md:backdrop-blur-md md:bg-accent/50 md:border-2 md:border-gold/50 md:rounded-lg px-4 md:px-10 py-2 md:py-5 md:shadow-elegant">
               <p className="text-white md:text-gold-light text-lg md:text-2xl lg:text-3xl font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] tracking-wide">
@@ -123,7 +123,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-col items-center gap-4 pt-8"
+            className="flex flex-col items-center lg:items-start gap-4 pt-8"
           >
             {/* Lien vers le règlement */}
             <a
@@ -134,15 +134,7 @@ const HeroSection = () => {
             >
               {t("hero.regulations", "Consulter le règlement")}
             </a>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              {/* Dépôt de candidature - Closed */}
-              <Button
-                size="lg"
-                disabled
-                className="relative bg-gradient-to-r from-rose-dark via-rose-dark to-rose-dark font-bold text-xl md:text-2xl px-12 md:px-16 py-8 md:py-9 rounded-xl text-white shadow-[0_0_25px_rgba(120,30,50,0.35)] ring-2 ring-rose-dark/40 cursor-not-allowed opacity-100 disabled:opacity-100"
-              >
-                <span className="relative z-10">{t("nav.applicationsClosed")}</span>
-              </Button>
+            <div className="flex justify-center lg:justify-start">
               {/* Achetez vos places */}
               <Button
                 asChild
@@ -158,6 +150,29 @@ const HeroSection = () => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* Announcement Video - 24 semi-finalists */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="relative w-full max-w-xl mx-auto lg:mx-0"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-gold/40 via-rose/30 to-gold/40 rounded-2xl blur-md" />
+          <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/50 shadow-[0_20px_60px_rgba(0,0,0,0.5)] bg-black">
+            <video
+              src="/videos/announcement-24-semifinalists.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-auto block"
+            />
+          </div>
+          <p className="mt-3 text-center text-cream/90 text-sm md:text-base font-semibold tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+            {t("hero.announcementCaption", "Annonce des 24 demi-finalistes")}
+          </p>
+        </motion.div>
+        </div>
       </motion.div>
 
       {/* Enhanced Scroll Indicator */}
