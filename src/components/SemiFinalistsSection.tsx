@@ -58,17 +58,6 @@ const SemiFinalistsSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-2 order-3 lg:order-1"
           >
-            <div className="bg-white/70 backdrop-blur-sm border border-gold/30 rounded-2xl p-4 md:p-5 shadow-elegant">
-              {/* World map in stats column */}
-              <div className="relative rounded-xl overflow-hidden ring-1 ring-gold/30 bg-white">
-                <iframe
-                  src="/candidats.html"
-                  title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
-                  loading="lazy"
-                  className="w-full h-[320px] md:h-[420px] border-0"
-                />
-              </div>
-            </div>
           </motion.div>
 
           {/* Video column */}
