@@ -685,7 +685,7 @@
     "subtitle": "24 artistes retenus parmi 500 candidats du monde entier.",
     "description": "Découvrez en vidéo les 24 voix exceptionnelles qui se produiront au Château de La Ferté-Imbault en juillet 2026.",
     "stats": {
-      "selectedLabel": "artistes retenus",
+      "selectedLabel": "artistes sélectionnés",
       "candidatesLabel": "candidats",
       "countriesLabel": "pays"
     }
