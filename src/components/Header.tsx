@@ -253,9 +253,10 @@ const Header = () => {
             </Link>
             <Link
               to="/billetterie"
-              className="text-xs md:text-sm text-cream hover:text-gold transition-colors"
+              className="relative text-xs md:text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-rose-dark to-rose text-white hover:from-rose hover:to-rose-dark px-4 py-2 rounded-full ring-2 ring-gold/70 hover:ring-gold shadow-[0_0_18px_rgba(212,175,55,0.45)] hover:shadow-[0_0_26px_rgba(212,175,55,0.7)] transition-all duration-300 hover:scale-105"
             >
-              {t('nav.ticketing')}
+              <span className="absolute -inset-0.5 rounded-full bg-gold/30 blur-md opacity-60 animate-pulse pointer-events-none" />
+              <span className="relative">{t('nav.ticketing')}</span>
             </Link>
             <Link
               to="/contact"
@@ -386,7 +387,7 @@ const Header = () => {
                 <Link
                   to="/billetterie"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-cream hover:text-gold transition-colors py-2"
+                  className="block w-full text-center font-bold uppercase tracking-wider bg-gradient-to-r from-rose-dark to-rose text-white px-4 py-3 rounded-full ring-2 ring-gold/70 shadow-[0_0_18px_rgba(212,175,55,0.45)]"
                 >
                   {t('nav.ticketing')}
                 </Link>
