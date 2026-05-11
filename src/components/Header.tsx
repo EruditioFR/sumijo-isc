@@ -265,15 +265,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* CTA Button - Right */}
-          <div className="hidden lg:flex items-center">
-            <span
-              aria-disabled="true"
-              className="bg-rose-dark text-white font-bold text-base px-6 py-3 rounded-md tracking-wider ring-1 ring-rose-dark/50 cursor-not-allowed select-none"
-            >
-              {t('nav.applicationsClosed')}
-            </span>
-          </div>
         </div>
       </div>
     </header>
@@ -422,15 +413,6 @@ const Header = () => {
                 ))}
               </div>
 
-              {/* CTA Button */}
-              <div className="flex flex-col items-center">
-                <span
-                  aria-disabled="true"
-                  className="w-full text-center bg-rose-dark text-white font-semibold py-2.5 rounded-md cursor-not-allowed select-none"
-                >
-                  {t('nav.applicationsClosed')}
-                </span>
-              </div>
             </div>
           </motion.div>
         </>
