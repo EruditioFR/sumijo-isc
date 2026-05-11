@@ -123,7 +123,7 @@ const StatsSection = () => {
     progress: 100,
     Icon: Trophy
   }, {
-    value: 47,
+    value: 55,
     suffix: '',
     label: t('stats.countries'),
     progress: 100,
