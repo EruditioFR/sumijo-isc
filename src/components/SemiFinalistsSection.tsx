@@ -92,10 +92,12 @@ const SemiFinalistsSection = () => {
           >
             <div className="relative mx-auto max-w-[360px] lg:max-w-[420px] aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.35)] ring-2 ring-gold/40">
               <video
+                ref={videoRef}
                 src="/videos/annonce-24-demi-finalistes-2026.mp4"
                 poster="/videos/annonce-24-demi-finalistes-2026-poster.jpg"
                 controls
                 playsInline
+                muted
                 preload="metadata"
                 className="w-full h-full object-cover bg-black"
               />
