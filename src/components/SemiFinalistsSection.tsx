@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -5,6 +6,19 @@ import { useInView } from "react-intersection-observer";
 const SemiFinalistsSection = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hasPlayedRef = useRef(false);
+
+  useEffect(() => {
+    if (inView && videoRef.current && !hasPlayedRef.current) {
+      hasPlayedRef.current = true;
+      const v = videoRef.current;
+      v.muted = true;
+      v.play().catch(() => {
+        // Autoplay blocked — user will need to tap to play
+      });
+    }
+  }, [inView]);
 
   return (
     <section id="demi-finalistes" className="relative py-16 md:py-24 bg-gradient-to-b from-cream via-background to-cream overflow-hidden">
