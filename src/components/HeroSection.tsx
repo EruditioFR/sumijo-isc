@@ -66,13 +66,14 @@ const HeroSection = () => {
       {/* Content (fastest parallax) */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-10 container mx-auto px-4"
       >
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="space-y-8"
+          className="space-y-8 text-center lg:text-left"
         >
           {/* Main Title with enhanced styling - positioned lower on mobile */}
           <motion.div
