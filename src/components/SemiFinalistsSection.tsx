@@ -110,9 +110,6 @@ const SemiFinalistsSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-12 md:mt-16 max-w-6xl mx-auto"
         >
-          <h3 className="font-display text-2xl md:text-3xl text-foreground text-center mb-6">
-            {t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
-          </h3>
           <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
             <iframe
               src="/candidats.html"
