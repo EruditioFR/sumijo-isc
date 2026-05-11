@@ -211,19 +211,38 @@
         "tab": "Financier",
         "title": "Soutien Financier",
         "description": "Contribuez financièrement au concours avec des avantages fiscaux attractifs",
-        "items": ["Mécénat avec avantages fiscaux", "Parrainage d'événements spécifiques", "Achat d'espace publicitaire", "Donations"]
+        "items": [
+          "Mécénat avec avantages fiscaux",
+          "Parrainage d'événements spécifiques",
+          "Achat d'espace publicitaire",
+          "Donations"
+        ]
       },
       "inKind": {
         "tab": "En Nature",
         "title": "Soutien en Nature",
         "description": "Apportez votre contribution à travers des services ou des biens matériels",
-        "items": ["Transport (véhicules avec chauffeurs)", "Instrumentarium (pianos, instruments)", "Logistique événementielle", "Hospitalité et restauration", "Matériel de communication", "Hébergement"]
+        "items": [
+          "Transport (véhicules avec chauffeurs)",
+          "Instrumentarium (pianos, instruments)",
+          "Logistique événementielle",
+          "Hospitalité et restauration",
+          "Matériel de communication",
+          "Hébergement"
+        ]
       },
       "skills": {
         "tab": "Compétences",
         "title": "Soutien en Compétences",
         "description": "Partagez votre expertise et vos compétences professionnelles",
-        "items": ["Communication & Relations Publiques", "Expertise légale & administrative", "Comptabilité & Gestion", "Technologie et digital", "Mobilisation de réseaux", "Bénévolat spécialisé"]
+        "items": [
+          "Communication & Relations Publiques",
+          "Expertise légale & administrative",
+          "Comptabilité & Gestion",
+          "Technologie et digital",
+          "Mobilisation de réseaux",
+          "Bénévolat spécialisé"
+        ]
       }
     },
     "partners": {
@@ -368,18 +387,18 @@
         "role": "Artistic Administrator au Royal Opera House de Londres",
         "bio": "Mélanie Allmendinger est née en Allemagne et a étudié la gestion des arts internationaux à Fribourg, obtenant son diplôme avec distinction en 2004. Après avoir acquis une expérience à la Fundación Goethe à Madrid, au Festival de Bregenz et à l'Opéra d'État de Bavière, elle est retournée au Festival de Bregenz en 2006 en tant que directrice d'exploitation.\n\nDepuis novembre 2006, Mélanie occupe différents postes au Royal Opera House de Covent Garden. D'abord assistante et directrice d'exploitation adjointe, puis directrice d'exploitation, et depuis 2019 administratrice artistique du Royal Opera.\n\nElle est membre du groupe de direction du forum Artistic Administration & Producing d'Opera Europa.\n\nDans ses loisirs, elle est un membre actif de la Chorale allemande de Londres, ce qui lui a permis de se produire à la Sagrada Familia, à la Basilique Saint-Pierre de Rome et à la Cathédrale Notre-Dame de Paris."
       },
-       "gavazzeni": {
-         "name": "Paolo Gavazzeni",
-         "role": "Directeur de casting à la Scala de Milan",
-         "bio": "Né à Bergame le 18 août 1969, directeur artistique et metteur en scène d'opéra fort d'une vaste expérience dans les secteurs musical et théâtral, tant au niveau national qu'international.\n\nIl obtient un Diplôme de piano au Conservatoire G. Donizetti de Bergame en 1990, puis suit un cours supérieur de piano à l'École Internationale de Piano de Lausanne (1990-1992) sous la direction du Maestro Fausto Zadra. Entre 1990 et 1994, il se produit en concert comme soliste, en formation de chambre et avec orchestre.\n\nEn 1994, il obtient un diplôme de Droit à l'Università degli Studi di Milano, avec une thèse sur les relations de travail entre les institutions lyriques et les ensembles artistiques.\n\nExpérience professionnelle :\n• Directeur artistique de Tele+3 Classica (1996-2000)\n• Coordinateur artistique à l'Accademia Teatro alla Scala (2000-2002)\n• Responsable des services musicaux de la Fondazione Teatro alla Scala (2002-2006)\n• Responsable des services musicaux et directeur des opérations quotidiennes du théâtre, Fondazione Teatro alla Scala (2007-2011)\n• Directeur artistique de la Fondazione Arena di Verona (2012-2016)\n• Directeur artistique de Classica HD (depuis 2016) et présentateur de l'émission Mestiere Teatro (depuis 2021)\n• Directeur artistique du Macerata Opera Festival (2023-2024)\n\nDepuis 2016, il exerce comme metteur en scène d'opéra et, avec Piero Maranghi, a signé des productions dans les principaux théâtres italiens, parmi lesquelles : Aida (Teatro Coccia di Novara, octobre 2016), Manon Lescaut (Teatro Massimo Bellini di Catania, mars 2017), Delitto e Dovere (Festival dei Due Mondi di Spoleto, juillet 2017), Rigoletto (Teatro Coccia di Novara et Teatro Comunale di Sassari, octobre-novembre 2018), Le cantatrici villane (Teatro Petrarca di Arezzo, juillet 2019), Pagliacci (Teatro Comunale di Sassari, octobre 2019 ; Teatro Lirico di Cagliari, juin 2022), La Cenerentola (Teatro Massimo Bellini di Catania, décembre 2019), Il tabarro (Teatro Comunale di Sassari, septembre 2020), Il Trespolo tutore d'A. Stradella (Teatro Carlo Felice di Genova, octobre 2020), La Bohème (Teatro Regio di Torino, mars 2020 et février 2022), La Traviata (Teatro Bellini di Catania, mars 2021), Adriana Lecouvreur (Teatro Massimo Bellini di Catania, mars 2022), La Cenerentola (Teatro Verdi di Trieste, avril 2024 ; Teatro Nuovo Giovanni da Udine, mai 2024)."
-       },
-       "alvarez": {
-         "name": "Marcelo Álvarez",
-         "role": "Ténor",
-          "bio": "Marcelo Álvarez, né à Córdoba (Argentine), est aujourd'hui l'un des ténors les plus importants au niveau international.\n\nAprès sa rencontre avec Giuseppe Di Stefano, qui reconnaît immédiatement son talent, il s'installe en Europe où il fait ses débuts dans La Sonnambula.\n\nSa carrière intense et prestigieuse l'a conduit dans les plus grands théâtres du monde, parmi lesquels le Teatro alla Scala de Milan, le Metropolitan Opera de New York, le Royal Opera House de Londres, l'Opéra National de Paris, la Wiener Staatsoper, le Teatro Real de Madrid, le Teatro Colón de Buenos Aires, la Bayerische Staatsoper de Munich et la Staatsoper Unter den Linden de Berlin.\n\nSon répertoire est très vaste et a suivi l'évolution vocale naturelle qui, au fil des années, l'a conduit du répertoire belcantiste, à travers le répertoire français, jusqu'au grand répertoire lyrique et vériste. Parmi ses interprétations les plus marquantes : Edgardo dans Lucia di Lammermoor, Alfredo dans La Traviata, le Duc de Mantoue dans Rigoletto, Des Grieux dans Manon, Don José dans Carmen, Rodolfo dans La Bohème, Cavaradossi dans Tosca, Manrico dans Il Trovatore, Radamès dans Aida, Andrea Chénier, Canio dans Pagliacci et Turiddu dans Cavalleria Rusticana.\n\nParallèlement à son activité opératique, Marcelo Álvarez a été protagoniste d'une intense tournée internationale de récitals, avec des représentations à la Salle Cortot de Paris, à l'Ehrbar Saal de Vienne et à la Kammermusiksaal de la Philharmonie de Berlin.\n\nAu cours de sa carrière, il a collaboré avec les plus grands chefs d'orchestre, parmi lesquels James Levine, Zubin Mehta, Lorin Maazel, Claudio Abbado, Riccardo Muti, Riccardo Chailly et Antonio Pappano.\n\nLa discographie de Marcelo Álvarez compte plus de trente enregistrements réalisés avec les principales maisons de disques, dont Sony et Decca."
-       }
-     }
-   },
+      "gavazzeni": {
+        "name": "Paolo Gavazzeni",
+        "role": "Directeur de casting à la Scala de Milan",
+        "bio": "Né à Bergame le 18 août 1969, directeur artistique et metteur en scène d'opéra fort d'une vaste expérience dans les secteurs musical et théâtral, tant au niveau national qu'international.\n\nIl obtient un Diplôme de piano au Conservatoire G. Donizetti de Bergame en 1990, puis suit un cours supérieur de piano à l'École Internationale de Piano de Lausanne (1990-1992) sous la direction du Maestro Fausto Zadra. Entre 1990 et 1994, il se produit en concert comme soliste, en formation de chambre et avec orchestre.\n\nEn 1994, il obtient un diplôme de Droit à l'Università degli Studi di Milano, avec une thèse sur les relations de travail entre les institutions lyriques et les ensembles artistiques.\n\nExpérience professionnelle :\n• Directeur artistique de Tele+3 Classica (1996-2000)\n• Coordinateur artistique à l'Accademia Teatro alla Scala (2000-2002)\n• Responsable des services musicaux de la Fondazione Teatro alla Scala (2002-2006)\n• Responsable des services musicaux et directeur des opérations quotidiennes du théâtre, Fondazione Teatro alla Scala (2007-2011)\n• Directeur artistique de la Fondazione Arena di Verona (2012-2016)\n• Directeur artistique de Classica HD (depuis 2016) et présentateur de l'émission Mestiere Teatro (depuis 2021)\n• Directeur artistique du Macerata Opera Festival (2023-2024)\n\nDepuis 2016, il exerce comme metteur en scène d'opéra et, avec Piero Maranghi, a signé des productions dans les principaux théâtres italiens, parmi lesquelles : Aida (Teatro Coccia di Novara, octobre 2016), Manon Lescaut (Teatro Massimo Bellini di Catania, mars 2017), Delitto e Dovere (Festival dei Due Mondi di Spoleto, juillet 2017), Rigoletto (Teatro Coccia di Novara et Teatro Comunale di Sassari, octobre-novembre 2018), Le cantatrici villane (Teatro Petrarca di Arezzo, juillet 2019), Pagliacci (Teatro Comunale di Sassari, octobre 2019 ; Teatro Lirico di Cagliari, juin 2022), La Cenerentola (Teatro Massimo Bellini di Catania, décembre 2019), Il tabarro (Teatro Comunale di Sassari, septembre 2020), Il Trespolo tutore d'A. Stradella (Teatro Carlo Felice di Genova, octobre 2020), La Bohème (Teatro Regio di Torino, mars 2020 et février 2022), La Traviata (Teatro Bellini di Catania, mars 2021), Adriana Lecouvreur (Teatro Massimo Bellini di Catania, mars 2022), La Cenerentola (Teatro Verdi di Trieste, avril 2024 ; Teatro Nuovo Giovanni da Udine, mai 2024)."
+      },
+      "alvarez": {
+        "name": "Marcelo Álvarez",
+        "role": "Ténor",
+        "bio": "Marcelo Álvarez, né à Córdoba (Argentine), est aujourd'hui l'un des ténors les plus importants au niveau international.\n\nAprès sa rencontre avec Giuseppe Di Stefano, qui reconnaît immédiatement son talent, il s'installe en Europe où il fait ses débuts dans La Sonnambula.\n\nSa carrière intense et prestigieuse l'a conduit dans les plus grands théâtres du monde, parmi lesquels le Teatro alla Scala de Milan, le Metropolitan Opera de New York, le Royal Opera House de Londres, l'Opéra National de Paris, la Wiener Staatsoper, le Teatro Real de Madrid, le Teatro Colón de Buenos Aires, la Bayerische Staatsoper de Munich et la Staatsoper Unter den Linden de Berlin.\n\nSon répertoire est très vaste et a suivi l'évolution vocale naturelle qui, au fil des années, l'a conduit du répertoire belcantiste, à travers le répertoire français, jusqu'au grand répertoire lyrique et vériste. Parmi ses interprétations les plus marquantes : Edgardo dans Lucia di Lammermoor, Alfredo dans La Traviata, le Duc de Mantoue dans Rigoletto, Des Grieux dans Manon, Don José dans Carmen, Rodolfo dans La Bohème, Cavaradossi dans Tosca, Manrico dans Il Trovatore, Radamès dans Aida, Andrea Chénier, Canio dans Pagliacci et Turiddu dans Cavalleria Rusticana.\n\nParallèlement à son activité opératique, Marcelo Álvarez a été protagoniste d'une intense tournée internationale de récitals, avec des représentations à la Salle Cortot de Paris, à l'Ehrbar Saal de Vienne et à la Kammermusiksaal de la Philharmonie de Berlin.\n\nAu cours de sa carrière, il a collaboré avec les plus grands chefs d'orchestre, parmi lesquels James Levine, Zubin Mehta, Lorin Maazel, Claudio Abbado, Riccardo Muti, Riccardo Chailly et Antonio Pappano.\n\nLa discographie de Marcelo Álvarez compte plus de trente enregistrements réalisés avec les principales maisons de disques, dont Sony et Decca."
+      }
+    }
+  },
   "footer": {
     "navigation": "NAVIGATION",
     "followUs": "SUIVEZ-NOUS",
@@ -498,166 +517,176 @@
     "imagePhotographer": "Photographe",
     "imageOrder": "Ordre d'affichage",
     "noImages": "Aucune image dans cette catégorie"
-   },
-   "privacy": {
-     "title": "Politique de confidentialité",
-     "lastUpdated": "Dernière mise à jour : janvier 2026",
-     "intro": {
-       "title": "Introduction",
-       "content": "L'association du Château de la Ferté-Imbault, organisatrice du SUMI JO International Singing Competition (ci-après « le Concours »), s'engage à protéger la vie privée et les données personnelles de ses utilisateurs, candidats, partenaires et visiteurs. La présente politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi française Informatique et Libertés."
-     },
-     "controller": {
-       "title": "Responsable du traitement",
-       "content": "Le responsable du traitement des données personnelles est :",
-       "name": "Association du Château de la Ferté-Imbault",
-       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
-       "email": "Email : contact@sumijo-isc.com"
-     },
-     "dataCollected": {
-       "title": "Données collectées",
-       "intro": "Nous collectons différents types de données personnelles selon vos interactions avec notre site et le Concours :",
-       "contact": {
-         "title": "Données de contact :",
-         "item1": "Nom et prénom",
-         "item2": "Adresse email",
-         "item3": "Message envoyé via le formulaire de contact"
-       },
-       "application": {
-         "title": "Données de candidature :",
-         "item1": "Informations d'identité (nom, prénom, date de naissance, nationalité)",
-         "item2": "Coordonnées (adresse, téléphone, email)",
-         "item3": "Parcours artistique et musical (CV, biographie, enregistrements)",
-         "item4": "Photos et vidéos de performances"
-       },
-       "technical": {
-         "title": "Données techniques :",
-         "item1": "Adresse IP",
-         "item2": "Type de navigateur et système d'exploitation",
-         "item3": "Données de navigation (pages visitées, temps de visite)"
-       }
-     },
-     "purpose": {
-       "title": "Finalités du traitement",
-       "item1": "Gérer les candidatures au Concours et communiquer avec les candidats",
-       "item2": "Répondre aux demandes de contact et d'information",
-       "item3": "Envoyer des informations sur le Concours (avec votre consentement)",
-       "item4": "Gérer les relations avec nos partenaires et sponsors",
-       "item5": "Améliorer notre site web et nos services"
-     },
-     "legalBasis": {
-       "title": "Base légale du traitement",
-       "intro": "Le traitement de vos données personnelles repose sur les bases légales suivantes :",
-       "item1": "Votre consentement (pour l'envoi de communications)",
-       "item2": "L'exécution d'un contrat (pour la gestion des candidatures)",
-       "item3": "Notre intérêt légitime (pour améliorer nos services et assurer la sécurité)"
-     },
-     "retention": {
-       "title": "Durée de conservation",
-       "content": "Vos données personnelles sont conservées pendant la durée nécessaire à l'accomplissement des finalités pour lesquelles elles ont été collectées. Les données des candidats sont conservées pendant 5 ans après la fin du Concours concerné. Les données de contact sont conservées pendant 3 ans après le dernier contact. Les données techniques sont conservées pendant 13 mois maximum."
-     },
-     "sharing": {
-       "title": "Partage des données",
-       "intro": "Vos données personnelles peuvent être partagées avec :",
-       "item1": "Les membres du jury et l'équipe organisatrice du Concours",
-       "item2": "Nos prestataires techniques (hébergement, envoi d'emails)",
-       "item3": "Les autorités compétentes en cas d'obligation légale"
-     },
-     "transfers": {
-       "title": "Transferts internationaux",
-       "content": "Dans le cadre d'un concours international, certaines données peuvent être transférées vers des pays hors de l'Union Européenne. Dans ce cas, nous veillons à ce que des garanties appropriées soient mises en place (clauses contractuelles types, décisions d'adéquation)."
-     },
-     "rights": {
-       "title": "Vos droits",
-       "intro": "Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :",
-       "access": {
-         "title": "Droit d'accès :",
-         "desc": "obtenir une copie de vos données personnelles"
-       },
-       "rectification": {
-         "title": "Droit de rectification :",
-         "desc": "corriger vos données inexactes ou incomplètes"
-       },
-       "erasure": {
-         "title": "Droit à l'effacement :",
-         "desc": "demander la suppression de vos données"
-       },
-       "restriction": {
-         "title": "Droit à la limitation :",
-         "desc": "restreindre le traitement de vos données"
-       },
-       "portability": {
-         "title": "Droit à la portabilité :",
-         "desc": "recevoir vos données dans un format structuré"
-       },
-       "objection": {
-         "title": "Droit d'opposition :",
-         "desc": "vous opposer au traitement de vos données"
-       },
-       "howTo": "Pour exercer ces droits, contactez-nous à contact@sumijo-isc.com. Nous répondrons à votre demande dans un délai d'un mois."
-     },
-     "cookies": {
-       "title": "Cookies",
-       "content": "Notre site utilise des cookies techniques nécessaires à son fonctionnement et des cookies analytiques pour mesurer l'audience (avec votre consentement). Vous pouvez gérer vos préférences de cookies à tout moment via les paramètres de votre navigateur."
-     },
-     "security": {
-       "title": "Sécurité des données",
-       "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction. Ces mesures incluent le chiffrement des données, des contrôles d'accès stricts et des audits de sécurité réguliers."
-     },
-     "changes": {
-       "title": "Modifications de la politique",
-       "content": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification sera publiée sur cette page avec une date de mise à jour. Nous vous encourageons à consulter régulièrement cette page."
-     },
-     "contactSection": {
-       "title": "Nous contacter",
-       "content": "Pour toute question concernant cette politique de confidentialité ou le traitement de vos données personnelles, vous pouvez nous contacter :"
-     },
-     "cnil": {
-       "title": "Réclamation auprès de la CNIL",
-       "content": "Si vous estimez que le traitement de vos données personnelles constitue une violation du RGPD, vous avez le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) : www.cnil.fr"
-     }
-   },
-   "legal": {
-     "title": "Mentions légales",
-     "lastUpdated": "Dernière mise à jour : janvier 2026",
-     "editor": {
-       "title": "Éditeur du site",
-       "name": "L'association du château de La Ferté-Imbault",
-       "type": "Association loi 1901",
-       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
-       "email": "Email : contact@aacfi.fr",
-        "rna": "Numéro RNA : W413005535"
-     },
-     "director": {
-       "title": "Directeur de la publication",
-       "content": "Le directeur de la publication est M. Olivier Ojzerowicz-Medinger, en sa qualité de Président de l'association du château de La Ferté-Imbault."
-     },
-     "hosting": {
-       "title": "Hébergement",
-       "name": "Lovable",
-       "address": "Service d'hébergement cloud",
-       "website": "www.lovable.dev"
-     },
-     "intellectualProperty": {
-       "title": "Propriété intellectuelle",
-       "content1": "L'ensemble du contenu de ce site (textes, images, vidéos, logos, graphismes, icônes, sons, logiciels, etc.) est la propriété exclusive de l'association du château de La Ferté-Imbault ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.",
-       "content2": "Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l'association. Toute exploitation non autorisée du site ou de son contenu sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle."
-     },
-     "liability": {
-       "title": "Limitation de responsabilité",
-       "content1": "L'association du château de La Ferté-Imbault s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, elle ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.",
-       "content2": "En conséquence, l'association décline toute responsabilité pour les éventuelles imprécisions, inexactitudes ou omissions portant sur des informations disponibles sur ce site. L'utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive."
-     },
-     "links": {
-       "title": "Liens hypertextes",
-       "content": "Le site peut contenir des liens hypertextes vers d'autres sites. L'association du château de La Ferté-Imbault n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu. L'existence d'un lien hypertexte vers un autre site ne constitue pas une validation de ce site ou de son contenu."
-     },
-     "law": {
-       "title": "Droit applicable",
-       "content": "Les présentes mentions légales sont régies par le droit français. En cas de litige, et après échec de toute tentative de recherche d'une solution amiable, les tribunaux français seront seuls compétents pour connaître de ce litige."
-     },
-     "contact": {
-       "title": "Contact",
-       "content": "Pour toute question concernant ces mentions légales ou le site, vous pouvez nous contacter :"
-     }
-   }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : janvier 2026",
+    "intro": {
+      "title": "Introduction",
+      "content": "L'association du Château de la Ferté-Imbault, organisatrice du SUMI JO International Singing Competition (ci-après « le Concours »), s'engage à protéger la vie privée et les données personnelles de ses utilisateurs, candidats, partenaires et visiteurs. La présente politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi française Informatique et Libertés."
+    },
+    "controller": {
+      "title": "Responsable du traitement",
+      "content": "Le responsable du traitement des données personnelles est :",
+      "name": "Association du Château de la Ferté-Imbault",
+      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "email": "Email : contact@sumijo-isc.com"
+    },
+    "dataCollected": {
+      "title": "Données collectées",
+      "intro": "Nous collectons différents types de données personnelles selon vos interactions avec notre site et le Concours :",
+      "contact": {
+        "title": "Données de contact :",
+        "item1": "Nom et prénom",
+        "item2": "Adresse email",
+        "item3": "Message envoyé via le formulaire de contact"
+      },
+      "application": {
+        "title": "Données de candidature :",
+        "item1": "Informations d'identité (nom, prénom, date de naissance, nationalité)",
+        "item2": "Coordonnées (adresse, téléphone, email)",
+        "item3": "Parcours artistique et musical (CV, biographie, enregistrements)",
+        "item4": "Photos et vidéos de performances"
+      },
+      "technical": {
+        "title": "Données techniques :",
+        "item1": "Adresse IP",
+        "item2": "Type de navigateur et système d'exploitation",
+        "item3": "Données de navigation (pages visitées, temps de visite)"
+      }
+    },
+    "purpose": {
+      "title": "Finalités du traitement",
+      "item1": "Gérer les candidatures au Concours et communiquer avec les candidats",
+      "item2": "Répondre aux demandes de contact et d'information",
+      "item3": "Envoyer des informations sur le Concours (avec votre consentement)",
+      "item4": "Gérer les relations avec nos partenaires et sponsors",
+      "item5": "Améliorer notre site web et nos services"
+    },
+    "legalBasis": {
+      "title": "Base légale du traitement",
+      "intro": "Le traitement de vos données personnelles repose sur les bases légales suivantes :",
+      "item1": "Votre consentement (pour l'envoi de communications)",
+      "item2": "L'exécution d'un contrat (pour la gestion des candidatures)",
+      "item3": "Notre intérêt légitime (pour améliorer nos services et assurer la sécurité)"
+    },
+    "retention": {
+      "title": "Durée de conservation",
+      "content": "Vos données personnelles sont conservées pendant la durée nécessaire à l'accomplissement des finalités pour lesquelles elles ont été collectées. Les données des candidats sont conservées pendant 5 ans après la fin du Concours concerné. Les données de contact sont conservées pendant 3 ans après le dernier contact. Les données techniques sont conservées pendant 13 mois maximum."
+    },
+    "sharing": {
+      "title": "Partage des données",
+      "intro": "Vos données personnelles peuvent être partagées avec :",
+      "item1": "Les membres du jury et l'équipe organisatrice du Concours",
+      "item2": "Nos prestataires techniques (hébergement, envoi d'emails)",
+      "item3": "Les autorités compétentes en cas d'obligation légale"
+    },
+    "transfers": {
+      "title": "Transferts internationaux",
+      "content": "Dans le cadre d'un concours international, certaines données peuvent être transférées vers des pays hors de l'Union Européenne. Dans ce cas, nous veillons à ce que des garanties appropriées soient mises en place (clauses contractuelles types, décisions d'adéquation)."
+    },
+    "rights": {
+      "title": "Vos droits",
+      "intro": "Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :",
+      "access": {
+        "title": "Droit d'accès :",
+        "desc": "obtenir une copie de vos données personnelles"
+      },
+      "rectification": {
+        "title": "Droit de rectification :",
+        "desc": "corriger vos données inexactes ou incomplètes"
+      },
+      "erasure": {
+        "title": "Droit à l'effacement :",
+        "desc": "demander la suppression de vos données"
+      },
+      "restriction": {
+        "title": "Droit à la limitation :",
+        "desc": "restreindre le traitement de vos données"
+      },
+      "portability": {
+        "title": "Droit à la portabilité :",
+        "desc": "recevoir vos données dans un format structuré"
+      },
+      "objection": {
+        "title": "Droit d'opposition :",
+        "desc": "vous opposer au traitement de vos données"
+      },
+      "howTo": "Pour exercer ces droits, contactez-nous à contact@sumijo-isc.com. Nous répondrons à votre demande dans un délai d'un mois."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Notre site utilise des cookies techniques nécessaires à son fonctionnement et des cookies analytiques pour mesurer l'audience (avec votre consentement). Vous pouvez gérer vos préférences de cookies à tout moment via les paramètres de votre navigateur."
+    },
+    "security": {
+      "title": "Sécurité des données",
+      "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction. Ces mesures incluent le chiffrement des données, des contrôles d'accès stricts et des audits de sécurité réguliers."
+    },
+    "changes": {
+      "title": "Modifications de la politique",
+      "content": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification sera publiée sur cette page avec une date de mise à jour. Nous vous encourageons à consulter régulièrement cette page."
+    },
+    "contactSection": {
+      "title": "Nous contacter",
+      "content": "Pour toute question concernant cette politique de confidentialité ou le traitement de vos données personnelles, vous pouvez nous contacter :"
+    },
+    "cnil": {
+      "title": "Réclamation auprès de la CNIL",
+      "content": "Si vous estimez que le traitement de vos données personnelles constitue une violation du RGPD, vous avez le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) : www.cnil.fr"
+    }
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "lastUpdated": "Dernière mise à jour : janvier 2026",
+    "editor": {
+      "title": "Éditeur du site",
+      "name": "L'association du château de La Ferté-Imbault",
+      "type": "Association loi 1901",
+      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "email": "Email : contact@aacfi.fr",
+      "rna": "Numéro RNA : W413005535"
+    },
+    "director": {
+      "title": "Directeur de la publication",
+      "content": "Le directeur de la publication est M. Olivier Ojzerowicz-Medinger, en sa qualité de Président de l'association du château de La Ferté-Imbault."
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "name": "Lovable",
+      "address": "Service d'hébergement cloud",
+      "website": "www.lovable.dev"
+    },
+    "intellectualProperty": {
+      "title": "Propriété intellectuelle",
+      "content1": "L'ensemble du contenu de ce site (textes, images, vidéos, logos, graphismes, icônes, sons, logiciels, etc.) est la propriété exclusive de l'association du château de La Ferté-Imbault ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.",
+      "content2": "Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l'association. Toute exploitation non autorisée du site ou de son contenu sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle."
+    },
+    "liability": {
+      "title": "Limitation de responsabilité",
+      "content1": "L'association du château de La Ferté-Imbault s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, elle ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.",
+      "content2": "En conséquence, l'association décline toute responsabilité pour les éventuelles imprécisions, inexactitudes ou omissions portant sur des informations disponibles sur ce site. L'utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive."
+    },
+    "links": {
+      "title": "Liens hypertextes",
+      "content": "Le site peut contenir des liens hypertextes vers d'autres sites. L'association du château de La Ferté-Imbault n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu. L'existence d'un lien hypertexte vers un autre site ne constitue pas une validation de ce site ou de son contenu."
+    },
+    "law": {
+      "title": "Droit applicable",
+      "content": "Les présentes mentions légales sont régies par le droit français. En cas de litige, et après échec de toute tentative de recherche d'une solution amiable, les tribunaux français seront seuls compétents pour connaître de ce litige."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "Pour toute question concernant ces mentions légales ou le site, vous pouvez nous contacter :"
+    }
+  },
+  "semifinalists": {
+    "eyebrow": "Annonce officielle",
+    "title": "Les demi-finalistes",
+    "subtitle": "24 artistes retenus parmi 500 candidats du monde entier.",
+    "description": "Découvrez en vidéo les 24 voix exceptionnelles qui se produiront au Château de La Ferté-Imbault en juillet 2026.",
+    "stats": {
+      "selectedLabel": "artistes retenus",
+      "candidatesLabel": "candidats"
+    }
+  }
 }

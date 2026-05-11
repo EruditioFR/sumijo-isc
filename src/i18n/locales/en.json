@@ -211,19 +211,38 @@
         "tab": "Financial",
         "title": "Financial Support",
         "description": "Contribute financially to the competition with attractive tax benefits",
-        "items": ["Patronage with tax benefits", "Sponsorship of specific events", "Advertising space purchase", "Donations"]
+        "items": [
+          "Patronage with tax benefits",
+          "Sponsorship of specific events",
+          "Advertising space purchase",
+          "Donations"
+        ]
       },
       "inKind": {
         "tab": "In-Kind",
         "title": "In-Kind Support",
         "description": "Provide your contribution through services or material goods",
-        "items": ["Transportation (vehicles with drivers)", "Instrumentarium (pianos, instruments)", "Event logistics", "Hospitality and catering", "Communication materials", "Accommodation"]
+        "items": [
+          "Transportation (vehicles with drivers)",
+          "Instrumentarium (pianos, instruments)",
+          "Event logistics",
+          "Hospitality and catering",
+          "Communication materials",
+          "Accommodation"
+        ]
       },
       "skills": {
         "tab": "Skills",
         "title": "Skills-Based Support",
         "description": "Share your expertise and professional skills",
-        "items": ["Communication & Public Relations", "Legal & administrative expertise", "Accounting & Management", "Technology and digital", "Network mobilization", "Specialized volunteering"]
+        "items": [
+          "Communication & Public Relations",
+          "Legal & administrative expertise",
+          "Accounting & Management",
+          "Technology and digital",
+          "Network mobilization",
+          "Specialized volunteering"
+        ]
       }
     },
     "partners": {
@@ -346,18 +365,18 @@
         "role": "Artistic Administrator at the Royal Opera House in London",
         "bio": "Melanie Allmendinger was born in Germany and studied International Arts Management in Freiburg, passing her degree with distinction in 2004. After gaining experience at the Fundación Goethe in Madrid, the Bregenz Festival, and the Bavarian State Opera, she returned to the Bregenz Festival as Company Manager in 2006.\n\nSince November 2006, Melanie has been working at the Royal Opera House, Covent Garden in different roles. First as Assistant and Deputy Company Manager, then as Company Manager and since 2019 as Artistic Administrator of The Royal Opera.\n\nShe is a member of the steering group of Opera Europa's Artistic Administration & Producing forum.\n\nIn her spare time, she is an active member of the German Choir of London giving her the opportunity to perform in the Sagrada Familia, St Peter's Basilica in Rome, and Cathédrale Notre-Dame in Paris."
       },
-       "gavazzeni": {
-         "name": "Paolo Gavazzeni",
-         "role": "Casting Manager at La Scala",
-         "bio": "Born in Bergamo on August 18, 1969, Artistic Director and Opera Director with extensive experience in the musical and theatrical sectors at both national and international levels.\n\nHe obtained a Diploma in Piano Performance from the Conservatorio G. Donizetti in Bergamo in 1990 and subsequently attended an advanced piano course at the École Internationale de Piano in Lausanne (1990-1992) under the guidance of Maestro Fausto Zadra. Between 1990 and 1994, he performed in concert as a soloist, in chamber ensembles, and with orchestra.\n\nIn 1994, he graduated in Law from the Università degli Studi di Milano, with a thesis on the employment relationship between opera institutions and artistic ensembles.\n\nProfessional Experience:\n• Artistic Director of Tele+3 Classica (1996-2000)\n• Artistic Coordinator at the Accademia Teatro alla Scala (2000-2002)\n• Head of Musical Services at the Fondazione Teatro alla Scala (2002-2006)\n• Head of Musical Services & Manager of Daily Theatre Operations, Fondazione Teatro alla Scala (2007-2011)\n• Artistic Director of the Fondazione Arena di Verona (2012-2016)\n• Artistic Director of Classica HD (since 2016) and host of the programme Mestiere Teatro (since 2021)\n• Artistic Director of the Macerata Opera Festival (2023-2024)\n\nSince 2016, he has been active as an opera director and, together with Piero Maranghi, has staged productions in major Italian theatres, including: Aida (Teatro Coccia di Novara, October 2016), Manon Lescaut (Teatro Massimo Bellini di Catania, March 2017), Delitto e Dovere (Festival dei Due Mondi di Spoleto, July 2017), Rigoletto (Teatro Coccia di Novara and Teatro Comunale di Sassari, October-November 2018), Le cantatrici villane (Teatro Petrarca di Arezzo, July 2019), Pagliacci (Teatro Comunale di Sassari, October 2019; Teatro Lirico di Cagliari, June 2022), La Cenerentola (Teatro Massimo Bellini di Catania, December 2019), Il tabarro (Teatro Comunale di Sassari, September 2020), Il Trespolo tutore by A. Stradella (Teatro Carlo Felice di Genova, October 2020), La Bohème (Teatro Regio di Torino, March 2020 and February 2022), La Traviata (Teatro Bellini di Catania, March 2021), Adriana Lecouvreur (Teatro Massimo Bellini di Catania, March 2022), La Cenerentola (Teatro Verdi di Trieste, April 2024; Teatro Nuovo Giovanni da Udine, May 2024)."
-       },
-       "alvarez": {
-         "name": "Marcelo Álvarez",
-         "role": "Tenor",
-          "bio": "Marcelo Álvarez, born in Córdoba (Argentina), is today one of the most important tenors on the international stage.\n\nAfter meeting Giuseppe Di Stefano, who immediately recognized his talent, he moved to Europe where he made his debut in La Sonnambula.\n\nHis intense and prestigious career has taken him to the world's greatest opera houses, including Teatro alla Scala in Milan, the Metropolitan Opera in New York, the Royal Opera House in London, the Opéra National de Paris, the Wiener Staatsoper, the Teatro Real in Madrid, the Teatro Colón in Buenos Aires, the Bayerische Staatsoper in Munich, and the Staatsoper Unter den Linden in Berlin.\n\nHis repertoire is vast and has followed a natural vocal evolution from the bel canto repertoire, through French opera, to the great lyric and verismo repertoire. Among his most significant roles: Edgardo in Lucia di Lammermoor, Alfredo in La Traviata, the Duke of Mantua in Rigoletto, Des Grieux in Manon, Don José in Carmen, Rodolfo in La Bohème, Cavaradossi in Tosca, Manrico in Il Trovatore, Radamès in Aida, Andrea Chénier, Canio in Pagliacci, and Turiddu in Cavalleria Rusticana.\n\nAlongside his operatic career, Marcelo Álvarez has undertaken an intense international recital tour, with performances at the Salle Cortot in Paris, the Ehrbar Saal in Vienna, and the Kammermusiksaal of the Berlin Philharmonie.\n\nThroughout his career, he has collaborated with some of the most distinguished conductors, including James Levine, Zubin Mehta, Lorin Maazel, Claudio Abbado, Riccardo Muti, Riccardo Chailly, and Antonio Pappano.\n\nMarcelo Álvarez's discography includes over thirty recordings with major labels, including Sony and Decca."
-       }
-     }
-   },
+      "gavazzeni": {
+        "name": "Paolo Gavazzeni",
+        "role": "Casting Manager at La Scala",
+        "bio": "Born in Bergamo on August 18, 1969, Artistic Director and Opera Director with extensive experience in the musical and theatrical sectors at both national and international levels.\n\nHe obtained a Diploma in Piano Performance from the Conservatorio G. Donizetti in Bergamo in 1990 and subsequently attended an advanced piano course at the École Internationale de Piano in Lausanne (1990-1992) under the guidance of Maestro Fausto Zadra. Between 1990 and 1994, he performed in concert as a soloist, in chamber ensembles, and with orchestra.\n\nIn 1994, he graduated in Law from the Università degli Studi di Milano, with a thesis on the employment relationship between opera institutions and artistic ensembles.\n\nProfessional Experience:\n• Artistic Director of Tele+3 Classica (1996-2000)\n• Artistic Coordinator at the Accademia Teatro alla Scala (2000-2002)\n• Head of Musical Services at the Fondazione Teatro alla Scala (2002-2006)\n• Head of Musical Services & Manager of Daily Theatre Operations, Fondazione Teatro alla Scala (2007-2011)\n• Artistic Director of the Fondazione Arena di Verona (2012-2016)\n• Artistic Director of Classica HD (since 2016) and host of the programme Mestiere Teatro (since 2021)\n• Artistic Director of the Macerata Opera Festival (2023-2024)\n\nSince 2016, he has been active as an opera director and, together with Piero Maranghi, has staged productions in major Italian theatres, including: Aida (Teatro Coccia di Novara, October 2016), Manon Lescaut (Teatro Massimo Bellini di Catania, March 2017), Delitto e Dovere (Festival dei Due Mondi di Spoleto, July 2017), Rigoletto (Teatro Coccia di Novara and Teatro Comunale di Sassari, October-November 2018), Le cantatrici villane (Teatro Petrarca di Arezzo, July 2019), Pagliacci (Teatro Comunale di Sassari, October 2019; Teatro Lirico di Cagliari, June 2022), La Cenerentola (Teatro Massimo Bellini di Catania, December 2019), Il tabarro (Teatro Comunale di Sassari, September 2020), Il Trespolo tutore by A. Stradella (Teatro Carlo Felice di Genova, October 2020), La Bohème (Teatro Regio di Torino, March 2020 and February 2022), La Traviata (Teatro Bellini di Catania, March 2021), Adriana Lecouvreur (Teatro Massimo Bellini di Catania, March 2022), La Cenerentola (Teatro Verdi di Trieste, April 2024; Teatro Nuovo Giovanni da Udine, May 2024)."
+      },
+      "alvarez": {
+        "name": "Marcelo Álvarez",
+        "role": "Tenor",
+        "bio": "Marcelo Álvarez, born in Córdoba (Argentina), is today one of the most important tenors on the international stage.\n\nAfter meeting Giuseppe Di Stefano, who immediately recognized his talent, he moved to Europe where he made his debut in La Sonnambula.\n\nHis intense and prestigious career has taken him to the world's greatest opera houses, including Teatro alla Scala in Milan, the Metropolitan Opera in New York, the Royal Opera House in London, the Opéra National de Paris, the Wiener Staatsoper, the Teatro Real in Madrid, the Teatro Colón in Buenos Aires, the Bayerische Staatsoper in Munich, and the Staatsoper Unter den Linden in Berlin.\n\nHis repertoire is vast and has followed a natural vocal evolution from the bel canto repertoire, through French opera, to the great lyric and verismo repertoire. Among his most significant roles: Edgardo in Lucia di Lammermoor, Alfredo in La Traviata, the Duke of Mantua in Rigoletto, Des Grieux in Manon, Don José in Carmen, Rodolfo in La Bohème, Cavaradossi in Tosca, Manrico in Il Trovatore, Radamès in Aida, Andrea Chénier, Canio in Pagliacci, and Turiddu in Cavalleria Rusticana.\n\nAlongside his operatic career, Marcelo Álvarez has undertaken an intense international recital tour, with performances at the Salle Cortot in Paris, the Ehrbar Saal in Vienna, and the Kammermusiksaal of the Berlin Philharmonie.\n\nThroughout his career, he has collaborated with some of the most distinguished conductors, including James Levine, Zubin Mehta, Lorin Maazel, Claudio Abbado, Riccardo Muti, Riccardo Chailly, and Antonio Pappano.\n\nMarcelo Álvarez's discography includes over thirty recordings with major labels, including Sony and Decca."
+      }
+    }
+  },
   "footer": {
     "navigation": "NAVIGATION",
     "followUs": "FOLLOW US",
@@ -439,9 +458,9 @@
     "error": "Error loading images"
   },
   "admin": {
-     "title": "Administration",
-     "ticketing": "Ticketing",
-     "images": "Images",
+    "title": "Administration",
+    "ticketing": "Ticketing",
+    "images": "Images",
     "upload": "Upload",
     "categories": "Categories",
     "login": "Admin Login",
@@ -476,166 +495,176 @@
     "imagePhotographer": "Photographer",
     "imageOrder": "Display order",
     "noImages": "No images in this category"
-   },
-   "privacy": {
-     "title": "Privacy Policy",
-     "lastUpdated": "Last updated: January 2026",
-     "intro": {
-       "title": "Introduction",
-       "content": "The association of Château de la Ferté-Imbault, organizer of the SUMI JO International Singing Competition (hereinafter \"the Competition\"), is committed to protecting the privacy and personal data of its users, candidates, partners, and visitors. This privacy policy describes how we collect, use, store, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and French data protection law."
-     },
-     "controller": {
-       "title": "Data Controller",
-       "content": "The data controller for personal data is:",
-       "name": "Association du Château de la Ferté-Imbault",
-       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
-       "email": "Email: contact@sumijo-isc.com"
-     },
-     "dataCollected": {
-       "title": "Data Collected",
-       "intro": "We collect different types of personal data depending on your interactions with our website and the Competition:",
-       "contact": {
-         "title": "Contact data:",
-         "item1": "First and last name",
-         "item2": "Email address",
-         "item3": "Message sent via the contact form"
-       },
-       "application": {
-         "title": "Application data:",
-         "item1": "Identity information (name, date of birth, nationality)",
-         "item2": "Contact details (address, phone, email)",
-         "item3": "Artistic and musical background (CV, biography, recordings)",
-         "item4": "Photos and performance videos"
-       },
-       "technical": {
-         "title": "Technical data:",
-         "item1": "IP address",
-         "item2": "Browser type and operating system",
-         "item3": "Navigation data (pages visited, time spent)"
-       }
-     },
-     "purpose": {
-       "title": "Purpose of Processing",
-       "item1": "Manage Competition applications and communicate with candidates",
-       "item2": "Respond to contact and information requests",
-       "item3": "Send information about the Competition (with your consent)",
-       "item4": "Manage relationships with our partners and sponsors",
-       "item5": "Improve our website and services"
-     },
-     "legalBasis": {
-       "title": "Legal Basis for Processing",
-       "intro": "The processing of your personal data is based on the following legal grounds:",
-       "item1": "Your consent (for sending communications)",
-       "item2": "Performance of a contract (for managing applications)",
-       "item3": "Our legitimate interest (for improving our services and ensuring security)"
-     },
-     "retention": {
-       "title": "Data Retention Period",
-       "content": "Your personal data is kept for the time necessary to fulfill the purposes for which it was collected. Candidate data is kept for 5 years after the end of the relevant Competition. Contact data is kept for 3 years after the last contact. Technical data is kept for a maximum of 13 months."
-     },
-     "sharing": {
-       "title": "Data Sharing",
-       "intro": "Your personal data may be shared with:",
-       "item1": "Jury members and the Competition organizing team",
-       "item2": "Our technical service providers (hosting, email sending)",
-       "item3": "Competent authorities in case of legal obligation"
-     },
-     "transfers": {
-       "title": "International Transfers",
-       "content": "As part of an international competition, some data may be transferred to countries outside the European Union. In such cases, we ensure that appropriate safeguards are in place (standard contractual clauses, adequacy decisions)."
-     },
-     "rights": {
-       "title": "Your Rights",
-       "intro": "In accordance with the GDPR, you have the following rights regarding your personal data:",
-       "access": {
-         "title": "Right of access:",
-         "desc": "obtain a copy of your personal data"
-       },
-       "rectification": {
-         "title": "Right to rectification:",
-         "desc": "correct inaccurate or incomplete data"
-       },
-       "erasure": {
-         "title": "Right to erasure:",
-         "desc": "request the deletion of your data"
-       },
-       "restriction": {
-         "title": "Right to restriction:",
-         "desc": "restrict the processing of your data"
-       },
-       "portability": {
-         "title": "Right to portability:",
-         "desc": "receive your data in a structured format"
-       },
-       "objection": {
-         "title": "Right to object:",
-         "desc": "object to the processing of your data"
-       },
-       "howTo": "To exercise these rights, contact us at contact@sumijo-isc.com. We will respond to your request within one month."
-     },
-     "cookies": {
-       "title": "Cookies",
-       "content": "Our website uses technical cookies necessary for its operation and analytical cookies to measure audience (with your consent). You can manage your cookie preferences at any time through your browser settings."
-     },
-     "security": {
-       "title": "Data Security",
-       "content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, modification, disclosure, or destruction. These measures include data encryption, strict access controls, and regular security audits."
-     },
-     "changes": {
-       "title": "Policy Changes",
-       "content": "We reserve the right to modify this privacy policy at any time. Any changes will be posted on this page with an updated date. We encourage you to review this page regularly."
-     },
-     "contactSection": {
-       "title": "Contact Us",
-       "content": "For any questions regarding this privacy policy or the processing of your personal data, you can contact us:"
-     },
-     "cnil": {
-       "title": "Complaint to the CNIL",
-       "content": "If you believe that the processing of your personal data constitutes a violation of the GDPR, you have the right to lodge a complaint with the French Data Protection Authority (CNIL): www.cnil.fr"
-     }
-   },
-   "legal": {
-     "title": "Legal Notice",
-     "lastUpdated": "Last updated: January 2026",
-     "editor": {
-       "title": "Website Publisher",
-       "name": "L'association du château de La Ferté-Imbault",
-       "type": "French non-profit association (Law 1901)",
-       "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
-       "email": "Email: contact@aacfi.fr",
-        "rna": "RNA Number: W413005535"
-     },
-     "director": {
-       "title": "Publication Director",
-       "content": "The publication director is Mr. Olivier Ojzerowicz-Medinger, in his capacity as President of L'association du château de La Ferté-Imbault."
-     },
-     "hosting": {
-       "title": "Hosting",
-       "name": "Lovable",
-       "address": "Cloud hosting service",
-       "website": "www.lovable.dev"
-     },
-     "intellectualProperty": {
-       "title": "Intellectual Property",
-       "content1": "All content on this website (texts, images, videos, logos, graphics, icons, sounds, software, etc.) is the exclusive property of L'association du château de La Ferté-Imbault or its partners and is protected by French and international intellectual property laws.",
-       "content2": "Any reproduction, representation, modification, publication, or adaptation of all or part of the website elements, regardless of the means or process used, is prohibited without prior written authorization from the association. Any unauthorized use of the website or its content will be considered as counterfeiting and prosecuted in accordance with the provisions of articles L.335-2 and following of the French Intellectual Property Code."
-     },
-     "liability": {
-       "title": "Limitation of Liability",
-       "content1": "L'association du château de La Ferté-Imbault strives to ensure the accuracy and updating of information published on this website. However, it cannot guarantee the accuracy, precision, or completeness of the information made available on this site.",
-       "content2": "Consequently, the association declines all responsibility for any inaccuracies, errors, or omissions in the information available on this website. Users acknowledge that they use this information at their own risk."
-     },
-     "links": {
-       "title": "Hyperlinks",
-       "content": "This website may contain hyperlinks to other websites. L'association du château de La Ferté-Imbault has no control over these sites and declines all responsibility for their content. The existence of a hyperlink to another site does not constitute validation of that site or its content."
-     },
-     "law": {
-       "title": "Applicable Law",
-       "content": "These legal notices are governed by French law. In case of dispute, and after failure of any attempt to find an amicable solution, French courts shall have sole jurisdiction to hear the dispute."
-     },
-     "contact": {
-       "title": "Contact",
-       "content": "For any questions regarding these legal notices or the website, you can contact us:"
-     }
-   }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2026",
+    "intro": {
+      "title": "Introduction",
+      "content": "The association of Château de la Ferté-Imbault, organizer of the SUMI JO International Singing Competition (hereinafter \"the Competition\"), is committed to protecting the privacy and personal data of its users, candidates, partners, and visitors. This privacy policy describes how we collect, use, store, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and French data protection law."
+    },
+    "controller": {
+      "title": "Data Controller",
+      "content": "The data controller for personal data is:",
+      "name": "Association du Château de la Ferté-Imbault",
+      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "email": "Email: contact@sumijo-isc.com"
+    },
+    "dataCollected": {
+      "title": "Data Collected",
+      "intro": "We collect different types of personal data depending on your interactions with our website and the Competition:",
+      "contact": {
+        "title": "Contact data:",
+        "item1": "First and last name",
+        "item2": "Email address",
+        "item3": "Message sent via the contact form"
+      },
+      "application": {
+        "title": "Application data:",
+        "item1": "Identity information (name, date of birth, nationality)",
+        "item2": "Contact details (address, phone, email)",
+        "item3": "Artistic and musical background (CV, biography, recordings)",
+        "item4": "Photos and performance videos"
+      },
+      "technical": {
+        "title": "Technical data:",
+        "item1": "IP address",
+        "item2": "Browser type and operating system",
+        "item3": "Navigation data (pages visited, time spent)"
+      }
+    },
+    "purpose": {
+      "title": "Purpose of Processing",
+      "item1": "Manage Competition applications and communicate with candidates",
+      "item2": "Respond to contact and information requests",
+      "item3": "Send information about the Competition (with your consent)",
+      "item4": "Manage relationships with our partners and sponsors",
+      "item5": "Improve our website and services"
+    },
+    "legalBasis": {
+      "title": "Legal Basis for Processing",
+      "intro": "The processing of your personal data is based on the following legal grounds:",
+      "item1": "Your consent (for sending communications)",
+      "item2": "Performance of a contract (for managing applications)",
+      "item3": "Our legitimate interest (for improving our services and ensuring security)"
+    },
+    "retention": {
+      "title": "Data Retention Period",
+      "content": "Your personal data is kept for the time necessary to fulfill the purposes for which it was collected. Candidate data is kept for 5 years after the end of the relevant Competition. Contact data is kept for 3 years after the last contact. Technical data is kept for a maximum of 13 months."
+    },
+    "sharing": {
+      "title": "Data Sharing",
+      "intro": "Your personal data may be shared with:",
+      "item1": "Jury members and the Competition organizing team",
+      "item2": "Our technical service providers (hosting, email sending)",
+      "item3": "Competent authorities in case of legal obligation"
+    },
+    "transfers": {
+      "title": "International Transfers",
+      "content": "As part of an international competition, some data may be transferred to countries outside the European Union. In such cases, we ensure that appropriate safeguards are in place (standard contractual clauses, adequacy decisions)."
+    },
+    "rights": {
+      "title": "Your Rights",
+      "intro": "In accordance with the GDPR, you have the following rights regarding your personal data:",
+      "access": {
+        "title": "Right of access:",
+        "desc": "obtain a copy of your personal data"
+      },
+      "rectification": {
+        "title": "Right to rectification:",
+        "desc": "correct inaccurate or incomplete data"
+      },
+      "erasure": {
+        "title": "Right to erasure:",
+        "desc": "request the deletion of your data"
+      },
+      "restriction": {
+        "title": "Right to restriction:",
+        "desc": "restrict the processing of your data"
+      },
+      "portability": {
+        "title": "Right to portability:",
+        "desc": "receive your data in a structured format"
+      },
+      "objection": {
+        "title": "Right to object:",
+        "desc": "object to the processing of your data"
+      },
+      "howTo": "To exercise these rights, contact us at contact@sumijo-isc.com. We will respond to your request within one month."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Our website uses technical cookies necessary for its operation and analytical cookies to measure audience (with your consent). You can manage your cookie preferences at any time through your browser settings."
+    },
+    "security": {
+      "title": "Data Security",
+      "content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, modification, disclosure, or destruction. These measures include data encryption, strict access controls, and regular security audits."
+    },
+    "changes": {
+      "title": "Policy Changes",
+      "content": "We reserve the right to modify this privacy policy at any time. Any changes will be posted on this page with an updated date. We encourage you to review this page regularly."
+    },
+    "contactSection": {
+      "title": "Contact Us",
+      "content": "For any questions regarding this privacy policy or the processing of your personal data, you can contact us:"
+    },
+    "cnil": {
+      "title": "Complaint to the CNIL",
+      "content": "If you believe that the processing of your personal data constitutes a violation of the GDPR, you have the right to lodge a complaint with the French Data Protection Authority (CNIL): www.cnil.fr"
+    }
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "lastUpdated": "Last updated: January 2026",
+    "editor": {
+      "title": "Website Publisher",
+      "name": "L'association du château de La Ferté-Imbault",
+      "type": "French non-profit association (Law 1901)",
+      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "email": "Email: contact@aacfi.fr",
+      "rna": "RNA Number: W413005535"
+    },
+    "director": {
+      "title": "Publication Director",
+      "content": "The publication director is Mr. Olivier Ojzerowicz-Medinger, in his capacity as President of L'association du château de La Ferté-Imbault."
+    },
+    "hosting": {
+      "title": "Hosting",
+      "name": "Lovable",
+      "address": "Cloud hosting service",
+      "website": "www.lovable.dev"
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "content1": "All content on this website (texts, images, videos, logos, graphics, icons, sounds, software, etc.) is the exclusive property of L'association du château de La Ferté-Imbault or its partners and is protected by French and international intellectual property laws.",
+      "content2": "Any reproduction, representation, modification, publication, or adaptation of all or part of the website elements, regardless of the means or process used, is prohibited without prior written authorization from the association. Any unauthorized use of the website or its content will be considered as counterfeiting and prosecuted in accordance with the provisions of articles L.335-2 and following of the French Intellectual Property Code."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "content1": "L'association du château de La Ferté-Imbault strives to ensure the accuracy and updating of information published on this website. However, it cannot guarantee the accuracy, precision, or completeness of the information made available on this site.",
+      "content2": "Consequently, the association declines all responsibility for any inaccuracies, errors, or omissions in the information available on this website. Users acknowledge that they use this information at their own risk."
+    },
+    "links": {
+      "title": "Hyperlinks",
+      "content": "This website may contain hyperlinks to other websites. L'association du château de La Ferté-Imbault has no control over these sites and declines all responsibility for their content. The existence of a hyperlink to another site does not constitute validation of that site or its content."
+    },
+    "law": {
+      "title": "Applicable Law",
+      "content": "These legal notices are governed by French law. In case of dispute, and after failure of any attempt to find an amicable solution, French courts shall have sole jurisdiction to hear the dispute."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "For any questions regarding these legal notices or the website, you can contact us:"
+    }
+  },
+  "semifinalists": {
+    "eyebrow": "Official announcement",
+    "title": "The semi-finalists",
+    "subtitle": "24 artists selected from 500 candidates worldwide.",
+    "description": "Discover the 24 exceptional voices who will perform at the Château de La Ferté-Imbault in July 2026.",
+    "stats": {
+      "selectedLabel": "selected artists",
+      "candidatesLabel": "candidates"
+    }
+  }
 }
