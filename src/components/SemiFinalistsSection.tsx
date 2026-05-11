@@ -115,7 +115,7 @@ const SemiFinalistsSection = () => {
           </h3>
           <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
             <iframe
-              src="/carte-candidats"
+              src="/candidats.html"
               title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
               loading="lazy"
               className="w-full h-[600px] md:h-[800px] border-0"
