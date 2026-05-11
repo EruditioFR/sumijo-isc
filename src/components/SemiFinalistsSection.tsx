@@ -107,18 +107,6 @@ const SemiFinalistsSection = () => {
             </div>
           </motion.div>
 
-          {/* Description paragraph — right under video on mobile, under stats on desktop */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-2 text-sm md:text-base text-muted-foreground leading-relaxed px-1 order-2 lg:order-3"
-          >
-            {t(
-              "semifinalists.description",
-              "Découvrez en vidéo les 24 voix exceptionnelles qui se produiront au Château de La Ferté-Imbault en juillet 2026."
-            )}
-          </motion.p>
         </div>
       </div>
     </section>
