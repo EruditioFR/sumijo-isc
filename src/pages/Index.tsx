@@ -7,6 +7,7 @@ import IntroductionSection from '@/components/IntroductionSection';
 import HarmonySection from '@/components/HarmonySection';
 import StatsSection from '@/components/StatsSection';
 import VideoGallerySection from '@/components/VideoGallerySection';
+import SemiFinalistsSection from '@/components/SemiFinalistsSection';
 import WinnersSection from '@/components/WinnersSection';
 import PressSection from '@/components/PressSection';
 import GallerySection from '@/components/GallerySection';
@@ -49,6 +50,7 @@ const Index = () => {
         <ProgramSection />
         <AnnouncementVideoSection />
         <StatsSection />
+        <SemiFinalistsSection />
         <VideoGallerySection />
         <WinnersSection />
         <GallerySection />
