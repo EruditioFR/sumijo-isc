@@ -37,13 +37,13 @@ const SemiFinalistsSection = () => {
         </motion.div>
 
         {/* Stats + Video */}
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
           {/* Stats column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-2 space-y-6 order-2 lg:order-1"
+            className="lg:col-span-2 order-3 lg:order-1"
           >
             <div className="bg-white/70 backdrop-blur-sm border border-gold/30 rounded-2xl p-6 md:p-8 shadow-elegant">
               <div className="flex items-baseline gap-3">
@@ -64,12 +64,6 @@ const SemiFinalistsSection = () => {
                 </span>
               </div>
             </div>
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed px-1">
-              {t(
-                "semifinalists.description",
-                "Découvrez en vidéo les 24 voix exceptionnelles qui se produiront au Château de La Ferté-Imbault en juillet 2026."
-              )}
-            </p>
           </motion.div>
 
           {/* Video column */}
@@ -93,6 +87,19 @@ const SemiFinalistsSection = () => {
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
             </div>
           </motion.div>
+
+          {/* Description paragraph — right under video on mobile, under stats on desktop */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="lg:col-span-2 text-sm md:text-base text-muted-foreground leading-relaxed px-1 order-2 lg:order-3"
+          >
+            {t(
+              "semifinalists.description",
+              "Découvrez en vidéo les 24 voix exceptionnelles qui se produiront au Château de La Ferté-Imbault en juillet 2026."
+            )}
+          </motion.p>
         </div>
       </div>
     </section>
