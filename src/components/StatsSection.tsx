@@ -170,7 +170,7 @@ const StatsSection = () => {
           }} className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground mb-2 md:mb-4">
               {t('stats.title')} <span className="text-rose-dark">{t('stats.titleHighlight')}</span>
             </motion.h2>
-            <span className="inline-block text-rose-dark font-medium text-sm md:text-base tracking-widest">{t('stats.subtitle')}</span>
+            
           </div>
 
           {/* Stats Grid */}
