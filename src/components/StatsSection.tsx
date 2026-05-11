@@ -178,23 +178,6 @@ const StatsSection = () => {
             {stats.map((stat, index) => <CircleStat key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} progress={stat.progress} Icon={stat.Icon} index={index} inView={inView} />)}
           </div>
 
-          {/* World map */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-10 md:mt-16 max-w-5xl mx-auto"
-          >
-            <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
-              <iframe
-                src="/candidats.html"
-                title={t("stats.mapTitle", "Répartition géographique des candidats")}
-                loading="lazy"
-                className="w-full h-[500px] md:h-[650px] border-0"
-              />
-            </div>
-          </motion.div>
-        </motion.div>
       </div>
     </section>;
 };
