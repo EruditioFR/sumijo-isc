@@ -49,41 +49,29 @@ const SemiFinalistsSection = () => {
           </p>
         </motion.div>
 
-        {/* Stats + Video */}
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
-          {/* Stats column */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-2 order-3 lg:order-1"
-          >
-          </motion.div>
-
-          {/* Video column */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-3 order-1 lg:order-2"
-          >
-            <div className="relative mx-auto max-w-[360px] lg:max-w-[420px] aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.35)] ring-2 ring-gold/40">
-              <video
-                ref={videoRef}
-                src="/videos/annonce-24-demi-finalistes-2026.mp4"
-                poster="/videos/annonce-24-demi-finalistes-2026-poster.jpg"
-                controls
-                playsInline
-                muted
-                preload="metadata"
-                className="w-full h-full object-cover bg-black"
-              />
-              {/* Decorative gold corner accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold/60 rounded-tl-2xl pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
-            </div>
-          </motion.div>
-        </div>
+        {/* Video */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="flex justify-center"
+        >
+          <div className="relative mx-auto max-w-[360px] lg:max-w-[420px] aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.35)] ring-2 ring-gold/40">
+            <video
+              ref={videoRef}
+              src="/videos/annonce-24-demi-finalistes-2026.mp4"
+              poster="/videos/annonce-24-demi-finalistes-2026-poster.jpg"
+              controls
+              playsInline
+              muted
+              preload="metadata"
+              className="w-full h-full object-cover bg-black"
+            />
+            {/* Decorative gold corner accents */}
+            <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold/60 rounded-tl-2xl pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
+          </div>
+        </motion.div>
 
       </div>
     </section>
