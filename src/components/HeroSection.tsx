@@ -69,29 +69,13 @@ const HeroSection = () => {
         className="relative z-10 container mx-auto px-4"
       >
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Left: Dates, location, CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="space-y-8 text-center lg:text-left"
+          className="space-y-8 text-center lg:text-left order-2 lg:order-1"
         >
-          {/* Main Title with enhanced styling - positioned lower on mobile */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-2 mt-24 md:mt-0"
-          >
-            <h1 className="font-display text-[3.3rem] md:text-[5rem] lg:text-[6.6rem] text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
-              SUMI JO
-            </h1>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-widest leading-relaxed mt-4">
-              INTERNATIONAL SINGING
-              <br /> COMPETITION
-            </h2>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
-          </motion.div>
-
           {/* Subtitle with elegant spacing */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,24 +135,43 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Announcement Video - 24 semi-finalists */}
+        {/* Right: Title + Announcement Video */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="relative w-full max-w-xl mx-auto lg:mx-0"
+          transition={{ duration: 1, delay: 0.4 }}
+          className="relative w-full max-w-xl mx-auto lg:mx-0 order-1 lg:order-2 space-y-6"
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-gold/40 via-rose/30 to-gold/40 rounded-2xl blur-md" />
-          <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/50 shadow-[0_20px_60px_rgba(0,0,0,0.5)] bg-black">
-            <video
-              src="/videos/announcement-24-semifinalists.mp4"
-              controls
-              playsInline
-              preload="metadata"
-              className="w-full h-auto block"
-            />
+          {/* Main Title - now above the video on the right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="text-center lg:text-left space-y-2"
+          >
+            <h1 className="font-display text-[3.3rem] md:text-[5rem] lg:text-[6.6rem] text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold">
+              SUMI JO
+            </h1>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white md:text-cream/60 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-widest leading-relaxed mt-4">
+              INTERNATIONAL SINGING
+              <br /> COMPETITION
+            </h2>
+            <div className="h-1 w-32 mx-auto lg:mx-0 bg-gradient-to-r from-transparent via-gold to-transparent lg:from-gold lg:to-transparent" />
+          </motion.div>
+
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-gold/40 via-rose/30 to-gold/40 rounded-2xl blur-md" />
+            <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/50 shadow-[0_20px_60px_rgba(0,0,0,0.5)] bg-black">
+              <video
+                src="/videos/announcement-24-semifinalists.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-auto block"
+              />
+            </div>
           </div>
-          <p className="mt-3 text-center text-cream/90 text-sm md:text-base font-semibold tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+          <p className="text-center text-cream/90 text-sm md:text-base font-semibold tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
             {t("hero.announcementCaption", "Annonce des 24 demi-finalistes")}
           </p>
         </motion.div>
