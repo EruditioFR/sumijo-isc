@@ -67,7 +67,8 @@ const ProgramSection = () => {
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-gold to-gold-light mx-auto" />
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Du lundi 6 au samedi 11 juillet — Château de la Ferté-Imbault
+            Du lundi 6 au samedi 11 juillet<br />
+            Château de la Ferté-Imbault
           </p>
         </motion.div>
 
