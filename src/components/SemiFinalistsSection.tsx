@@ -63,6 +63,15 @@ const SemiFinalistsSection = () => {
                   {t("semifinalists.stats.candidatesLabel", "candidats")}
                 </span>
               </div>
+              <div className="h-px w-full bg-gradient-to-r from-gold/40 via-gold/10 to-transparent my-5" />
+              <div className="flex items-baseline gap-3">
+                <span className="font-display text-6xl md:text-7xl font-bold text-foreground leading-none">
+                  55
+                </span>
+                <span className="text-base md:text-lg text-muted-foreground">
+                  {t("semifinalists.stats.countriesLabel", "pays")}
+                </span>
+              </div>
             </div>
           </motion.div>
 

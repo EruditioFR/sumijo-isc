@@ -664,7 +664,8 @@
     "description": "通过视频认识将于2026年7月在La Ferté-Imbault城堡演出的24位杰出歌唱家。",
     "stats": {
       "selectedLabel": "入选艺术家",
-      "candidatesLabel": "候选人"
+      "candidatesLabel": "候选人",
+      "countriesLabel": "国家"
     }
   }
 }

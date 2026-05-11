@@ -664,7 +664,8 @@
     "description": "2026년 7월 La Ferté-Imbault 성에서 공연할 24명의 뛰어난 성악가들을 영상으로 만나보세요.",
     "stats": {
       "selectedLabel": "선발된 아티스트",
-      "candidatesLabel": "지원자"
+      "candidatesLabel": "지원자",
+      "countriesLabel": "국가"
     }
   }
 }

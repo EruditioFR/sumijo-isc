@@ -664,7 +664,8 @@
     "description": "Discover the 24 exceptional voices who will perform at the Château de La Ferté-Imbault in July 2026.",
     "stats": {
       "selectedLabel": "selected artists",
-      "candidatesLabel": "candidates"
+      "candidatesLabel": "candidates",
+      "countriesLabel": "countries"
     }
   }
 }
