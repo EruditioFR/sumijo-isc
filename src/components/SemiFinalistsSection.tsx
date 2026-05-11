@@ -21,7 +21,10 @@ const SemiFinalistsSection = () => {
   }, [inView]);
 
   return (
-    <section id="demi-finalistes" className="relative py-16 md:py-24 bg-gradient-to-b from-cream via-background to-cream overflow-hidden">
+    <section
+      id="demi-finalistes"
+      className="relative py-16 md:py-24 bg-gradient-to-b from-cream via-background to-cream overflow-hidden"
+    >
       {/* Decorative gold accents */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose/10 rounded-full blur-3xl pointer-events-none" />
@@ -38,15 +41,11 @@ const SemiFinalistsSection = () => {
             {t("semifinalists.eyebrow", "Annonce officielle")}
           </span>
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-            {t("semifinalists.title", "Les demi-finalistes")}{" "}
-            <span className="text-rose-dark">2026</span>
+            {t("semifinalists.title", "Les demi-finalistes")} <span className="text-rose-dark">2026</span>
           </h2>
           <div className="h-0.5 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent mt-6" />
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
-            {t(
-              "semifinalists.subtitle",
-              "24 artistes retenus parmi 500 candidats du monde entier."
-            )}
+            {t("semifinalists.subtitle", "24 artistes retenus parmi 500 candidats du monde entier.")}
           </p>
         </motion.div>
 
@@ -61,18 +60,14 @@ const SemiFinalistsSection = () => {
           >
             <div className="bg-white/70 backdrop-blur-sm border border-gold/30 rounded-2xl p-6 md:p-8 shadow-elegant">
               <div className="flex items-baseline gap-3">
-                <span className="font-display text-6xl md:text-7xl font-bold text-rose-dark leading-none">
-                  24
-                </span>
+                <span className="font-display text-6xl md:text-7xl font-bold text-rose-dark leading-none">24</span>
                 <span className="text-base md:text-lg text-muted-foreground">
                   {t("semifinalists.stats.selectedLabel", "artistes retenus")}
                 </span>
               </div>
               <div className="h-px w-full bg-gradient-to-r from-gold/40 via-gold/10 to-transparent my-5" />
               <div className="flex items-baseline gap-3">
-                <span className="font-display text-6xl md:text-7xl font-bold text-gold leading-none">
-                  500
-                </span>
+                <span className="font-display text-6xl md:text-7xl font-bold text-gold leading-none">500</span>
                 <span className="text-base md:text-lg text-muted-foreground">
                   {t("semifinalists.stats.candidatesLabel", "candidats")}{" "}
                   <span className="text-gold font-medium">
@@ -106,7 +101,6 @@ const SemiFinalistsSection = () => {
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
             </div>
           </motion.div>
-
         </div>
 
         {/* World map of selected candidates */}
@@ -121,7 +115,7 @@ const SemiFinalistsSection = () => {
           </h3>
           <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
             <iframe
-              src="https://applicationform.sumijo-isc.com/carte-candidats"
+              src="/carte-candidats"
               title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
               loading="lazy"
               className="w-full h-[600px] md:h-[800px] border-0"
