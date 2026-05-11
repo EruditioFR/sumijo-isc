@@ -75,6 +75,16 @@ const SemiFinalistsSection = () => {
                   </span>
                 </span>
               </div>
+
+              {/* World map in stats column */}
+              <div className="mt-5 relative rounded-xl overflow-hidden ring-1 ring-gold/30 bg-white">
+                <iframe
+                  src="/candidats.html"
+                  title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
+                  loading="lazy"
+                  className="w-full h-[220px] md:h-[260px] border-0"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -103,22 +113,6 @@ const SemiFinalistsSection = () => {
           </motion.div>
         </div>
 
-        {/* World map of selected candidates */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-12 md:mt-16 max-w-6xl mx-auto"
-        >
-          <div className="relative rounded-2xl overflow-hidden ring-2 ring-gold/40 shadow-elegant bg-white">
-            <iframe
-              src="/candidats.html"
-              title={t("semifinalists.mapTitle", "Répartition géographique des 24 candidats")}
-              loading="lazy"
-              className="w-full h-[600px] md:h-[800px] border-0"
-            />
-          </div>
-        </motion.div>
       </div>
     </section>
   );
