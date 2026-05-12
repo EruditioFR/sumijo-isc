@@ -13,7 +13,21 @@ import {
 } from '@/components/ui/sheet';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
-import { countryNameToFlag } from '@/lib/countryFlags';
+import { countryNameToFlagUrl } from '@/lib/countryFlags';
+
+const CountryFlag = ({ name, className = '' }: { name: string; className?: string }) => {
+  const url = countryNameToFlagUrl(name);
+  if (!url) return null;
+  return (
+    <img
+      src={url}
+      alt=""
+      aria-hidden="true"
+      className={`inline-block w-5 h-[15px] object-cover rounded-[2px] shadow-sm ${className}`}
+      loading="lazy"
+    />
+  );
+};
 
 interface Candidate {
   id: string;
@@ -262,11 +276,7 @@ const CandidatesAdmin = () => {
                         <TableCell>
                           {c.pays ? (
                             <span className="inline-flex items-center gap-2">
-                              {countryNameToFlag(c.pays) && (
-                                <span className="text-lg leading-none" aria-hidden="true">
-                                  {countryNameToFlag(c.pays)}
-                                </span>
-                              )}
+                              <CountryFlag name={c.pays} />
                               <span>{c.pays}</span>
                             </span>
                           ) : '—'}
@@ -360,9 +370,7 @@ const CandidatesAdmin = () => {
                       {sheetCandidate.prenom} {sheetCandidate.nom}
                     </SheetTitle>
                     <SheetDescription className="flex items-center gap-2 mt-1">
-                      {countryNameToFlag(sheetCandidate.pays) && (
-                        <span aria-hidden="true">{countryNameToFlag(sheetCandidate.pays)}</span>
-                      )}
+                      <CountryFlag name={sheetCandidate.pays} />
                       <span>{sheetCandidate.pays || '—'}</span>
                       <span>·</span>
                       <span className="capitalize">{sheetCandidate.typeVoix || '—'}</span>
