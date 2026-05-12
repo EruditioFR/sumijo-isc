@@ -494,7 +494,11 @@
     "imageTags": "Tags",
     "imagePhotographer": "Photographer",
     "imageOrder": "Display order",
-    "noImages": "No images in this category"
+    "noImages": "No images in this category",
+    "candidates": "Candidates",
+    "candidatesSubtitle": "Manage competition candidates",
+    "candidatesEmptyTitle": "No candidates yet",
+    "candidatesEmptyDescription": "The candidate list will appear here once applications open."
   },
   "privacy": {
     "title": "Privacy Policy",
