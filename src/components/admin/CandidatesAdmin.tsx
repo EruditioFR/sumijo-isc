@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Users, FileText, IdCard, Video, Loader2, RefreshCw, ExternalLink } from 'lucide-react';
+import {
+  Users, FileText, IdCard, Video, Loader2, RefreshCw,
+  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
+import {
+  Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription,
+} from '@/components/ui/sheet';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlag } from '@/lib/countryFlags';
@@ -28,6 +28,11 @@ interface Candidate {
   cvUrl: string | null;
   idUrl: string | null;
   status: string | null;
+  email: string | null;
+  telephone: string | null;
+  bio: string | null;
+  motivation: string | null;
+  infosUtiles: string | null;
 }
 
 const computeAge = (iso: string): number | null => {
@@ -51,11 +56,70 @@ const formatDate = (iso: string | null) => {
   }
 };
 
+const Field = ({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div>
+    <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground mb-1.5">
+      <Icon className="w-3.5 h-3.5" />
+      <span>{label}</span>
+    </div>
+    <div className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+      {children}
+    </div>
+  </div>
+);
+
+const CandidateDetails = ({ c }: { c: Candidate }) => {
+  const has = (v: string | null) => v && v.trim().length > 0;
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-4">
+          <Field icon={Mail} label="E-mail">
+            {has(c.email) ? (
+              <a href={`mailto:${c.email}`} className="text-primary hover:underline break-all">
+                {c.email}
+              </a>
+            ) : <span className="text-muted-foreground">—</span>}
+          </Field>
+          <Field icon={Phone} label="Téléphone">
+            {has(c.telephone) ? (
+              <a href={`tel:${c.telephone}`} className="text-primary hover:underline">
+                {c.telephone}
+              </a>
+            ) : <span className="text-muted-foreground">—</span>}
+          </Field>
+        </div>
+        <Field icon={Sparkles} label="Bio artistique">
+          {has(c.bio) ? c.bio : <span className="text-muted-foreground">—</span>}
+        </Field>
+      </div>
+      <div className="space-y-5">
+        <Field icon={Quote} label="Pourquoi je participe">
+          {has(c.motivation) ? c.motivation : <span className="text-muted-foreground">—</span>}
+        </Field>
+        <Field icon={Info} label="Infos utiles">
+          {has(c.infosUtiles) ? c.infosUtiles : <span className="text-muted-foreground">—</span>}
+        </Field>
+      </div>
+    </div>
+  );
+};
+
 const CandidatesAdmin = () => {
   const { t } = useTranslation();
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
 
   const fetchCandidates = async () => {
     setIsLoading(true);
@@ -77,6 +141,23 @@ const CandidatesAdmin = () => {
     fetchCandidates();
   }, []);
 
+  const toggle = (id: string) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const allExpanded = useMemo(
+    () => candidates.length > 0 && expanded.size === candidates.length,
+    [expanded, candidates],
+  );
+
+  const toggleAll = () => {
+    setExpanded(allExpanded ? new Set() : new Set(candidates.map((c) => c.id)));
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8 flex items-start justify-between gap-4 flex-wrap">
@@ -91,10 +172,17 @@ const CandidatesAdmin = () => {
               : t('admin.candidatesSubtitle')}
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
-          <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-          Actualiser
-        </Button>
+        <div className="flex items-center gap-2">
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={toggleAll}>
+              {allExpanded ? 'Tout replier' : 'Tout déplier'}
+            </Button>
+          )}
+          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+            <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            Actualiser
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (
@@ -123,6 +211,7 @@ const CandidatesAdmin = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead className="w-10"></TableHead>
                   <TableHead className="w-16">Photo</TableHead>
                   <TableHead>Nom</TableHead>
                   <TableHead>Prénom</TableHead>
@@ -131,94 +220,115 @@ const CandidatesAdmin = () => {
                   <TableHead>Date de naissance</TableHead>
                   <TableHead className="text-center">Documents</TableHead>
                   <TableHead>Vidéo de présentation</TableHead>
+                  <TableHead className="w-16 text-center">Fiche</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {candidates.map((c) => (
-                  <TableRow key={c.id}>
-                    <TableCell>
-                      {c.photoUrl ? (
-                        <a
-                          href={c.photoFullUrl ?? c.photoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            src={c.photoUrl}
-                            alt={`${c.prenom} ${c.nom}`}
-                            className="w-12 h-12 rounded-full object-cover border"
+                {candidates.map((c) => {
+                  const isOpen = expanded.has(c.id);
+                  return (
+                    <>
+                      <TableRow
+                        key={c.id}
+                        className="cursor-pointer"
+                        onClick={() => toggle(c.id)}
+                      >
+                        <TableCell>
+                          <ChevronRight
+                            className={`w-4 h-4 text-muted-foreground transition-transform ${isOpen ? 'rotate-90' : ''}`}
                           />
-                        </a>
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
-                          {c.prenom?.[0]}{c.nom?.[0]}
-                        </div>
-                      )}
-                    </TableCell>
-                    <TableCell className="font-medium">{c.nom}</TableCell>
-                    <TableCell>{c.prenom}</TableCell>
-                    <TableCell>
-                      {c.pays ? (
-                        <span className="inline-flex items-center gap-2">
-                          {countryNameToFlag(c.pays) && (
-                            <span className="text-lg leading-none" aria-hidden="true">
-                              {countryNameToFlag(c.pays)}
-                            </span>
+                        </TableCell>
+                        <TableCell onClick={(e) => e.stopPropagation()}>
+                          {c.photoUrl ? (
+                            <a
+                              href={c.photoFullUrl ?? c.photoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src={c.photoUrl}
+                                alt={`${c.prenom} ${c.nom}`}
+                                className="w-12 h-12 rounded-full object-cover border"
+                              />
+                            </a>
+                          ) : (
+                            <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+                              {c.prenom?.[0]}{c.nom?.[0]}
+                            </div>
                           )}
-                          <span>{c.pays}</span>
-                        </span>
-                      ) : (
-                        '—'
-                      )}
-                    </TableCell>
-                    <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
-                    <TableCell>{formatDate(c.dateNaissance)}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-center gap-2">
-                        {c.cvUrl && (
-                          <a
-                            href={c.cvUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="CV"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
+                        </TableCell>
+                        <TableCell className="font-medium">{c.nom}</TableCell>
+                        <TableCell>{c.prenom}</TableCell>
+                        <TableCell>
+                          {c.pays ? (
+                            <span className="inline-flex items-center gap-2">
+                              {countryNameToFlag(c.pays) && (
+                                <span className="text-lg leading-none" aria-hidden="true">
+                                  {countryNameToFlag(c.pays)}
+                                </span>
+                              )}
+                              <span>{c.pays}</span>
+                            </span>
+                          ) : '—'}
+                        </TableCell>
+                        <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
+                        <TableCell>{formatDate(c.dateNaissance)}</TableCell>
+                        <TableCell onClick={(e) => e.stopPropagation()}>
+                          <div className="flex items-center justify-center gap-2">
+                            {c.cvUrl && (
+                              <a href={c.cvUrl} target="_blank" rel="noopener noreferrer" title="CV"
+                                className="text-muted-foreground hover:text-foreground transition-colors">
+                                <FileText className="w-4 h-4" />
+                              </a>
+                            )}
+                            {c.idUrl && (
+                              <a href={c.idUrl} target="_blank" rel="noopener noreferrer" title="Carte d'identité"
+                                className="text-muted-foreground hover:text-foreground transition-colors">
+                                <IdCard className="w-4 h-4" />
+                              </a>
+                            )}
+                            {!c.cvUrl && !c.idUrl && (
+                              <span className="text-muted-foreground text-xs">—</span>
+                            )}
+                          </div>
+                        </TableCell>
+                        <TableCell onClick={(e) => e.stopPropagation()}>
+                          {c.videoUrl ? (
+                            <a
+                              href={c.videoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
+                            >
+                              <Video className="w-4 h-4" />
+                              <span className="underline underline-offset-2">Voir la vidéo</span>
+                            </a>
+                          ) : (
+                            <span className="text-muted-foreground text-xs">—</span>
+                          )}
+                        </TableCell>
+                        <TableCell className="text-center" onClick={(e) => e.stopPropagation()}>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8"
+                            title="Ouvrir la fiche complète"
+                            onClick={() => setSheetCandidate(c)}
                           >
-                            <FileText className="w-4 h-4" />
-                          </a>
-                        )}
-                        {c.idUrl && (
-                          <a
-                            href={c.idUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Carte d'identité"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
-                          >
-                            <IdCard className="w-4 h-4" />
-                          </a>
-                        )}
-                        {!c.cvUrl && !c.idUrl && (
-                          <span className="text-muted-foreground text-xs">—</span>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      {c.videoUrl ? (
-                        <a
-                          href={c.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
-                        >
-                          <Video className="w-4 h-4" />
-                          <span className="underline underline-offset-2">Voir la vidéo</span>
-                        </a>
-                      ) : (
-                        <span className="text-muted-foreground text-xs">—</span>
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                      {isOpen && (
+                        <TableRow key={`${c.id}-details`} className="hover:bg-transparent bg-muted/20">
+                          <TableCell colSpan={10} className="p-6">
+                            <CandidateDetails c={c} />
+                          </TableCell>
+                        </TableRow>
                       )}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                    </>
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
@@ -227,6 +337,78 @@ const CandidatesAdmin = () => {
           </div>
         </div>
       )}
+
+      <Sheet open={!!sheetCandidate} onOpenChange={(o) => !o && setSheetCandidate(null)}>
+        <SheetContent side="right" className="w-full sm:max-w-2xl overflow-y-auto print:max-w-none print:w-full">
+          {sheetCandidate && (
+            <>
+              <SheetHeader className="mb-6">
+                <div className="flex items-center gap-4">
+                  {sheetCandidate.photoUrl ? (
+                    <img
+                      src={sheetCandidate.photoUrl}
+                      alt={`${sheetCandidate.prenom} ${sheetCandidate.nom}`}
+                      className="w-20 h-20 rounded-full object-cover border"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center text-muted-foreground">
+                      {sheetCandidate.prenom?.[0]}{sheetCandidate.nom?.[0]}
+                    </div>
+                  )}
+                  <div className="text-left">
+                    <SheetTitle className="text-2xl">
+                      {sheetCandidate.prenom} {sheetCandidate.nom}
+                    </SheetTitle>
+                    <SheetDescription className="flex items-center gap-2 mt-1">
+                      {countryNameToFlag(sheetCandidate.pays) && (
+                        <span aria-hidden="true">{countryNameToFlag(sheetCandidate.pays)}</span>
+                      )}
+                      <span>{sheetCandidate.pays || '—'}</span>
+                      <span>·</span>
+                      <span className="capitalize">{sheetCandidate.typeVoix || '—'}</span>
+                      <span>·</span>
+                      <span>{formatDate(sheetCandidate.dateNaissance)}</span>
+                    </SheetDescription>
+                  </div>
+                </div>
+                <div className="flex gap-2 pt-2 print:hidden">
+                  <Button variant="outline" size="sm" onClick={() => window.print()}>
+                    <Printer className="w-4 h-4 mr-2" />
+                    Imprimer / PDF
+                  </Button>
+                  {sheetCandidate.videoUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={sheetCandidate.videoUrl} target="_blank" rel="noopener noreferrer">
+                        <Video className="w-4 h-4 mr-2" />
+                        Vidéo
+                      </a>
+                    </Button>
+                  )}
+                  {sheetCandidate.cvUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={sheetCandidate.cvUrl} target="_blank" rel="noopener noreferrer">
+                        <FileText className="w-4 h-4 mr-2" />
+                        CV
+                      </a>
+                    </Button>
+                  )}
+                  {sheetCandidate.idUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={sheetCandidate.idUrl} target="_blank" rel="noopener noreferrer">
+                        <IdCard className="w-4 h-4 mr-2" />
+                        Pièce d'identité
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </SheetHeader>
+              <div className="space-y-6">
+                <CandidateDetails c={sheetCandidate} />
+              </div>
+            </>
+          )}
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };
