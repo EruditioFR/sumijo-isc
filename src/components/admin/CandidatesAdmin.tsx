@@ -227,7 +227,7 @@ const CandidatesAdmin = () => {
                 {candidates.map((c) => {
                   const isOpen = expanded.has(c.id);
                   return (
-                    <>
+                    <Fragment key={c.id}>
                       <TableRow
                         key={c.id}
                         className="cursor-pointer"
