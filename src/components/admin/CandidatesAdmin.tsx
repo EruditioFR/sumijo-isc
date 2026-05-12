@@ -219,7 +219,7 @@ const CandidatesAdmin = () => {
               {allExpanded ? 'Tout replier' : 'Tout déplier'}
             </Button>
           )}
-          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+          <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
           </Button>
