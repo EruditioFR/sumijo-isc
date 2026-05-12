@@ -110,6 +110,11 @@ Deno.serve(async (req) => {
         cvUrl: cv?.url ?? null,
         idUrl: id?.url ?? null,
         status: f["Status"] ?? null,
+        email: f["E-mail"] ?? f["Email"] ?? f["Mail"] ?? null,
+        telephone: f["Tél"] ?? f["Téléphone"] ?? f["Telephone"] ?? f["Tel"] ?? null,
+        bio: f["Bio"] ?? f["Biographie"] ?? f["Bio artistique"] ?? null,
+        motivation: f["Pourquoi je participe"] ?? f["Pourquoi je souhaite participer"] ?? f["Motivation"] ?? null,
+        infosUtiles: f["Infos utiles"] ?? f["Informations complémentaires"] ?? f["Informations utiles"] ?? null,
       };
     });
 
