@@ -326,7 +326,7 @@ const CandidatesAdmin = () => {
                           </TableCell>
                         </TableRow>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
               </TableBody>
