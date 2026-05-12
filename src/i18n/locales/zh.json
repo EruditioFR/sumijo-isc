@@ -494,7 +494,11 @@
     "imageTags": "标签",
     "imagePhotographer": "摄影师",
     "imageOrder": "显示顺序",
-    "noImages": "此分类没有图片"
+    "noImages": "此分类没有图片",
+    "candidates": "候选人",
+    "candidatesSubtitle": "管理比赛候选人",
+    "candidatesEmptyTitle": "暂无候选人",
+    "candidatesEmptyDescription": "报名开放后，候选人名单将显示在此处。"
   },
   "privacy": {
     "title": "隐私政策",

@@ -494,7 +494,11 @@
     "imageTags": "태그",
     "imagePhotographer": "사진작가",
     "imageOrder": "표시 순서",
-    "noImages": "이 카테고리에 이미지가 없습니다"
+    "noImages": "이 카테고리에 이미지가 없습니다",
+    "candidates": "참가자",
+    "candidatesSubtitle": "콩쿠르 참가자 관리",
+    "candidatesEmptyTitle": "아직 참가자가 없습니다",
+    "candidatesEmptyDescription": "참가 신청이 시작되면 여기에 참가자 목록이 표시됩니다."
   },
   "privacy": {
     "title": "개인정보 처리방침",
