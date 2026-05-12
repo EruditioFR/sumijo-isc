@@ -13,7 +13,21 @@ import {
 } from '@/components/ui/sheet';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
-import { countryNameToFlag } from '@/lib/countryFlags';
+import { countryNameToFlagUrl } from '@/lib/countryFlags';
+
+const CountryFlag = ({ name, className = '' }: { name: string; className?: string }) => {
+  const url = countryNameToFlagUrl(name);
+  if (!url) return null;
+  return (
+    <img
+      src={url}
+      alt=""
+      aria-hidden="true"
+      className={`inline-block w-5 h-[15px] object-cover rounded-[2px] shadow-sm ${className}`}
+      loading="lazy"
+    />
+  );
+};
 
 interface Candidate {
   id: string;
