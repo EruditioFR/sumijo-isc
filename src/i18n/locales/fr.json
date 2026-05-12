@@ -516,7 +516,11 @@
     "imageTags": "Tags",
     "imagePhotographer": "Photographe",
     "imageOrder": "Ordre d'affichage",
-    "noImages": "Aucune image dans cette catégorie"
+    "noImages": "Aucune image dans cette catégorie",
+    "candidates": "Candidats",
+    "candidatesSubtitle": "Gestion des candidats au concours",
+    "candidatesEmptyTitle": "Aucun candidat pour le moment",
+    "candidatesEmptyDescription": "La liste des candidats apparaîtra ici dès l'ouverture des candidatures."
   },
   "privacy": {
     "title": "Politique de confidentialité",
