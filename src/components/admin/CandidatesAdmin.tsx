@@ -211,16 +211,8 @@ const CandidatesAdmin = () => {
               </TableBody>
             </Table>
           </div>
-          <div className="border-t px-4 py-3 text-xs text-muted-foreground flex items-center justify-between">
+          <div className="border-t px-4 py-3 text-xs text-muted-foreground">
             <span>Source : Airtable « candidats 2026 »</span>
-            <a
-              href={`https://airtable.com/${'app6ahcwamgNeYQfS'}/${'tblK1a2bpWFt9fkAo'}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
-            >
-              Ouvrir dans Airtable <ExternalLink className="w-3 h-3" />
-            </a>
           </div>
         </div>
       )}
