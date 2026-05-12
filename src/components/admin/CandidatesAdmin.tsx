@@ -129,7 +129,7 @@ const CandidatesAdmin = () => {
                   <TableHead>Type de voix</TableHead>
                   <TableHead>Date de naissance</TableHead>
                   <TableHead className="text-center">Documents</TableHead>
-                  <TableHead>Statut</TableHead>
+                  <TableHead>Vidéo de présentation</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -183,25 +183,22 @@ const CandidatesAdmin = () => {
                             <IdCard className="w-4 h-4" />
                           </a>
                         )}
-                        {c.videoUrl && (
-                          <a
-                            href={c.videoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Vidéo de présentation"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
-                          >
-                            <Video className="w-4 h-4" />
-                          </a>
-                        )}
-                        {!c.cvUrl && !c.idUrl && !c.videoUrl && (
+                        {!c.cvUrl && !c.idUrl && (
                           <span className="text-muted-foreground text-xs">—</span>
                         )}
                       </div>
                     </TableCell>
                     <TableCell>
-                      {c.status ? (
-                        <Badge variant="outline">{c.status}</Badge>
+                      {c.videoUrl ? (
+                        <a
+                          href={c.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
+                        >
+                          <Video className="w-4 h-4" />
+                          <span className="underline underline-offset-2">Voir la vidéo</span>
+                        </a>
                       ) : (
                         <span className="text-muted-foreground text-xs">—</span>
                       )}
