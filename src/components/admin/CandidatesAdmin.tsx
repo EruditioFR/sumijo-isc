@@ -29,10 +29,22 @@ interface Candidate {
   status: string | null;
 }
 
+const computeAge = (iso: string): number | null => {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return null;
+  const now = new Date();
+  let age = now.getFullYear() - d.getFullYear();
+  const m = now.getMonth() - d.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < d.getDate())) age--;
+  return age;
+};
+
 const formatDate = (iso: string | null) => {
   if (!iso) return '—';
   try {
-    return new Date(iso).toLocaleDateString('fr-FR');
+    const formatted = new Date(iso).toLocaleDateString('fr-FR');
+    const age = computeAge(iso);
+    return age !== null ? `${formatted} (${age} ans)` : formatted;
   } catch {
     return iso;
   }
