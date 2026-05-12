@@ -13,6 +13,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
+import { countryNameToFlag } from '@/lib/countryFlags';
 
 interface Candidate {
   id: string;
@@ -156,7 +157,20 @@ const CandidatesAdmin = () => {
                     </TableCell>
                     <TableCell className="font-medium">{c.nom}</TableCell>
                     <TableCell>{c.prenom}</TableCell>
-                    <TableCell>{c.pays || '—'}</TableCell>
+                    <TableCell>
+                      {c.pays ? (
+                        <span className="inline-flex items-center gap-2">
+                          {countryNameToFlag(c.pays) && (
+                            <span className="text-lg leading-none" aria-hidden="true">
+                              {countryNameToFlag(c.pays)}
+                            </span>
+                          )}
+                          <span>{c.pays}</span>
+                        </span>
+                      ) : (
+                        '—'
+                      )}
+                    </TableCell>
                     <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
                     <TableCell>{formatDate(c.dateNaissance)}</TableCell>
                     <TableCell>
