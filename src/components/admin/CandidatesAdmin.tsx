@@ -276,11 +276,7 @@ const CandidatesAdmin = () => {
                         <TableCell>
                           {c.pays ? (
                             <span className="inline-flex items-center gap-2">
-                              {countryNameToFlag(c.pays) && (
-                                <span className="text-lg leading-none" aria-hidden="true">
-                                  {countryNameToFlag(c.pays)}
-                                </span>
-                              )}
+                              <CountryFlag name={c.pays} />
                               <span>{c.pays}</span>
                             </span>
                           ) : '—'}
