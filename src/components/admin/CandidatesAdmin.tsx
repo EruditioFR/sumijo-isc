@@ -135,24 +135,51 @@ const CandidatesAdmin = () => {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
 
-  const fetchCandidates = async () => {
-    setIsLoading(true);
+  const CACHE_KEY = 'admin:candidates:v1';
+  const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+  const [lastUpdated, setLastUpdated] = useState<number | null>(null);
+
+  const fetchCandidates = async (opts: { silent?: boolean } = {}) => {
+    if (!opts.silent) setIsLoading(true);
     setError(null);
     try {
       const { data, error } = await supabase.functions.invoke('list-candidates');
       if (error) throw error;
-      setCandidates(data?.candidates ?? []);
+      const list = data?.candidates ?? [];
+      setCandidates(list);
+      const ts = Date.now();
+      setLastUpdated(ts);
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ ts, candidates: list }));
+      } catch {}
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Erreur inconnue';
       setError(msg);
-      toast({ title: 'Erreur', description: msg, variant: 'destructive' });
+      if (!opts.silent) {
+        toast({ title: 'Erreur', description: msg, variant: 'destructive' });
+      }
     } finally {
-      setIsLoading(false);
+      if (!opts.silent) setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCandidates();
+    let hasCache = false;
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { ts: number; candidates: Candidate[] };
+        if (parsed?.candidates?.length) {
+          setCandidates(parsed.candidates);
+          setLastUpdated(parsed.ts);
+          setIsLoading(false);
+          hasCache = true;
+          const fresh = Date.now() - parsed.ts < CACHE_TTL;
+          if (fresh) return; // skip refetch when cache is fresh
+        }
+      }
+    } catch {}
+    fetchCandidates({ silent: hasCache });
   }, []);
 
   const toggle = (id: string) => {
@@ -192,7 +219,7 @@ const CandidatesAdmin = () => {
               {allExpanded ? 'Tout replier' : 'Tout déplier'}
             </Button>
           )}
-          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+          <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
           </Button>
