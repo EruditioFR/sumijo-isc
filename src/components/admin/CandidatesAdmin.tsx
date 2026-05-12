@@ -370,9 +370,7 @@ const CandidatesAdmin = () => {
                       {sheetCandidate.prenom} {sheetCandidate.nom}
                     </SheetTitle>
                     <SheetDescription className="flex items-center gap-2 mt-1">
-                      {countryNameToFlag(sheetCandidate.pays) && (
-                        <span aria-hidden="true">{countryNameToFlag(sheetCandidate.pays)}</span>
-                      )}
+                      <CountryFlag name={sheetCandidate.pays} />
                       <span>{sheetCandidate.pays || '—'}</span>
                       <span>·</span>
                       <span className="capitalize">{sheetCandidate.typeVoix || '—'}</span>
