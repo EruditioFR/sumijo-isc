@@ -53,7 +53,7 @@ const ProgramSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="programme" className="py-20 md:py-28 bg-background">
+    <section id="programme" className="pt-20 md:pt-28 pb-8 md:pb-12 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
