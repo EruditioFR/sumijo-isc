@@ -43,13 +43,10 @@ const Index = () => {
         type="event"
         jsonLd={jsonLdSchemas}
       />
-      <AnnouncementLightbox />
       <Header />
       <main>
         <HeroSection />
         <ProgramSection />
-        <SemiFinalistsSection />
-        <AnnouncementVideoSection />
         <StatsSection />
         <VideoGallerySection />
         <WinnersSection />
