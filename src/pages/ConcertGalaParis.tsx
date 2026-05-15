@@ -303,7 +303,22 @@ const ConcertGalaParis = () => {
               </Button>
 
               <div className="mt-10 p-6 bg-muted/30 rounded-xl border border-gold/10">
-                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                <div className="flex justify-center mb-5">
+                  <a
+                    href="https://www.sallecortot.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block hover:opacity-80 transition-opacity"
+                    aria-label="Salle Cortot"
+                  >
+                    <img
+                      src={salleCortotLogo}
+                      alt="Salle Cortot"
+                      className="h-14 md:h-16 w-auto"
+                    />
+                  </a>
+                </div>
+                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 text-center">
                   Informations billetterie
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-foreground/85">
