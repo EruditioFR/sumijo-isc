@@ -308,7 +308,7 @@ const ConcertGalaParis = () => {
                     href="https://www.sallecortot.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block hover:opacity-80 transition-opacity"
+                    className="inline-block hover:opacity-80 transition-opacity bg-black rounded-lg p-4"
                     aria-label="Salle Cortot"
                   >
                     <img
