@@ -12,6 +12,7 @@ import Jury from "./pages/Jury";
 import Contact from "./pages/Contact";
 import Billetterie from "./pages/Billetterie";
 import Programme from "./pages/Programme";
+import ConcertGalaParis from "./pages/ConcertGalaParis";
 import AdminGallery from "./pages/AdminGallery";
 import AdminTicketing from "./pages/AdminTicketing";
 import AdminCandidates from "./pages/AdminCandidates";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/billetterie" element={<Billetterie />} />
             <Route path="/programme" element={<Programme />} />
+            <Route path="/concert-gala-paris" element={<ConcertGalaParis />} />
             <Route path="/admin/gallery" element={<AdminGallery />} />
             <Route path="/admin/billetterie" element={<AdminTicketing />} />
             <Route path="/admin/candidats" element={<AdminCandidates />} />
