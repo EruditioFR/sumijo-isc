@@ -218,7 +218,7 @@ const Header = () => {
                       onClick={() => setIsCompetitionOpen(false)}
                       className="block px-4 py-2.5 text-sm text-cream hover:text-gold hover:bg-gold/10 transition-colors"
                     >
-                      Concert de Paris
+                      Concert Sumi Jo &amp; Winners
                     </Link>
                     <Link
                       to="/jury"
@@ -355,7 +355,7 @@ const Header = () => {
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="block text-cream/80 hover:text-gold transition-colors py-1.5 text-sm"
                         >
-                          Concert de Paris
+                          Concert Sumi Jo &amp; Winners
                         </Link>
                         <Link
                           to="/jury"
