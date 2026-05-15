@@ -11,7 +11,7 @@ const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 
 const RESERVATION_URL =
-  'mailto:billetterie@sallecortot.fr?subject=R%C3%A9servation%20Concert%20Sumi%20Jo%20%26%20Winners%20-%2010%20juin%202026';
+  'https://indiv.themisweb.fr/0768/fChoixSeanceWidget.aspx?idstructure=0768&EventId=84&request=QcE+w0WHSuCWF9OlCSGcmWqlK7pLRVeqfHLZDpsKXHZIitc1vsQigXTiGajZ/qa9/NopmtBrZh3PJSLWiosMEO9FLFGThy1ThmBKAIqIKfkEQaTkgMrkrQ==';
 
 type Piece = { artists: string; aria: string; opera: string; composer: string };
 
