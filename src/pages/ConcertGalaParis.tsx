@@ -11,7 +11,7 @@ const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 
 const RESERVATION_URL =
-  'mailto:billetterie@sallecortot.fr?subject=R%C3%A9servation%20Concert%20Sumi%20Jo%20%26%20Winners%20-%2010%20juin%202026';
+  'https://indiv.themisweb.fr/0768/fChoixSeanceWidget.aspx?idstructure=0768&EventId=84&request=QcE+w0WHSuCWF9OlCSGcmWqlK7pLRVeqfHLZDpsKXHZIitc1vsQigXTiGajZ/qa9/NopmtBrZh3PJSLWiosMEO9FLFGThy1ThmBKAIqIKfkEQaTkgMrkrQ==';
 
 type Piece = { artists: string; aria: string; opera: string; composer: string };
 
@@ -119,7 +119,7 @@ const ConcertGalaParis = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
                 <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-8 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
-                  <a href={RESERVATION_URL}>
+                  <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
                     <Ticket className="w-5 h-5 mr-2" />
                     Réserver
                   </a>
@@ -269,7 +269,7 @@ const ConcertGalaParis = () => {
 
             <div className="max-w-2xl mx-auto text-center">
               <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold text-base px-10 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
-                <a href={RESERVATION_URL}>
+                <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
                   <Ticket className="w-5 h-5 mr-2" />
                   Réserver ma place
                 </a>
