@@ -13,12 +13,7 @@ const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 const RESERVATION_URL =
   'mailto:billetterie@sallecortot.fr?subject=R%C3%A9servation%20Concert%20Sumi%20Jo%20%26%20Winners%20-%2010%20juin%202026';
 
-type Piece = {
-  artists: string;
-  aria: string;
-  opera: string;
-  composer: string;
-};
+type Piece = { artists: string; aria: string; opera: string; composer: string };
 
 const partOne: Piece[] = [
   { artists: 'Alexandre Baldo', aria: '« Sous les Pieds d’une Femme »', opera: 'La Reine de Saba', composer: 'Gounod' },
@@ -55,7 +50,7 @@ const PieceRow = ({ piece, index, inView }: { piece: Piece; index: number; inVie
   <motion.li
     initial={{ opacity: 0, y: 12 }}
     animate={inView ? { opacity: 1, y: 0 } : {}}
-    transition={{ duration: 0.4, delay: 0.05 * index }}
+    transition={{ duration: 0.4, delay: 0.04 * index }}
     className="border-b border-gold/10 last:border-b-0 py-4"
   >
     <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-1">{piece.artists}</p>
@@ -78,4 +73,253 @@ const ConcertGalaParis = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Concert Sumi Jo & Winners —
+        title="Concert Sumi Jo & Winners — 10 juin 2026, Salle Cortot Paris"
+        description="Concert exceptionnel de Sumi Jo et des lauréats 2024 du Sumi Jo International Singing Competition. Mercredi 10 juin 2026 à 20h00, Salle Cortot, Paris."
+        keywords="Sumi Jo, concert, Salle Cortot, Paris, lauréats, opéra, gala, 2026"
+        path="/concert-gala-paris"
+      />
+      <Suspense fallback={<div className="h-20 bg-background" />}>
+        <Header />
+      </Suspense>
+
+      <main className="pt-8">
+        {/* HERO */}
+        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-cream via-background to-background">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-10 w-96 h-96 bg-rose/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-4 block">
+                Concert exceptionnel — Paris
+              </span>
+              <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-foreground leading-tight">
+                Sumi Jo <span className="text-rose-dark">&</span> Winners
+              </h1>
+              <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-6" />
+              <p className="text-lg md:text-xl text-muted-foreground italic max-w-2xl mx-auto">
+                Concert des Lauréats de la Sumi Jo International Singing Competition 2024
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10 text-foreground/80">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-gold" />
+                  <span className="font-medium">Mercredi 10 juin 2026 — 20h00</span>
+                </div>
+                <span className="hidden sm:inline text-gold/60">•</span>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-gold" />
+                  <span className="font-medium">Salle Cortot, Paris</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+                <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-8 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
+                  <a href={RESERVATION_URL}>
+                    <Ticket className="w-5 h-5 mr-2" />
+                    Réserver
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="font-bold px-8 py-6 border-rose/30 hover:border-rose hover:bg-rose hover:text-white transition-all duration-300">
+                  <Link to="/">
+                    En savoir plus sur le concours
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* INTRO */}
+        <section ref={introRef} className="py-16 md:py-24">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={introInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7 }}
+              className="space-y-6 text-foreground/85 text-base md:text-lg leading-relaxed"
+            >
+              <p>
+                La légendaire soprano colorature coréenne <span className="text-rose-dark font-semibold">Sumi Jo</span>,
+                commandeure des Arts et des Lettres, Unesco Artist for Peace, Grammy Award Winner — celle que
+                Maestro Herbert von Karajan appelait <em>La Voix des Cieux</em> (« the Voice from Heaven ») —
+                fête en 2026 ses <span className="text-rose-dark font-semibold">quarante années de carrière</span> à
+                travers une triomphante tournée mondiale.
+              </p>
+              <p>
+                Cette tournée l’a conduite en Asie, à Londres (<em>Cadogan Hall</em>) et New York (<em>Carnegie Hall</em>),
+                et pour <span className="text-rose-dark font-semibold">une soirée seulement à Paris</span>, à la Salle
+                Cortot, où elle chantera avec les gagnants de la première édition de son concours international de chant,
+                le Sumi Jo International Singing Competition.
+              </p>
+
+              <blockquote className="border-l-2 border-gold pl-6 py-2 my-8 italic font-display text-xl md:text-2xl text-foreground/90">
+                « The Voice from Heaven »
+                <footer className="not-italic text-sm text-muted-foreground mt-2 font-sans">
+                  — Maestro Herbert von Karajan
+                </footer>
+              </blockquote>
+
+              <div className="text-center pt-4">
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-2 text-gold hover:text-rose-dark transition-colors text-sm font-semibold tracking-wide uppercase"
+                >
+                  En savoir plus sur la Sumi Jo International Singing Competition →
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* PROGRAMME */}
+        <section ref={progRef} className="py-16 md:py-24 bg-muted/20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={progInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-14"
+            >
+              <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-3 block">
+                Programme du concert
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl text-foreground">
+                Une soirée d’<span className="text-rose-dark">exception</span>
+              </h2>
+              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+              {/* Première partie */}
+              <div className="bg-card rounded-xl border border-gold/20 shadow-lg p-6 md:p-8">
+                <div className="text-center mb-6">
+                  <span className="inline-block text-gold text-xs font-bold tracking-[0.3em] uppercase">
+                    Première partie
+                  </span>
+                  <div className="w-16 h-0.5 bg-gold/40 mx-auto mt-3" />
+                </div>
+                <ul>
+                  {partOne.map((p, i) => (
+                    <PieceRow key={`p1-${i}`} piece={p} index={i} inView={progInView} />
+                  ))}
+                </ul>
+              </div>
+
+              {/* Deuxième partie */}
+              <div className="bg-card rounded-xl border border-gold/30 shadow-lg p-6 md:p-8 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-dark to-rose text-white text-[10px] font-bold tracking-widest uppercase px-4 py-1 rounded-full shadow-md">
+                  Avec Sumi Jo
+                </div>
+                <div className="text-center mb-6 mt-2">
+                  <span className="inline-block text-gold text-xs font-bold tracking-[0.3em] uppercase">
+                    Deuxième partie
+                  </span>
+                  <div className="w-16 h-0.5 bg-gold/40 mx-auto mt-3" />
+                </div>
+                <ul>
+                  {partTwo.map((p, i) => (
+                    <PieceRow key={`p2-${i}`} piece={p} index={i} inView={progInView} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* TARIFS & RÉSERVATION */}
+        <section ref={tarifsRef} className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={tarifsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-14"
+            >
+              <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-3 block">
+                Réservation
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl text-foreground">
+                Tarifs <span className="text-rose-dark">&</span> billetterie
+              </h2>
+              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
+            </motion.div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto mb-12">
+              {tarifs.map((t, i) => (
+                <motion.div
+                  key={t.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={tarifsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                  className="relative bg-card rounded-xl border border-gold/20 p-6 text-center hover:border-gold/60 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300"
+                >
+                  <p className="text-gold text-[11px] font-bold tracking-[0.2em] uppercase mb-3">{t.label}</p>
+                  <p className="font-display text-3xl md:text-4xl text-foreground font-bold">{t.price}</p>
+                  {t.note && (
+                    <p className="text-muted-foreground text-xs mt-3 leading-snug">* {t.note}</p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="max-w-2xl mx-auto text-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold text-base px-10 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
+                <a href={RESERVATION_URL}>
+                  <Ticket className="w-5 h-5 mr-2" />
+                  Réserver ma place
+                </a>
+              </Button>
+
+              <div className="mt-10 p-6 bg-muted/30 rounded-xl border border-gold/10">
+                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                  Informations billetterie
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-foreground/85">
+                  <a href="tel:+33148244063" className="flex items-center gap-2 hover:text-rose-dark transition-colors">
+                    <Phone className="w-4 h-4 text-gold" />
+                    <span className="font-medium">01 48 24 40 63</span>
+                  </a>
+                  <span className="hidden sm:inline text-gold/40">•</span>
+                  <a href="mailto:billetterie@sallecortot.fr" className="flex items-center gap-2 hover:text-rose-dark transition-colors">
+                    <Mail className="w-4 h-4 text-gold" />
+                    <span className="font-medium">billetterie@sallecortot.fr</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Ornament + back */}
+            <div className="flex items-center justify-center gap-3 mt-16 mb-8">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/40" />
+              <div className="w-2 h-2 rotate-45 bg-gold/40" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/40" />
+            </div>
+
+            <div className="text-center">
+              <Button asChild variant="outline" size="lg" className="font-bold border-rose/30 hover:border-rose hover:bg-rose hover:text-white transition-all duration-300">
+                <Link to="/">
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Retour à l’accueil
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Suspense fallback={<div className="h-40 bg-muted" />}>
+        <Footer />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ScrollToTop />
+      </Suspense>
+    </div>
+  );
+};
+
+export default ConcertGalaParis;
