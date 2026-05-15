@@ -5,6 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Ticket, ArrowLeft, Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import artistsImage from '@/assets/concert-gala-paris-artists.png';
+import salleCortotLogo from '@/assets/logo-salle-cortot.svg';
 
 const Header = lazy(() => import('@/components/Header'));
 const Footer = lazy(() => import('@/components/Footer'));
@@ -131,6 +133,31 @@ const ConcertGalaParis = () => {
                 </Button>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* ARTISTS IMAGE */}
+        <section className="py-12 md:py-16">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-2xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.25)] ring-1 ring-gold/30"
+            >
+              <img
+                src={artistsImage}
+                alt="Sumi Jo et les lauréats 2024 du Sumi Jo International Singing Competition"
+                className="w-full h-auto block"
+                loading="lazy"
+              />
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold/60 rounded-tl-2xl pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
+            </motion.div>
+            <p className="text-center text-muted-foreground text-sm italic mt-4">
+              Sumi Jo et les lauréats 2024 — Alexandre Baldo, Marie Lombard, Juliette Tacchino, George Virban, Zihao Li
+            </p>
           </div>
         </section>
 
@@ -276,7 +303,22 @@ const ConcertGalaParis = () => {
               </Button>
 
               <div className="mt-10 p-6 bg-muted/30 rounded-xl border border-gold/10">
-                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                <div className="flex justify-center mb-5">
+                  <a
+                    href="https://www.sallecortot.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block hover:opacity-80 transition-opacity"
+                    aria-label="Salle Cortot"
+                  >
+                    <img
+                      src={salleCortotLogo}
+                      alt="Salle Cortot"
+                      className="h-14 md:h-16 w-auto"
+                    />
+                  </a>
+                </div>
+                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 text-center">
                   Informations billetterie
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-foreground/85">
