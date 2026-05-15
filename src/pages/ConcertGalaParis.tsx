@@ -156,7 +156,7 @@ const ConcertGalaParis = () => {
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
             </motion.div>
             <p className="text-center text-muted-foreground text-sm italic mt-4">
-              Sumi Jo et les lauréats 2024 — Alexandre Baldo, Marie Lombard, Juliette Tacchino, George Virban, Zihao Li
+              Sumi Jo et les lauréats 2024 — Marie Lombard, Juliette Tacchino, George Virban, Zihao Li, Alexandre Baldo
             </p>
           </div>
         </section>
