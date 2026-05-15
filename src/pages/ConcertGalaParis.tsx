@@ -5,6 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Ticket, ArrowLeft, Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import artistsImage from '@/assets/concert-gala-paris-artists.png';
+import salleCortotLogo from '@/assets/logo-salle-cortot.svg';
 
 const Header = lazy(() => import('@/components/Header'));
 const Footer = lazy(() => import('@/components/Footer'));
