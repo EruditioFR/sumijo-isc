@@ -64,7 +64,7 @@ const SemiFinalistsSection = () => {
               controls
               playsInline
               muted
-              preload="metadata"
+              preload="auto"
               className="w-full h-full object-cover bg-black"
             />
             {/* Decorative gold corner accents */}

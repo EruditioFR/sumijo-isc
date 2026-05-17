@@ -49,6 +49,7 @@ const Index = () => {
         <ProgramSection />
         <StatsSection />
         <VideoGallerySection />
+        <SemiFinalistsSection />
         <WinnersSection />
         <GallerySection />
         <PressSection />
