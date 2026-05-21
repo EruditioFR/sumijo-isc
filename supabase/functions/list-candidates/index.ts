@@ -92,6 +92,25 @@ Deno.serve(async (req) => {
       offset = json.offset;
     } while (offset);
 
+    const extractVideo = (val: any): string | null => {
+      if (!val) return null;
+      if (typeof val === "string") return val.trim() || null;
+      if (Array.isArray(val) && val.length > 0) {
+        const first = val[0];
+        if (typeof first === "string") return first.trim() || null;
+        if (first?.url) return first.url;
+      }
+      if (typeof val === "object" && val?.url) return val.url;
+      return null;
+    };
+    const pickVideo = (f: any, ...keys: string[]): string | null => {
+      for (const k of keys) {
+        const v = extractVideo(f[k]);
+        if (v) return v;
+      }
+      return null;
+    };
+
     const candidates = records.map((r) => {
       const f = r.fields ?? {};
       const photo: AirtableAttachment | undefined = f["Photo"]?.[0];
@@ -115,11 +134,15 @@ Deno.serve(async (req) => {
         bio: f["Bio"] ?? f["Biographie"] ?? f["Bio artistique"] ?? null,
         motivation: f["Pourquoi je participe"] ?? f["Pourquoi je souhaite participer"] ?? f["Motivation"] ?? null,
         infosUtiles: f["Infos utiles"] ?? f["Informations complémentaires"] ?? f["Informations utiles"] ?? null,
-        videoSelection1: f["Vidéo1 sélection"] ?? null,
-        videoSelection2: f["Vidéo2 sélection"] ?? null,
-        videoSelection3: f["Vidéo3 sélection"] ?? null,
+        videoSelection1: pickVideo(f, "Vidéo1 sélection", "Vidéo 1 sélection", "Video1 selection", "Vidéo1 selection"),
+        videoSelection2: pickVideo(f, "Vidéo2 sélection", "Vidéo 2 sélection", "Video2 selection", "Vidéo2 selection"),
+        videoSelection3: pickVideo(f, "Vidéo3 sélection", "Vidéo 3 sélection", "Video3 selection", "Vidéo3 selection"),
       };
     });
+
+    if (records[0]) {
+      console.log("First record field keys:", Object.keys(records[0].fields ?? {}));
+    }
 
     // Sort by name
     candidates.sort((a, b) => a.nom.localeCompare(b.nom));
