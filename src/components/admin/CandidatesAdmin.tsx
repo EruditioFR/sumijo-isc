@@ -95,36 +95,64 @@ const Field = ({
 
 const CandidateDetails = ({ c }: { c: Candidate }) => {
   const has = (v: string | null) => v && v.trim().length > 0;
+  const selectionVideos = [c.videoSelection1, c.videoSelection2, c.videoSelection3];
+  const renderVideo = (v: string | null) => {
+    if (!has(v)) return <span className="text-muted-foreground">—</span>;
+    const isUrl = /^https?:\/\//i.test(v!.trim());
+    return isUrl ? (
+      <a href={v!} target="_blank" rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-primary hover:underline break-all">
+        <Video className="w-4 h-4 shrink-0" />
+        <span>{v}</span>
+      </a>
+    ) : <span className="break-all">{v}</span>;
+  };
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      <div className="space-y-5">
-        <div className="grid grid-cols-2 gap-4">
-          <Field icon={Mail} label="E-mail">
-            {has(c.email) ? (
-              <a href={`mailto:${c.email}`} className="text-primary hover:underline break-all">
-                {c.email}
-              </a>
-            ) : <span className="text-muted-foreground">—</span>}
-          </Field>
-          <Field icon={Phone} label="Téléphone">
-            {has(c.telephone) ? (
-              <a href={`tel:${c.telephone}`} className="text-primary hover:underline">
-                {c.telephone}
-              </a>
-            ) : <span className="text-muted-foreground">—</span>}
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-5">
+          <div className="grid grid-cols-2 gap-4">
+            <Field icon={Mail} label="E-mail">
+              {has(c.email) ? (
+                <a href={`mailto:${c.email}`} className="text-primary hover:underline break-all">
+                  {c.email}
+                </a>
+              ) : <span className="text-muted-foreground">—</span>}
+            </Field>
+            <Field icon={Phone} label="Téléphone">
+              {has(c.telephone) ? (
+                <a href={`tel:${c.telephone}`} className="text-primary hover:underline">
+                  {c.telephone}
+                </a>
+              ) : <span className="text-muted-foreground">—</span>}
+            </Field>
+          </div>
+          <Field icon={Sparkles} label="Bio artistique">
+            {has(c.bio) ? c.bio : <span className="text-muted-foreground">—</span>}
           </Field>
         </div>
-        <Field icon={Sparkles} label="Bio artistique">
-          {has(c.bio) ? c.bio : <span className="text-muted-foreground">—</span>}
-        </Field>
+        <div className="space-y-5">
+          <Field icon={Quote} label="Pourquoi je participe">
+            {has(c.motivation) ? c.motivation : <span className="text-muted-foreground">—</span>}
+          </Field>
+          <Field icon={Info} label="Infos utiles">
+            {has(c.infosUtiles) ? c.infosUtiles : <span className="text-muted-foreground">—</span>}
+          </Field>
+        </div>
       </div>
-      <div className="space-y-5">
-        <Field icon={Quote} label="Pourquoi je participe">
-          {has(c.motivation) ? c.motivation : <span className="text-muted-foreground">—</span>}
-        </Field>
-        <Field icon={Info} label="Infos utiles">
-          {has(c.infosUtiles) ? c.infosUtiles : <span className="text-muted-foreground">—</span>}
-        </Field>
+      <div>
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground mb-2">
+          <Video className="w-3.5 h-3.5" />
+          <span>Vidéos de sélection</span>
+        </div>
+        <ol className="space-y-1.5 text-sm">
+          {selectionVideos.map((v, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="text-muted-foreground shrink-0">Vidéo {i + 1} :</span>
+              <div className="min-w-0">{renderVideo(v)}</div>
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   );
