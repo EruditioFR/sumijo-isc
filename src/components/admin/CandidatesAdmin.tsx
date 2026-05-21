@@ -47,6 +47,9 @@ interface Candidate {
   bio: string | null;
   motivation: string | null;
   infosUtiles: string | null;
+  videoSelection1: string | null;
+  videoSelection2: string | null;
+  videoSelection3: string | null;
 }
 
 const computeAge = (iso: string): number | null => {
