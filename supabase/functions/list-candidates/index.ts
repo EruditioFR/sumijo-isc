@@ -115,6 +115,9 @@ Deno.serve(async (req) => {
         bio: f["Bio"] ?? f["Biographie"] ?? f["Bio artistique"] ?? null,
         motivation: f["Pourquoi je participe"] ?? f["Pourquoi je souhaite participer"] ?? f["Motivation"] ?? null,
         infosUtiles: f["Infos utiles"] ?? f["Informations complémentaires"] ?? f["Informations utiles"] ?? null,
+        videoSelection1: f["Vidéo1 sélection"] ?? null,
+        videoSelection2: f["Vidéo2 sélection"] ?? null,
+        videoSelection3: f["Vidéo3 sélection"] ?? null,
       };
     });
 
