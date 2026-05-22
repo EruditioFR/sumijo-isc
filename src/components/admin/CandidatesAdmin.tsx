@@ -416,7 +416,7 @@ const CandidatesAdmin = () => {
                       {isOpen && (
                         <TableRow key={`${c.id}-details`} className="hover:bg-transparent bg-muted/20">
                           <TableCell colSpan={10} className="p-6">
-                            <CandidateDetails c={c} />
+                            <CandidateDetails c={c} onPlayVideo={playVideo} />
                           </TableCell>
                         </TableRow>
                       )}
