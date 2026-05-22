@@ -173,7 +173,7 @@ const CandidateDetails = ({
           {selectionVideos.map((v, i) => (
             <li key={i} className="flex gap-2">
               <span className="text-muted-foreground shrink-0">Vidéo {i + 1} :</span>
-              <div className="min-w-0">{renderVideo(v)}</div>
+              <div className="min-w-0">{renderVideo(v, i)}</div>
             </li>
           ))}
         </ol>
