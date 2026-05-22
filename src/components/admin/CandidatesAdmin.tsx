@@ -94,18 +94,41 @@ const Field = ({
   </div>
 );
 
-const CandidateDetails = ({ c }: { c: Candidate }) => {
+const toEmbedUrl = (url: string): { type: 'iframe' | 'video'; src: string } => {
+  const u = url.trim();
+  // YouTube
+  const yt = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  if (yt) return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1` };
+  // Vimeo
+  const vm = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vm) return { type: 'iframe', src: `https://player.vimeo.com/video/${vm[1]}?autoplay=1` };
+  // Google Drive
+  const gd = u.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+  if (gd) return { type: 'iframe', src: `https://drive.google.com/file/d/${gd[1]}/preview` };
+  return { type: 'video', src: u };
+};
+
+const CandidateDetails = ({
+  c,
+  onPlayVideo,
+}: {
+  c: Candidate;
+  onPlayVideo: (url: string, title: string) => void;
+}) => {
   const has = (v: string | null) => v && v.trim().length > 0;
   const selectionVideos = [c.videoSelection1, c.videoSelection2, c.videoSelection3];
-  const renderVideo = (v: string | null) => {
+  const renderVideo = (v: string | null, idx: number) => {
     if (!has(v)) return <span className="text-muted-foreground">—</span>;
     const isUrl = /^https?:\/\//i.test(v!.trim());
     return isUrl ? (
-      <a href={v!} target="_blank" rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 text-primary hover:underline break-all">
+      <button
+        type="button"
+        onClick={() => onPlayVideo(v!, `${c.prenom} ${c.nom} — Vidéo ${idx + 1}`)}
+        className="inline-flex items-center gap-1.5 text-primary hover:underline break-all text-left"
+      >
         <Video className="w-4 h-4 shrink-0" />
         <span>{v}</span>
-      </a>
+      </button>
     ) : <span className="break-all">{v}</span>;
   };
   return (
