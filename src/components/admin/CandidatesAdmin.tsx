@@ -11,6 +11,7 @@ import {
 import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription,
 } from '@/components/ui/sheet';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
@@ -93,18 +94,41 @@ const Field = ({
   </div>
 );
 
-const CandidateDetails = ({ c }: { c: Candidate }) => {
+const toEmbedUrl = (url: string): { type: 'iframe' | 'video'; src: string } => {
+  const u = url.trim();
+  // YouTube
+  const yt = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  if (yt) return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1` };
+  // Vimeo
+  const vm = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vm) return { type: 'iframe', src: `https://player.vimeo.com/video/${vm[1]}?autoplay=1` };
+  // Google Drive
+  const gd = u.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+  if (gd) return { type: 'iframe', src: `https://drive.google.com/file/d/${gd[1]}/preview` };
+  return { type: 'video', src: u };
+};
+
+const CandidateDetails = ({
+  c,
+  onPlayVideo,
+}: {
+  c: Candidate;
+  onPlayVideo: (url: string, title: string) => void;
+}) => {
   const has = (v: string | null) => v && v.trim().length > 0;
   const selectionVideos = [c.videoSelection1, c.videoSelection2, c.videoSelection3];
-  const renderVideo = (v: string | null) => {
+  const renderVideo = (v: string | null, idx: number) => {
     if (!has(v)) return <span className="text-muted-foreground">—</span>;
     const isUrl = /^https?:\/\//i.test(v!.trim());
     return isUrl ? (
-      <a href={v!} target="_blank" rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 text-primary hover:underline break-all">
+      <button
+        type="button"
+        onClick={() => onPlayVideo(v!, `${c.prenom} ${c.nom} — Vidéo ${idx + 1}`)}
+        className="inline-flex items-center gap-1.5 text-primary hover:underline break-all text-left"
+      >
         <Video className="w-4 h-4 shrink-0" />
         <span>{v}</span>
-      </a>
+      </button>
     ) : <span className="break-all">{v}</span>;
   };
   return (
@@ -149,7 +173,7 @@ const CandidateDetails = ({ c }: { c: Candidate }) => {
           {selectionVideos.map((v, i) => (
             <li key={i} className="flex gap-2">
               <span className="text-muted-foreground shrink-0">Vidéo {i + 1} :</span>
-              <div className="min-w-0">{renderVideo(v)}</div>
+              <div className="min-w-0">{renderVideo(v, i)}</div>
             </li>
           ))}
         </ol>
@@ -165,6 +189,8 @@ const CandidatesAdmin = () => {
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
+  const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
+  const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v1';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
@@ -390,7 +416,7 @@ const CandidatesAdmin = () => {
                       {isOpen && (
                         <TableRow key={`${c.id}-details`} className="hover:bg-transparent bg-muted/20">
                           <TableCell colSpan={10} className="p-6">
-                            <CandidateDetails c={c} />
+                            <CandidateDetails c={c} onPlayVideo={playVideo} />
                           </TableCell>
                         </TableRow>
                       )}
@@ -469,12 +495,36 @@ const CandidatesAdmin = () => {
                 </div>
               </SheetHeader>
               <div className="space-y-6">
-                <CandidateDetails c={sheetCandidate} />
+                <CandidateDetails c={sheetCandidate} onPlayVideo={playVideo} />
               </div>
             </>
           )}
         </SheetContent>
       </Sheet>
+
+      <Dialog open={!!videoModal} onOpenChange={(o) => !o && setVideoModal(null)}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-0">
+          <DialogTitle className="sr-only">{videoModal?.title ?? 'Vidéo'}</DialogTitle>
+          {videoModal && (() => {
+            const { type, src } = toEmbedUrl(videoModal.url);
+            return (
+              <div className="relative w-full aspect-video bg-black">
+                {type === 'iframe' ? (
+                  <iframe
+                    src={src}
+                    title={videoModal.title}
+                    className="absolute inset-0 w-full h-full"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video src={src} controls autoPlay className="absolute inset-0 w-full h-full" />
+                )}
+              </div>
+            );
+          })()}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
