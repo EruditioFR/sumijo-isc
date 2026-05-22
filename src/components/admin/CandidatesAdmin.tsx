@@ -495,7 +495,7 @@ const CandidatesAdmin = () => {
                 </div>
               </SheetHeader>
               <div className="space-y-6">
-                <CandidateDetails c={sheetCandidate} />
+                <CandidateDetails c={sheetCandidate} onPlayVideo={playVideo} />
               </div>
             </>
           )}
