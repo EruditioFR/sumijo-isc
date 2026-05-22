@@ -501,6 +501,30 @@ const CandidatesAdmin = () => {
           )}
         </SheetContent>
       </Sheet>
+
+      <Dialog open={!!videoModal} onOpenChange={(o) => !o && setVideoModal(null)}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-0">
+          <DialogTitle className="sr-only">{videoModal?.title ?? 'Vidéo'}</DialogTitle>
+          {videoModal && (() => {
+            const { type, src } = toEmbedUrl(videoModal.url);
+            return (
+              <div className="relative w-full aspect-video bg-black">
+                {type === 'iframe' ? (
+                  <iframe
+                    src={src}
+                    title={videoModal.title}
+                    className="absolute inset-0 w-full h-full"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video src={src} controls autoPlay className="absolute inset-0 w-full h-full" />
+                )}
+              </div>
+            );
+          })()}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
