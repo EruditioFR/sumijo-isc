@@ -189,6 +189,8 @@ const CandidatesAdmin = () => {
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
+  const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
+  const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v1';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
