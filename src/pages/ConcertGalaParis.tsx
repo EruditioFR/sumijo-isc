@@ -76,7 +76,7 @@ const ConcertGalaParis = () => {
     <div className="min-h-screen">
       <SEOHead
         title="Concert Sumi Jo & Winners — 10 juin 2026, Salle Cortot Paris"
-        description="Concert exceptionnel de Sumi Jo et des lauréats 2024 du Sumi Jo International Singing Competition. Mercredi 10 juin 2026 à 20h00, Salle Cortot, Paris."
+        description="Concert exceptionnel de Sumi Jo et des candidats 2024 du Sumi Jo International Singing Competition. Mercredi 10 juin 2026 à 20h00, Salle Cortot, Paris."
         keywords="Sumi Jo, concert, Salle Cortot, Paris, lauréats, opéra, gala, 2026"
         path="/concert-gala-paris"
       />

@@ -9,21 +9,21 @@ const programData = [
     day: 'Lundi 6 juillet',
     slots: [
       { time: '14h - 17h', title: 'Auditions', desc: 'des 12 premiers candidats' },
-      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats 2024' },
     ],
   },
   {
     day: 'Mardi 7 juillet',
     slots: [
       { time: '14h - 17h', title: 'Auditions', desc: 'des 12 candidats restants' },
-      { time: '20h - 22h', title: 'Récital', desc: 'des candidats' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats 2024' },
     ],
   },
   {
     day: 'Mercredi 8 juillet',
     slots: [
       null,
-      { time: '20h - 22h', title: 'Récital', desc: 'des lauréats 2024' },
+      { time: '20h - 22h', title: 'Récital', desc: 'des candidats 2024' },
     ],
   },
   {
