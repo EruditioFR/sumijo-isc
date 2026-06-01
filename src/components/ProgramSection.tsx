@@ -29,14 +29,14 @@ const programData = [
   {
     day: 'Jeudi 9 juillet',
     slots: [
-      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '14h - 17h', title: 'Masterclass', desc: '' },
       { time: '20h - 22h30', title: 'Petite finale', desc: '' },
     ],
   },
   {
     day: 'Vendredi 10 juillet',
     slots: [
-      { time: 'Horaires à définir', title: 'Masterclass', desc: '' },
+      { time: '14h - 17h', title: 'Masterclass', desc: '' },
       { time: '20h - 22h45', title: 'Grande finale', desc: '' },
     ],
   },
