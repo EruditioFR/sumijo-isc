@@ -206,7 +206,7 @@ const Biographies = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="fixed bottom-3 left-3 right-3 sm:bottom-6 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-auto z-50"
+        className="fixed bottom-3 left-0 right-0 flex justify-center px-3 sm:bottom-6 sm:px-0 z-50"
       >
         <Button
           asChild
