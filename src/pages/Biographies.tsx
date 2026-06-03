@@ -2,7 +2,7 @@ import { useEffect, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ArrowLeft, User } from 'lucide-react';
+import { ArrowLeft, User, Ticket } from 'lucide-react';
 import Header from '@/components/Header';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
