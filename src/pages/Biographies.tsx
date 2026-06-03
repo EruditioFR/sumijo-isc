@@ -88,7 +88,7 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
 
         <div className="space-y-3 text-center sm:text-left">
           <div>
-            <p className="text-gold text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-2">
+            <p className="text-gold text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-2">
               {artist.role}
             </p>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-bold">
