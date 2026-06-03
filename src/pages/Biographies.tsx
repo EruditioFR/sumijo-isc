@@ -26,9 +26,6 @@ interface Artist {
   photo?: string;
 }
 
-const RESERVATION_URL =
-  'https://indiv.themisweb.fr/0768/fChoixSeanceWidget.aspx?idstructure=0768&EventId=84&request=QcE+w0WHSuCWF9OlCSGcmWqlK7pLRVeqfHLZDpsKXHZIitc1vsQigXTiGajZ/qa9/NopmtBrZh3PJSLWiosMEO9FLFGThy1ThmBKAIqIKfkEQaTkgMrkrQ==';
-
 const artists: Artist[] = [
   {
     name: 'Sumi Jo',
@@ -261,10 +258,10 @@ const Biographies = () => {
           size="lg"
           className="w-full sm:w-auto bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-4 sm:px-6 py-4 sm:py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-[1.02] rounded-full text-sm sm:text-base leading-tight h-auto whitespace-normal text-center"
         >
-          <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
+          <Link to="/billetterie">
             <Ticket className="w-4 h-4 sm:w-5 sm:h-5 mr-2 shrink-0" />
             <span>Réservez vos places — SJISC 2026</span>
-          </a>
+          </Link>
         </Button>
       </motion.div>
     </div>
