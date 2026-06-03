@@ -185,6 +185,24 @@ const Biographies = () => {
       <Suspense fallback={null}>
         <ScrollToTop />
       </Suspense>
+      {/* Floating ticket button */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-6 py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-105 rounded-full"
+        >
+          <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
+            <Ticket className="w-5 h-5 mr-2" />
+            Réservez vos places pour la Sumi Jo International Singing Competition 2026
+          </a>
+        </Button>
+      </motion.div>
     </div>
   );
 };
