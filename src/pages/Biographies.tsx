@@ -6,6 +6,7 @@ import { ArrowLeft, User, Ticket } from 'lucide-react';
 import Header from '@/components/Header';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
+import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
@@ -24,81 +25,81 @@ const artists: Artist[] = [
   {
     name: 'Sumi Jo',
     role: 'Soprano colorature — Présidente du jury',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
   {
     name: 'Zihao Li',
     role: 'Lauréat 2024',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
   {
     name: 'Juliette Tacchino',
     role: 'Lauréate 2024',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
   {
     name: 'George Virban',
     role: 'Lauréat 2024',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
   {
     name: 'Marie Lombard',
     role: 'Lauréate 2024',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
   {
     name: 'Alexandre Baldo',
     role: 'Lauréat 2024',
-    bio: "Biographie à compléter.",
+    bio: 'Biographie à compléter.',
   },
 ];
 
 const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
-  const isReverse = index % 2 === 1;
 
   return (
     <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7 }}
-      className={`grid md:grid-cols-[280px_1fr] gap-8 md:gap-12 items-start bg-card rounded-2xl border border-gold/20 p-6 md:p-10 hover:border-gold/50 hover:shadow-lg hover:shadow-gold/5 transition-all duration-500 ${
-        isReverse ? 'md:[&>*:first-child]:order-2' : ''
-      }`}
+      transition={{ duration: 0.6 }}
+      className="bg-card rounded-2xl border border-gold/20 p-5 sm:p-6 md:p-8 hover:border-gold/50 transition-all duration-500"
     >
-      <div className="relative">
-        <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-gradient-to-br from-rose/10 to-gold/10 border border-gold/20 flex items-center justify-center">
-          {artist.photo ? (
-            <img
-              src={artist.photo}
-              alt={artist.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          ) : (
-            <div className="flex flex-col items-center text-gold/40 gap-2">
-              <User className="w-16 h-16" />
-              <span className="text-[10px] tracking-[0.2em] uppercase">Photo à venir</span>
-            </div>
-          )}
+      <div className="flex flex-col sm:grid sm:grid-cols-[180px_1fr] md:grid-cols-[220px_1fr] gap-5 md:gap-8 items-start">
+        <div className="relative w-32 sm:w-full mx-auto sm:mx-0">
+          <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-gradient-to-br from-rose/10 to-gold/10 border border-gold/20 flex items-center justify-center">
+            {artist.photo ? (
+              <img
+                src={artist.photo}
+                alt={artist.name}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div className="flex flex-col items-center text-gold/40 gap-1">
+                <User className="w-10 h-10 sm:w-14 sm:h-14" />
+                <span className="text-[9px] tracking-[0.2em] uppercase text-center px-1">
+                  Photo à venir
+                </span>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="absolute -bottom-2 -right-2 w-16 h-16 border-2 border-gold/30 rounded-xl -z-10" />
-      </div>
 
-      <div className="space-y-4">
-        <div>
-          <p className="text-gold text-[11px] font-bold tracking-[0.25em] uppercase mb-2">
-            {artist.role}
+        <div className="space-y-3 text-center sm:text-left">
+          <div>
+            <p className="text-gold text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-2">
+              {artist.role}
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-bold">
+              {artist.name}
+            </h2>
+            <div className="h-px w-16 bg-gradient-to-r from-gold to-transparent mt-3 mx-auto sm:mx-0" />
+          </div>
+          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed whitespace-pre-line">
+            {artist.bio}
           </p>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground font-bold">
-            {artist.name}
-          </h2>
-          <div className="h-px w-20 bg-gradient-to-r from-gold to-transparent mt-4" />
         </div>
-        <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-          {artist.bio}
-        </p>
       </div>
     </motion.article>
   );
@@ -119,48 +120,62 @@ const Biographies = () => {
       />
       <Header />
 
-      <main className="pt-24 md:pt-32 pb-20">
+      <main className="pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-28">
+        {/* Poster */}
+        <section className="container mx-auto px-4 mb-10 sm:mb-14">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-sm sm:max-w-md md:max-w-lg mx-auto"
+          >
+            <img
+              src={posterAsset.url}
+              alt="Affiche du concert Sumi Jo & Winners — Salle Cortot, 10 juin 2026"
+              className="w-full h-auto rounded-xl shadow-2xl border border-gold/20"
+            />
+          </motion.div>
+        </section>
+
         {/* Hero */}
-        <section className="container mx-auto px-4 mb-16 md:mb-24 text-center max-w-4xl">
+        <section className="container mx-auto px-4 mb-10 sm:mb-16 text-center max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="space-y-4 sm:space-y-6"
           >
-            <p className="text-gold text-xs md:text-sm font-bold tracking-[0.3em] uppercase">
-              Concert Sumi Jo & Winners — 10 juin 2026, Salle Cortot
+            <p className="text-gold text-[10px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase">
+              10 juin 2026 — Salle Cortot
             </p>
-            <h1 className="font-display text-4xl md:text-6xl text-foreground font-bold">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl text-foreground font-bold leading-tight">
               Biographies des artistes
             </h1>
             <div className="flex items-center justify-center gap-3">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/60" />
+              <div className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent to-gold/60" />
               <div className="w-2 h-2 rotate-45 bg-gold" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/60" />
+              <div className="h-px w-12 sm:w-16 bg-gradient-to-l from-transparent to-gold/60" />
             </div>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed px-2">
               Découvrez les parcours exceptionnels de Sumi Jo et des lauréats 2024 du Sumi Jo
-              International Singing Competition qui se produiront ensemble sur la scène de la
-              Salle Cortot le 10 juin 2026.
+              International Singing Competition.
             </p>
           </motion.div>
         </section>
 
         {/* Artists */}
         <section className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto space-y-8 md:space-y-12">
+          <div className="max-w-4xl mx-auto space-y-5 sm:space-y-8">
             {artists.map((artist, i) => (
               <BiographyCard key={artist.name} artist={artist} index={i} />
             ))}
           </div>
 
-          {/* Ornament + back */}
-          <div className="max-w-5xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mt-16 mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/40" />
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mt-12 mb-6">
+              <div className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent to-gold/40" />
               <div className="w-2 h-2 rotate-45 bg-gold/40" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/40" />
+              <div className="h-px w-12 sm:w-16 bg-gradient-to-l from-transparent to-gold/40" />
             </div>
             <div className="text-center">
               <Button
@@ -185,21 +200,22 @@ const Biographies = () => {
       <Suspense fallback={null}>
         <ScrollToTop />
       </Suspense>
-      {/* Floating ticket button */}
+
+      {/* Floating ticket button — mobile-optimized */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+        transition={{ delay: 1, duration: 0.6 }}
+        className="fixed bottom-3 left-3 right-3 sm:bottom-6 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-auto z-50"
       >
         <Button
           asChild
           size="lg"
-          className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-6 py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-105 rounded-full"
+          className="w-full sm:w-auto bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-4 sm:px-6 py-4 sm:py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-[1.02] rounded-full text-xs sm:text-sm leading-tight h-auto whitespace-normal text-center"
         >
           <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
-            <Ticket className="w-5 h-5 mr-2" />
-            Réservez vos places pour la Sumi Jo International Singing Competition 2026
+            <Ticket className="w-4 h-4 sm:w-5 sm:h-5 mr-2 shrink-0" />
+            <span>Réservez vos places — SJISC 2026</span>
           </a>
         </Button>
       </motion.div>
