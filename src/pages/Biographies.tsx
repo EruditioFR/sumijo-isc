@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react';
+import { useEffect, Suspense, lazy, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -6,6 +6,13 @@ import { ArrowLeft, User, Ticket } from 'lucide-react';
 import Header from '@/components/Header';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
@@ -15,6 +22,7 @@ interface Artist {
   name: string;
   role: string;
   bio: string;
+  fullBio?: string[];
   photo?: string;
 }
 
@@ -49,13 +57,21 @@ const artists: Artist[] = [
   },
   {
     name: 'Alexandre Baldo',
-    role: 'Finaliste 2024',
-    bio: 'Biographie à compléter.',
+    role: 'Baryton-basse — Finaliste 2024',
+    bio: "Talent Adami Classique et lauréat du Prix du Public au Concours International Pier Antonio Cesti en Autriche, le baryton-basse Alexandre Baldo s'impose avec éclat sur les plus grandes scènes tant en France qu'à l'international. Finaliste du Sumi Jo International Singing Competition 2024, il déploie un timbre généreux et une forte présence scénique au service d'un répertoire s'étendant du premier baroque aux grands oratorios romantiques.",
+    fullBio: [
+      "Talent Adami Classique et lauréat du Prix du Public au Concours International Pier Antonio Cesti en Autriche, le baryton-basse Alexandre Baldo s'impose avec éclat sur les plus grandes scènes tant en France qu'à l'international. Finaliste du Sumi Jo International Singing Competition 2024, il déploie un timbre généreux et une forte présence scénique au service d'un répertoire s'étendant du premier baroque aux grands oratorios romantiques.",
+      "À l'opéra, ses premières saisons témoignent d'une remarquable ascension française et européenne. Alexandre Baldo a ainsi fait des débuts particulièrement remarqués en Italie, foulant les scènes historiques du Maggio Musicale Fiorentino ainsi que des Teatri Comunali de Ferrare et de Modène dans Le Carnaval de Lully sous la direction de Federico Maria Sardelli. En France, le public a pu l'applaudir à l'Opéra de Marseille dans le rôle de Pluton (L'Orfeo de Monteverdi), à l'Opéra de Montpellier en Raphaël et Adam (Die Schöpfung de Haydn), à l'Opéra de Saint-Étienne en Abimélech (Samson et Dalila), ainsi qu'à l'Opéra de Lille en Deuxième Homme armé (Die Zauberflöte). Fidèle complice du chef et contre-ténor Philippe Jaroussky, il a incarné Esculapio et Plutone dans L'Orfeo de Sartorio au Théâtre de l'Athénée à Paris et en tournée française. Il collabore également de manière régulière avec l'Opéra Royal de Versailles (Alidoro dans La Cenerentola de Rossini et le Sprecher dans Die Zauberflöte de Mozart).",
+      "En concert, Alexandre Baldo s'est récemment produit au Musikverein de Vienne dans La Resurrezione de Haendel, incarnant Lucifero aux côtés de l'orchestre Wiener Akademie sous la direction de Martin Haselböck, ainsi qu'au Théâtre des Champs-Élysées, où il a chanté Jésus dans la Passion selon saint Matthieu de Bach sous la direction de Thibault Noally à la tête de l'orchestre Les Ambassadeurs. Partenaire privilégié d'Hervé Niquet et du Concert Spirituel, il s'est illustré comme soliste dans Israel in Egypt de Haendel, projet gravé pour le label Alpha. Récemment, sa trajectoire internationale l'a mené jusqu'en Chine pour une grande tournée de concerts de gala aux côtés de la célèbre soprano Sumi Jo.",
+      "En parallèle de son intense activité de soliste, Alexandre Baldo développe des projets artistiques ambitieux et au long cours avec son ensemble baroque Mozaïque. Leur premier enregistrement discographique, dédié aux airs pour basse d'Antonio Caldara et paru chez le label Pan Classics, a été unanimement salué par la critique internationale, décrochant notamment 5 Diapasons et 5 étoiles Classica.",
+      "Au cours de la saison 2026/2027, Alexandre Baldo débutera dans de nombreux théâtres tels que le Theater an der Wien, l'Opéra de Toulon et l'Opéra de Rennes, et renouvellera sa collaboration avec l'Opéra Royal du Château de Versailles et l'Opéra de Marseille. Plusieurs sorties discographiques majeures sont attendues chez le label Aparté : un deuxième album solo ainsi que l'enregistrement en première mondiale de l'oratorio David umiliato de Caldara avec l'ensemble Mozaïque.",
+    ],
   },
 ];
 
 const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.article
@@ -99,6 +115,38 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed whitespace-pre-line">
             {artist.bio}
           </p>
+          {artist.fullBio && artist.fullBio.length > 0 && (
+            <>
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="text-rose-dark hover:text-rose font-bold text-sm sm:text-base tracking-wide uppercase underline-offset-4 hover:underline transition-colors"
+              >
+                Lire la suite →
+              </button>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-card border-gold/30">
+                  <DialogHeader>
+                    <p className="text-gold text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
+                      {artist.role}
+                    </p>
+                    <DialogTitle className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-bold text-left">
+                      {artist.name}
+                    </DialogTitle>
+                    <DialogDescription className="sr-only">
+                      Biographie complète de {artist.name}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+                  <div className="space-y-4 text-muted-foreground text-base leading-relaxed text-left">
+                    {artist.fullBio.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </>
+          )}
         </div>
       </div>
     </motion.article>
