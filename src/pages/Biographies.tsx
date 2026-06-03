@@ -78,7 +78,7 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
             ) : (
               <div className="flex flex-col items-center text-gold/40 gap-1">
                 <User className="w-10 h-10 sm:w-14 sm:h-14" />
-                <span className="text-[9px] tracking-[0.2em] uppercase text-center px-1">
+                <span className="text-[11px] tracking-[0.2em] uppercase text-center px-1">
                   Photo à venir
                 </span>
               </div>
