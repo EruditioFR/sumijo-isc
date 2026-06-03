@@ -49,7 +49,7 @@ const artists: Artist[] = [
   },
   {
     name: 'Alexandre Baldo',
-    role: 'Lauréat 2024',
+    role: 'Finaliste 2024',
     bio: 'Biographie à compléter.',
   },
 ];
