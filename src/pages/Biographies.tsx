@@ -78,7 +78,7 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
             ) : (
               <div className="flex flex-col items-center text-gold/40 gap-1">
                 <User className="w-10 h-10 sm:w-14 sm:h-14" />
-                <span className="text-[9px] tracking-[0.2em] uppercase text-center px-1">
+                <span className="text-[11px] tracking-[0.2em] uppercase text-center px-1">
                   Photo à venir
                 </span>
               </div>
@@ -88,15 +88,15 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
 
         <div className="space-y-3 text-center sm:text-left">
           <div>
-            <p className="text-gold text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-2">
+            <p className="text-gold text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-2">
               {artist.role}
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-bold">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground font-bold">
               {artist.name}
             </h2>
             <div className="h-px w-16 bg-gradient-to-r from-gold to-transparent mt-3 mx-auto sm:mx-0" />
           </div>
-          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed whitespace-pre-line">
+          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed whitespace-pre-line">
             {artist.bio}
           </p>
         </div>
@@ -145,10 +145,10 @@ const Biographies = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="space-y-4 sm:space-y-6"
           >
-            <p className="text-gold text-[10px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase">
+            <p className="text-gold text-xs sm:text-sm md:text-base font-bold tracking-[0.25em] uppercase">
               10 juin 2026 — Salle Cortot
             </p>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl text-foreground font-bold leading-tight">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl text-foreground font-bold leading-tight">
               Biographies des artistes
             </h1>
             <div className="flex items-center justify-center gap-3">
@@ -156,7 +156,7 @@ const Biographies = () => {
               <div className="w-2 h-2 rotate-45 bg-gold" />
               <div className="h-px w-12 sm:w-16 bg-gradient-to-l from-transparent to-gold/60" />
             </div>
-            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed px-2">
+            <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed px-2">
               Découvrez les parcours exceptionnels de Sumi Jo et des lauréats 2024 du Sumi Jo
               International Singing Competition.
             </p>
@@ -211,7 +211,7 @@ const Biographies = () => {
         <Button
           asChild
           size="lg"
-          className="w-full sm:w-auto bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-4 sm:px-6 py-4 sm:py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-[1.02] rounded-full text-xs sm:text-sm leading-tight h-auto whitespace-normal text-center"
+          className="w-full sm:w-auto bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold px-4 sm:px-6 py-4 sm:py-5 shadow-[0_8px_30px_rgba(200,90,107,0.45)] hover:shadow-[0_0_30px_rgba(200,90,107,0.6)] transition-all duration-300 hover:scale-[1.02] rounded-full text-sm sm:text-base leading-tight h-auto whitespace-normal text-center"
         >
           <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
             <Ticket className="w-4 h-4 sm:w-5 sm:h-5 mr-2 shrink-0" />
