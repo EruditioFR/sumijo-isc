@@ -17,6 +17,9 @@ interface Artist {
   photo?: string;
 }
 
+const RESERVATION_URL =
+  'https://indiv.themisweb.fr/0768/fChoixSeanceWidget.aspx?idstructure=0768&EventId=84&request=QcE+w0WHSuCWF9OlCSGcmWqlK7pLRVeqfHLZDpsKXHZIitc1vsQigXTiGajZ/qa9/NopmtBrZh3PJSLWiosMEO9FLFGThy1ThmBKAIqIKfkEQaTkgMrkrQ==';
+
 const artists: Artist[] = [
   {
     name: 'Sumi Jo',
