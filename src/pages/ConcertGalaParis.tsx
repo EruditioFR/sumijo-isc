@@ -335,6 +335,20 @@ const ConcertGalaParis = () => {
               </div>
             </div>
 
+            {/* Lien vers biographies */}
+            <div className="max-w-2xl mx-auto text-center mt-10">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="font-bold border-gold/40 text-foreground hover:border-gold hover:bg-gold/10 transition-all duration-300"
+              >
+                <Link to="/biographies">
+                  Découvrir les biographies des artistes
+                </Link>
+              </Button>
+            </div>
+
             {/* Ornament + back */}
             <div className="flex items-center justify-center gap-3 mt-16 mb-8">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/40" />
