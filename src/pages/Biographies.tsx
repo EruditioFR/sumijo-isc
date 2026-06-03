@@ -71,6 +71,7 @@ const artists: Artist[] = [
 
 const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.article
@@ -114,6 +115,38 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed whitespace-pre-line">
             {artist.bio}
           </p>
+          {artist.fullBio && artist.fullBio.length > 0 && (
+            <>
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="text-rose-dark hover:text-rose font-bold text-sm sm:text-base tracking-wide uppercase underline-offset-4 hover:underline transition-colors"
+              >
+                Lire la suite →
+              </button>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-card border-gold/30">
+                  <DialogHeader>
+                    <p className="text-gold text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
+                      {artist.role}
+                    </p>
+                    <DialogTitle className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-bold text-left">
+                      {artist.name}
+                    </DialogTitle>
+                    <DialogDescription className="sr-only">
+                      Biographie complète de {artist.name}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+                  <div className="space-y-4 text-muted-foreground text-base leading-relaxed text-left">
+                    {artist.fullBio.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </>
+          )}
         </div>
       </div>
     </motion.article>
