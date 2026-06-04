@@ -369,6 +369,22 @@ const CandidatesAdmin = () => {
                         </TableCell>
                         <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
                         <TableCell>{formatDate(c.dateNaissance)}</TableCell>
+                        <TableCell>
+                          {c.langues && c.langues.length > 0 ? (
+                            <div className="flex flex-wrap gap-1 max-w-[220px]">
+                              {c.langues.map((l, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-foreground"
+                                >
+                                  {l}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground text-xs">—</span>
+                          )}
+                        </TableCell>
                         <TableCell onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-center gap-2">
                             {c.cvUrl && (
