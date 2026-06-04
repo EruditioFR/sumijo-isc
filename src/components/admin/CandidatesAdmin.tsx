@@ -223,21 +223,42 @@ const CandidatesAdmin = () => {
 
   useEffect(() => {
     let hasCache = false;
+    let schemaStale = false;
     try {
       const raw = localStorage.getItem(CACHE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as { ts: number; candidates: Candidate[] };
         if (parsed?.candidates?.length) {
-          setCandidates(parsed.candidates);
-          setLastUpdated(parsed.ts);
-          setIsLoading(false);
-          hasCache = true;
-          const fresh = Date.now() - parsed.ts < CACHE_TTL;
-          if (fresh) return; // skip refetch when cache is fresh
+          // Detect outdated cache shape (any candidate missing the `langues` field).
+          schemaStale = parsed.candidates.some(
+            (c) => !Object.prototype.hasOwnProperty.call(c, 'langues'),
+          );
+          if (schemaStale) {
+            try { localStorage.removeItem(CACHE_KEY); } catch {}
+          } else {
+            setCandidates(parsed.candidates);
+            setLastUpdated(parsed.ts);
+            setIsLoading(false);
+            hasCache = true;
+          }
         }
       }
     } catch {}
+    // Always revalidate in the background so changes in Airtable
+    // surface without the user having to click "Actualiser".
     fetchCandidates({ silent: hasCache });
+
+    // Re-sync when the tab regains focus / becomes visible again.
+    const onFocus = () => fetchCandidates({ silent: true });
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') fetchCandidates({ silent: true });
+    };
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
   }, []);
 
   const toggle = (id: string) => {
