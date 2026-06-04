@@ -51,6 +51,7 @@ interface Candidate {
   videoSelection1: string | null;
   videoSelection2: string | null;
   videoSelection3: string | null;
+  langues: string[];
 }
 
 const computeAge = (iso: string): number | null => {
