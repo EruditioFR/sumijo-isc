@@ -317,6 +317,7 @@ const CandidatesAdmin = () => {
                   <TableHead>Pays</TableHead>
                   <TableHead>Type de voix</TableHead>
                   <TableHead>Date de naissance</TableHead>
+                  <TableHead>Langues parlées</TableHead>
                   <TableHead className="text-center">Documents</TableHead>
                   <TableHead>Vidéo de présentation</TableHead>
                   <TableHead className="w-16 text-center">Fiche</TableHead>
