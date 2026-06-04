@@ -137,6 +137,12 @@ Deno.serve(async (req) => {
         videoSelection1: pickVideo(f, "Vidéo1 sélection", "Vidéo 1 sélection", "Video1 selection", "Vidéo1 selection"),
         videoSelection2: pickVideo(f, "Vidéo2 sélection", "Vidéo 2 sélection", "Video2 selection", "Vidéo2 selection"),
         videoSelection3: pickVideo(f, "Vidéo3 sélection", "Vidéo 3 sélection", "Video3 selection", "Vidéo3 selection"),
+        langues: (() => {
+          const v = f["Langues parlées"] ?? f["Langues"] ?? f["Langues parlees"] ?? f["Languages"] ?? f["Langue"] ?? null;
+          if (!v) return [];
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
+          return String(v).split(/[,;/]+/).map((s) => s.trim()).filter(Boolean);
+        })(),
       };
     });
 

@@ -51,6 +51,7 @@ interface Candidate {
   videoSelection1: string | null;
   videoSelection2: string | null;
   videoSelection3: string | null;
+  langues: string[];
 }
 
 const computeAge = (iso: string): number | null => {
@@ -192,7 +193,7 @@ const CandidatesAdmin = () => {
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
-  const CACHE_KEY = 'admin:candidates:v1';
+  const CACHE_KEY = 'admin:candidates:v2';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const [lastUpdated, setLastUpdated] = useState<number | null>(null);
 
@@ -316,6 +317,7 @@ const CandidatesAdmin = () => {
                   <TableHead>Pays</TableHead>
                   <TableHead>Type de voix</TableHead>
                   <TableHead>Date de naissance</TableHead>
+                  <TableHead>Langues parlées</TableHead>
                   <TableHead className="text-center">Documents</TableHead>
                   <TableHead>Vidéo de présentation</TableHead>
                   <TableHead className="w-16 text-center">Fiche</TableHead>
@@ -367,6 +369,22 @@ const CandidatesAdmin = () => {
                         </TableCell>
                         <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
                         <TableCell>{formatDate(c.dateNaissance)}</TableCell>
+                        <TableCell>
+                          {c.langues && c.langues.length > 0 ? (
+                            <div className="flex flex-wrap gap-1 max-w-[220px]">
+                              {c.langues.map((l, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-foreground"
+                                >
+                                  {l}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground text-xs">—</span>
+                          )}
+                        </TableCell>
                         <TableCell onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-center gap-2">
                             {c.cvUrl && (
@@ -415,7 +433,7 @@ const CandidatesAdmin = () => {
                       </TableRow>
                       {isOpen && (
                         <TableRow key={`${c.id}-details`} className="hover:bg-transparent bg-muted/20">
-                          <TableCell colSpan={10} className="p-6">
+                          <TableCell colSpan={11} className="p-6">
                             <CandidateDetails c={c} onPlayVideo={playVideo} />
                           </TableCell>
                         </TableRow>
