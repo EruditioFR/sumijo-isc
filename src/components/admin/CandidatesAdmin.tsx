@@ -193,7 +193,7 @@ const CandidatesAdmin = () => {
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
-  const CACHE_KEY = 'admin:candidates:v1';
+  const CACHE_KEY = 'admin:candidates:v2';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const [lastUpdated, setLastUpdated] = useState<number | null>(null);
 
