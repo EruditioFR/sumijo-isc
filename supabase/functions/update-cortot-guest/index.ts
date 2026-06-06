@@ -50,10 +50,27 @@ Deno.serve(async (req) => {
     }
 
     const body = await req.json().catch(() => ({}));
-    const { id, statutJourJ } = body as { id?: string; statutJourJ?: boolean };
-    if (!id || typeof statutJourJ !== "boolean") {
+    const { id, statutJourJ, paxArrived } = body as {
+      id?: string;
+      statutJourJ?: boolean;
+      paxArrived?: number | null;
+    };
+    if (!id) {
       return new Response(
-        JSON.stringify({ error: "Missing id or statutJourJ" }),
+        JSON.stringify({ error: "Missing id" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+
+    const fields: Record<string, unknown> = {};
+    if (typeof statutJourJ === "boolean") fields["Statut Jour J"] = statutJourJ;
+    if (paxArrived === null) fields["Pax Arrivés"] = null;
+    else if (typeof paxArrived === "number" && !isNaN(paxArrived))
+      fields["Pax Arrivés"] = paxArrived;
+
+    if (Object.keys(fields).length === 0) {
+      return new Response(
+        JSON.stringify({ error: "No fields to update" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -71,7 +88,7 @@ Deno.serve(async (req) => {
         "X-Connection-Api-Key": AIRTABLE_API_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fields: { "Statut Jour J": statutJourJ } }),
+      body: JSON.stringify({ fields }),
     });
 
     const json = await resp.json();
@@ -80,7 +97,11 @@ Deno.serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ ok: true, statutJourJ: Boolean(json?.fields?.["Statut Jour J"]) }),
+      JSON.stringify({
+        ok: true,
+        statutJourJ: Boolean(json?.fields?.["Statut Jour J"]),
+        paxArrived: json?.fields?.["Pax Arrivés"] ?? null,
+      }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (err) {

@@ -92,6 +92,7 @@ Deno.serve(async (req) => {
         seatNumberPlus1: f["Seat Number +1"] ?? "",
         seatNumberPlus2: f["Seat Number +2"] ?? "",
         statutJourJ: Boolean(f["Statut Jour J"]),
+        paxArrived: typeof f["Pax Arrivés"] === "number" ? f["Pax Arrivés"] : null,
         priority: f["Priority"] ?? "",
       };
     });
