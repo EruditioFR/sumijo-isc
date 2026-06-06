@@ -305,6 +305,13 @@ const CortotAdmin = () => {
                         {(() => {
                           const total = paxTotal(g);
                           const current = g.paxArrived ?? (g.statutJourJ ? total : 0);
+                          if (total <= 1) {
+                            return (
+                              <span className="text-sm text-muted-foreground">
+                                {g.statutJourJ ? '1 / 1' : '0 / 1'}
+                              </span>
+                            );
+                          }
                           return (
                             <Select
                               value={String(current)}
