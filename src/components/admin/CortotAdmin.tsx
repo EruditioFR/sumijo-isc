@@ -209,7 +209,7 @@ const CortotAdmin = () => {
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Rechercher un invité, société, catégorie…"
+            placeholder="Rechercher un invité, société, catégorie, contact invitation…"
             className="pl-9"
           />
         </div>
