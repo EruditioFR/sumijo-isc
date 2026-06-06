@@ -301,6 +301,30 @@ const CortotAdmin = () => {
                         )}
                       </TableCell>
                       <TableCell className="text-sm">{g.company || '—'}</TableCell>
+                      <TableCell className="text-center">
+                        {(() => {
+                          const total = paxTotal(g);
+                          const current = g.paxArrived ?? (g.statutJourJ ? total : 0);
+                          return (
+                            <Select
+                              value={String(current)}
+                              onValueChange={(v) => setPaxArrived(g, parseInt(v, 10))}
+                              disabled={isUpdating}
+                            >
+                              <SelectTrigger className="h-8 w-20 mx-auto">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {Array.from({ length: total + 1 }, (_, i) => (
+                                  <SelectItem key={i} value={String(i)}>
+                                    {i} / {total}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          );
+                        })()}
+                      </TableCell>
                       <TableCell className="text-center font-medium">{g.pax || '—'}</TableCell>
                       <TableCell>
                         {g.category ? (
