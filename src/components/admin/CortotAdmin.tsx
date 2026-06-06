@@ -252,6 +252,7 @@ const CortotAdmin = () => {
                   <TableHead className="w-28 text-center">Jour J</TableHead>
                   <TableHead>Nom</TableHead>
                   <TableHead>Société</TableHead>
+                  <TableHead className="text-center">Pax arrivés</TableHead>
                   <TableHead className="text-center">Pax</TableHead>
                   <TableHead>Catégorie</TableHead>
                   <TableHead>Contact invitation</TableHead>
