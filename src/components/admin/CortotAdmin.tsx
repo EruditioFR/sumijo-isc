@@ -70,22 +70,29 @@ const CortotAdmin = () => {
     fetchGuests();
   }, []);
 
-  const toggleStatutJourJ = async (guest: Guest) => {
-    const next = !guest.statutJourJ;
+  const paxTotal = (g: Guest) => {
+    const n = parseInt(g.pax, 10);
+    return isNaN(n) ? 1 : Math.max(1, n);
+  };
+
+  const updateGuest = async (
+    guest: Guest,
+    changes: { statutJourJ?: boolean; paxArrived?: number | null },
+  ) => {
+    const prevSnapshot = { statutJourJ: guest.statutJourJ, paxArrived: guest.paxArrived };
     setGuests((prev) =>
-      prev.map((g) => (g.id === guest.id ? { ...g, statutJourJ: next } : g)),
+      prev.map((g) => (g.id === guest.id ? { ...g, ...changes } : g)),
     );
     setUpdating((prev) => new Set(prev).add(guest.id));
     try {
       const { data, error } = await supabase.functions.invoke('update-cortot-guest', {
-        body: { id: guest.id, statutJourJ: next },
+        body: { id: guest.id, ...changes },
       });
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
     } catch (e) {
-      // revert
       setGuests((prev) =>
-        prev.map((g) => (g.id === guest.id ? { ...g, statutJourJ: !next } : g)),
+        prev.map((g) => (g.id === guest.id ? { ...g, ...prevSnapshot } : g)),
       );
       const msg = e instanceof Error ? e.message : 'Erreur inconnue';
       toast({ title: 'Erreur', description: msg, variant: 'destructive' });
@@ -96,6 +103,26 @@ const CortotAdmin = () => {
         return n;
       });
     }
+  };
+
+  const toggleStatutJourJ = (guest: Guest) => {
+    const next = !guest.statutJourJ;
+    // When marking arrived, default paxArrived to total pax if not set
+    const changes: { statutJourJ: boolean; paxArrived?: number | null } = { statutJourJ: next };
+    if (next && (guest.paxArrived == null || guest.paxArrived === 0)) {
+      changes.paxArrived = paxTotal(guest);
+    }
+    if (!next) {
+      changes.paxArrived = 0;
+    }
+    updateGuest(guest, changes);
+  };
+
+  const setPaxArrived = (guest: Guest, value: number) => {
+    const changes: { paxArrived: number; statutJourJ?: boolean } = { paxArrived: value };
+    if (value > 0 && !guest.statutJourJ) changes.statutJourJ = true;
+    if (value === 0 && guest.statutJourJ) changes.statutJourJ = false;
+    updateGuest(guest, changes);
   };
 
   const filtered = useMemo(() => {
@@ -116,16 +143,12 @@ const CortotAdmin = () => {
 
   const stats = useMemo(() => {
     const arrived = guests.filter((g) => g.statutJourJ).length;
-    const expectedPax = guests.reduce((sum, g) => {
-      const n = parseInt(g.pax, 10);
-      return sum + (isNaN(n) ? 0 : n);
+    const expectedPax = guests.reduce((sum, g) => sum + paxTotal(g), 0);
+    const arrivedPax = guests.reduce((sum, g) => {
+      if (g.paxArrived != null) return sum + g.paxArrived;
+      if (g.statutJourJ) return sum + paxTotal(g);
+      return sum;
     }, 0);
-    const arrivedPax = guests
-      .filter((g) => g.statutJourJ)
-      .reduce((sum, g) => {
-        const n = parseInt(g.pax, 10);
-        return sum + (isNaN(n) ? 0 : n);
-      }, 0);
     return { arrived, total: guests.length, arrivedPax, expectedPax };
   }, [guests]);
 
