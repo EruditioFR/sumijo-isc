@@ -11,7 +11,7 @@ interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-const navItems = [
+const navItems: { path: string; icon: typeof ImageIcon; labelKey?: string; label?: string }[] = [
   { path: '/admin/gallery', icon: ImageIcon, labelKey: 'admin.images' },
   { path: '/admin/billetterie', icon: Ticket, labelKey: 'admin.ticketing' },
   { path: '/admin/candidats', icon: Users, labelKey: 'admin.candidates' },
