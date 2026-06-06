@@ -26,6 +26,7 @@ interface Guest {
   seatNumberPlus1: string;
   seatNumberPlus2: string;
   statutJourJ: boolean;
+  paxArrived: number | null;
   priority: string;
 }
 
