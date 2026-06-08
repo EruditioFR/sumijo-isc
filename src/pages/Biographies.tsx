@@ -116,20 +116,6 @@ const artists: Artist[] = [
     ],
     photo: marieLombardPortrait.url,
   },
-  {
-    name: 'Marie Lombard',
-    role: 'Lauréate 2024',
-    bio: "Marie Lombard, soprano, est membre de l'International Opera Studio de l'Opéra de Zurich depuis la saison 2024-2025. Lauréate du Sumi Jo International Singing Competition, du Concours international Jeunes Espoirs du Grand Opéra d'Avignon et du Concours international de chant de Marmande, elle déploie une voix lumineuse et une présence scénique affirmée à travers un répertoire varié allant de Mozart au grand opéra romantique.",
-    fullBio: [
-      "Marie Lombard, soprano, est membre de l'International Opera Studio de l'Opéra de Zurich depuis la saison 2024-2025. Elle y a fait ses débuts dans les rôles de Barbarina (Le Nozze di Figaro), de la Contessa di Folleville (Il viaggio a Reims) et de Frederika (Jakob Lenz). Elle a également été invitée à se produire lors du concert de gala de bienfaisance aux côtés de Cecilia Bartoli.",
-      "Cette saison, elle reprend le rôle de Barbarina et interprétera également Sandmann (Hänsel und Gretel) ainsi que Lauretta (Gianni Schicchi). Cet été, elle chantera Violetta Valéry (La Traviata) et Marzelline (Fidelio) dans plusieurs festivals français. La saison prochaine, elle interprétera Antonia (Les Contes d'Hoffmann) au Théâtre de Saint-Gall, en Suisse, Frasquita à l'Opéra de Monte-Carlo, ainsi que Marzelline dans plusieurs théâtres en France.",
-      "Elle a précédemment étudié au Conservatoire National Supérieur de Musique et de Danse de Paris auprès de Chantal Mathias, ainsi qu'à Rennes avec Stéphanie d'Oustrac. Elle a également participé à des masterclasses auprès de Lisette Oropesa, Elīna Garanča, Anne Sofie von Otter, Stéphane Degout, Inva Mula, Brigitte Fassbaender et Mariella Devia.",
-      "Elle est également ancienne élève de l'Académie de l'Opéra de Bordeaux et de l'Académie de l'Opéra de Monte-Carlo, placée sous la direction de Sophie Koch.",
-      "Marie Lombard est lauréate du Sumi Jo International Singing Competition, du Concours international Jeunes Espoirs du Grand Opéra d'Avignon et du Concours international de chant de Marmande.",
-      "Elle a également interprété des rôles tels qu'Inès (La Favorite), La Princesse (L'Enfant et les Sortilèges), Belinda (Dido and Aeneas), Eurydice (Orfeo ed Euridice), Adèle (Die Fledermaus), Coraline (Le Toréador) et la Première Dame (Die Zauberflöte).",
-    ],
-    photo: marieLombardPortrait.url,
-  },
 ];
 
 const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => {
