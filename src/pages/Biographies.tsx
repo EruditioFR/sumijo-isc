@@ -15,6 +15,10 @@ import {
 } from '@/components/ui/dialog';
 import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
 import sumiJoPortrait from '@/assets/sumi-jo-bio-portrait.jpg.asset.json';
+import zihaoLiPortrait from '@/assets/winner-zihao-li.png.asset.json';
+import julietteTacchinoPortrait from '@/assets/winner-juliette-tacchino.png.asset.json';
+import georgeVirbanPortrait from '@/assets/winner-george-virban.png.asset.json';
+import marieLombardPortrait from '@/assets/winner-marie-lombard.png.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
