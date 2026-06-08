@@ -14,6 +14,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
+import sumiJoPortrait from '@/assets/sumi-jo-bio-portrait.jpg.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
@@ -39,6 +40,7 @@ const artists: Artist[] = [
       "En 1989, Mlle Jo remporte le Grammy Award de soliste principal dans le meilleur enregistrement d'opéra pour « La Femme sans ombre » de Richard Strauss. En 2000, elle reçoit de M. Matsuura, directeur général de l'UNESCO, le titre « d'Artiste UNESCO de la Paix ». En 2015, célébrant ses 30 ans de carrière, elle réalise une tournée chinoise, américaine, australienne et européenne. La chanson qu'elle interprète dans le film de Sorrentino « Youth » est nommée pour un Golden Globe et un Academy Award.",
       "Aujourd'hui, Sumi Jo se consacre à la transmission de son expérience aux nouvelles générations. À travers le Sumi Jo International Singing Competition (SJISC), elle a créé un concours d'un genre nouveau, basé sur l'ambition, l'émotion et la générosité. Son objectif est d'offrir un tremplin aux jeunes talents tout en promouvant la diversité et l'inclusion dans le monde de l'opéra. Le 15 juillet 2024, elle lance officiellement la première compétition internationale de chant qui porte son nom.",
     ],
+    photo: sumiJoPortrait.url,
   },
   {
     name: 'Zihao Li',
