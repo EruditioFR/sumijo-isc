@@ -58,7 +58,18 @@ const artists: Artist[] = [
   {
     name: 'Juliette Tacchino',
     role: 'Lauréate 2024',
-    bio: 'Biographie à compléter.',
+    bio: "Lauréate du prix spécial du jury au Concours International de Chant Sumi Jo 2024 et du French Riviera Masters Competition 2024 à l'Opéra de Nice Côte d'Azur, Juliette Tacchino poursuit une carrière en pleine ascension. Issue d'une famille de musiciens, elle déploie une voix lumineuse à travers des rôles variés allant de Mozart au répertoire contemporain.",
+    fullBio: [
+      "Lauréate du prix spécial du jury au Concours International de Chant Sumi Jo 2024 et du French Riviera Masters Competition 2024 à l'Opéra de Nice Côte d'Azur, elle poursuit une carrière en pleine ascension.",
+      "Au cours de la saison 2025–2026, elle incarnera Delphine Garnier dans Les Demoiselles de Rochefort au prestigieux cabaret le Théâtre Lido 2 Paris et partira en tournée aux États-Unis dans le cadre de concerts de musique de chambre et de récitals solos.",
+      "Durant la saison 2024–2025, Juliette s'est produite à Paris avec Opéra Fuoco sous la direction de David Stern, collaborant notamment avec Laurent Naouri et Elsa Rooke dans des scènes d'opéra de Jules Massenet. Elle a également donné un récital au Château d'Écouen, près de Paris, et interprété la partie de soprano soliste dans Solomon de William Boyce à l'Opéra de Massy.",
+      "Cette même saison, elle a fait ses débuts dans les rôles de Susanna (Le nozze di Figaro) sous la direction de Nicholas McGegan, et dans Candide sous la baguette de David-Charles Abell, avec le Curtis Opera Theatre. Elle a aussi interprété Lonely Child de Claude Vivier avec le Curtis Symphony Orchestra. Juliette a fait ses débuts aux Chorégies d'Orange, l'un des plus prestigieux festivals lyriques européens et a accompagné la soprano de renommée internationale Sumi Jo lors de sa tournée en Chine et en Corée du Sud.",
+      "Parmi ses engagements marquants des dernières années, citons ses interprétations en concert de Mélisande (Pelléas et Mélisande) et Sophie (Der Rosenkavalier) avec le Curtis Symphony Orchestra dirigé par Yannick Nézet-Séguin, ainsi que ses prestations scéniques dans les rôles de Ginevra (Ariodante), Thérèse (Les Mamelles de Tirésias), la Renarde (The Cunning Little Vixen), ou encore en tant que soliste dans une mise en scène du L'Allegro, il Penseroso ed il Moderato de Haendel.",
+      "En concert, elle s'est illustrée comme soprano soliste dans le Requiem de Mozart avec le Binghamton Philharmonic, la Symphonie n° 4 de Mahler avec l'Orchestre de l'Université de Montréal, ainsi que dans Dixit Dominus et le Dettingen Te Deum de Haendel avec l'Orchestre de chambre de Monte-Carlo.",
+      "Issue d'une famille de musiciens, Juliette a commencé son parcours vocal au sein du Chœur d'enfants de l'Opéra de Nice. Pendant ses études musicales, elle a incarné les rôles d'Ilia (Idomeneo), Pauline (La Vie Parisienne), Phani (Les Indes Galantes), une nymphe dans The Fairy Queen, et a été soliste dans une œuvre contemporaine de la compositrice canadienne Ana Sokolović.",
+      "Elle a remporté le Premier Prix du Concours d'Opéra Bouffe de Québec en 2020 et 2022, et a reçu la Bourse Louise Roy, la bourse de la Fondation Azrieli, ainsi que le titre de lauréate 2024 du Cercle Richard Wagner Rive Droite. En 2024, elle a été mise à l'honneur dans un article du New York Times portant sur la formation et le développement artistique des jeunes talents au sein du prestigieux Curtis Institute of Music.",
+      "Juliette est titulaire d'un Master of Music du Curtis Institute of Music et d'un baccalauréat en musique de l'Université de Montréal.",
+    ],
   },
   {
     name: 'George Virban',
