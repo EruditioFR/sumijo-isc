@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
+import posterAsset from '@/assets/poster-cortot-2026.png.asset.json';
 import sumiJoPortrait from '@/assets/sumi-jo-bio-portrait.jpg.asset.json';
 import zihaoLiPortrait from '@/assets/winner-zihao-li.png.asset.json';
 import julietteTacchinoPortrait from '@/assets/winner-juliette-tacchino.png.asset.json';
