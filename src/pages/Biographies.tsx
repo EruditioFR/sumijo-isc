@@ -15,6 +15,10 @@ import {
 } from '@/components/ui/dialog';
 import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
 import sumiJoPortrait from '@/assets/sumi-jo-bio-portrait.jpg.asset.json';
+import zihaoLiPortrait from '@/assets/winner-zihao-li.png.asset.json';
+import julietteTacchinoPortrait from '@/assets/winner-juliette-tacchino.png.asset.json';
+import georgeVirbanPortrait from '@/assets/winner-george-virban.png.asset.json';
+import marieLombardPortrait from '@/assets/winner-marie-lombard.png.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
@@ -64,6 +68,7 @@ const artists: Artist[] = [
       "Récitals solo : 2021 — Récital solo « Splendid Baroque », Pékin ; 2023 — Récital solo consacré à Der Schwanengesang de Schubert, Pékin ; 2023 — Récital solo consacré à Dichterliebe de Schumann et aux Lieder eines fahrenden Gesellen de Mahler, Pékin.",
       "Chefs d'orchestre et orchestres : Riccardo Muti, Philippe Mestres, Niels Muus, Victor Jacob, Jia Lü, Tao Fan. China NCPA Orchestra, Suzhou Symphony Orchestra — SZSO, Orchestre National Bordeaux Aquitaine — ONBA, Beijing Union Symphony Orchestra — BUSO, Changsha Symphony Orchestra.",
     ],
+    photo: zihaoLiPortrait.url,
   },
   {
     name: 'Juliette Tacchino',
@@ -80,6 +85,7 @@ const artists: Artist[] = [
       "Elle a remporté le Premier Prix du Concours d'Opéra Bouffe de Québec en 2020 et 2022, et a reçu la Bourse Louise Roy, la bourse de la Fondation Azrieli, ainsi que le titre de lauréate 2024 du Cercle Richard Wagner Rive Droite. En 2024, elle a été mise à l'honneur dans un article du New York Times portant sur la formation et le développement artistique des jeunes talents au sein du prestigieux Curtis Institute of Music.",
       "Juliette est titulaire d'un Master of Music du Curtis Institute of Music et d'un baccalauréat en musique de l'Université de Montréal.",
     ],
+    photo: julietteTacchinoPortrait.url,
   },
   {
     name: 'George Virban',
@@ -94,6 +100,7 @@ const artists: Artist[] = [
       "Durant la saison 2025/26, il collabore avec des institutions majeures telles que la Bayerische Staatsoper et l'Opéra d'Israël. En 2026, il fait ses débuts dans le rôle d'Alfredo (La Traviata) à l'Opéra national roumain de Cluj-Napoca. Ses engagements récents incluent également Sou-Chong (Le Pays du sourire) à Bucarest et des représentations de Lensky à Haïfa. Jusqu'à la fin de la saison en cours, le public peut l'entendre dans le rôle d'Alfredo (La Traviata) au Théâtre d'État d'Oradea et dans celui de Ferrando (Così fan tutte) au Festival d'opéra lyrique de Jérusalem.",
       "La saison à venir comprendra plusieurs débuts importants, notamment le rôle de Roméo dans Roméo et Juliette de Gounod à l'Opéra national roumain de Cluj-Napoca et au Teatro Colón de Buenos Aires, ainsi que le rôle-titre de Werther de Massenet à l'Opéra national roumain de Cluj-Napoca.",
     ],
+    photo: georgeVirbanPortrait.url,
   },
   {
     name: 'Marie Lombard',
@@ -107,6 +114,7 @@ const artists: Artist[] = [
       "Marie Lombard est lauréate du Sumi Jo International Singing Competition, du Concours international Jeunes Espoirs du Grand Opéra d'Avignon et du Concours international de chant de Marmande.",
       "Elle a également interprété des rôles tels qu'Inès (La Favorite), La Princesse (L'Enfant et les Sortilèges), Belinda (Dido and Aeneas), Eurydice (Orfeo ed Euridice), Adèle (Die Fledermaus), Coraline (Le Toréador) et la Première Dame (Die Zauberflöte).",
     ],
+    photo: marieLombardPortrait.url,
   },
   {
     name: 'Alexandre Baldo',
