@@ -149,7 +149,7 @@ const ConcertGalaParis = () => {
             >
               <img
                 src={artistsImage}
-                alt="Sumi Jo et les lauréats 2024 du Sumi Jo International Singing Competition"
+                alt="Sumi Jo et les lauréats 2024 - Zihao Li, Marie Lombard, Juliette Tacchino, George Virban"
                 className="w-full h-auto block"
                 loading="lazy"
               />
@@ -157,7 +157,7 @@ const ConcertGalaParis = () => {
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold/60 rounded-br-2xl pointer-events-none" />
             </motion.div>
             <p className="text-center text-muted-foreground text-sm italic mt-4">
-              Sumi Jo et les lauréats 2024 — Marie Lombard, Juliette Tacchino, George Virban, Zihao Li, Alexandre Baldo
+              Sumi Jo et les lauréats 2024 - Zihao Li, Marie Lombard, Juliette Tacchino, George Virban
             </p>
           </div>
         </section>
