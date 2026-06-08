@@ -14,6 +14,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import posterAsset from '@/assets/concert-cortot-poster.png.asset.json';
+import sumiJoPortrait from '@/assets/sumi-jo-bio-portrait.jpg.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
