@@ -118,7 +118,7 @@ const artists: Artist[] = [
   },
   {
     name: 'Edwige Herchenroder',
-    role: 'Pianiste cheffe de chant',
+    role: 'PIANISTE',
     bio: "Pianiste cheffe de chant de renommée internationale, Edwige Herchenroder accompagne les plus grandes voix de l'opéra contemporain sur les scènes les plus prestigieuses. Lauréate HSBC du Festival d'Aix-en-Provence et titulaire du prix ARAM de la Royal Academy of Music, elle enseigne la diction lyrique française et l'étude de rôles d'opéra à l'École Normale de musique de Paris Alfred Cortot.",
     fullBio: [
       "Edwige Herchenroder mène une carrière de pianiste cheffe de chant en France et à l'international. Au concert, elle s'est produite aux côtés de Benjamin Bernheim, Stéphanie d'Oustrac, Marina Viotti, Martina Russomanno, Edwin Crossley-Mercer notamment à la Philharmonie de Paris, au Festival d'Aix en Provence, Théâtre des Champs Elysées, Tonhalle de Zürich, Victoria Hall à Genève.",
