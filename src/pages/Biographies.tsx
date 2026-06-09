@@ -116,6 +116,20 @@ const artists: Artist[] = [
     ],
     photo: marieLombardPortrait.url,
   },
+  {
+    name: 'Edwige Herchenroder',
+    role: 'Pianiste cheffe de chant',
+    bio: "Pianiste cheffe de chant de renommée internationale, Edwige Herchenroder accompagne les plus grandes voix de l'opéra contemporain sur les scènes les plus prestigieuses. Lauréate HSBC du Festival d'Aix-en-Provence et titulaire du prix ARAM de la Royal Academy of Music, elle enseigne la diction lyrique française et l'étude de rôles d'opéra à l'École Normale de musique de Paris Alfred Cortot.",
+    fullBio: [
+      "Edwige Herchenroder mène une carrière de pianiste cheffe de chant en France et à l'international. Au concert, elle s'est produite aux côtés de Benjamin Bernheim, Stéphanie d'Oustrac, Marina Viotti, Martina Russomanno, Edwin Crossley-Mercer notamment à la Philharmonie de Paris, au Festival d'Aix en Provence, Théâtre des Champs Elysées, Tonhalle de Zürich, Victoria Hall à Genève.",
+      "Ses engagements à l'opéra comprennent Der Rosenkavalier, La Périchole, Die Fledermaus, Robinson Crusoé au Théâtre des Champs-Élysées ; une création mondiale à l'Opéra Comique, La Bohème à l'Orchestre National de Lille, Werther avec l'Orchestre de Chambre de Genève, le continuo des Noces de Figaro à l'Opéra National de Lyon ; La fille du Régiment au Donizetti Festival ; Pelléas et Mélisande avec Garsington Opera et à l'Opéra Rouen Normandie.",
+      "Au disque, elle enregistre 'Nocturnes' avec le ténor Rupert Charlesworth (Zig Zag Territoires – Outhere music) et 'Horizons: French mélodies' auprès de la mezzo soprano Kitty Whately (Chandos Records).",
+      "Edwige Herchenroder enseigne la Diction lyrique française et l'Étude de rôles d'opéra à l'École Normale de musique de Paris Alfred Cortot. Elle travaille également pour le Jette Parker Young Artist Program au Royal Opera Ballet à Londres. En 2023, la Royal Academy of Music lui remet le prix ARAM.",
+      "Après des études pianistiques avec Eric Vidonne au Conservatoire Régional de Paris et à l'École Normale de musique de Paris, elle intègre le Master in performance avec Audrey Hyland et Malcolm Martineau à la Royal Academy of Music de Londres. À la fin de ses études, elle est nommée Royal Academy of Music Hodgson Fellow et se perfectionne ensuite auprès de Graham Johnson, Julius Drake, Roger Vignoles, David Selig, Helmut Deutsch et Umberto Finazzi.",
+      "Edwige Herchenroder est pianiste Lauréate HSBC du Festival d'Aix en Provence. Sélectionnée au Young Songmaker's Almanach, Solti Peretti Accademia, Britten-Pears Young artist program, Samling Arts Foundation, Académie du Festival d'Aix, Dutch National Opera Young Artist Program, Fondation Royaumont, Fondation des Treilles, elle joue, à ces occasions, pour les masterclasses de Nathalie Dessay, Barbara Bonney, Ann Murray, Felicity Lott, Dawn Upshaw, Thomas Allen et Laurent Naouri.",
+      "En tant que jeune cheffe d'orchestre, elle participe également à une masterclasse de direction d'orchestre au Young Artist Program du Royal Opera Ballet de Londres.",
+    ],
+  },
 ];
 
 const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => {
