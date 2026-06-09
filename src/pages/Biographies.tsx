@@ -19,6 +19,7 @@ import zihaoLiPortrait from '@/assets/winner-zihao-li.png.asset.json';
 import julietteTacchinoPortrait from '@/assets/winner-juliette-tacchino.png.asset.json';
 import georgeVirbanPortrait from '@/assets/winner-george-virban.png.asset.json';
 import marieLombardPortrait from '@/assets/winner-marie-lombard.png.asset.json';
+import edwigeHerchenroderPortrait from '@/assets/winner-edwige-herchenroder.jpg.asset.json';
 
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
@@ -29,6 +30,7 @@ interface Artist {
   bio: string;
   fullBio?: string[];
   photo?: string;
+  photoCredit?: string;
 }
 
 const artists: Artist[] = [
@@ -129,6 +131,8 @@ const artists: Artist[] = [
       "Edwige Herchenroder est pianiste Lauréate HSBC du Festival d'Aix en Provence. Sélectionnée au Young Songmaker's Almanach, Solti Peretti Accademia, Britten-Pears Young artist program, Samling Arts Foundation, Académie du Festival d'Aix, Dutch National Opera Young Artist Program, Fondation Royaumont, Fondation des Treilles, elle joue, à ces occasions, pour les masterclasses de Nathalie Dessay, Barbara Bonney, Ann Murray, Felicity Lott, Dawn Upshaw, Thomas Allen et Laurent Naouri.",
       "En tant que jeune cheffe d'orchestre, elle participe également à une masterclasse de direction d'orchestre au Young Artist Program du Royal Opera Ballet de Londres.",
     ],
+    photo: edwigeHerchenroderPortrait.url,
+    photoCredit: 'Christineledroitperrin',
   },
 ];
 
@@ -163,6 +167,11 @@ const BiographyCard = ({ artist, index }: { artist: Artist; index: number }) => 
               </div>
             )}
           </div>
+          {artist.photo && artist.photoCredit && (
+            <p className="mt-2 text-[10px] sm:text-[11px] text-muted-foreground/70 italic text-center tracking-wide">
+              © {artist.photoCredit}
+            </p>
+          )}
         </div>
 
         <div className="space-y-3 text-center sm:text-left">
