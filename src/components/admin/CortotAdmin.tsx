@@ -143,16 +143,21 @@ const CortotAdmin = () => {
     });
   }, [guests, search, onlyArrived, onlyConfirmed, selectedCategory]);
 
+  const categoryFiltered = useMemo(() => {
+    if (selectedCategory === 'all') return guests;
+    return guests.filter((g) => g.category === selectedCategory);
+  }, [guests, selectedCategory]);
+
   const stats = useMemo(() => {
-    const arrived = guests.filter((g) => g.statutJourJ).length;
-    const expectedPax = guests.reduce((sum, g) => sum + paxTotal(g), 0);
-    const arrivedPax = guests.reduce((sum, g) => {
+    const arrived = categoryFiltered.filter((g) => g.statutJourJ).length;
+    const expectedPax = categoryFiltered.reduce((sum, g) => sum + paxTotal(g), 0);
+    const arrivedPax = categoryFiltered.reduce((sum, g) => {
       if (g.paxArrived != null) return sum + g.paxArrived;
       if (g.statutJourJ) return sum + paxTotal(g);
       return sum;
     }, 0);
-    return { arrived, total: guests.length, arrivedPax, expectedPax };
-  }, [guests]);
+    return { arrived, total: categoryFiltered.length, arrivedPax, expectedPax };
+  }, [categoryFiltered]);
 
   return (
     <div className="max-w-[1600px] mx-auto">
@@ -192,7 +197,7 @@ const CortotAdmin = () => {
           <div className="bg-background border rounded-lg p-4">
             <div className="text-xs uppercase tracking-wide text-muted-foreground">Confirmés</div>
             <div className="text-2xl font-display text-foreground mt-1">
-              {guests.filter((g) => /yes/i.test(g.confirmed)).length}
+              {categoryFiltered.filter((g) => /yes/i.test(g.confirmed)).length}
             </div>
           </div>
           <div className="bg-background border rounded-lg p-4">
