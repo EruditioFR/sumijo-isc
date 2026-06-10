@@ -315,13 +315,14 @@ const CortotAdmin = () => {
                           {[g.firstName, g.lastName].filter(Boolean).join(' ') || '—'}
                         </div>
                         {seats.length > 0 && (
-                          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] font-medium">
-                            {seats.map((s, i) => (
-                              <span key={i} className={s.color}>
-                                {s.label} : {s.value}
-                              </span>
-                            ))}
-                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setSeatsGuest(g)}
+                            className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-border bg-muted/50 hover:bg-muted text-[11px] font-medium text-foreground transition-colors"
+                          >
+                            <Armchair className="w-3 h-3" />
+                            Places ({seats.length})
+                          </button>
                         )}
                       </TableCell>
                       <TableCell className="text-sm">{g.company || '—'}</TableCell>
