@@ -197,7 +197,7 @@ const CortotAdmin = () => {
           <div className="bg-background border rounded-lg p-4">
             <div className="text-xs uppercase tracking-wide text-muted-foreground">Confirmés</div>
             <div className="text-2xl font-display text-foreground mt-1">
-              {guests.filter((g) => /yes/i.test(g.confirmed)).length}
+              {categoryFiltered.filter((g) => /yes/i.test(g.confirmed)).length}
             </div>
           </div>
           <div className="bg-background border rounded-lg p-4">
