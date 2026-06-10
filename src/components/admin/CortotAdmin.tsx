@@ -47,7 +47,7 @@ const CortotAdmin = () => {
   const [search, setSearch] = useState('');
   const [onlyArrived, setOnlyArrived] = useState(false);
   const [onlyConfirmed, setOnlyConfirmed] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const fetchGuests = async (opts: { silent?: boolean } = {}) => {
     if (!opts.silent) setIsLoading(true);
@@ -131,7 +131,7 @@ const CortotAdmin = () => {
     return guests.filter((g) => {
       if (onlyArrived && !g.statutJourJ) return false;
       if (onlyConfirmed && !/yes/i.test(g.confirmed)) return false;
-      if (selectedCategory && g.category !== selectedCategory) return false;
+      if (selectedCategory !== 'all' && g.category !== selectedCategory) return false;
       if (!q) return true;
       return (
         g.firstName.toLowerCase().includes(q) ||
@@ -220,7 +220,7 @@ const CortotAdmin = () => {
             <SelectValue placeholder="Catégorie" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Toutes</SelectItem>
+            <SelectItem value="all">Toutes</SelectItem>
             {Array.from(new Set(guests.map((g) => g.category).filter(Boolean))).sort().map((cat) => (
               <SelectItem key={cat} value={cat}>
                 {cat}
