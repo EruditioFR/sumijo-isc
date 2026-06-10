@@ -389,6 +389,45 @@ const CortotAdmin = () => {
           </div>
         </div>
       )}
+
+      <Dialog open={!!seatsGuest} onOpenChange={(o) => !o && setSeatsGuest(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Armchair className="w-5 h-5" />
+              Places attribuées
+            </DialogTitle>
+            <DialogDescription>
+              {seatsGuest ? [seatsGuest.firstName, seatsGuest.lastName].filter(Boolean).join(' ') : ''}
+              {seatsGuest?.company ? ` — ${seatsGuest.company}` : ''}
+            </DialogDescription>
+          </DialogHeader>
+          {seatsGuest && (
+            <div className="space-y-2">
+              {[
+                { label: 'Siège', value: seatsGuest.seatNumber, color: 'border-primary/30 bg-primary/5 text-primary' },
+                { label: '+1', value: seatsGuest.seatNumberPlus1, color: 'border-amber-300 bg-amber-50 text-amber-800' },
+                { label: '+2', value: seatsGuest.seatNumberPlus2, color: 'border-emerald-300 bg-emerald-50 text-emerald-800' },
+              ]
+                .filter((s) => s.value)
+                .map((s, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center justify-between rounded-lg border px-4 py-3 ${s.color}`}
+                  >
+                    <span className="text-sm font-medium">{s.label}</span>
+                    <span className="text-base font-display">{s.value}</span>
+                  </div>
+                ))}
+              {!seatsGuest.seatNumber && !seatsGuest.seatNumberPlus1 && !seatsGuest.seatNumberPlus2 && (
+                <p className="text-sm text-muted-foreground text-center py-4">
+                  Aucune place attribuée.
+                </p>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
