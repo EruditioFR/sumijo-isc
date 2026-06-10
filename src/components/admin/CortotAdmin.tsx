@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Music, Loader2, RefreshCw, Search } from 'lucide-react';
+import { Music, Loader2, RefreshCw, Search, Armchair } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -9,6 +9,9 @@ import {
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select';
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
+} from '@/components/ui/dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
@@ -48,6 +51,7 @@ const CortotAdmin = () => {
   const [onlyArrived, setOnlyArrived] = useState(false);
   const [onlyConfirmed, setOnlyConfirmed] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [seatsGuest, setSeatsGuest] = useState<Guest | null>(null);
 
   const fetchGuests = async (opts: { silent?: boolean } = {}) => {
     if (!opts.silent) setIsLoading(true);
@@ -311,13 +315,14 @@ const CortotAdmin = () => {
                           {[g.firstName, g.lastName].filter(Boolean).join(' ') || '—'}
                         </div>
                         {seats.length > 0 && (
-                          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] font-medium">
-                            {seats.map((s, i) => (
-                              <span key={i} className={s.color}>
-                                {s.label} : {s.value}
-                              </span>
-                            ))}
-                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setSeatsGuest(g)}
+                            className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-border bg-muted/50 hover:bg-muted text-[11px] font-medium text-foreground transition-colors"
+                          >
+                            <Armchair className="w-3 h-3" />
+                            Places ({seats.length})
+                          </button>
                         )}
                       </TableCell>
                       <TableCell className="text-sm">{g.company || '—'}</TableCell>
@@ -384,6 +389,45 @@ const CortotAdmin = () => {
           </div>
         </div>
       )}
+
+      <Dialog open={!!seatsGuest} onOpenChange={(o) => !o && setSeatsGuest(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Armchair className="w-5 h-5" />
+              Places attribuées
+            </DialogTitle>
+            <DialogDescription>
+              {seatsGuest ? [seatsGuest.firstName, seatsGuest.lastName].filter(Boolean).join(' ') : ''}
+              {seatsGuest?.company ? ` — ${seatsGuest.company}` : ''}
+            </DialogDescription>
+          </DialogHeader>
+          {seatsGuest && (
+            <div className="space-y-2">
+              {[
+                { label: 'Siège', value: seatsGuest.seatNumber, color: 'border-primary/30 bg-primary/5 text-primary' },
+                { label: '+1', value: seatsGuest.seatNumberPlus1, color: 'border-amber-300 bg-amber-50 text-amber-800' },
+                { label: '+2', value: seatsGuest.seatNumberPlus2, color: 'border-emerald-300 bg-emerald-50 text-emerald-800' },
+              ]
+                .filter((s) => s.value)
+                .map((s, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center justify-between rounded-lg border px-4 py-3 ${s.color}`}
+                  >
+                    <span className="text-sm font-medium">{s.label}</span>
+                    <span className="text-base font-display">{s.value}</span>
+                  </div>
+                ))}
+              {!seatsGuest.seatNumber && !seatsGuest.seatNumberPlus1 && !seatsGuest.seatNumberPlus2 && (
+                <p className="text-sm text-muted-foreground text-center py-4">
+                  Aucune place attribuée.
+                </p>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
