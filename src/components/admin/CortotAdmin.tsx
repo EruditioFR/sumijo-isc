@@ -47,6 +47,7 @@ const CortotAdmin = () => {
   const [search, setSearch] = useState('');
   const [onlyArrived, setOnlyArrived] = useState(false);
   const [onlyConfirmed, setOnlyConfirmed] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const fetchGuests = async (opts: { silent?: boolean } = {}) => {
     if (!opts.silent) setIsLoading(true);
@@ -130,6 +131,7 @@ const CortotAdmin = () => {
     return guests.filter((g) => {
       if (onlyArrived && !g.statutJourJ) return false;
       if (onlyConfirmed && !/yes/i.test(g.confirmed)) return false;
+      if (selectedCategory && g.category !== selectedCategory) return false;
       if (!q) return true;
       return (
         g.firstName.toLowerCase().includes(q) ||
@@ -139,7 +141,7 @@ const CortotAdmin = () => {
         g.contactForInvitation.toLowerCase().includes(q)
       );
     });
-  }, [guests, search, onlyArrived, onlyConfirmed]);
+  }, [guests, search, onlyArrived, onlyConfirmed, selectedCategory]);
 
   const stats = useMemo(() => {
     const arrived = guests.filter((g) => g.statutJourJ).length;
@@ -213,6 +215,19 @@ const CortotAdmin = () => {
             className="pl-9"
           />
         </div>
+        <Select value={selectedCategory} onValueChange={(v) => setSelectedCategory(v)}>
+          <SelectTrigger className="h-10 w-44">
+            <SelectValue placeholder="Catégorie" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="">Toutes</SelectItem>
+            {Array.from(new Set(guests.map((g) => g.category).filter(Boolean))).sort().map((cat) => (
+              <SelectItem key={cat} value={cat}>
+                {cat}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
           <Checkbox
             checked={onlyArrived}
