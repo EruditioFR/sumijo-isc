@@ -51,6 +51,7 @@ const CortotAdmin = () => {
   const [onlyArrived, setOnlyArrived] = useState(false);
   const [onlyConfirmed, setOnlyConfirmed] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [seatsGuest, setSeatsGuest] = useState<Guest | null>(null);
 
   const fetchGuests = async (opts: { silent?: boolean } = {}) => {
     if (!opts.silent) setIsLoading(true);
