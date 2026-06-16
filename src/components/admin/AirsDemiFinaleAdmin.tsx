@@ -54,6 +54,28 @@ const AirsDemiFinaleAdmin = () => {
     }
   };
 
+  const exportToCsv = () => {
+    if (candidates.length === 0) return;
+    const headers = ['Nom', 'Prénom', 'Airs demie-finale'];
+    const rows = candidates.map((c) => [
+      c.nom,
+      c.prenom,
+      (c.airsDemieFinale || []).join('; ').replace(/—/g, '-'),
+    ]);
+    const csvContent = [headers, ...rows]
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'airs-demie-finale.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   useEffect(() => {
     fetchCandidates();
   }, []);
