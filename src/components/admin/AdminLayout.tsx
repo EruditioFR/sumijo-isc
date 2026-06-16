@@ -52,7 +52,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
                 >
                   <Link to={item.path}>
                     <item.icon className="w-4 h-4 mr-2" />
-                    {t(item.labelKey)}
+                    {item.labelKey ? t(item.labelKey) : item.label}
                   </Link>
                 </Button>
               ))}
@@ -85,7 +85,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
             >
               <Link to={item.path}>
                 <item.icon className="w-4 h-4 mr-2" />
-                {t(item.labelKey)}
+                {item.labelKey ? t(item.labelKey) : item.label}
               </Link>
             </Button>
           ))}
