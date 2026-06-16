@@ -143,6 +143,12 @@ Deno.serve(async (req) => {
           if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
           return String(v).split(/[,;/]+/).map((s) => s.trim()).filter(Boolean);
         })(),
+        airsDemieFinale: (() => {
+          const v = f["Aria Demie-Finale"] ?? f["Aria Demi-Finale"] ?? f["Airs Demie-Finale"] ?? f["Airs Demi-Finale"] ?? f["Aria Demie Finale"] ?? null;
+          if (!v) return [];
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
+          return String(v).split(/[,;]+/).map((s) => s.trim()).filter(Boolean);
+        })(),
       };
     });
 
