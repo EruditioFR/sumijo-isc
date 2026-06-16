@@ -132,9 +132,9 @@ const AirsDemiFinaleAdmin = () => {
                           <CountryFlag name={c.pays} />
                           <span>{c.pays}</span>
                         </span>
-                      ) : '—'}
+                      ) : '-'}
                     </TableCell>
-                    <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
+                    <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
                     <TableCell>
                       {c.airsDemieFinale && c.airsDemieFinale.length > 0 ? (
                         <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
@@ -143,7 +143,7 @@ const AirsDemiFinaleAdmin = () => {
                           ))}
                         </ul>
                       ) : (
-                        <span className="text-muted-foreground text-xs">—</span>
+                        <span className="text-muted-foreground text-xs">-</span>
                       )}
                     </TableCell>
                   </TableRow>
