@@ -137,16 +137,11 @@ const AirsDemiFinaleAdmin = () => {
                     <TableCell className="capitalize">{c.typeVoix || '—'}</TableCell>
                     <TableCell>
                       {c.airsDemieFinale && c.airsDemieFinale.length > 0 ? (
-                        <div className="flex flex-wrap gap-1.5 max-w-[480px]">
+                        <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
                           {c.airsDemieFinale.map((a, i) => (
-                            <span
-                              key={i}
-                              className="inline-flex items-center px-2.5 py-1 rounded-full bg-primary/10 text-xs text-foreground border border-primary/20"
-                            >
-                              {a}
-                            </span>
+                            <li key={i}>{a}</li>
                           ))}
-                        </div>
+                        </ul>
                       ) : (
                         <span className="text-muted-foreground text-xs">—</span>
                       )}
