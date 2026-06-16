@@ -94,10 +94,16 @@ const AirsDemiFinaleAdmin = () => {
               : 'Liste des airs choisis par chaque candidat pour la demie-finale'}
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
-          <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-          Actualiser
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={exportToCsv} disabled={candidates.length === 0}>
+            <Download className="w-4 h-4 mr-2" />
+            Exporter
+          </Button>
+          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+            <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            Actualiser
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (
