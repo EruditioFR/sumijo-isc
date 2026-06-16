@@ -56,7 +56,7 @@ const AirsDemiFinaleAdmin = () => {
 
   const exportToCsv = () => {
     if (candidates.length === 0) return;
-    const headers = ['Nom', 'Prénom', 'Airs demie-finale'];
+    const headers = ['Nom', 'Prénom', 'Airs demi-finale'];
     const rows = candidates.map((c) => [
       c.nom,
       c.prenom,
@@ -69,7 +69,7 @@ const AirsDemiFinaleAdmin = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'airs-demie-finale.csv');
+    link.setAttribute('download', 'airs-demi-finale.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -86,12 +86,12 @@ const AirsDemiFinaleAdmin = () => {
         <div>
           <h2 className="text-3xl font-display text-foreground mb-2 flex items-center gap-3">
             <Music2 className="w-8 h-8" />
-            Airs demie-finale
+            Airs demi-finale
           </h2>
           <p className="text-muted-foreground">
             {candidates.length > 0
               ? `${candidates.length} candidat${candidates.length > 1 ? 's' : ''}`
-              : 'Liste des airs choisis par chaque candidat pour la demie-finale'}
+              : 'Liste des airs choisis par chaque candidat pour la demi-finale'}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ const AirsDemiFinaleAdmin = () => {
                   <TableHead>Prénom</TableHead>
                   <TableHead>Pays</TableHead>
                   <TableHead>Type de voix</TableHead>
-                  <TableHead>Airs demie-finale</TableHead>
+                  <TableHead>Airs demi-finale</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
