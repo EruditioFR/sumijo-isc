@@ -95,7 +95,34 @@ const AirsDemiFinaleAdmin = () => {
           </p>
         </div>
         <div className="flex items-center gap-2">
-...
+          <Button variant="outline" size="sm" onClick={exportToCsv} disabled={candidates.length === 0}>
+            <Download className="w-4 h-4 mr-2" />
+            Exporter
+          </Button>
+          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+            <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            Actualiser
+          </Button>
+        </div>
+      </div>
+
+      {isLoading ? (
+        <div className="bg-background border rounded-xl p-12 text-center">
+          <Loader2 className="w-8 h-8 mx-auto animate-spin text-muted-foreground mb-4" />
+          <p className="text-muted-foreground">Chargement…</p>
+        </div>
+      ) : error ? (
+        <div className="bg-destructive/5 border border-destructive/30 rounded-xl p-8 text-center">
+          <p className="text-destructive font-medium mb-2">Impossible de charger</p>
+          <p className="text-sm text-muted-foreground">{error}</p>
+        </div>
+      ) : (
+        <div className="bg-background border rounded-xl overflow-hidden">
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-16">Photo</TableHead>
                   <TableHead>Nom</TableHead>
                   <TableHead>Prénom</TableHead>
                   <TableHead>Pays</TableHead>
