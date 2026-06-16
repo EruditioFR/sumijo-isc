@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Music2, Loader2, RefreshCw } from 'lucide-react';
+import { Music2, Loader2, RefreshCw, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
