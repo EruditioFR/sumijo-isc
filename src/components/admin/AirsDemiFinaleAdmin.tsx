@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Music2, Loader2, RefreshCw } from 'lucide-react';
+import { Music2, Loader2, RefreshCw, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
@@ -54,6 +54,28 @@ const AirsDemiFinaleAdmin = () => {
     }
   };
 
+  const exportToCsv = () => {
+    if (candidates.length === 0) return;
+    const headers = ['Nom', 'Prénom', 'Airs demie-finale'];
+    const rows = candidates.map((c) => [
+      c.nom,
+      c.prenom,
+      (c.airsDemieFinale || []).join('; ').replace(/—/g, '-'),
+    ]);
+    const csvContent = [headers, ...rows]
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'airs-demie-finale.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   useEffect(() => {
     fetchCandidates();
   }, []);
@@ -72,10 +94,16 @@ const AirsDemiFinaleAdmin = () => {
               : 'Liste des airs choisis par chaque candidat pour la demie-finale'}
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
-          <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-          Actualiser
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={exportToCsv} disabled={candidates.length === 0}>
+            <Download className="w-4 h-4 mr-2" />
+            Exporter
+          </Button>
+          <Button variant="outline" size="sm" onClick={fetchCandidates} disabled={isLoading}>
+            <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            Actualiser
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (
