@@ -139,7 +139,7 @@ const AirsDemiFinaleAdmin = () => {
                       {c.airsDemieFinale && c.airsDemieFinale.length > 0 ? (
                         <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
                           {c.airsDemieFinale.map((a, i) => (
-                            <li key={i}>{a}</li>
+                            <li key={i}>{a.replace(/—/g, '-')}</li>
                           ))}
                         </ul>
                       ) : (
