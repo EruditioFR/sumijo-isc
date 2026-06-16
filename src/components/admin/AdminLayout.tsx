@@ -16,7 +16,7 @@ const navItems: { path: string; icon: typeof ImageIcon; labelKey?: string; label
   { path: '/admin/billetterie', icon: Ticket, labelKey: 'admin.ticketing' },
   { path: '/admin/candidats', icon: Users, labelKey: 'admin.candidates' },
   { path: '/admin/cortot', icon: Music, label: 'Cortot' },
-  { path: '/admin/airs-demie-finale', icon: Music2, label: 'Airs demie-finale' },
+  { path: '/admin/airs-demie-finale', icon: Music2, label: 'Airs demi-finale' },
 ];
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => {
