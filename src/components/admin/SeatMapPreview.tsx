@@ -77,12 +77,10 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
     }
   }, [categories, selectedCategory]);
 
-  // Split attendees into premium/standard × invitation/paid
-  // Pass semaine holders are valid every day → added to each selected date
+  // Pass semaine : seuls les billets "Pass Semaine - Catégorie Premium" sont comptabilisés
   const { premiumInv, premiumPaid, standardInv, standardPaid } = useMemo(() => {
     const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
-    const isPass = (a: AttendeeInfo) =>
-      a.ticket.toLowerCase().includes('semaine') || a.ticket.toLowerCase().includes('pass');
+    const isPass = (a: AttendeeInfo) => a.ticket === 'Pass Semaine - Catégorie Premium';
     const passes = activeAttendees.filter(isPass);
     const dateSpecific = selectedCategory
       ? activeAttendees.filter(a => a.category === selectedCategory && !isPass(a))
@@ -170,8 +168,7 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         {/* Summary table */}
         {categories.length > 0 && (() => {
           const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
-          const isPass = (a: AttendeeInfo) =>
-            a.ticket.toLowerCase().includes('semaine') || a.ticket.toLowerCase().includes('pass');
+          const isPass = (a: AttendeeInfo) => a.ticket === 'Pass Semaine - Catégorie Premium';
           // Pass semaine globals — valables tous les jours, affichés identiquement sur chaque ligne
           const passPremInv = activeAttendees.filter(a => isPass(a) && isPrem(a) && a.isInvitation).length;
           const passPremPaid = activeAttendees.filter(a => isPass(a) && isPrem(a) && !a.isInvitation).length;
