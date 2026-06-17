@@ -170,8 +170,7 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         {/* Summary table */}
         {categories.length > 0 && (() => {
           const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
-          const isPass = (a: AttendeeInfo) =>
-            a.ticket.toLowerCase().includes('semaine') || a.ticket.toLowerCase().includes('pass');
+          const isPass = (a: AttendeeInfo) => a.ticket === 'Pass Semaine - Catégorie Premium';
           // Pass semaine globals — valables tous les jours, affichés identiquement sur chaque ligne
           const passPremInv = activeAttendees.filter(a => isPass(a) && isPrem(a) && a.isInvitation).length;
           const passPremPaid = activeAttendees.filter(a => isPass(a) && isPrem(a) && !a.isInvitation).length;
