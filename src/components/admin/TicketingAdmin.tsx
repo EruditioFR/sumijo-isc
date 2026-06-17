@@ -34,6 +34,7 @@ interface Attendee {
   order_paid: string;
   order_price: string;
   order_payment_type: string;
+  order_accreditation: string;
   used: string;
   used_date: string;
   disabled: string;
@@ -229,6 +230,7 @@ const ReservationsTab = () => {
       totalPrice: items[0].order_price,
       paid: items[0].order_paid === '1',
       paymentType: items[0].order_payment_type,
+      isInvitation: items[0].order_accreditation === '1' || parseFloat(items[0].order_price) === 0,
       tickets: items,
       city: items[0].custom_order?.Ville || '',
       country: items[0].custom_order?.Pays || '',
@@ -236,9 +238,12 @@ const ReservationsTab = () => {
   }, [attendees]);
 
   const totalRevenue = useMemo(() =>
-    orders.reduce((sum, o) => sum + (o.paid ? parseFloat(o.totalPrice) : 0), 0),
+    orders.reduce((sum, o) => sum + (o.paid && !o.isInvitation ? parseFloat(o.totalPrice) : 0), 0),
     [orders]
   );
+
+  const paidCount = useMemo(() => orders.filter(o => o.paid && !o.isInvitation).length, [orders]);
+  const invitationCount = useMemo(() => orders.filter(o => o.isInvitation).length, [orders]);
 
   const categories = useMemo(() =>
     availability.filter(a => a.type === 'category'),
@@ -246,7 +251,7 @@ const ReservationsTab = () => {
   );
 
   const exportCSV = () => {
-    const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Payé', 'Moyen'];
+    const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Type', 'Payé', 'Moyen'];
     const rows = orders.map(o => [
       o.orderId,
       `"${o.buyer}"`,
@@ -256,6 +261,7 @@ const ReservationsTab = () => {
       format(new Date(o.date), 'dd/MM/yyyy HH:mm', { locale: fr }),
       o.tickets.length,
       `${o.totalPrice}€`,
+      o.isInvitation ? 'Invitation' : 'Payée',
       o.paid ? 'Oui' : 'Non',
       o.paymentType,
     ]);
@@ -285,11 +291,12 @@ const ReservationsTab = () => {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <StatCard icon={Ticket} color="primary" label="Billets vendus" value={isLoading ? '—' : attendees.filter(a => a.disabled === '0').length} />
         <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : orders.length} />
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
-        <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : orders.filter(o => o.paid).length} />
+        <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : paidCount} />
+        <StatCard icon={Ticket} color="amber" label="Invitations" value={isLoading ? '—' : invitationCount} />
       </div>
 
       {/* Seat map */}
@@ -390,6 +397,7 @@ const ReservationsTab = () => {
                     <TableHead>Billets</TableHead>
                     <TableHead>Montant</TableHead>
                     <TableHead>Date</TableHead>
+                    <TableHead>Type</TableHead>
                     <TableHead>Statut</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -412,6 +420,13 @@ const ReservationsTab = () => {
                       <TableCell className="font-semibold">{order.totalPrice}€</TableCell>
                       <TableCell className="text-sm">
                         {format(new Date(order.date), 'dd MMM yyyy', { locale: fr })}
+                      </TableCell>
+                      <TableCell>
+                        {order.isInvitation ? (
+                          <Badge variant="secondary" className="bg-amber-100 text-amber-700 hover:bg-amber-100">Invitation</Badge>
+                        ) : (
+                          <Badge variant="default" className="bg-blue-600">Payée</Badge>
+                        )}
                       </TableCell>
                       <TableCell>
                         {order.paid ? (
