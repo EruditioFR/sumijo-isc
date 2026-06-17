@@ -163,17 +163,25 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
               <TableHeader>
                 <TableRow className="h-8">
                   <TableHead className="py-1.5 text-xs">Date</TableHead>
-                  <TableHead className="py-1.5 text-xs text-center w-16">Prem.</TableHead>
-                  <TableHead className="py-1.5 text-xs text-center w-16">Class.</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-20">Prem. invités</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-20">Prem. achetées</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-20">Class. invités</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-20">Class. achetés</TableHead>
                   <TableHead className="py-1.5 text-xs text-center w-16">Total</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {categories.map(cat => {
                   const catAttendees = activeAttendees.filter(a => a.category === cat.name);
-                  const prem = catAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length;
-                  const std = catAttendees.length - prem;
+                  const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+                  const premInv = catAttendees.filter(a => isPrem(a) && a.isInvitation).length;
+                  const premPaid = catAttendees.filter(a => isPrem(a) && !a.isInvitation).length;
+                  const stdInv = catAttendees.filter(a => !isPrem(a) && a.isInvitation).length;
+                  const stdPaid = catAttendees.filter(a => !isPrem(a) && !a.isInvitation).length;
                   const isSelected = selectedCategory === cat.name;
+                  const cell = (n: number, cls = '') => n > 0
+                    ? <span className={cn("font-semibold", cls)}>{n}</span>
+                    : <span className="text-muted-foreground">0</span>;
                   return (
                     <TableRow
                       key={cat.name}
@@ -181,22 +189,33 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                       onClick={() => setSelectedCategory(cat.name)}
                     >
                       <TableCell className="py-1 text-xs">{cat.name}</TableCell>
-                      <TableCell className="py-1 text-center">
-                        {prem > 0 ? <span className="text-amber-600 font-semibold">{prem}</span> : <span className="text-muted-foreground">0</span>}
-                      </TableCell>
-                      <TableCell className="py-1 text-center">
-                        {std > 0 ? <span className="font-semibold">{std}</span> : <span className="text-muted-foreground">0</span>}
-                      </TableCell>
+                      <TableCell className="py-1 text-center">{cell(premInv, "text-amber-700")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(premPaid, "text-amber-600")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(stdInv, "text-blue-700")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(stdPaid)}</TableCell>
                       <TableCell className="py-1 text-center font-bold">{cat.count}</TableCell>
                     </TableRow>
                   );
                 })}
-                <TableRow className="bg-muted/50 h-7">
-                  <TableCell className="py-1 text-xs font-bold">Total</TableCell>
-                  <TableCell className="py-1 text-center font-bold text-amber-600">{activeAttendees.filter(a => a.ticket.toLowerCase().includes('premium')).length}</TableCell>
-                  <TableCell className="py-1 text-center font-bold">{activeAttendees.filter(a => !a.ticket.toLowerCase().includes('premium')).length}</TableCell>
-                  <TableCell className="py-1 text-center font-bold">{activeAttendees.length}</TableCell>
-                </TableRow>
+                {(() => {
+                  const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+                  const totals = {
+                    premInv: activeAttendees.filter(a => isPrem(a) && a.isInvitation).length,
+                    premPaid: activeAttendees.filter(a => isPrem(a) && !a.isInvitation).length,
+                    stdInv: activeAttendees.filter(a => !isPrem(a) && a.isInvitation).length,
+                    stdPaid: activeAttendees.filter(a => !isPrem(a) && !a.isInvitation).length,
+                  };
+                  return (
+                    <TableRow className="bg-muted/50 h-7">
+                      <TableCell className="py-1 text-xs font-bold">Total</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-amber-700">{totals.premInv}</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-amber-600">{totals.premPaid}</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-blue-700">{totals.stdInv}</TableCell>
+                      <TableCell className="py-1 text-center font-bold">{totals.stdPaid}</TableCell>
+                      <TableCell className="py-1 text-center font-bold">{activeAttendees.length}</TableCell>
+                    </TableRow>
+                  );
+                })()}
               </TableBody>
             </Table>
           </div>
