@@ -238,9 +238,12 @@ const ReservationsTab = () => {
   }, [attendees]);
 
   const totalRevenue = useMemo(() =>
-    orders.reduce((sum, o) => sum + (o.paid ? parseFloat(o.totalPrice) : 0), 0),
+    orders.reduce((sum, o) => sum + (o.paid && !o.isInvitation ? parseFloat(o.totalPrice) : 0), 0),
     [orders]
   );
+
+  const paidCount = useMemo(() => orders.filter(o => o.paid && !o.isInvitation).length, [orders]);
+  const invitationCount = useMemo(() => orders.filter(o => o.isInvitation).length, [orders]);
 
   const categories = useMemo(() =>
     availability.filter(a => a.type === 'category'),
