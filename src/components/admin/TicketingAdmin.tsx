@@ -34,6 +34,7 @@ interface Attendee {
   order_paid: string;
   order_price: string;
   order_payment_type: string;
+  order_accreditation: string;
   used: string;
   used_date: string;
   disabled: string;
