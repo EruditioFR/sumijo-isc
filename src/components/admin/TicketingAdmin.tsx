@@ -292,7 +292,7 @@ const ReservationsTab = () => {
     <div className="space-y-6">
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <StatCard icon={Ticket} color="primary" label="Billets vendus" value={isLoading ? '—' : attendees.filter(a => a.disabled === '0').length} />
+        <StatCard icon={Ticket} color="primary" label="Billets réservés" value={isLoading ? '—' : attendees.filter(a => a.disabled === '0').length} />
         <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : orders.length} />
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
         <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : paidCount} />
