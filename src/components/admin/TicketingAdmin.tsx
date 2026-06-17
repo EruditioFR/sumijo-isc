@@ -229,6 +229,7 @@ const ReservationsTab = () => {
       totalPrice: items[0].order_price,
       paid: items[0].order_paid === '1',
       paymentType: items[0].order_payment_type,
+      isInvitation: items[0].order_accreditation === '1' || parseFloat(items[0].order_price) === 0,
       tickets: items,
       city: items[0].custom_order?.Ville || '',
       country: items[0].custom_order?.Pays || '',
