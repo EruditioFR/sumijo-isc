@@ -77,28 +77,32 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
     }
   }, [categories, selectedCategory]);
 
-  // Split attendees into premium (ticket name contains "Premium") and standard
-  const { premiumAttendees, standardAttendees } = useMemo(() => {
+  // Split attendees into premium/standard × invitation/paid
+  const { premiumInv, premiumPaid, standardInv, standardPaid } = useMemo(() => {
     const source = selectedCategory
       ? activeAttendees.filter(a => a.category === selectedCategory)
       : activeAttendees;
-    const premium = source.filter(a => a.ticket.toLowerCase().includes('premium'));
-    const standard = source.filter(a => !a.ticket.toLowerCase().includes('premium'));
-    console.log('[SeatMap] Ticket names:', [...new Set(source.map(a => a.ticket))]);
-    console.log('[SeatMap] Premium:', premium.length, 'Standard:', standard.length);
-    return { premiumAttendees: premium, standardAttendees: standard };
+    const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+    return {
+      premiumInv: source.filter(a => isPrem(a) && a.isInvitation).length,
+      premiumPaid: source.filter(a => isPrem(a) && !a.isInvitation).length,
+      standardInv: source.filter(a => !isPrem(a) && a.isInvitation).length,
+      standardPaid: source.filter(a => !isPrem(a) && !a.isInvitation).length,
+    };
   }, [activeAttendees, selectedCategory]);
 
-  const soldCount = premiumAttendees.length + standardAttendees.length;
+  const soldCount = premiumInv + premiumPaid + standardInv + standardPaid;
 
   const PREMIUM_CAPACITY = PREMIUM_ROWS * SEATS_PER_ROW; // 100
   const STANDARD_CAPACITY = TOTAL_SEATS - PREMIUM_CAPACITY; // 200
 
-  // Generate seat grid with premium in first 10 rows, standard in remaining 20
+  // Generate seat grid: invitations placed first, then paid
   const seats = useMemo(() => {
-    const result: ('sold' | 'available' | 'gap')[][] = [];
-    let remainingPremium = Math.min(premiumAttendees.length, PREMIUM_CAPACITY);
-    let remainingStandard = Math.min(standardAttendees.length, STANDARD_CAPACITY);
+    const result: ('paid' | 'invitation' | 'available' | 'gap')[][] = [];
+    let remPremInv = Math.min(premiumInv, PREMIUM_CAPACITY);
+    let remPremPaid = Math.min(premiumPaid, PREMIUM_CAPACITY - remPremInv);
+    let remStdInv = Math.min(standardInv, STANDARD_CAPACITY);
+    let remStdPaid = Math.min(standardPaid, STANDARD_CAPACITY - remStdInv);
 
     for (let row = 0; row < TOTAL_ROWS; row++) {
       const isGapRow = row >= PREMIUM_ROWS && row < PREMIUM_ROWS + GAP_ROWS;
@@ -106,21 +110,23 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         result.push(Array(SEATS_PER_ROW).fill('gap'));
         continue;
       }
-      const rowSeats: ('sold' | 'available' | 'gap')[] = [];
+      const rowSeats: ('paid' | 'invitation' | 'available' | 'gap')[] = [];
       const isPremiumRow = row < PREMIUM_ROWS;
       for (let seat = 0; seat < SEATS_PER_ROW; seat++) {
         if (isPremiumRow) {
-          rowSeats.push(remainingPremium > 0 ? 'sold' : 'available');
-          if (remainingPremium > 0) remainingPremium--;
+          if (remPremInv > 0) { rowSeats.push('invitation'); remPremInv--; }
+          else if (remPremPaid > 0) { rowSeats.push('paid'); remPremPaid--; }
+          else rowSeats.push('available');
         } else {
-          rowSeats.push(remainingStandard > 0 ? 'sold' : 'available');
-          if (remainingStandard > 0) remainingStandard--;
+          if (remStdInv > 0) { rowSeats.push('invitation'); remStdInv--; }
+          else if (remStdPaid > 0) { rowSeats.push('paid'); remStdPaid--; }
+          else rowSeats.push('available');
         }
       }
       result.push(rowSeats);
     }
     return result;
-  }, [premiumAttendees.length, standardAttendees.length, PREMIUM_CAPACITY, STANDARD_CAPACITY]);
+  }, [premiumInv, premiumPaid, standardInv, standardPaid, PREMIUM_CAPACITY, STANDARD_CAPACITY]);
 
   const occupancyPct = Math.round((soldCount / TOTAL_SEATS) * 100);
 
@@ -244,32 +250,32 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                   </span>
                   {row.slice(0, SEATS_PER_SIDE).map((status, seatIdx) => {
                     const isPremium = rowIdx < PREMIUM_ROWS;
+                    const seatClass =
+                      status === 'paid' ? (isPremium ? 'bg-amber-500' : 'bg-primary')
+                      : status === 'invitation' ? (isPremium ? 'bg-orange-700' : 'bg-rose-600')
+                      : (isPremium ? 'bg-amber-200/60 border border-amber-300' : 'bg-muted border border-border');
+                    const label = status === 'paid' ? 'Payée' : status === 'invitation' ? 'Invitation' : 'Disponible';
                     return (
                       <div
                         key={seatIdx}
-                        className={cn(
-                          "w-4 h-4 rounded-sm transition-colors",
-                          status === 'sold'
-                            ? isPremium ? "bg-amber-500" : "bg-primary"
-                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
-                        )}
-                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                        className={cn("w-4 h-4 rounded-sm transition-colors", seatClass)}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + 1} — ${label}`}
                       />
                     );
                   })}
                   <div className="w-3" />
                   {row.slice(SEATS_PER_SIDE).map((status, seatIdx) => {
                     const isPremium = rowIdx < PREMIUM_ROWS;
+                    const seatClass =
+                      status === 'paid' ? (isPremium ? 'bg-amber-500' : 'bg-primary')
+                      : status === 'invitation' ? (isPremium ? 'bg-orange-700' : 'bg-rose-600')
+                      : (isPremium ? 'bg-amber-200/60 border border-amber-300' : 'bg-muted border border-border');
+                    const label = status === 'paid' ? 'Payée' : status === 'invitation' ? 'Invitation' : 'Disponible';
                     return (
                       <div
                         key={seatIdx + SEATS_PER_SIDE}
-                        className={cn(
-                          "w-4 h-4 rounded-sm transition-colors",
-                          status === 'sold'
-                            ? isPremium ? "bg-amber-500" : "bg-primary"
-                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
-                        )}
-                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                        className={cn("w-4 h-4 rounded-sm transition-colors", seatClass)}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${label}`}
                       />
                     );
                   })}
@@ -284,7 +290,11 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-amber-500" />
-            Premium résa
+            Premium payée
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-orange-700" />
+            Premium invitation
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-amber-200/60 border border-amber-300" />
@@ -292,7 +302,11 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-primary" />
-            Standard résa
+            Standard payée
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-rose-600" />
+            Standard invitation
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-sm bg-muted border border-border" />
