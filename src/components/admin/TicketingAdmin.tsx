@@ -245,6 +245,11 @@ const ReservationsTab = () => {
   const paidCount = useMemo(() => orders.filter(o => o.paid && !o.isInvitation).length, [orders]);
   const invitationCount = useMemo(() => orders.filter(o => o.isInvitation).length, [orders]);
 
+  const invitationOrderIds = useMemo(() => new Set(orders.filter(o => o.isInvitation).map(o => o.orderId)), [orders]);
+  const paidAttendeeCount = useMemo(() => attendees.filter(a => a.disabled === '0' && !invitationOrderIds.has(a.order_ext_id)).length, [attendees, invitationOrderIds]);
+  const invitationAttendeeCount = useMemo(() => attendees.filter(a => a.disabled === '0' && invitationOrderIds.has(a.order_ext_id)).length, [attendees, invitationOrderIds]);
+  const nonInvitationOrderCount = useMemo(() => orders.filter(o => !o.isInvitation).length, [orders]);
+
   const categories = useMemo(() =>
     availability.filter(a => a.type === 'category'),
     [availability]
@@ -291,12 +296,13 @@ const ReservationsTab = () => {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <StatCard icon={Ticket} color="primary" label="Billets réservés" value={isLoading ? '—' : attendees.filter(a => a.disabled === '0').length} />
-        <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : orders.length} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <StatCard icon={Ticket} color="primary" label="Billets payés" value={isLoading ? '—' : paidAttendeeCount} />
+        <StatCard icon={Ticket} color="amber" label="Billets invités" value={isLoading ? '—' : invitationAttendeeCount} />
+        <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : nonInvitationOrderCount} />
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
         <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : paidCount} />
-        <StatCard icon={Ticket} color="amber" label="Invitations" value={isLoading ? '—' : invitationCount} />
+        <StatCard icon={Ticket} color="rose" label="Invitations" value={isLoading ? '—' : invitationCount} />
       </div>
 
       {/* Seat map */}
@@ -469,6 +475,7 @@ const StatCard = ({ icon: Icon, color, label, value }: {
     amber: { bg: 'bg-amber-100', text: 'text-amber-600' },
     blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
     emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600' },
+    rose: { bg: 'bg-rose-100', text: 'text-rose-600' },
   };
   const c = colorMap[color] || colorMap.primary;
 
