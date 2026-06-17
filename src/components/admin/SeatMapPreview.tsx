@@ -163,7 +163,16 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
         )}
 
         {/* Summary table */}
-        {categories.length > 0 && (
+        {categories.length > 0 && (() => {
+          const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+          const isPass = (a: AttendeeInfo) =>
+            a.ticket.toLowerCase().includes('semaine') || a.ticket.toLowerCase().includes('pass');
+          // Pass semaine globals — valables tous les jours, affichés identiquement sur chaque ligne
+          const passPremInv = activeAttendees.filter(a => isPass(a) && isPrem(a) && a.isInvitation).length;
+          const passPremPaid = activeAttendees.filter(a => isPass(a) && isPrem(a) && !a.isInvitation).length;
+          const passStdInv = activeAttendees.filter(a => isPass(a) && !isPrem(a) && a.isInvitation).length;
+          const passStdPaid = activeAttendees.filter(a => isPass(a) && !isPrem(a) && !a.isInvitation).length;
+          return (
           <div className="rounded-md border overflow-x-auto mb-4 text-xs">
             <Table>
               <TableHeader>
@@ -173,18 +182,23 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                   <TableHead className="py-1.5 text-xs text-center w-20">Prem. achetées</TableHead>
                   <TableHead className="py-1.5 text-xs text-center w-20">Class. invités</TableHead>
                   <TableHead className="py-1.5 text-xs text-center w-20">Class. achetés</TableHead>
-                  <TableHead className="py-1.5 text-xs text-center w-16">Total</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-24 border-l">Pass Prem. invités</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-24">Pass Prem. achetés</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-24">Pass Class. invités</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-24">Pass Class. achetés</TableHead>
+                  <TableHead className="py-1.5 text-xs text-center w-16 border-l">Total</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {categories.map(cat => {
-                  const catAttendees = activeAttendees.filter(a => a.category === cat.name);
-                  const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+                  // Exclude pass semaine from per-day counts (they have their own columns)
+                  const catAttendees = activeAttendees.filter(a => a.category === cat.name && !isPass(a));
                   const premInv = catAttendees.filter(a => isPrem(a) && a.isInvitation).length;
                   const premPaid = catAttendees.filter(a => isPrem(a) && !a.isInvitation).length;
                   const stdInv = catAttendees.filter(a => !isPrem(a) && a.isInvitation).length;
                   const stdPaid = catAttendees.filter(a => !isPrem(a) && !a.isInvitation).length;
                   const isSelected = selectedCategory === cat.name;
+                  const dayTotal = premInv + premPaid + stdInv + stdPaid + passPremInv + passPremPaid + passStdInv + passStdPaid;
                   const cell = (n: number, cls = '') => n > 0
                     ? <span className={cn("font-semibold", cls)}>{n}</span>
                     : <span className="text-muted-foreground">0</span>;
@@ -199,17 +213,20 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                       <TableCell className="py-1 text-center">{cell(premPaid, "text-amber-600")}</TableCell>
                       <TableCell className="py-1 text-center">{cell(stdInv, "text-blue-700")}</TableCell>
                       <TableCell className="py-1 text-center">{cell(stdPaid)}</TableCell>
-                      <TableCell className="py-1 text-center font-bold">{cat.count}</TableCell>
+                      <TableCell className="py-1 text-center border-l">{cell(passPremInv, "text-amber-700")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(passPremPaid, "text-amber-600")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(passStdInv, "text-blue-700")}</TableCell>
+                      <TableCell className="py-1 text-center">{cell(passStdPaid)}</TableCell>
+                      <TableCell className="py-1 text-center font-bold border-l">{dayTotal}</TableCell>
                     </TableRow>
                   );
                 })}
                 {(() => {
-                  const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
                   const totals = {
-                    premInv: activeAttendees.filter(a => isPrem(a) && a.isInvitation).length,
-                    premPaid: activeAttendees.filter(a => isPrem(a) && !a.isInvitation).length,
-                    stdInv: activeAttendees.filter(a => !isPrem(a) && a.isInvitation).length,
-                    stdPaid: activeAttendees.filter(a => !isPrem(a) && !a.isInvitation).length,
+                    premInv: activeAttendees.filter(a => !isPass(a) && isPrem(a) && a.isInvitation).length,
+                    premPaid: activeAttendees.filter(a => !isPass(a) && isPrem(a) && !a.isInvitation).length,
+                    stdInv: activeAttendees.filter(a => !isPass(a) && !isPrem(a) && a.isInvitation).length,
+                    stdPaid: activeAttendees.filter(a => !isPass(a) && !isPrem(a) && !a.isInvitation).length,
                   };
                   return (
                     <TableRow className="bg-muted/50 h-7">
@@ -218,14 +235,19 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                       <TableCell className="py-1 text-center font-bold text-amber-600">{totals.premPaid}</TableCell>
                       <TableCell className="py-1 text-center font-bold text-blue-700">{totals.stdInv}</TableCell>
                       <TableCell className="py-1 text-center font-bold">{totals.stdPaid}</TableCell>
-                      <TableCell className="py-1 text-center font-bold">{activeAttendees.length}</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-amber-700 border-l">{passPremInv}</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-amber-600">{passPremPaid}</TableCell>
+                      <TableCell className="py-1 text-center font-bold text-blue-700">{passStdInv}</TableCell>
+                      <TableCell className="py-1 text-center font-bold">{passStdPaid}</TableCell>
+                      <TableCell className="py-1 text-center font-bold border-l">{activeAttendees.length}</TableCell>
                     </TableRow>
                   );
                 })()}
               </TableBody>
             </Table>
           </div>
-        )}
+          );
+        })()}
 
         <div className="flex flex-col gap-4 items-center">
           {/* Stage */}
