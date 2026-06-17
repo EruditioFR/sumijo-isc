@@ -250,32 +250,32 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                   </span>
                   {row.slice(0, SEATS_PER_SIDE).map((status, seatIdx) => {
                     const isPremium = rowIdx < PREMIUM_ROWS;
+                    const seatClass =
+                      status === 'paid' ? (isPremium ? 'bg-amber-500' : 'bg-primary')
+                      : status === 'invitation' ? (isPremium ? 'bg-orange-700' : 'bg-rose-600')
+                      : (isPremium ? 'bg-amber-200/60 border border-amber-300' : 'bg-muted border border-border');
+                    const label = status === 'paid' ? 'Payée' : status === 'invitation' ? 'Invitation' : 'Disponible';
                     return (
                       <div
                         key={seatIdx}
-                        className={cn(
-                          "w-4 h-4 rounded-sm transition-colors",
-                          status === 'sold'
-                            ? isPremium ? "bg-amber-500" : "bg-primary"
-                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
-                        )}
-                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                        className={cn("w-4 h-4 rounded-sm transition-colors", seatClass)}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + 1} — ${label}`}
                       />
                     );
                   })}
                   <div className="w-3" />
                   {row.slice(SEATS_PER_SIDE).map((status, seatIdx) => {
                     const isPremium = rowIdx < PREMIUM_ROWS;
+                    const seatClass =
+                      status === 'paid' ? (isPremium ? 'bg-amber-500' : 'bg-primary')
+                      : status === 'invitation' ? (isPremium ? 'bg-orange-700' : 'bg-rose-600')
+                      : (isPremium ? 'bg-amber-200/60 border border-amber-300' : 'bg-muted border border-border');
+                    const label = status === 'paid' ? 'Payée' : status === 'invitation' ? 'Invitation' : 'Disponible';
                     return (
                       <div
                         key={seatIdx + SEATS_PER_SIDE}
-                        className={cn(
-                          "w-4 h-4 rounded-sm transition-colors",
-                          status === 'sold'
-                            ? isPremium ? "bg-amber-500" : "bg-primary"
-                            : isPremium ? "bg-amber-200/60 border border-amber-300" : "bg-muted border border-border"
-                        )}
-                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${status === 'sold' ? 'Vendue' : 'Disponible'}`}
+                        className={cn("w-4 h-4 rounded-sm transition-colors", seatClass)}
+                        title={`Rang ${rowIdx + 1}${isPremium ? ' (Premium)' : ''}, Place ${seatIdx + SEATS_PER_SIDE + 1} — ${label}`}
                       />
                     );
                   })}
