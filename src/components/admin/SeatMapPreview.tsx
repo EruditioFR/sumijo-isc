@@ -61,6 +61,7 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
       : [...countMap.keys()];
 
     return names
+      .filter(name => name.toLowerCase() !== 'pass semaine')
       .map(name => ({ name, count: countMap.get(name) || 0, date: parseCategoryDate(name) }))
       .sort((a, b) => {
         if (a.date && b.date) return a.date.getTime() - b.date.getTime();
