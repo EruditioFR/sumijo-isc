@@ -251,7 +251,7 @@ const ReservationsTab = () => {
   );
 
   const exportCSV = () => {
-    const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Payé', 'Moyen'];
+    const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Type', 'Payé', 'Moyen'];
     const rows = orders.map(o => [
       o.orderId,
       `"${o.buyer}"`,
@@ -261,6 +261,7 @@ const ReservationsTab = () => {
       format(new Date(o.date), 'dd/MM/yyyy HH:mm', { locale: fr }),
       o.tickets.length,
       `${o.totalPrice}€`,
+      o.isInvitation ? 'Invitation' : 'Payée',
       o.paid ? 'Oui' : 'Non',
       o.paymentType,
     ]);
