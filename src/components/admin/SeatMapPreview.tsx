@@ -16,6 +16,7 @@ interface AttendeeInfo {
   category: string;
   ticket: string;
   disabled: string;
+  isInvitation?: boolean;
 }
 
 interface AvailabilityCategory {
