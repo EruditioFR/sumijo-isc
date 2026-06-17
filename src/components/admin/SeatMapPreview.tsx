@@ -78,11 +78,16 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
   }, [categories, selectedCategory]);
 
   // Split attendees into premium/standard × invitation/paid
+  // Pass semaine holders are valid every day → added to each selected date
   const { premiumInv, premiumPaid, standardInv, standardPaid } = useMemo(() => {
-    const source = selectedCategory
-      ? activeAttendees.filter(a => a.category === selectedCategory)
-      : activeAttendees;
     const isPrem = (a: AttendeeInfo) => a.ticket.toLowerCase().includes('premium');
+    const isPass = (a: AttendeeInfo) =>
+      a.ticket.toLowerCase().includes('semaine') || a.ticket.toLowerCase().includes('pass');
+    const passes = activeAttendees.filter(isPass);
+    const dateSpecific = selectedCategory
+      ? activeAttendees.filter(a => a.category === selectedCategory && !isPass(a))
+      : activeAttendees.filter(a => !isPass(a));
+    const source = [...dateSpecific, ...passes];
     return {
       premiumInv: source.filter(a => isPrem(a) && a.isInvitation).length,
       premiumPaid: source.filter(a => isPrem(a) && !a.isInvitation).length,
