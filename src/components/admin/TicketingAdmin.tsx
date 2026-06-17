@@ -397,6 +397,7 @@ const ReservationsTab = () => {
                     <TableHead>Billets</TableHead>
                     <TableHead>Montant</TableHead>
                     <TableHead>Date</TableHead>
+                    <TableHead>Type</TableHead>
                     <TableHead>Statut</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -419,6 +420,13 @@ const ReservationsTab = () => {
                       <TableCell className="font-semibold">{order.totalPrice}€</TableCell>
                       <TableCell className="text-sm">
                         {format(new Date(order.date), 'dd MMM yyyy', { locale: fr })}
+                      </TableCell>
+                      <TableCell>
+                        {order.isInvitation ? (
+                          <Badge variant="secondary" className="bg-amber-100 text-amber-700 hover:bg-amber-100">Invitation</Badge>
+                        ) : (
+                          <Badge variant="default" className="bg-blue-600">Payée</Badge>
+                        )}
                       </TableCell>
                       <TableCell>
                         {order.paid ? (
