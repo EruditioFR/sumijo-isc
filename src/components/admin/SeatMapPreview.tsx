@@ -182,49 +182,57 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
             <Table>
               <TableHeader>
                 <TableRow className="h-7 border-b-0 hover:bg-transparent">
-                  <TableHead rowSpan={2} className="py-1.5 text-xs align-middle border-r">Date</TableHead>
-                  <TableHead colSpan={3} className="py-1 text-xs text-center bg-amber-50 border-r font-semibold text-amber-900">
-                    Premium <span className="font-normal text-muted-foreground">(capacité 120)</span>
+                  <TableHead rowSpan={3} className="py-1.5 text-xs align-middle border-r">Date</TableHead>
+                  <TableHead colSpan={5} className="py-1 text-xs text-center bg-amber-50 border-r font-semibold text-amber-900">
+                    Premium <span className="font-normal text-muted-foreground">(cap. 120)</span>
                   </TableHead>
-                  <TableHead colSpan={3} className="py-1 text-xs text-center bg-sky-50 border-r font-semibold text-sky-900">
-                    Classique <span className="font-normal text-muted-foreground">(capacité 180)</span>
+                  <TableHead colSpan={5} className="py-1 text-xs text-center bg-sky-50 border-r font-semibold text-sky-900">
+                    Classique <span className="font-normal text-muted-foreground">(cap. 180)</span>
                   </TableHead>
-                  <TableHead rowSpan={2} className="py-1.5 text-xs text-center w-20 align-middle">
+                  <TableHead rowSpan={3} className="py-1.5 text-xs text-center w-20 align-middle">
                     Total<br/><span className="font-normal text-[10px] text-muted-foreground">/300</span>
                   </TableHead>
                 </TableRow>
                 <TableRow className="h-7 hover:bg-transparent">
-                  <TableHead className="py-1 text-xs text-center w-20 bg-amber-50/50">Invitations</TableHead>
-                  <TableHead className="py-1 text-xs text-center w-20 bg-amber-50/50">Achetées</TableHead>
-                  <TableHead className="py-1 text-xs text-center w-20 bg-amber-50/70 border-r font-semibold">Occupé</TableHead>
-                  <TableHead className="py-1 text-xs text-center w-20 bg-sky-50/50">Invitations</TableHead>
-                  <TableHead className="py-1 text-xs text-center w-20 bg-sky-50/50">Achetées</TableHead>
-                  <TableHead className="py-1 text-xs text-center w-20 bg-sky-50/70 border-r font-semibold">Occupé</TableHead>
+                  <TableHead colSpan={2} className="py-1 text-xs text-center bg-amber-50/60 text-rose-700 border-l">Invitations</TableHead>
+                  <TableHead colSpan={2} className="py-1 text-xs text-center bg-amber-50/60 text-emerald-700">Achetées</TableHead>
+                  <TableHead rowSpan={2} className="py-1 text-xs text-center w-20 bg-amber-50/80 border-r border-l align-middle font-semibold">Occupé</TableHead>
+                  <TableHead colSpan={2} className="py-1 text-xs text-center bg-sky-50/60 text-rose-700">Invitations</TableHead>
+                  <TableHead colSpan={2} className="py-1 text-xs text-center bg-sky-50/60 text-emerald-700">Achetées</TableHead>
+                  <TableHead rowSpan={2} className="py-1 text-xs text-center w-20 bg-sky-50/80 border-r border-l align-middle font-semibold">Occupé</TableHead>
+                </TableRow>
+                <TableRow className="h-7 hover:bg-transparent">
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-amber-50/30 border-l font-normal">Journée</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-amber-50/30 font-normal">Semaine</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-amber-50/30 border-l font-normal">Journée</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-amber-50/30 font-normal">Semaine</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-sky-50/30 border-l font-normal">Journée</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-sky-50/30 font-normal">Semaine</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-sky-50/30 border-l font-normal">Journée</TableHead>
+                  <TableHead className="py-1 text-[10px] text-center w-16 bg-sky-50/30 font-normal">Semaine</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {categories.map(cat => {
-                  // Billets propres à la date (hors pass) + pass semaine ajoutés à chaque date
-                  const catAttendees = activeAttendees.filter(a => a.category === cat.name && !isPass(a));
-                  const premInv = catAttendees.filter(a => isPrem(a) && a.isInvitation).length + passPremInv;
-                  const premPaid = catAttendees.filter(a => isPrem(a) && !a.isInvitation).length + passPremPaid;
-                  const stdInv = catAttendees.filter(a => !isPrem(a) && a.isInvitation).length + passStdInv;
-                  const stdPaid = catAttendees.filter(a => !isPrem(a) && !a.isInvitation).length + passStdPaid;
-                  const premTotal = premInv + premPaid;
-                  const stdTotal = stdInv + stdPaid;
+                  // Billets journée propres à la date
+                  const day = activeAttendees.filter(a => a.category === cat.name && !isPass(a));
+                  const premInvDay = day.filter(a => isPrem(a) && a.isInvitation).length;
+                  const premPaidDay = day.filter(a => isPrem(a) && !a.isInvitation).length;
+                  const stdInvDay = day.filter(a => !isPrem(a) && a.isInvitation).length;
+                  const stdPaidDay = day.filter(a => !isPrem(a) && !a.isInvitation).length;
+                  // Pass semaine (constants — ajoutés à chaque date)
+                  const premTotal = premInvDay + premPaidDay + passPremInv + passPremPaid;
+                  const stdTotal = stdInvDay + stdPaidDay + passStdInv + passStdPaid;
                   const dayTotal = premTotal + stdTotal;
                   const isSelected = selectedCategory === cat.name;
                   const num = (n: number, cls = '') => n > 0
                     ? <span className={cn("font-medium", cls)}>{n}</span>
                     : <span className="text-muted-foreground">0</span>;
-                  const occ = (used: number, cap: number, cls: string) => {
-                    const over = used > cap;
-                    return (
-                      <span className={cn("font-bold", over ? "text-destructive" : cls)}>
-                        {used}<span className="font-normal text-muted-foreground">/{cap}</span>
-                      </span>
-                    );
-                  };
+                  const occ = (used: number, cap: number, cls: string) => (
+                    <span className={cn("font-bold", used > cap ? "text-destructive" : cls)}>
+                      {used}<span className="font-normal text-muted-foreground">/{cap}</span>
+                    </span>
+                  );
                   return (
                     <TableRow
                       key={cat.name}
@@ -232,22 +240,26 @@ export const SeatMapPreview = ({ attendees = [], allCategories = [] }: SeatMapPr
                       onClick={() => setSelectedCategory(cat.name)}
                     >
                       <TableCell className="py-1 text-xs border-r">{cat.name}</TableCell>
-                      <TableCell className="py-1 text-center bg-amber-50/20">{num(premInv, "text-rose-700")}</TableCell>
-                      <TableCell className="py-1 text-center bg-amber-50/20">{num(premPaid, "text-emerald-700")}</TableCell>
-                      <TableCell className="py-1 text-center bg-amber-50/40 border-r">{occ(premTotal, 120, "text-amber-800")}</TableCell>
-                      <TableCell className="py-1 text-center bg-sky-50/20">{num(stdInv, "text-rose-700")}</TableCell>
-                      <TableCell className="py-1 text-center bg-sky-50/20">{num(stdPaid, "text-emerald-700")}</TableCell>
-                      <TableCell className="py-1 text-center bg-sky-50/40 border-r">{occ(stdTotal, 180, "text-sky-800")}</TableCell>
+                      <TableCell className="py-1 text-center bg-amber-50/15 border-l">{num(premInvDay, "text-rose-700")}</TableCell>
+                      <TableCell className="py-1 text-center bg-amber-50/15 italic">{num(passPremInv, "text-rose-700/80")}</TableCell>
+                      <TableCell className="py-1 text-center bg-amber-50/15 border-l">{num(premPaidDay, "text-emerald-700")}</TableCell>
+                      <TableCell className="py-1 text-center bg-amber-50/15 italic">{num(passPremPaid, "text-emerald-700/80")}</TableCell>
+                      <TableCell className="py-1 text-center bg-amber-50/40 border-r border-l">{occ(premTotal, 120, "text-amber-800")}</TableCell>
+                      <TableCell className="py-1 text-center bg-sky-50/15 border-l">{num(stdInvDay, "text-rose-700")}</TableCell>
+                      <TableCell className="py-1 text-center bg-sky-50/15 italic">{num(passStdInv, "text-rose-700/80")}</TableCell>
+                      <TableCell className="py-1 text-center bg-sky-50/15 border-l">{num(stdPaidDay, "text-emerald-700")}</TableCell>
+                      <TableCell className="py-1 text-center bg-sky-50/15 italic">{num(passStdPaid, "text-emerald-700/80")}</TableCell>
+                      <TableCell className="py-1 text-center bg-sky-50/40 border-r border-l">{occ(stdTotal, 180, "text-sky-800")}</TableCell>
                       <TableCell className="py-1 text-center">{occ(dayTotal, 300, "text-foreground")}</TableCell>
                     </TableRow>
                   );
                 })}
               </TableBody>
             </Table>
-            <div className="flex flex-wrap gap-3 px-3 py-2 text-[11px] text-muted-foreground border-t bg-muted/30">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 px-3 py-2 text-[11px] text-muted-foreground border-t bg-muted/30">
               <span><span className="inline-block w-2 h-2 rounded-full bg-rose-600 mr-1 align-middle" />Invitations</span>
               <span><span className="inline-block w-2 h-2 rounded-full bg-emerald-600 mr-1 align-middle" />Achetées</span>
-              <span className="ml-auto">Pass semaine inclus dans chaque date (Premium : {passPremInv} invit. + {passPremPaid} achetés · Classique : {passStdInv} invit. + {passStdPaid} achetés)</span>
+              <span className="italic">Colonnes « Semaine » en italique = pass semaine, valables tous les jours</span>
             </div>
           </div>
           );
