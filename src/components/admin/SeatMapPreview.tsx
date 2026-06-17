@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils';
 const TOTAL_SEATS = 300;
 const SEATS_PER_ROW = 10;
 const SEATS_PER_SIDE = 5;
-const PREMIUM_ROWS = 10;
+const PREMIUM_ROWS = 12;
 const GAP_ROWS = 3;
-const STANDARD_ROWS = 20;
+const STANDARD_ROWS = 18;
 const TOTAL_ROWS = PREMIUM_ROWS + GAP_ROWS + STANDARD_ROWS;
 
 interface AttendeeInfo {
