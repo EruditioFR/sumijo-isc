@@ -242,8 +242,6 @@ const ReservationsTab = () => {
     [orders]
   );
 
-  const paidCount = useMemo(() => orders.filter(o => o.paid && !o.isInvitation).length, [orders]);
-  const invitationCount = useMemo(() => orders.filter(o => o.isInvitation).length, [orders]);
 
   const invitationOrderIds = useMemo(() => new Set(orders.filter(o => o.isInvitation).map(o => o.orderId)), [orders]);
   const paidAttendeeCount = useMemo(() => attendees.filter(a => a.disabled === '0' && !invitationOrderIds.has(a.order_ext_id)).length, [attendees, invitationOrderIds]);
@@ -296,12 +294,11 @@ const ReservationsTab = () => {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <StatCard icon={Ticket} color="primary" label="Billets payés" value={isLoading ? '—' : paidAttendeeCount} />
         <StatCard icon={Ticket} color="amber" label="Billets invités" value={isLoading ? '—' : invitationAttendeeCount} />
         <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : nonInvitationOrderCount} />
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
-        <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : paidCount} />
       </div>
 
       {/* Seat map */}
