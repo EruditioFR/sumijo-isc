@@ -296,13 +296,12 @@ const ReservationsTab = () => {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         <StatCard icon={Ticket} color="primary" label="Billets payés" value={isLoading ? '—' : paidAttendeeCount} />
         <StatCard icon={Ticket} color="amber" label="Billets invités" value={isLoading ? '—' : invitationAttendeeCount} />
         <StatCard icon={Users} color="blue" label="Commandes" value={isLoading ? '—' : nonInvitationOrderCount} />
         <StatCard icon={Euro} color="green" label="Chiffre d'affaires" value={isLoading ? '—' : `${totalRevenue.toFixed(0)}€`} />
         <StatCard icon={CheckCircle} color="emerald" label="Payées" value={isLoading ? '—' : paidCount} />
-        <StatCard icon={Ticket} color="rose" label="Invitations" value={isLoading ? '—' : invitationCount} />
       </div>
 
       {/* Seat map */}
