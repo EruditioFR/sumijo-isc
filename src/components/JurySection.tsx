@@ -120,9 +120,9 @@ const JurySection = () => {
     member => !['galoppini', 'rhorer', 'vargas'].includes(member.id)
   );
 
-  // Jury 2024 - excludes Allemendinger and Gavazzeni (they only joined in 2026)
+  // Jury 2024 - excludes Allemendinger, Gavazzeni, and Alvarez (they only joined in 2026)
   const jury2024Members = juryMembers.filter(
-    member => !['allemendinger', 'gavazzeni'].includes(member.id)
+    member => !['allemendinger', 'gavazzeni', 'alvarez'].includes(member.id)
   );
 
   return (
