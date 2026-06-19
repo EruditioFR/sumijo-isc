@@ -279,6 +279,27 @@ const CandidatesAdmin = () => {
     setExpanded(allExpanded ? new Set() : new Set(candidates.map((c) => c.id)));
   };
 
+  const exportXlsx = () => {
+    const rows = candidates.map((c) => ({
+      Nom: c.nom ?? '',
+      Prénom: c.prenom ?? '',
+      Pays: c.pays ?? '',
+      'Type de voix': c.typeVoix ?? '',
+      'Date de naissance': c.dateNaissance
+        ? new Date(c.dateNaissance).toLocaleDateString('fr-FR')
+        : '',
+      'Bio artistique': c.bio ?? '',
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws['!cols'] = [
+      { wch: 18 }, { wch: 18 }, { wch: 18 }, { wch: 16 }, { wch: 18 }, { wch: 60 },
+    ];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Candidats');
+    const date = new Date().toISOString().slice(0, 10);
+    XLSX.writeFile(wb, `candidats-${date}.xlsx`);
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8 flex items-start justify-between gap-4 flex-wrap">
