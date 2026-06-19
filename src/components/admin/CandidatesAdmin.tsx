@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import * as XLSX from 'xlsx';
 import {
   Users, FileText, IdCard, Video, Loader2, RefreshCw,
-  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer,
+  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -278,6 +279,27 @@ const CandidatesAdmin = () => {
     setExpanded(allExpanded ? new Set() : new Set(candidates.map((c) => c.id)));
   };
 
+  const exportXlsx = () => {
+    const rows = candidates.map((c) => ({
+      Nom: c.nom ?? '',
+      Prénom: c.prenom ?? '',
+      Pays: c.pays ?? '',
+      'Type de voix': c.typeVoix ?? '',
+      'Date de naissance': c.dateNaissance
+        ? new Date(c.dateNaissance).toLocaleDateString('fr-FR')
+        : '',
+      'Bio artistique': c.bio ?? '',
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws['!cols'] = [
+      { wch: 18 }, { wch: 18 }, { wch: 18 }, { wch: 16 }, { wch: 18 }, { wch: 60 },
+    ];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Candidats');
+    const date = new Date().toISOString().slice(0, 10);
+    XLSX.writeFile(wb, `candidats-${date}.xlsx`);
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8 flex items-start justify-between gap-4 flex-wrap">
@@ -296,6 +318,12 @@ const CandidatesAdmin = () => {
           {candidates.length > 0 && (
             <Button variant="outline" size="sm" onClick={toggleAll}>
               {allExpanded ? 'Tout replier' : 'Tout déplier'}
+            </Button>
+          )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={exportXlsx}>
+              <Download className="w-4 h-4 mr-2" />
+              Exporter
             </Button>
           )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
