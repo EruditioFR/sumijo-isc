@@ -299,6 +299,12 @@ const CandidatesAdmin = () => {
               {allExpanded ? 'Tout replier' : 'Tout déplier'}
             </Button>
           )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={exportXlsx}>
+              <Download className="w-4 h-4 mr-2" />
+              Exporter
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
