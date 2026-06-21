@@ -8,11 +8,12 @@ const TicketingAnnouncement = () => {
   const { t, i18n } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getBilletwebLocale = useCallback(() => {
+  const getBilletwebLang = useCallback(() => {
+    // Billetweb supports: fr, en, es, de, it, nl, zh
     switch (i18n.language) {
       case 'en': return 'en';
       case 'zh': return 'zh';
-      case 'kr': return 'en';
+      case 'kr': return 'en'; // Korean not supported by Billetweb, fallback to English
       default: return 'fr';
     }
   }, [i18n.language]);
@@ -24,8 +25,9 @@ const TicketingAnnouncement = () => {
     // Clear previous widget content
     container.innerHTML = '';
 
-    const locale = getBilletwebLocale();
-    const url = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${locale}`;
+    const lang = getBilletwebLang();
+    const baseUrl = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1`;
+    const url = `${baseUrl}&lang=${lang}`;
 
     // Create the anchor element that Billetweb will transform into an iframe
     const anchor = document.createElement('a');
@@ -40,6 +42,7 @@ const TicketingAnnouncement = () => {
     anchor.setAttribute('data-scrolling', 'no');
     anchor.setAttribute('data-id', 'sumi-jo-international-singing-competition1');
     anchor.setAttribute('data-resize', '1');
+    anchor.setAttribute('data-lang', lang);
     anchor.textContent = 'Vente de billets en ligne';
 
     container.appendChild(anchor);
@@ -54,7 +57,7 @@ const TicketingAnnouncement = () => {
     return () => {
       container.innerHTML = '';
     };
-  }, [getBilletwebLocale]);
+  }, [getBilletwebLang]);
 
   return (
     <section className="min-h-screen pt-28 pb-20 px-4" style={{ backgroundColor: '#F5F1ED' }}>
