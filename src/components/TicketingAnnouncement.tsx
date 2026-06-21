@@ -57,7 +57,7 @@ const TicketingAnnouncement = () => {
     return () => {
       container.innerHTML = '';
     };
-  }, [getBilletwebLocale]);
+  }, [getBilletwebLang]);
 
   return (
     <section className="min-h-screen pt-28 pb-20 px-4" style={{ backgroundColor: '#F5F1ED' }}>
