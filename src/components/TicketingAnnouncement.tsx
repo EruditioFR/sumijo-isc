@@ -19,7 +19,7 @@ const TicketingAnnouncement = () => {
   }, [i18n.language]);
 
   const lang = getBilletwebLang();
-  const iframeSrc = `https://widget.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&lang=${lang}&color=ffffff`;
+  const iframeSrc = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&lang=${lang}&color=ffffff`;
 
   // Listen for Billetweb iframe resize messages
   useEffect(() => {
