@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -6,7 +6,7 @@ import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TicketingAnnouncement = () => {
   const { t, i18n } = useTranslation();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [iframeHeight, setIframeHeight] = useState(900);
 
   const getBilletwebLang = useCallback(() => {
     // Billetweb supports: fr, en, es, de, it, nl, zh
@@ -18,46 +18,26 @@ const TicketingAnnouncement = () => {
     }
   }, [i18n.language]);
 
+  const lang = getBilletwebLang();
+  const iframeSrc = `https://widget.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&lang=${lang}&color=ffffff`;
+
+  // Listen for Billetweb iframe resize messages
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Clear previous widget content
-    container.innerHTML = '';
-
-    const lang = getBilletwebLang();
-    const baseUrl = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1`;
-    const url = `${baseUrl}&lang=${lang}`;
-
-    // Create the anchor element that Billetweb will transform into an iframe
-    const anchor = document.createElement('a');
-    anchor.title = 'Vente de billets en ligne';
-    anchor.href = url;
-    anchor.className = 'shop_frame';
-    anchor.target = '_blank';
-    anchor.rel = 'noopener noreferrer';
-    anchor.setAttribute('data-src', url);
-    anchor.setAttribute('data-max-width', '100%');
-    anchor.setAttribute('data-initial-height', '600');
-    anchor.setAttribute('data-scrolling', 'no');
-    anchor.setAttribute('data-id', 'sumi-jo-international-singing-competition1');
-    anchor.setAttribute('data-resize', '1');
-    anchor.setAttribute('data-lang', lang);
-    anchor.textContent = 'Vente de billets en ligne';
-
-    container.appendChild(anchor);
-
-    // Load Billetweb script
-    const script = document.createElement('script');
-    script.src = 'https://www.billetweb.fr/js/export.js';
-    script.type = 'text/javascript';
-    script.async = true;
-    container.appendChild(script);
-
-    return () => {
-      container.innerHTML = '';
+    const handleMessage = (event: MessageEvent) => {
+      if (typeof event.origin === 'string' && event.origin.includes('billetweb.fr')) {
+        const data = event.data;
+        if (typeof data === 'object' && data !== null && 'height' in data) {
+          const h = Number((data as { height: unknown }).height);
+          if (!Number.isNaN(h) && h > 200) setIframeHeight(h);
+        } else if (typeof data === 'string' && data.startsWith('height:')) {
+          const h = Number(data.split(':')[1]);
+          if (!Number.isNaN(h) && h > 200) setIframeHeight(h);
+        }
+      }
     };
-  }, [getBilletwebLang]);
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
 
   return (
     <section className="min-h-screen pt-28 pb-20 px-4" style={{ backgroundColor: '#F5F1ED' }}>
@@ -91,17 +71,27 @@ const TicketingAnnouncement = () => {
         <div className="mx-auto w-16 h-0.5 bg-rose" />
       </motion.div>
 
-      {/* Billetweb Widget */}
+      {/* Billetweb Widget — keyed by lang to force reload on language change */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-elegant p-4 md:p-8"
       >
-        <div ref={containerRef} />
+        <iframe
+          key={lang}
+          src={iframeSrc}
+          title="Billetterie SUMI JO"
+          width="100%"
+          height={iframeHeight}
+          style={{ border: 'none', width: '100%', minHeight: 600 }}
+          scrolling="no"
+          allow="payment"
+        />
       </motion.div>
     </section>
   );
 };
 
 export default TicketingAnnouncement;
+
