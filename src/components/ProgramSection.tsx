@@ -203,30 +203,6 @@ const ProgramSection = () => {
             </Link>
           </Button>
         </motion.div>
-
-        {/* Teaser concert Salle Cortot */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-16 max-w-3xl mx-auto"
-        >
-          <div className="relative bg-gradient-to-br from-rose-dark/5 via-gold/5 to-rose-dark/5 border border-gold/30 rounded-2xl p-6 md:p-8 text-center shadow-lg">
-            <span className="inline-block text-gold text-xs font-bold tracking-[0.3em] uppercase mb-3">
-              Événement exceptionnel — Paris
-            </span>
-            <h3 className="font-display text-xl md:text-2xl text-foreground leading-snug">
-              Et ne manquez pas le concert{' '}
-              <span className="text-rose-dark font-semibold">« Sumi Jo &amp; Winners »</span>{' '}
-              avec les lauréats 2024, le <span className="text-rose-dark font-semibold">10 juin 2026 à 20h00</span> à la{' '}
-              <span className="text-rose-dark font-semibold">Salle Cortot, Paris</span>.
-            </h3>
-            <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-5" />
-            <Button asChild variant="outline" className="font-bold border-gold/60 text-foreground hover:bg-gold hover:text-white hover:border-gold transition-all duration-300">
-              <Link to="/concert-gala-paris">En savoir plus →</Link>
-            </Button>
-          </div>
-        </motion.div>
       </div>
       {/* Smooth transition to next section */}
       <div className="h-16 md:h-24 bg-gradient-to-b from-background via-background/50 to-cream/80" />
