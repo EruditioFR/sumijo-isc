@@ -1,1 +1,4 @@
 project_id = "rboxzxuykhwywovopfcq"
+
+[functions.list-semifinalists]
+verify_jwt = false
