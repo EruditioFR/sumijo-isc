@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { supabase } from "@/integrations/supabase/client";
 import { countryNameToFlagUrl } from "@/lib/countryFlags";
@@ -18,17 +18,17 @@ interface SemiFinalist {
   bio: string | null;
 }
 
-const formatFirstName = (s: string) =>
-  s
-    ? s
-        .trim()
-        .split(/[\s-]/)
-        .map((p, i, arr) => {
-          const sep = i < arr.length - 1 ? (s.includes("-") ? "-" : " ") : "";
-          return p.charAt(0).toUpperCase() + p.slice(1).toLowerCase() + sep;
-        })
-        .join("")
-    : "";
+const capitalize = (w: string) =>
+  w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w;
+
+const formatFirstName = (s: string) => {
+  if (!s) return "";
+  return s
+    .trim()
+    .split(" ")
+    .map((part) => part.split("-").map(capitalize).join("-"))
+    .join(" ");
+};
 
 const SemiFinalistsSection = () => {
   const { t } = useTranslation();
