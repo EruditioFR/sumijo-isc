@@ -1,5 +1,4 @@
 import Header from '@/components/Header';
-import AnnouncementLightbox from '@/components/AnnouncementLightbox';
 import HeroSection from '@/components/HeroSection';
 import ProgramSection from '@/components/ProgramSection';
 import AnnouncementVideoSection from '@/components/AnnouncementVideoSection';
@@ -43,7 +42,6 @@ const Index = () => {
         type="event"
         jsonLd={jsonLdSchemas}
       />
-      <AnnouncementLightbox />
       <Header />
       <main>
         <HeroSection />
