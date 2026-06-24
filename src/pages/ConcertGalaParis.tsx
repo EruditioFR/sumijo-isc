@@ -67,7 +67,6 @@ const PieceRow = ({ piece, index, inView }: { piece: Piece; index: number; inVie
 const ConcertGalaParis = () => {
   const [introRef, introInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [progRef, progInView] = useInView({ triggerOnce: true, threshold: 0.05 });
-  const [tarifsRef, tarifsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
