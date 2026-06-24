@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Ticket, ArrowLeft, Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import { ArrowLeft, Calendar, Mail, MapPin, Phone } from 'lucide-react';
 import artistsImageAsset from '@/assets/concert-gala-paris-artists-v2.png.asset.json';
 const artistsImage = artistsImageAsset.url;
 import salleCortotLogo from '@/assets/logo-salle-cortot.svg';
