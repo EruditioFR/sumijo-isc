@@ -22,13 +22,17 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const checkAdminRole = async (userId: string) => {
     try {
       const { data, error } = await supabase
-        .rpc('has_role', { _user_id: userId, _role: 'admin' });
-      
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .eq('role', 'admin')
+        .maybeSingle();
+
       if (error) {
         console.error('Error checking admin role:', error);
         return false;
       }
-      return data === true;
+      return !!data;
     } catch (err) {
       console.error('Failed to check admin role:', err);
       return false;
