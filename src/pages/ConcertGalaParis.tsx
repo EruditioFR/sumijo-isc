@@ -15,14 +15,14 @@ const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 type Piece = { artists: string; aria: string; opera: string; composer: string };
 
 const partOne: Piece[] = [
-  { artists: 'Alexandre Baldo', aria: '« Sous les Pieds d'une Femme »', opera: 'La Reine de Saba', composer: 'Gounod' },
+  { artists: 'Alexandre Baldo', aria: "« Sous les Pieds d'une Femme »", opera: 'La Reine de Saba', composer: 'Gounod' },
   { artists: 'Zihao Li', aria: '« O Vaterland, du machst bei tag »', opera: 'Die lustige Witwe', composer: 'Lehar' },
   { artists: 'Juliette Tacchino', aria: '« Naughty Marietta »', opera: 'Naughty Marietta', composer: 'Herbert' },
   { artists: 'George Virban', aria: '« Ah, Lève-toi Soleil ! »', opera: 'Roméo et Juliette', composer: 'Gounod' },
-  { artists: 'Marie Lombard', aria: '« Robert, toi que j'aime »', opera: 'Robert le Diable', composer: 'Meyerbeer' },
-  { artists: 'Marie Lombard & Juliette Tacchino', aria: '« Sull'aria »', opera: 'Nozze di Figaro', composer: 'Mozart' },
+  { artists: 'Marie Lombard', aria: "« Robert, toi que j'aime »", opera: 'Robert le Diable', composer: 'Meyerbeer' },
+  { artists: 'Marie Lombard & Juliette Tacchino', aria: "« Sull'aria »", opera: 'Nozze di Figaro', composer: 'Mozart' },
   { artists: 'Zihao Li', aria: '« Mein Sehnen, mein Wahnen »', opera: 'Die Tote Stadt', composer: 'Korngold' },
-  { artists: 'George Virban & Juliette Tacchino', aria: '« Caro elisir »', opera: 'L'elisir d'amore', composer: 'Donizetti' },
+  { artists: 'George Virban & Juliette Tacchino', aria: '« Caro elisir »', opera: "L'elisir d'amore", composer: 'Donizetti' },
 ];
 
 const partTwo: Piece[] = [
@@ -30,7 +30,7 @@ const partTwo: Piece[] = [
   { artists: 'Juliette Tacchino', aria: '« Da Tempeste »', opera: 'Giulio Cesare', composer: 'Handel' },
   { artists: 'Alexandre Baldo', aria: '« O Isis und Osiris »', opera: 'La Flûte Enchantée', composer: 'Mozart' },
   { artists: 'Juliette Tacchino & Alexandre Baldo', aria: '« La ci darem la mano »', opera: 'Don Giovanni', composer: 'Mozart' },
-  { artists: 'Marie Lombard', aria: '« Ah fors'e lui… sempre libera »', opera: 'Traviata', composer: 'Verdi' },
+  { artists: 'Marie Lombard', aria: "« Ah fors'e lui… sempre libera »", opera: 'Traviata', composer: 'Verdi' },
   { artists: 'Quartetto — G. Virban, Z. Li, J. Tacchino, M. Lombard', aria: '« Dunque e proprio finita ? »', opera: 'La Bohème', composer: 'Puccini' },
   { artists: 'George Virban', aria: '« Nessun Dorma »', opera: 'Turandot', composer: 'Puccini' },
   { artists: 'Sumi Jo', aria: '« Oh, quante volte »', opera: 'I Capuletti e i Montecchi', composer: 'Bellini' },
