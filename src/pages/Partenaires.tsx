@@ -15,7 +15,7 @@ const Partenaires = () => {
     <div className="min-h-screen">
       <SEOHead
         title="Nos Partenaires | SUMI JO International Singing Competition 2026"
-        description="Découvrez les partenaires et mécènes qui soutiennent le concours international de chant lyrique SUMI JO au Château de la Ferté-Imbault."
+        description="Découvrez les partenaires et mécènes qui soutiennent le concours international de chant lyrique SUMI JO au Château de La Ferté-Imbault."
         keywords="partenaires, mécènes, sponsors, SJISC, concours chant, opéra"
         path="/partenaires"
         jsonLd={[getOrganizationSchema()]}

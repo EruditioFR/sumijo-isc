@@ -5,11 +5,11 @@
     "items": {
       "dates": {
         "question": "2026年比赛的日期是什么？",
-        "answer": "2026年SUMI JO国际声乐比赛将于2026年7月5日至11日在索洛涅地区的Château de la Ferté-Imbault举行。这一特别周将包括初赛试唱、半决赛、大决赛，以及音乐会、大师班和文化活动。详细节目将于2026年春季公布。"
+        "answer": "2026年SUMI JO国际声乐比赛将于2026年7月5日至11日在索洛涅地区的Château de La Ferté-Imbault举行。这一特别周将包括初赛试唱、半决赛、大决赛，以及音乐会、大师班和文化活动。详细节目将于2026年春季公布。"
       },
       "location": {
         "question": "比赛在哪里举行？",
-        "answer": "比赛在Château de la Ferté-Imbault举行，这是一座拥有千年历史的庄园，其基础可追溯至公元980年，位于距巴黎不到两小时车程的卢瓦尔河谷。这座非凡的历史古迹既是雄伟的堡垒，又是优雅的城堡，提供了独特、浪漫而富有灵感的环境。这是举办这一国际艺术盛事的完美场所。"
+        "answer": "比赛在Château de La Ferté-Imbault举行，这是一座拥有千年历史的庄园，其基础可追溯至公元980年，位于距巴黎不到两小时车程的卢瓦尔河谷。这座非凡的历史古迹既是雄伟的堡垒，又是优雅的城堡，提供了独特、浪漫而富有灵感的环境。这是举办这一国际艺术盛事的完美场所。"
       },
       "tickets": {
         "question": "如何购买观看比赛的门票？",
@@ -50,7 +50,7 @@
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
     "subtitle": "发掘人才，激励卓越",
-    "location": "Château de la Ferté-Imbault, 法国",
+    "location": "Château de La Ferté-Imbault, 法国",
     "participate": "提交申请",
     "comingSoon": "2026年2月14日起开放",
     "learnMore": "了解更多",
@@ -69,7 +69,7 @@
     "statsTitle": "2024年赛事数据",
     "content1": "2026年SUMI JO国际声乐比赛在双重特殊的背景下举办。今年是Sumi Jo国际职业生涯40周年庆典，这位享誉世界的韩国女高音以其水晶般的嗓音和精湛技艺征服了世界顶级歌剧舞台。",
     "content2": "同时，2026年也是中法友谊140周年，这一外交和文化关系自1886年以来将两国紧密相连。这双重纪念使我们的比赛远不止是一场音乐盛事：它成为东西方艺术对话的生动象征。",
-    "content3": "2026年7月5日至11日，在Château de la Ferté-Imbault，我们将迎接来自世界各地最杰出的声乐人才。这一历史性的版本承诺将是一个非凡的时刻，艺术卓越与文化遗产相遇，明日之声在卓越传统的延续中升起。"
+    "content3": "2026年7月5日至11日，在Château de La Ferté-Imbault，我们将迎接来自世界各地最杰出的声乐人才。这一历史性的版本承诺将是一个非凡的时刻，艺术卓越与文化遗产相遇，明日之声在卓越传统的延续中升起。"
   },
   "winners": {
     "title": "2024年获奖者",
@@ -265,8 +265,8 @@
       "phone": "电话"
     },
     "venue": {
-      "title": "Château de la Ferté-Imbault 协会",
-      "name": "Château de la Ferté-Imbault",
+      "title": "Château de La Ferté-Imbault 协会",
+      "name": "Château de La Ferté-Imbault",
       "address": "41300 La Ferté-Imbault, 法国"
     },
     "newsletter": {
@@ -284,11 +284,11 @@
     "become": "成为合作伙伴"
   },
   "chateau": {
-    "title": "Château de la Ferté-Imbault",
+    "title": "Château de La Ferté-Imbault",
     "subtitle": "索洛涅心脏地带的非凡场所",
     "imageCaption": "庄园鸟瞰图",
     "description": {
-      "paragraph1": "坐落于索洛涅中心，Château de la Ferté-Imbault是16世纪的建筑瑰宝。这个非凡的场所将文艺复兴建筑的优雅与30公顷公园的自然美景相结合，为国际文化活动提供了独特的环境。",
+      "paragraph1": "坐落于索洛涅中心，Château de La Ferté-Imbault是16世纪的建筑瑰宝。这个非凡的场所将文艺复兴建筑的优雅与30公顷公园的自然美景相结合，为国际文化活动提供了独特的环境。",
       "paragraph2": "作为历史古迹，城堡经过精心修复，在提供现代设施的同时保留了其真实特色。其国宾厅、礼拜堂和法式花园构成了举办比赛及相关活动的完美场所。"
     },
     "features": {
@@ -332,8 +332,8 @@
     "members": {
       "operowicz": {
         "name": "Olivier O. Medinger",
-        "role": "评审团主席\nChâteau de la Ferté-Imbault所有者",
-        "bio": "评审团主席，Château de la Ferté-Imbault所有者。\n热衷于推广年轻人才，致力于在Château de la Ferté-Imbault这一声望卓著的环境中为新锐艺术家创造非凡机会。"
+        "role": "评审团主席\nChâteau de La Ferté-Imbault所有者",
+        "bio": "评审团主席，Château de La Ferté-Imbault所有者。\n热衷于推广年轻人才，致力于在Château de La Ferté-Imbault这一声望卓著的环境中为新锐艺术家创造非凡机会。"
       },
       "friend": {
         "name": "Jonathan Friend",
@@ -505,13 +505,13 @@
     "lastUpdated": "最后更新：2026年1月",
     "intro": {
       "title": "简介",
-      "content": "Château de la Ferté-Imbault协会作为SUMI JO International Singing Competition（以下简称「大赛」）的主办方，致力于保护用户、参赛者、合作伙伴和访问者的隐私和个人数据。本隐私政策描述了我们如何根据《通用数据保护条例》（GDPR）和法国数据保护法收集、使用、存储和保护您的个人数据。"
+      "content": "Château de La Ferté-Imbault协会作为SUMI JO International Singing Competition（以下简称「大赛」）的主办方，致力于保护用户、参赛者、合作伙伴和访问者的隐私和个人数据。本隐私政策描述了我们如何根据《通用数据保护条例》（GDPR）和法国数据保护法收集、使用、存储和保护您的个人数据。"
     },
     "controller": {
       "title": "数据控制者",
       "content": "个人数据的处理负责人为：",
-      "name": "Association du Château de la Ferté-Imbault",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
+      "name": "Association du Château de La Ferté-Imbault",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
       "email": "电子邮件：contact@sumijo-isc.com"
     },
     "dataCollected": {
@@ -624,7 +624,7 @@
       "title": "网站发布者",
       "name": "L'association du château de La Ferté-Imbault",
       "type": "法国非营利协会（1901年法律）",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, 法国",
       "email": "电子邮件：contact@aacfi.fr",
       "rna": "RNA编号：W413005535"
     },

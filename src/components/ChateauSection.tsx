@@ -71,7 +71,7 @@ const ChateauSection = () => {
             <motion.img
               style={{ y }}
               src={chateauDroneImage}
-              alt="Château de la Ferté-Imbault vue aérienne"
+              alt="Château de La Ferté-Imbault vue aérienne"
               className="w-full h-[400px] md:h-[600px] object-cover scale-110"
             />
           </motion.div>

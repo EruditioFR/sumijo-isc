@@ -5,11 +5,11 @@
     "items": {
       "dates": {
         "question": "Quelles sont les dates du concours 2026 ?",
-        "answer": "L'édition 2026 du SUMI JO International Singing Competition se déroulera du 5 au 11 juillet 2026 au Château de la Ferté-Imbault, en Sologne. Cette semaine exceptionnelle comprendra les auditions préliminaires, les demi-finales, la grande finale ainsi que des concerts, masterclasses et événements culturels. Le programme détaillé sera communiqué au printemps 2026."
+        "answer": "L'édition 2026 du SUMI JO International Singing Competition se déroulera du 5 au 11 juillet 2026 au Château de La Ferté-Imbault, en Sologne. Cette semaine exceptionnelle comprendra les auditions préliminaires, les demi-finales, la grande finale ainsi que des concerts, masterclasses et événements culturels. Le programme détaillé sera communiqué au printemps 2026."
       },
       "location": {
         "question": "Où se déroule le concours ?",
-        "answer": "Le concours se tient au Château de la Ferté-Imbault, un domaine millénaire dont les fondations remontent à l'An 980, situé dans la vallée de la Loire à moins de deux heures de Paris. Ce monument historique exceptionnel, à la fois forteresse imposante et château élégant, offre un cadre romantique et inspirant unique. Un écrin parfait pour accueillir cet événement artistique international."
+        "answer": "Le concours se tient au Château de La Ferté-Imbault, un domaine millénaire dont les fondations remontent à l'An 980, situé dans la vallée de la Loire à moins de deux heures de Paris. Ce monument historique exceptionnel, à la fois forteresse imposante et château élégant, offre un cadre romantique et inspirant unique. Un écrin parfait pour accueillir cet événement artistique international."
       },
       "tickets": {
         "question": "Comment acheter des billets pour assister au concours ?",
@@ -50,7 +50,7 @@
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
     "subtitle": "Révéler les talents, inspirer l'excellence",
-    "location": "Château de la Ferté-Imbault, France",
+    "location": "Château de La Ferté-Imbault, France",
     "participate": "Dépôt de candidature",
     "comingSoon": "À partir du 14 février 2026",
     "learnMore": "EN SAVOIR PLUS",
@@ -69,7 +69,7 @@
     "statsTitle": "Quelques chiffres sur l'édition 2024",
     "content1": "L'édition 2026 du SUMI JO International Singing Competition s'inscrit dans un contexte doublement exceptionnel. Cette année marque la célébration de 40 années de carrière internationale de Sumi Jo, soprano coréenne de renommée mondiale, dont la voix cristalline et la virtuosité ont conquis les plus grandes scènes d'opéra.",
     "content2": "Simultanément, 2026 célèbre 140 ans d'amitié franco-coréenne, une relation diplomatique et culturelle qui unit nos deux nations depuis 1886. Cette double commémoration fait de notre compétition bien plus qu'un événement musical : elle devient le symbole vivant d'un dialogue artistique entre l'Orient et l'Occident.",
-    "content3": "Au Château de la Ferté-Imbault, du 5 au 11 juillet 2026, nous accueillerons les plus brillants talents lyriques du monde entier. Cette édition historique promet d'être un moment d'exception, où l'excellence artistique rencontre l'héritage culturel, et où les voix de demain s'élèvent dans la continuité d'une tradition d'excellence."
+    "content3": "Au Château de La Ferté-Imbault, du 5 au 11 juillet 2026, nous accueillerons les plus brillants talents lyriques du monde entier. Cette édition historique promet d'être un moment d'exception, où l'excellence artistique rencontre l'héritage culturel, et où les voix de demain s'élèvent dans la continuité d'une tradition d'excellence."
   },
   "winners": {
     "title": "LES LAURÉATS 2024",
@@ -266,7 +266,7 @@
     },
     "venue": {
       "title": "L'association du château de la Ferté-Imbault",
-      "name": "Château de la Ferté-Imbault",
+      "name": "Château de La Ferté-Imbault",
       "address": "41300 La Ferté-Imbault, France"
     },
     "newsletter": {
@@ -354,8 +354,8 @@
     "members": {
       "operowicz": {
         "name": "Olivier O. Medinger",
-        "role": "Président du jury\nPropriétaire du Château de la Ferté-Imbault",
-        "bio": "Président du Jury et propriétaire du Château de la Ferté-Imbault.\nPassionné par la promotion des jeunes talents, il œuvre à créer des opportunités exceptionnelles pour les artistes émergents dans le cadre prestigieux du Château de la Ferté-Imbault."
+        "role": "Président du jury\nPropriétaire du Château de La Ferté-Imbault",
+        "bio": "Président du Jury et propriétaire du Château de La Ferté-Imbault.\nPassionné par la promotion des jeunes talents, il œuvre à créer des opportunités exceptionnelles pour les artistes émergents dans le cadre prestigieux du Château de La Ferté-Imbault."
       },
       "friend": {
         "name": "Jonathan Friend",
@@ -527,13 +527,13 @@
     "lastUpdated": "Dernière mise à jour : janvier 2026",
     "intro": {
       "title": "Introduction",
-      "content": "L'association du Château de la Ferté-Imbault, organisatrice du SUMI JO International Singing Competition (ci-après « le Concours »), s'engage à protéger la vie privée et les données personnelles de ses utilisateurs, candidats, partenaires et visiteurs. La présente politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi française Informatique et Libertés."
+      "content": "L'association du Château de La Ferté-Imbault, organisatrice du SUMI JO International Singing Competition (ci-après « le Concours »), s'engage à protéger la vie privée et les données personnelles de ses utilisateurs, candidats, partenaires et visiteurs. La présente politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi française Informatique et Libertés."
     },
     "controller": {
       "title": "Responsable du traitement",
       "content": "Le responsable du traitement des données personnelles est :",
-      "name": "Association du Château de la Ferté-Imbault",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "name": "Association du Château de La Ferté-Imbault",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "Email : contact@sumijo-isc.com"
     },
     "dataCollected": {
@@ -646,7 +646,7 @@
       "title": "Éditeur du site",
       "name": "L'association du château de La Ferté-Imbault",
       "type": "Association loi 1901",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "Email : contact@aacfi.fr",
       "rna": "Numéro RNA : W413005535"
     },
