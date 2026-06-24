@@ -16,8 +16,8 @@ const Chateau = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Château de la Ferté-Imbault | Lieu du concours SJISC 2026"
-        description="Découvrez le Château de la Ferté-Imbault, plus grand château en briques de Sologne, lieu d'accueil du concours international de chant lyrique SUMI JO."
+        title="Château de La Ferté-Imbault | Lieu du concours SJISC 2026"
+        description="Découvrez le Château de La Ferté-Imbault, plus grand château en briques de Sologne, lieu d'accueil du concours international de chant lyrique SUMI JO."
         keywords="Château Ferté-Imbault, Sologne, Val de Loire, patrimoine, concours chant, SJISC"
         path="/chateau"
         image="/chateau-drone.jpg"

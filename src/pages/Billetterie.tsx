@@ -12,7 +12,7 @@ const Billetterie = () => {
     <div className="min-h-screen" style={{ backgroundColor: '#F5F1ED' }}>
       <SEOHead
         title="Billetterie | SUMI JO International Singing Competition 2026"
-        description="Réservez vos billets pour le concours international de chant lyrique SUMI JO au Château de la Ferté-Imbault. Ouverture le 1er mars 2026."
+        description="Réservez vos billets pour le concours international de chant lyrique SUMI JO au Château de La Ferté-Imbault. Ouverture le 1er mars 2026."
         keywords="billetterie, tickets, réservation, SJISC, concours chant, opéra"
         path="/billetterie"
         type="event"
