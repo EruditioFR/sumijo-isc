@@ -13,9 +13,6 @@ const Header = lazy(() => import('@/components/Header'));
 const Footer = lazy(() => import('@/components/Footer'));
 const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 
-const RESERVATION_URL =
-  'https://indiv.themisweb.fr/0768/fChoixSeanceWidget.aspx?idstructure=0768&EventId=84&request=QcE+w0WHSuCWF9OlCSGcmWqlK7pLRVeqfHLZDpsKXHZIitc1vsQigXTiGajZ/qa9/NopmtBrZh3PJSLWiosMEO9FLFGThy1ThmBKAIqIKfkEQaTkgMrkrQ==';
-
 type Piece = { artists: string; aria: string; opera: string; composer: string };
 
 const partOne: Piece[] = [
