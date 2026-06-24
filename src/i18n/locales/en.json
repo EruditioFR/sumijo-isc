@@ -5,11 +5,11 @@
     "items": {
       "dates": {
         "question": "What are the dates of the 2026 competition?",
-        "answer": "The 2026 edition of the SUMI JO International Singing Competition will take place from July 5 to 11, 2026 at Château de la Ferté-Imbault, in the Sologne region. This exceptional week will include preliminary auditions, semi-finals, the grand finale, as well as concerts, masterclasses, and cultural events. The detailed program will be announced in spring 2026."
+        "answer": "The 2026 edition of the SUMI JO International Singing Competition will take place from July 5 to 11, 2026 at Château de La Ferté-Imbault, in the Sologne region. This exceptional week will include preliminary auditions, semi-finals, the grand finale, as well as concerts, masterclasses, and cultural events. The detailed program will be announced in spring 2026."
       },
       "location": {
         "question": "Where does the competition take place?",
-        "answer": "The competition is held at Château de la Ferté-Imbault, a thousand-year-old estate with foundations dating back to 980 AD, located in the Loire Valley less than two hours from Paris. This exceptional historic monument, both an imposing fortress and an elegant château, offers a unique romantic and inspiring setting. A perfect venue to host this international artistic event."
+        "answer": "The competition is held at Château de La Ferté-Imbault, a thousand-year-old estate with foundations dating back to 980 AD, located in the Loire Valley less than two hours from Paris. This exceptional historic monument, both an imposing fortress and an elegant château, offers a unique romantic and inspiring setting. A perfect venue to host this international artistic event."
       },
       "tickets": {
         "question": "How can I buy tickets to attend the competition?",
@@ -50,7 +50,7 @@
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
     "subtitle": "Revealing talents, inspiring excellence",
-    "location": "Château de la Ferté-Imbault, France",
+    "location": "Château de La Ferté-Imbault, France",
     "participate": "Apply Now",
     "comingSoon": "From February 14, 2026",
     "learnMore": "LEARN MORE",
@@ -69,7 +69,7 @@
     "statsTitle": "Some figures from the 2024 edition",
     "content1": "The 2026 edition of the SUMI JO International Singing Competition takes place in a doubly exceptional context. This year marks the celebration of 40 years of Sumi Jo's international career, the world-renowned Korean soprano whose crystalline voice and virtuosity have conquered the greatest opera stages.",
     "content2": "Simultaneously, 2026 celebrates 140 years of Franco-Korean friendship, a diplomatic and cultural relationship that has united our two nations since 1886. This double commemoration makes our competition much more than a musical event: it becomes the living symbol of an artistic dialogue between East and West.",
-    "content3": "At Château de la Ferté-Imbault, from July 5 to 11, 2026, we will welcome the most brilliant lyrical talents from around the world. This historic edition promises to be an exceptional moment, where artistic excellence meets cultural heritage, and where the voices of tomorrow rise in the continuity of a tradition of excellence."
+    "content3": "At Château de La Ferté-Imbault, from July 5 to 11, 2026, we will welcome the most brilliant lyrical talents from around the world. This historic edition promises to be an exceptional moment, where artistic excellence meets cultural heritage, and where the voices of tomorrow rise in the continuity of a tradition of excellence."
   },
   "winners": {
     "title": "THE 2024 WINNERS",
@@ -265,8 +265,8 @@
       "phone": "Phone"
     },
     "venue": {
-      "title": "The association of Château de la Ferté-Imbault",
-      "name": "Château de la Ferté-Imbault",
+      "title": "The association of Château de La Ferté-Imbault",
+      "name": "Château de La Ferté-Imbault",
       "address": "41300 La Ferté-Imbault, France"
     },
     "newsletter": {
@@ -284,11 +284,11 @@
     "become": "BECOME A PARTNER"
   },
   "chateau": {
-    "title": "Château de la Ferté-Imbault",
+    "title": "Château de La Ferté-Imbault",
     "subtitle": "An exceptional setting in the heart of Sologne",
     "imageCaption": "Aerial view of the estate",
     "description": {
-      "paragraph1": "Nestled in the heart of Sologne, the Château de la Ferté-Imbault is an architectural jewel from the 16th century. This exceptional venue combines the elegance of its Renaissance architecture with the natural beauty of its 30-hectare park, offering a unique setting for international cultural events.",
+      "paragraph1": "Nestled in the heart of Sologne, the Château de La Ferté-Imbault is an architectural jewel from the 16th century. This exceptional venue combines the elegance of its Renaissance architecture with the natural beauty of its 30-hectare park, offering a unique setting for international cultural events.",
       "paragraph2": "Listed as a Historic Monument, the château has been meticulously restored to preserve its authentic character while providing modern infrastructure. Its state rooms, chapel, and French gardens constitute a perfect setting to host the competition and its associated events."
     },
     "features": {
@@ -332,8 +332,8 @@
     "members": {
       "operowicz": {
         "name": "Olivier O. Medinger",
-        "role": "Jury President\nOwner of Château de la Ferté-Imbault",
-        "bio": "Jury President and owner of Château de la Ferté-Imbault.\nPassionate about promoting young talent, he works to create exceptional opportunities for emerging artists in the prestigious setting of Château de la Ferté-Imbault."
+        "role": "Jury President\nOwner of Château de La Ferté-Imbault",
+        "bio": "Jury President and owner of Château de La Ferté-Imbault.\nPassionate about promoting young talent, he works to create exceptional opportunities for emerging artists in the prestigious setting of Château de La Ferté-Imbault."
       },
       "friend": {
         "name": "Jonathan Friend",
@@ -505,13 +505,13 @@
     "lastUpdated": "Last updated: January 2026",
     "intro": {
       "title": "Introduction",
-      "content": "The association of Château de la Ferté-Imbault, organizer of the SUMI JO International Singing Competition (hereinafter \"the Competition\"), is committed to protecting the privacy and personal data of its users, candidates, partners, and visitors. This privacy policy describes how we collect, use, store, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and French data protection law."
+      "content": "The association of Château de La Ferté-Imbault, organizer of the SUMI JO International Singing Competition (hereinafter \"the Competition\"), is committed to protecting the privacy and personal data of its users, candidates, partners, and visitors. This privacy policy describes how we collect, use, store, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and French data protection law."
     },
     "controller": {
       "title": "Data Controller",
       "content": "The data controller for personal data is:",
-      "name": "Association du Château de la Ferté-Imbault",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "name": "Association du Château de La Ferté-Imbault",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "Email: contact@sumijo-isc.com"
     },
     "dataCollected": {
@@ -624,7 +624,7 @@
       "title": "Website Publisher",
       "name": "L'association du château de La Ferté-Imbault",
       "type": "French non-profit association (Law 1901)",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "Email: contact@aacfi.fr",
       "rna": "RNA Number: W413005535"
     },

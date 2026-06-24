@@ -11,7 +11,7 @@ export interface FAQItem {
 export const getOrganizationSchema = () => ({
   '@type': 'Organization',
   '@id': `${BASE_URL}/#organization`,
-  name: 'Association du Château de la Ferté-Imbault',
+  name: 'Association du Château de La Ferté-Imbault',
   alternateName: 'SUMI JO International Singing Competition',
   url: BASE_URL,
   logo: {
@@ -38,7 +38,7 @@ export const getEventSchema = () => ({
   '@id': `${BASE_URL}/#event`,
   name: 'SUMI JO International Singing Competition 2026',
   description:
-    'Concours international de chant lyrique présidé par Sumi Jo au Château de la Ferté-Imbault, Val de Loire, France.',
+    'Concours international de chant lyrique présidé par Sumi Jo au Château de La Ferté-Imbault, Val de Loire, France.',
   startDate: '2026-07-05',
   endDate: '2026-07-11',
   eventStatus: 'https://schema.org/EventScheduled',
@@ -46,10 +46,10 @@ export const getEventSchema = () => ({
   location: {
     '@type': 'Place',
     '@id': `${BASE_URL}/#venue`,
-    name: 'Château de la Ferté-Imbault',
+    name: 'Château de La Ferté-Imbault',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Château de la Ferté-Imbault',
+      streetAddress: 'Château de La Ferté-Imbault',
       addressLocality: 'La Ferté-Imbault',
       postalCode: '41300',
       addressRegion: 'Loir-et-Cher',
@@ -127,12 +127,12 @@ export const getFAQSchema = (faqItems: FAQItem[]) => ({
 export const getChateauSchema = () => ({
   '@type': 'Place',
   '@id': `${BASE_URL}/#venue`,
-  name: 'Château de la Ferté-Imbault',
+  name: 'Château de La Ferté-Imbault',
   description:
     'Plus grand château en briques de Sologne, édifice millénaire au cœur du Val de Loire, France. Lieu d\'accueil du SUMI JO International Singing Competition.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Château de la Ferté-Imbault',
+    streetAddress: 'Château de La Ferté-Imbault',
     addressLocality: 'La Ferté-Imbault',
     postalCode: '41300',
     addressRegion: 'Loir-et-Cher',
@@ -157,7 +157,7 @@ export const getWebSiteSchema = () => ({
   url: BASE_URL,
   name: 'SUMI JO International Singing Competition',
   description:
-    'Site officiel du concours international de chant lyrique Sumi Jo au Château de la Ferté-Imbault.',
+    'Site officiel du concours international de chant lyrique Sumi Jo au Château de La Ferté-Imbault.',
   publisher: {
     '@id': `${BASE_URL}/#organization`,
   },
@@ -174,7 +174,7 @@ export const generateJsonLd = (schemas: object[]) => ({
 export const defaultFAQItems: FAQItem[] = [
   {
     question: 'Quand aura lieu le concours SUMI JO International Singing Competition 2026 ?',
-    answer: 'Le concours se déroulera du 5 au 11 juillet 2026 au Château de la Ferté-Imbault, dans le Val de Loire, France.',
+    answer: 'Le concours se déroulera du 5 au 11 juillet 2026 au Château de La Ferté-Imbault, dans le Val de Loire, France.',
   },
   {
     question: 'Qui peut participer au concours ?',
@@ -182,7 +182,7 @@ export const defaultFAQItems: FAQItem[] = [
   },
   {
     question: 'Où se déroule le concours ?',
-    answer: 'Le concours a lieu au Château de la Ferté-Imbault, le plus grand château en briques de Sologne, un domaine millénaire situé en Val de Loire.',
+    answer: 'Le concours a lieu au Château de La Ferté-Imbault, le plus grand château en briques de Sologne, un domaine millénaire situé en Val de Loire.',
   },
   {
     question: 'Quand la billetterie sera-t-elle ouverte ?',

@@ -67,7 +67,7 @@ const Programme = () => {
     <div className="min-h-screen">
       <SEOHead
         title="Programme 2026 | SUMI JO International Singing Competition"
-        description="Programme détaillé du concours international de chant lyrique SUMI JO 2026 au Château de la Ferté-Imbault. Du 6 au 11 juillet 2026."
+        description="Programme détaillé du concours international de chant lyrique SUMI JO 2026 au Château de La Ferté-Imbault. Du 6 au 11 juillet 2026."
         keywords="programme, concours chant, SJISC 2026, auditions, finale, gala"
         path="/programme"
       />
@@ -96,7 +96,7 @@ const Programme = () => {
               </h1>
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-6">
-                Du lundi 6 au samedi 11 juillet — Château de la Ferté-Imbault
+                Du lundi 6 au samedi 11 juillet — Château de La Ferté-Imbault
               </p>
             </motion.div>
 

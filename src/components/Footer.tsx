@@ -88,7 +88,7 @@ const Footer = () => {
               SUMI JO INTERNATIONAL SINGING COMPETITION
             </div>
             <p className="text-sm text-gold">
-              Château de la Ferté-Imbault<br />
+              Château de La Ferté-Imbault<br />
               41300 La Ferté-Imbault, France
             </p>
           </div>

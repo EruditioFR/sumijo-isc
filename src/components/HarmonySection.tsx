@@ -69,7 +69,7 @@ const HarmonySection = () => {
                 className="absolute -bottom-6 left-8 md:left-12 bg-gold px-6 py-3 shadow-xl"
               >
                 <p className="text-white font-display text-sm md:text-base tracking-widest uppercase">
-                  Château de la Ferté-Imbault
+                  Château de La Ferté-Imbault
                 </p>
               </motion.div>
             </div>

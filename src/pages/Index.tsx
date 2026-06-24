@@ -35,8 +35,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Sumi Jo International Singing Competition 2026 - du 5 au 11 juillet 2026 - Château de la Ferté-Imbault"
-        description="Sumi Jo International Singing Competition 2026 - du 5 au 11 juillet 2026 - Château de la Ferté-Imbault"
+        title="Sumi Jo International Singing Competition 2026 - du 5 au 11 juillet 2026 - Château de La Ferté-Imbault"
+        description="Sumi Jo International Singing Competition 2026 - du 5 au 11 juillet 2026 - Château de La Ferté-Imbault"
         keywords="Sumi Jo, concours chant lyrique, opéra, competition, Château Ferté-Imbault, Val de Loire, soprano, musique classique"
         path="/"
         type="event"

@@ -5,11 +5,11 @@
     "items": {
       "dates": {
         "question": "2026년 대회 일정은 언제인가요?",
-        "answer": "2026년 SUMI JO 국제 성악 콩쿠르는 2026년 7월 5일부터 11일까지 솔로뉴 지역의 Château de la Ferté-Imbault에서 개최됩니다. 이 특별한 주간에는 예선 오디션, 준결승, 대결승, 콘서트, 마스터클래스 및 문화 행사가 포함됩니다. 상세 프로그램은 2026년 봄에 발표될 예정입니다."
+        "answer": "2026년 SUMI JO 국제 성악 콩쿠르는 2026년 7월 5일부터 11일까지 솔로뉴 지역의 Château de La Ferté-Imbault에서 개최됩니다. 이 특별한 주간에는 예선 오디션, 준결승, 대결승, 콘서트, 마스터클래스 및 문화 행사가 포함됩니다. 상세 프로그램은 2026년 봄에 발표될 예정입니다."
       },
       "location": {
         "question": "대회는 어디에서 열리나요?",
-        "answer": "대회는 파리에서 2시간 이내의 루아르 계곡에 위치한 Château de la Ferté-Imbault에서 개최됩니다. 서기 980년에 세워진 기초를 가진 천년의 역사를 지닌 이 영지는 웅장한 요새이자 우아한 성으로, 독특하고 낭만적이며 영감을 주는 환경을 제공합니다. 이 국제 예술 행사를 위한 완벽한 장소입니다."
+        "answer": "대회는 파리에서 2시간 이내의 루아르 계곡에 위치한 Château de La Ferté-Imbault에서 개최됩니다. 서기 980년에 세워진 기초를 가진 천년의 역사를 지닌 이 영지는 웅장한 요새이자 우아한 성으로, 독특하고 낭만적이며 영감을 주는 환경을 제공합니다. 이 국제 예술 행사를 위한 완벽한 장소입니다."
       },
       "tickets": {
         "question": "대회 관람 티켓은 어떻게 구매하나요?",
@@ -50,7 +50,7 @@
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",
     "subtitle": "재능을 발견하고 우수성에 영감을 주다",
-    "location": "Château de la Ferté-Imbault, 프랑스",
+    "location": "Château de La Ferté-Imbault, 프랑스",
     "participate": "지원서 제출",
     "comingSoon": "2026년 2월 14일부터",
     "learnMore": "더 알아보기",
@@ -265,7 +265,7 @@
       "phone": "전화"
     },
     "venue": {
-      "title": "Château de la Ferté-Imbault 협회",
+      "title": "Château de La Ferté-Imbault 협회",
       "name": "샤토 드 라 페르테 임볼트",
       "address": "41300 라 페르테 임볼트, 프랑스"
     },
@@ -284,7 +284,7 @@
     "become": "파트너 되기"
   },
   "chateau": {
-    "title": "Château de la Ferté-Imbault",
+    "title": "Château de La Ferté-Imbault",
     "subtitle": "솔로뉴 중심부의 특별한 장소",
     "imageCaption": "영지의 항공 전망",
     "description": {
@@ -505,13 +505,13 @@
     "lastUpdated": "최종 업데이트: 2026년 1월",
     "intro": {
       "title": "소개",
-      "content": "SUMI JO International Singing Competition(이하 \"대회\")의 주최 기관인 Château de la Ferté-Imbault 협회는 이용자, 참가자, 파트너 및 방문자의 개인정보와 프라이버시 보호에 최선을 다하고 있습니다. 본 개인정보 처리방침은 유럽 일반개인정보보호규정(GDPR) 및 프랑스 정보보호법에 따라 귀하의 개인정보를 수집, 이용, 저장 및 보호하는 방법을 설명합니다."
+      "content": "SUMI JO International Singing Competition(이하 \"대회\")의 주최 기관인 Château de La Ferté-Imbault 협회는 이용자, 참가자, 파트너 및 방문자의 개인정보와 프라이버시 보호에 최선을 다하고 있습니다. 본 개인정보 처리방침은 유럽 일반개인정보보호규정(GDPR) 및 프랑스 정보보호법에 따라 귀하의 개인정보를 수집, 이용, 저장 및 보호하는 방법을 설명합니다."
     },
     "controller": {
       "title": "개인정보 관리자",
       "content": "개인정보 처리 책임자는 다음과 같습니다:",
-      "name": "Association du Château de la Ferté-Imbault",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "name": "Association du Château de La Ferté-Imbault",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "이메일: contact@sumijo-isc.com"
     },
     "dataCollected": {
@@ -624,7 +624,7 @@
       "title": "웹사이트 발행인",
       "name": "L'association du château de La Ferté-Imbault",
       "type": "프랑스 비영리 협회 (1901년 법)",
-      "address": "Château de la Ferté-Imbault, 41300 La Ferté-Imbault, France",
+      "address": "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
       "email": "이메일: contact@aacfi.fr",
       "rna": "RNA 번호: W413005535"
     },
