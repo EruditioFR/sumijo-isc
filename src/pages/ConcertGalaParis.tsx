@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calendar, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin } from 'lucide-react';
 import artistsImageAsset from '@/assets/concert-gala-paris-artists-v2.png.asset.json';
 const artistsImage = artistsImageAsset.url;
-import salleCortotLogo from '@/assets/logo-salle-cortot.svg';
 
 const Header = lazy(() => import('@/components/Header'));
 const Footer = lazy(() => import('@/components/Footer'));
@@ -16,14 +15,14 @@ const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
 type Piece = { artists: string; aria: string; opera: string; composer: string };
 
 const partOne: Piece[] = [
-  { artists: 'Alexandre Baldo', aria: '« Sous les Pieds d’une Femme »', opera: 'La Reine de Saba', composer: 'Gounod' },
+  { artists: 'Alexandre Baldo', aria: '« Sous les Pieds d'une Femme »', opera: 'La Reine de Saba', composer: 'Gounod' },
   { artists: 'Zihao Li', aria: '« O Vaterland, du machst bei tag »', opera: 'Die lustige Witwe', composer: 'Lehar' },
   { artists: 'Juliette Tacchino', aria: '« Naughty Marietta »', opera: 'Naughty Marietta', composer: 'Herbert' },
   { artists: 'George Virban', aria: '« Ah, Lève-toi Soleil ! »', opera: 'Roméo et Juliette', composer: 'Gounod' },
-  { artists: 'Marie Lombard', aria: '« Robert, toi que j’aime »', opera: 'Robert le Diable', composer: 'Meyerbeer' },
-  { artists: 'Marie Lombard & Juliette Tacchino', aria: '« Sull’aria »', opera: 'Nozze di Figaro', composer: 'Mozart' },
+  { artists: 'Marie Lombard', aria: '« Robert, toi que j'aime »', opera: 'Robert le Diable', composer: 'Meyerbeer' },
+  { artists: 'Marie Lombard & Juliette Tacchino', aria: '« Sull'aria »', opera: 'Nozze di Figaro', composer: 'Mozart' },
   { artists: 'Zihao Li', aria: '« Mein Sehnen, mein Wahnen »', opera: 'Die Tote Stadt', composer: 'Korngold' },
-  { artists: 'George Virban & Juliette Tacchino', aria: '« Caro elisir »', opera: 'L’elisir d’amore', composer: 'Donizetti' },
+  { artists: 'George Virban & Juliette Tacchino', aria: '« Caro elisir »', opera: 'L'elisir d'amore', composer: 'Donizetti' },
 ];
 
 const partTwo: Piece[] = [
@@ -31,19 +30,12 @@ const partTwo: Piece[] = [
   { artists: 'Juliette Tacchino', aria: '« Da Tempeste »', opera: 'Giulio Cesare', composer: 'Handel' },
   { artists: 'Alexandre Baldo', aria: '« O Isis und Osiris »', opera: 'La Flûte Enchantée', composer: 'Mozart' },
   { artists: 'Juliette Tacchino & Alexandre Baldo', aria: '« La ci darem la mano »', opera: 'Don Giovanni', composer: 'Mozart' },
-  { artists: 'Marie Lombard', aria: '« Ah fors’e lui… sempre libera »', opera: 'Traviata', composer: 'Verdi' },
+  { artists: 'Marie Lombard', aria: '« Ah fors'e lui… sempre libera »', opera: 'Traviata', composer: 'Verdi' },
   { artists: 'Quartetto — G. Virban, Z. Li, J. Tacchino, M. Lombard', aria: '« Dunque e proprio finita ? »', opera: 'La Bohème', composer: 'Puccini' },
   { artists: 'George Virban', aria: '« Nessun Dorma »', opera: 'Turandot', composer: 'Puccini' },
   { artists: 'Sumi Jo', aria: '« Oh, quante volte »', opera: 'I Capuletti e i Montecchi', composer: 'Bellini' },
   { artists: 'Sumi Jo', aria: '« Spiel ich die Unschuld vom Lande »', opera: 'Die Fledermaus', composer: 'Johann Strauss II' },
   { artists: 'Tutti avec Sumi Jo', aria: '« Make our Garden Grow »', opera: 'Candide', composer: 'Bernstein' },
-];
-
-const tarifs = [
-  { label: 'Catégorie 1', price: '55 €', note: '' },
-  { label: 'Catégorie 2', price: '35 €', note: '' },
-  { label: 'Catégorie 3', price: '20 €', note: '' },
-  { label: 'Tarif réduit', price: '17 €', note: 'Jeunes -26 ans, demandeurs d’emploi, Pass 17' },
 ];
 
 const PieceRow = ({ piece, index, inView }: { piece: Piece; index: number; inView: boolean }) => (
@@ -169,7 +161,7 @@ const ConcertGalaParis = () => {
                 travers une triomphante tournée mondiale.
               </p>
               <p>
-                Cette tournée l’a conduite en Asie, à Londres (<em>Cadogan Hall</em>) et New York (<em>Carnegie Hall</em>),
+                Cette tournée l'a conduite en Asie, à Londres (<em>Cadogan Hall</em>) et New York (<em>Carnegie Hall</em>),
                 et pour <span className="text-rose-dark font-semibold">une soirée seulement à Paris</span>, à la Salle
                 Cortot, où elle chantera avec les gagnants de la première édition de son concours international de chant,
                 le Sumi Jo International Singing Competition.
@@ -207,7 +199,7 @@ const ConcertGalaParis = () => {
                 Programme du concert
               </span>
               <h2 className="font-display text-3xl md:text-5xl text-foreground">
-                Une soirée d’<span className="text-rose-dark">exception</span>
+                Une soirée d'<span className="text-rose-dark">exception</span>
               </h2>
               <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
             </motion.div>
@@ -249,96 +241,19 @@ const ConcertGalaParis = () => {
           </div>
         </section>
 
-        {/* TARIFS & RÉSERVATION */}
-        <section ref={tarifsRef} className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={tarifsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-14"
+        {/* Lien vers biographies */}
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 text-center">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="font-bold border-gold/40 text-foreground hover:border-gold hover:bg-gold/10 transition-all duration-300"
             >
-              <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase mb-3 block">
-                Réservation
-              </span>
-              <h2 className="font-display text-3xl md:text-5xl text-foreground">
-                Tarifs <span className="text-rose-dark">&</span> billetterie
-              </h2>
-              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6" />
-            </motion.div>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto mb-12">
-              {tarifs.map((t, i) => (
-                <motion.div
-                  key={t.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={tarifsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 * i }}
-                  className="relative bg-card rounded-xl border border-gold/20 p-6 text-center hover:border-gold/60 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300"
-                >
-                  <p className="text-gold text-[11px] font-bold tracking-[0.2em] uppercase mb-3">{t.label}</p>
-                  <p className="font-display text-3xl md:text-4xl text-foreground font-bold">{t.price}</p>
-                  {t.note && (
-                    <p className="text-muted-foreground text-xs mt-3 leading-snug">* {t.note}</p>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="max-w-2xl mx-auto text-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-rose-dark via-rose to-rose-dark text-white font-bold text-base px-10 py-6 hover:shadow-[0_0_30px_rgba(200,90,107,0.5)] transition-all duration-300 hover:scale-105">
-                <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
-                  <Ticket className="w-5 h-5 mr-2" />
-                  Réserver ma place
-                </a>
-              </Button>
-
-              <div className="mt-10 p-6 bg-muted/30 rounded-xl border border-gold/10">
-                <div className="flex justify-center mb-5">
-                  <a
-                    href="https://www.sallecortot.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block hover:opacity-80 transition-opacity bg-black p-4"
-                    aria-label="Salle Cortot"
-                  >
-                    <img
-                      src={salleCortotLogo}
-                      alt="Salle Cortot"
-                      className="h-14 md:h-16 w-auto"
-                    />
-                  </a>
-                </div>
-                <p className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 text-center">
-                  Informations billetterie
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-foreground/85">
-                  <a href="tel:+33148244063" className="flex items-center gap-2 hover:text-rose-dark transition-colors">
-                    <Phone className="w-4 h-4 text-gold" />
-                    <span className="font-medium">01 48 24 40 63</span>
-                  </a>
-                  <span className="hidden sm:inline text-gold/40">•</span>
-                  <a href="mailto:billetterie@sallecortot.fr" className="flex items-center gap-2 hover:text-rose-dark transition-colors">
-                    <Mail className="w-4 h-4 text-gold" />
-                    <span className="font-medium">billetterie@sallecortot.fr</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Lien vers biographies */}
-            <div className="max-w-2xl mx-auto text-center mt-10">
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="font-bold border-gold/40 text-foreground hover:border-gold hover:bg-gold/10 transition-all duration-300"
-              >
-                <Link to="/biographies">
-                  Découvrir les biographies des artistes
-                </Link>
-              </Button>
-            </div>
+              <Link to="/biographies">
+                Découvrir les biographies des artistes
+              </Link>
+            </Button>
 
             {/* Ornament + back */}
             <div className="flex items-center justify-center gap-3 mt-16 mb-8">
@@ -347,14 +262,12 @@ const ConcertGalaParis = () => {
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/40" />
             </div>
 
-            <div className="text-center">
-              <Button asChild variant="outline" size="lg" className="font-bold border-rose/30 hover:border-rose hover:bg-rose hover:text-white transition-all duration-300">
-                <Link to="/">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Retour à l’accueil
-                </Link>
-              </Button>
-            </div>
+            <Button asChild variant="outline" size="lg" className="font-bold border-rose/30 hover:border-rose hover:bg-rose hover:text-white transition-all duration-300">
+              <Link to="/">
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Retour à l'accueil
+              </Link>
+            </Button>
           </div>
         </section>
       </main>
