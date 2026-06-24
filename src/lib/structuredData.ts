@@ -174,7 +174,7 @@ export const generateJsonLd = (schemas: object[]) => ({
 export const defaultFAQItems: FAQItem[] = [
   {
     question: 'Quand aura lieu le concours SUMI JO International Singing Competition 2026 ?',
-    answer: 'Le concours se déroulera du 5 au 11 juillet 2026 au Château de La Ferté-Imbault, dans le Val de Loire, France.',
+    answer: 'Le concours se déroulera du 6 au 11 juillet 2026 au Château de La Ferté-Imbault, dans le Val de Loire, France.',
   },
   {
     question: 'Qui peut participer au concours ?',
