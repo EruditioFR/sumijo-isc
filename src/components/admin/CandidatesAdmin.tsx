@@ -365,6 +365,14 @@ const CandidatesAdmin = () => {
               Exporter
             </Button>
           )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={exportPhotosZip} disabled={isExportingPhotos}>
+              {isExportingPhotos
+                ? <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                : <Download className="w-4 h-4 mr-2" />}
+              Photos (ZIP)
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
