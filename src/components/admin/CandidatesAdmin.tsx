@@ -301,6 +301,47 @@ const CandidatesAdmin = () => {
     XLSX.writeFile(wb, `candidats-${date}.xlsx`);
   };
 
+  const exportPhotosZip = async () => {
+    setIsExportingPhotos(true);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error('Session expirée. Veuillez vous reconnecter.');
+      const { data: cfg } = await import('@/integrations/supabase/client');
+      void cfg;
+      const SUPABASE_URL = (await import('@/integrations/supabase/client')).supabase.supabaseUrl
+        ?? (supabase as unknown as { supabaseUrl: string }).supabaseUrl;
+      const resp = await fetch(
+        `${SUPABASE_URL}/functions/v1/download-candidates-photos`,
+        { method: 'POST', headers: { Authorization: `Bearer ${token}` } },
+      );
+      if (!resp.ok) {
+        const txt = await resp.text();
+        throw new Error(txt || `Erreur ${resp.status}`);
+      }
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `photos-candidats-${date}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      const count = resp.headers.get('X-Photo-Count');
+      toast({
+        title: 'Export terminé',
+        description: count ? `${count} photo(s) exportée(s).` : 'Archive téléchargée.',
+      });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'Erreur inconnue';
+      toast({ title: 'Export impossible', description: msg, variant: 'destructive' });
+    } finally {
+      setIsExportingPhotos(false);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8 flex items-start justify-between gap-4 flex-wrap">
