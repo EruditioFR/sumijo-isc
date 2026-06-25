@@ -192,6 +192,7 @@ const CandidatesAdmin = () => {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
+  const [isExportingPhotos, setIsExportingPhotos] = useState(false);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v2';
@@ -300,6 +301,44 @@ const CandidatesAdmin = () => {
     XLSX.writeFile(wb, `candidats-${date}.xlsx`);
   };
 
+  const exportPhotosZip = async () => {
+    setIsExportingPhotos(true);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error('Session expirée. Veuillez vous reconnecter.');
+      const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+      const resp = await fetch(
+        `${SUPABASE_URL}/functions/v1/download-candidates-photos`,
+        { method: 'POST', headers: { Authorization: `Bearer ${token}` } },
+      );
+      if (!resp.ok) {
+        const txt = await resp.text();
+        throw new Error(txt || `Erreur ${resp.status}`);
+      }
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `photos-candidats-${date}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      const count = resp.headers.get('X-Photo-Count');
+      toast({
+        title: 'Export terminé',
+        description: count ? `${count} photo(s) exportée(s).` : 'Archive téléchargée.',
+      });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'Erreur inconnue';
+      toast({ title: 'Export impossible', description: msg, variant: 'destructive' });
+    } finally {
+      setIsExportingPhotos(false);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8 flex items-start justify-between gap-4 flex-wrap">
@@ -324,6 +363,14 @@ const CandidatesAdmin = () => {
             <Button variant="outline" size="sm" onClick={exportXlsx}>
               <Download className="w-4 h-4 mr-2" />
               Exporter
+            </Button>
+          )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={exportPhotosZip} disabled={isExportingPhotos}>
+              {isExportingPhotos
+                ? <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                : <Download className="w-4 h-4 mr-2" />}
+              Photos (ZIP)
             </Button>
           )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
