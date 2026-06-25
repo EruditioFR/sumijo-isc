@@ -307,10 +307,7 @@ const CandidatesAdmin = () => {
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData.session?.access_token;
       if (!token) throw new Error('Session expirée. Veuillez vous reconnecter.');
-      const { data: cfg } = await import('@/integrations/supabase/client');
-      void cfg;
-      const SUPABASE_URL = (await import('@/integrations/supabase/client')).supabase.supabaseUrl
-        ?? (supabase as unknown as { supabaseUrl: string }).supabaseUrl;
+      const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
       const resp = await fetch(
         `${SUPABASE_URL}/functions/v1/download-candidates-photos`,
         { method: 'POST', headers: { Authorization: `Bearer ${token}` } },
