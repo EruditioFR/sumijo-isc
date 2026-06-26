@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Music2, Loader2, RefreshCw, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CountryFlag = ({ name }: { name: string }) => {
   const url = countryNameToFlagUrl(name);
@@ -42,6 +43,7 @@ const AirsDemiFinaleAdmin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('demi');
+  const isMobile = useIsMobile();
 
   const phaseLabel = phase === 'demi' ? 'Airs demi-finale' : 'Airs Finale';
   const getAirs = (c: Candidate) => phase === 'demi' ? (c.airsDemieFinale || []) : (c.airsFinale || []);
@@ -138,62 +140,88 @@ const AirsDemiFinaleAdmin = () => {
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead className="w-16">Photo</TableHead>
-                  <TableHead>Nom</TableHead>
-                  <TableHead>Prénom</TableHead>
-                  <TableHead>Pays</TableHead>
-                  <TableHead>Type de voix</TableHead>
-                  <TableHead>{phaseLabel}</TableHead>
-                </TableRow>
+                {isMobile ? (
+                  <TableRow>
+                    <TableHead className="w-14">Photo</TableHead>
+                    <TableHead>Candidat</TableHead>
+                    <TableHead>{phaseLabel}</TableHead>
+                  </TableRow>
+                ) : (
+                  <TableRow>
+                    <TableHead className="w-16">Photo</TableHead>
+                    <TableHead>Nom</TableHead>
+                    <TableHead>Prénom</TableHead>
+                    <TableHead>Pays</TableHead>
+                    <TableHead>Type de voix</TableHead>
+                    <TableHead>{phaseLabel}</TableHead>
+                  </TableRow>
+                )}
               </TableHeader>
               <TableBody>
                 {candidates.map((c) => {
                   const airs = getAirs(c);
                   return (
-                  <TableRow key={c.id}>
-                    <TableCell>
-                      {c.photoUrl ? (
-                        <a
-                          href={c.photoFullUrl ?? c.photoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            src={c.photoUrl}
-                            alt={`${c.prenom} ${c.nom}`}
-                            className="w-12 h-12 rounded-full object-cover border"
-                          />
-                        </a>
+                    <TableRow key={c.id}>
+                      <TableCell className="align-top">
+                        {c.photoUrl ? (
+                          <a
+                            href={c.photoFullUrl ?? c.photoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={c.photoUrl}
+                              alt={`${c.prenom} ${c.nom}`}
+                              className="w-12 h-12 rounded-full object-cover border"
+                            />
+                          </a>
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+                            {c.prenom?.[0]}{c.nom?.[0]}
+                          </div>
+                        )}
+                      </TableCell>
+                      {isMobile ? (
+                        <TableCell>
+                          <div className="space-y-1">
+                            <div className="font-medium">
+                              {c.nom.toUpperCase()} {c.prenom}
+                            </div>
+                            <div className="text-sm text-muted-foreground flex items-center gap-1.5">
+                              {c.pays && <CountryFlag name={c.pays} />}
+                              <span>{c.pays || '-'}</span>
+                              <span className="mx-1">·</span>
+                              <span className="capitalize">{c.typeVoix || '-'}</span>
+                            </div>
+                          </div>
+                        </TableCell>
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
-                          {c.prenom?.[0]}{c.nom?.[0]}
-                        </div>
+                        <>
+                          <TableCell className="font-medium">{c.nom}</TableCell>
+                          <TableCell>{c.prenom}</TableCell>
+                          <TableCell>
+                            {c.pays ? (
+                              <span className="inline-flex items-center gap-2">
+                                <CountryFlag name={c.pays} />
+                                <span>{c.pays}</span>
+                              </span>
+                            ) : '-'}
+                          </TableCell>
+                          <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
+                        </>
                       )}
-                    </TableCell>
-                    <TableCell className="font-medium">{c.nom}</TableCell>
-                    <TableCell>{c.prenom}</TableCell>
-                    <TableCell>
-                      {c.pays ? (
-                        <span className="inline-flex items-center gap-2">
-                          <CountryFlag name={c.pays} />
-                          <span>{c.pays}</span>
-                        </span>
-                      ) : '-'}
-                    </TableCell>
-                    <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
-                    <TableCell>
-                      {airs.length > 0 ? (
-                        <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
-                          {airs.map((a, i) => (
-                            <li key={i}>{a.replace(/—/g, '-')}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <span className="text-muted-foreground text-xs">-</span>
-                      )}
-                    </TableCell>
-                  </TableRow>
+                      <TableCell className="align-top">
+                        {airs.length > 0 ? (
+                          <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
+                            {airs.map((a, i) => (
+                              <li key={i}>{a.replace(/—/g, '-')}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <span className="text-muted-foreground text-xs">-</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
                   );
                 })}
               </TableBody>
