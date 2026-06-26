@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CountryFlag = ({ name }: { name: string }) => {
   const url = countryNameToFlagUrl(name);
