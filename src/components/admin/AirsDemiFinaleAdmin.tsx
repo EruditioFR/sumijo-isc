@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Music2, Loader2, RefreshCw, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
@@ -31,12 +32,19 @@ interface Candidate {
   photoUrl: string | null;
   photoFullUrl: string | null;
   airsDemieFinale: string[];
+  airsFinale: string[];
 }
+
+type Phase = 'demi' | 'finale';
 
 const AirsDemiFinaleAdmin = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [phase, setPhase] = useState<Phase>('demi');
+
+  const phaseLabel = phase === 'demi' ? 'Airs demi-finale' : 'Airs Finale';
+  const getAirs = (c: Candidate) => phase === 'demi' ? (c.airsDemieFinale || []) : (c.airsFinale || []);
 
   const fetchCandidates = async () => {
     setIsLoading(true);
@@ -56,11 +64,11 @@ const AirsDemiFinaleAdmin = () => {
 
   const exportToCsv = () => {
     if (candidates.length === 0) return;
-    const headers = ['Nom', 'Prénom', 'Airs demi-finale'];
+    const headers = ['Nom', 'Prénom', phaseLabel];
     const rows = candidates.map((c) => [
       c.nom,
       c.prenom,
-      (c.airsDemieFinale || []).join('; ').replace(/—/g, '-'),
+      getAirs(c).join('; ').replace(/—/g, '-'),
     ]);
     const csvContent = [headers, ...rows]
       .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
@@ -69,7 +77,7 @@ const AirsDemiFinaleAdmin = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'airs-demi-finale.csv');
+    link.setAttribute('download', `${phase === 'demi' ? 'airs-demi-finale' : 'airs-finale'}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -86,15 +94,24 @@ const AirsDemiFinaleAdmin = () => {
         <div>
           <h2 className="text-3xl font-display text-foreground mb-2 flex items-center gap-3">
             <Music2 className="w-8 h-8" />
-            Airs demi-finale
+            Airs
           </h2>
           <p className="text-muted-foreground">
             {candidates.length > 0
               ? `${candidates.length} candidat${candidates.length > 1 ? 's' : ''}`
-              : 'Liste des airs choisis par chaque candidat pour la demi-finale'}
+              : 'Liste des airs choisis par chaque candidat'}
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Select value={phase} onValueChange={(v) => setPhase(v as Phase)}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="demi">Demi-Finale</SelectItem>
+              <SelectItem value="finale">Finale</SelectItem>
+            </SelectContent>
+          </Select>
           <Button variant="outline" size="sm" onClick={exportToCsv} disabled={candidates.length === 0}>
             <Download className="w-4 h-4 mr-2" />
             Exporter
@@ -127,11 +144,13 @@ const AirsDemiFinaleAdmin = () => {
                   <TableHead>Prénom</TableHead>
                   <TableHead>Pays</TableHead>
                   <TableHead>Type de voix</TableHead>
-                  <TableHead>Airs demi-finale</TableHead>
+                  <TableHead>{phaseLabel}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {candidates.map((c) => (
+                {candidates.map((c) => {
+                  const airs = getAirs(c);
+                  return (
                   <TableRow key={c.id}>
                     <TableCell>
                       {c.photoUrl ? (
@@ -164,9 +183,9 @@ const AirsDemiFinaleAdmin = () => {
                     </TableCell>
                     <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
                     <TableCell>
-                      {c.airsDemieFinale && c.airsDemieFinale.length > 0 ? (
+                      {airs.length > 0 ? (
                         <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
-                          {c.airsDemieFinale.map((a, i) => (
+                          {airs.map((a, i) => (
                             <li key={i}>{a.replace(/—/g, '-')}</li>
                           ))}
                         </ul>
@@ -175,7 +194,8 @@ const AirsDemiFinaleAdmin = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                ))}
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
