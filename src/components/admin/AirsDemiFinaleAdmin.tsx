@@ -43,6 +43,7 @@ const AirsDemiFinaleAdmin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('demi');
+  const isMobile = useIsMobile();
 
   const phaseLabel = phase === 'demi' ? 'Airs demi-finale' : 'Airs Finale';
   const getAirs = (c: Candidate) => phase === 'demi' ? (c.airsDemieFinale || []) : (c.airsFinale || []);
