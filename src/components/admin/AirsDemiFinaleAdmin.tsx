@@ -137,16 +137,68 @@ const AirsDemiFinaleAdmin = () => {
         </div>
       ) : (
         <div className="bg-background border rounded-xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                {isMobile ? (
-                  <TableRow>
-                    <TableHead className="w-14">Photo</TableHead>
-                    <TableHead>Candidat</TableHead>
-                    <TableHead>{phaseLabel}</TableHead>
-                  </TableRow>
-                ) : (
+          {isMobile ? (
+            <ul className="divide-y">
+              {candidates.map((c) => {
+                const airs = getAirs(c);
+                return (
+                  <li key={c.id} className="p-4">
+                    <div className="flex items-start gap-3">
+                      {c.photoUrl ? (
+                        <a
+                          href={c.photoFullUrl ?? c.photoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0"
+                        >
+                          <img
+                            src={c.photoUrl}
+                            alt={`${c.prenom} ${c.nom}`}
+                            className="w-14 h-14 rounded-full object-cover border"
+                          />
+                        </a>
+                      ) : (
+                        <div className="w-14 h-14 shrink-0 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+                          {c.prenom?.[0]}{c.nom?.[0]}
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-foreground leading-tight">
+                          {c.nom.toUpperCase()} {c.prenom}
+                        </div>
+                        <div className="mt-1 text-xs text-muted-foreground flex items-center gap-1.5 flex-wrap">
+                          {c.pays && <CountryFlag name={c.pays} />}
+                          <span>{c.pays || '-'}</span>
+                          <span>·</span>
+                          <span className="capitalize">{c.typeVoix || '-'}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3 pl-[68px]">
+                      <div className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5">
+                        {phaseLabel} {airs.length > 0 && `(${airs.length})`}
+                      </div>
+                      {airs.length > 0 ? (
+                        <ol className="space-y-1.5 text-sm text-foreground">
+                          {airs.map((a, i) => (
+                            <li key={i} className="flex gap-2">
+                              <span className="text-muted-foreground tabular-nums shrink-0">{i + 1}.</span>
+                              <span className="leading-snug">{a.replace(/—/g, '-')}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      ) : (
+                        <span className="text-muted-foreground text-xs">Aucun air renseigné</span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
                   <TableRow>
                     <TableHead className="w-16">Photo</TableHead>
                     <TableHead>Nom</TableHead>
@@ -155,79 +207,58 @@ const AirsDemiFinaleAdmin = () => {
                     <TableHead>Type de voix</TableHead>
                     <TableHead>{phaseLabel}</TableHead>
                   </TableRow>
-                )}
-              </TableHeader>
-              <TableBody>
-                {candidates.map((c) => {
-                  const airs = getAirs(c);
-                  return (
-                    <TableRow key={c.id}>
-                      <TableCell className="align-top">
-                        {c.photoUrl ? (
-                          <a
-                            href={c.photoFullUrl ?? c.photoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img
-                              src={c.photoUrl}
-                              alt={`${c.prenom} ${c.nom}`}
-                              className="w-12 h-12 rounded-full object-cover border"
-                            />
-                          </a>
-                        ) : (
-                          <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
-                            {c.prenom?.[0]}{c.nom?.[0]}
-                          </div>
-                        )}
-                      </TableCell>
-                      {isMobile ? (
-                        <TableCell>
-                          <div className="space-y-1">
-                            <div className="font-medium">
-                              {c.nom.toUpperCase()} {c.prenom}
+                </TableHeader>
+                <TableBody>
+                  {candidates.map((c) => {
+                    const airs = getAirs(c);
+                    return (
+                      <TableRow key={c.id}>
+                        <TableCell className="align-top">
+                          {c.photoUrl ? (
+                            <a href={c.photoFullUrl ?? c.photoUrl} target="_blank" rel="noopener noreferrer">
+                              <img
+                                src={c.photoUrl}
+                                alt={`${c.prenom} ${c.nom}`}
+                                className="w-12 h-12 rounded-full object-cover border"
+                              />
+                            </a>
+                          ) : (
+                            <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+                              {c.prenom?.[0]}{c.nom?.[0]}
                             </div>
-                            <div className="text-sm text-muted-foreground flex items-center gap-1.5">
-                              {c.pays && <CountryFlag name={c.pays} />}
-                              <span>{c.pays || '-'}</span>
-                              <span className="mx-1">·</span>
-                              <span className="capitalize">{c.typeVoix || '-'}</span>
-                            </div>
-                          </div>
+                          )}
                         </TableCell>
-                      ) : (
-                        <>
-                          <TableCell className="font-medium">{c.nom}</TableCell>
-                          <TableCell>{c.prenom}</TableCell>
-                          <TableCell>
-                            {c.pays ? (
-                              <span className="inline-flex items-center gap-2">
-                                <CountryFlag name={c.pays} />
-                                <span>{c.pays}</span>
-                              </span>
-                            ) : '-'}
-                          </TableCell>
-                          <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
-                        </>
-                      )}
-                      <TableCell className="align-top">
-                        {airs.length > 0 ? (
-                          <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
-                            {airs.map((a, i) => (
-                              <li key={i}>{a.replace(/—/g, '-')}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <span className="text-muted-foreground text-xs">-</span>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </div>
+                        <TableCell className="font-medium">{c.nom}</TableCell>
+                        <TableCell>{c.prenom}</TableCell>
+                        <TableCell>
+                          {c.pays ? (
+                            <span className="inline-flex items-center gap-2">
+                              <CountryFlag name={c.pays} />
+                              <span>{c.pays}</span>
+                            </span>
+                          ) : '-'}
+                        </TableCell>
+                        <TableCell className="capitalize">{c.typeVoix || '-'}</TableCell>
+                        <TableCell className="align-top">
+                          {airs.length > 0 ? (
+                            <ul className="list-disc list-inside text-sm text-foreground max-w-[480px]">
+                              {airs.map((a, i) => (
+                                <li key={i}>{a.replace(/—/g, '-')}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-muted-foreground text-xs">-</span>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </div>
+          )}
         </div>
+
       )}
     </div>
   );
