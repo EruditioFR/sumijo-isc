@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink, Search, X, Navigation } from 'lucide-react';
+import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink, Search, X, Navigation, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -68,6 +68,8 @@ const FamiliesAdmin = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPays, setSelectedPays] = useState<string>('all');
   const [selectedTypeVoix, setSelectedTypeVoix] = useState<string>('all');
+  const [routeInfo, setRouteInfo] = useState<{ distanceKm: number; durationMin: number } | null>(null);
+  const [routeLoading, setRouteLoading] = useState(false);
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
@@ -89,6 +91,54 @@ const FamiliesAdmin = () => {
   useEffect(() => {
     fetchCandidates();
   }, []);
+
+  const ORIGIN_LAT = 47.3876994;
+  const ORIGIN_LON = 1.9574773;
+
+  useEffect(() => {
+    if (!mapAddress) {
+      setRouteInfo(null);
+      return;
+    }
+    setRouteLoading(true);
+    let cancelled = false;
+    const fetchRoute = async () => {
+      try {
+        const geoRes = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(mapAddress)}&format=json&limit=1`,
+          { headers: { 'Accept-Language': 'fr' } }
+        );
+        const geoData = await geoRes.json();
+        if (!geoData || !geoData[0]) throw new Error('Adresse introuvable');
+        const destLat = parseFloat(geoData[0].lat);
+        const destLon = parseFloat(geoData[0].lon);
+        const routeRes = await fetch(
+          `https://router.project-osrm.org/route/v1/driving/${ORIGIN_LON},${ORIGIN_LAT};${destLon},${destLat}?overview=false`
+        );
+        const routeData = await routeRes.json();
+        if (routeData.code !== 'Ok' || !routeData.routes || !routeData.routes[0]) {
+          throw new Error('Impossible de calculer l\'itinéraire');
+        }
+        const route = routeData.routes[0];
+        const distanceKm = Math.round(route.distance / 1000 * 10) / 10;
+        const durationMin = Math.round(route.duration / 60);
+        if (!cancelled) setRouteInfo({ distanceKm, durationMin });
+      } catch {
+        if (!cancelled) setRouteInfo(null);
+      } finally {
+        if (!cancelled) setRouteLoading(false);
+      }
+    };
+    fetchRoute();
+    return () => { cancelled = true; };
+  }, [mapAddress]);
+
+  const formatDuration = (min: number): string => {
+    if (min < 60) return `${min} min`;
+    const h = Math.floor(min / 60);
+    const m = min % 60;
+    return m > 0 ? `${h} h ${m} min` : `${h} h`;
+  };
 
   const filteredCandidates = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -408,25 +458,44 @@ const FamiliesAdmin = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <div className="flex flex-wrap justify-end gap-3">
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France')}&destination=${encodeURIComponent(mapAddress)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                >
-                  <Navigation className="w-3.5 h-3.5" />
-                  Voir l'itinéraire
-                </a>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
-                >
-                  Ouvrir la carte
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  {routeLoading && (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  )}
+                  {!routeLoading && routeInfo && (
+                    <>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Navigation className="w-3.5 h-3.5" />
+                        {routeInfo.distanceKm} km
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {formatDuration(routeInfo.durationMin)}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France')}&destination=${encodeURIComponent(mapAddress)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                  >
+                    <Navigation className="w-3.5 h-3.5" />
+                    Voir l'itinéraire
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    Ouvrir la carte
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           )}
