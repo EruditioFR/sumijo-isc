@@ -404,8 +404,8 @@ const CandidatesAdmin = () => {
         </div>
       ) : (
         <>
-          <EmargementSection candidates={candidates} />
         <div className="bg-background border rounded-xl overflow-hidden">
+
 
           <div className="overflow-x-auto">
             <Table>
