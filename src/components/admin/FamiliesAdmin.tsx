@@ -299,6 +299,41 @@ const FamiliesAdmin = () => {
           })}
         </div>
       )}
+
+      <Dialog open={!!mapAddress} onOpenChange={(o) => !o && setMapAddress(null)}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="flex items-start gap-2 pr-8">
+              <MapPin className="w-5 h-5 shrink-0 mt-0.5" />
+              <span className="break-words">{mapAddress}</span>
+            </DialogTitle>
+          </DialogHeader>
+          {mapAddress && (
+            <div className="space-y-3">
+              <div className="w-full aspect-video rounded-lg overflow-hidden border bg-muted">
+                <iframe
+                  title={`Carte : ${mapAddress}`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`}
+                  className="w-full h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="flex justify-end">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  Ouvrir dans Google Maps
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
