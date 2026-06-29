@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from '@/components/ui/select';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
@@ -61,6 +65,9 @@ const FamiliesAdmin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mapAddress, setMapAddress] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPays, setSelectedPays] = useState<string>('all');
+  const [selectedTypeVoix, setSelectedTypeVoix] = useState<string>('all');
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
@@ -83,9 +90,40 @@ const FamiliesAdmin = () => {
     fetchCandidates();
   }, []);
 
+  const filteredCandidates = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return candidates.filter((c) => {
+      const matchesSearch = !q ||
+        c.nom.toLowerCase().includes(q) ||
+        c.prenom.toLowerCase().includes(q) ||
+        (c.pays && c.pays.toLowerCase().includes(q)) ||
+        (c.typeVoix && c.typeVoix.toLowerCase().includes(q)) ||
+        (c.allergies && c.allergies.toLowerCase().includes(q)) ||
+        (c.hote && c.hote.toLowerCase().includes(q)) ||
+        (c.hoteAdresse && c.hoteAdresse.toLowerCase().includes(q)) ||
+        (c.email && c.email.toLowerCase().includes(q)) ||
+        (c.telephone && c.telephone.toLowerCase().includes(q));
+      const matchesPays = selectedPays === 'all' || c.pays === selectedPays;
+      const matchesTypeVoix = selectedTypeVoix === 'all' || c.typeVoix === selectedTypeVoix;
+      return matchesSearch && matchesPays && matchesTypeVoix;
+    });
+  }, [candidates, searchQuery, selectedPays, selectedTypeVoix]);
+
+  const paysOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of candidates) if (c.pays) set.add(c.pays);
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+  }, [candidates]);
+
+  const typeVoixOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of candidates) if (c.typeVoix) set.add(c.typeVoix);
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+  }, [candidates]);
+
   const groups = useMemo(() => {
     const map = new Map<string, Candidate[]>();
-    for (const c of candidates) {
+    for (const c of filteredCandidates) {
       const key = c.hote && c.hote.trim() ? c.hote.trim() : 'Sans hôte attribué';
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push(c);
@@ -100,7 +138,7 @@ const FamiliesAdmin = () => {
         if (oa == null && ob != null) return 1;
         return a.host.localeCompare(b.host, 'fr');
       });
-  }, [candidates]);
+  }, [filteredCandidates]);
 
   const ContactBlock = ({ c }: { c: Candidate }) => (
     <div className="space-y-1 text-xs">
@@ -130,7 +168,7 @@ const FamiliesAdmin = () => {
           </h2>
           <p className="text-muted-foreground">
             {groups.length > 0
-              ? `${groups.length} hôte${groups.length > 1 ? 's' : ''} · ${candidates.length} candidat${candidates.length > 1 ? 's' : ''}`
+              ? `${groups.length} hôte${groups.length > 1 ? 's' : ''} · ${filteredCandidates.length} candidat${filteredCandidates.length > 1 ? 's' : ''}`
               : 'Regroupement des candidats par famille d\'accueil'}
           </p>
         </div>
@@ -152,7 +190,56 @@ const FamiliesAdmin = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          {groups.map(({ host, list, sample }) => {
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                placeholder="Rechercher…"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-9"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            <Select value={selectedPays} onValueChange={setSelectedPays}>
+              <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectValue placeholder="Pays" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tous les pays</SelectItem>
+                {paysOptions.map((p) => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={selectedTypeVoix} onValueChange={setSelectedTypeVoix}>
+              <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectValue placeholder="Type de voix" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Toutes les voix</SelectItem>
+                {typeVoixOptions.map((v) => (
+                  <SelectItem key={v} value={v}>{v}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {groups.length === 0 ? (
+            <div className="bg-background border rounded-xl p-12 text-center">
+              <p className="text-muted-foreground">Aucun candidat ne correspond aux filtres sélectionnés.</p>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {groups.map(({ host, list, sample }) => {
             const hostEmails = splitMulti(sample.hoteEmail);
             const hostPhones = splitMulti(sample.hoteTelephone);
             return (
@@ -299,6 +386,8 @@ const FamiliesAdmin = () => {
           })}
         </div>
       )}
+    </div>
+  )}
 
       <Dialog open={!!mapAddress} onOpenChange={(o) => !o && setMapAddress(null)}>
         <DialogContent className="max-w-3xl">
