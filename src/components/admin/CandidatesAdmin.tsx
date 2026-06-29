@@ -653,6 +653,13 @@ const CandidatesAdmin = () => {
           })()}
         </DialogContent>
       </Dialog>
+
+      <Dialog open={emargementOpen} onOpenChange={setEmargementOpen}>
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="sr-only">Émargement</DialogTitle>
+          <EmargementSection candidates={candidates} />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
