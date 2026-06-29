@@ -68,6 +68,8 @@ const FamiliesAdmin = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPays, setSelectedPays] = useState<string>('all');
   const [selectedTypeVoix, setSelectedTypeVoix] = useState<string>('all');
+  const [routeInfo, setRouteInfo] = useState<{ distanceKm: number; durationMin: number } | null>(null);
+  const [routeLoading, setRouteLoading] = useState(false);
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
