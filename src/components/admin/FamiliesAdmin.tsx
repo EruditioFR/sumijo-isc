@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from '@/components/ui/select';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
