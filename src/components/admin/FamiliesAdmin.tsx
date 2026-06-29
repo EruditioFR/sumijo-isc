@@ -190,7 +190,56 @@ const FamiliesAdmin = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          {groups.map(({ host, list, sample }) => {
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                placeholder="Rechercher…"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-9"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            <Select value={selectedPays} onValueChange={setSelectedPays}>
+              <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectValue placeholder="Pays" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tous les pays</SelectItem>
+                {paysOptions.map((p) => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={selectedTypeVoix} onValueChange={setSelectedTypeVoix}>
+              <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectValue placeholder="Type de voix" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Toutes les voix</SelectItem>
+                {typeVoixOptions.map((v) => (
+                  <SelectItem key={v} value={v}>{v}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {groups.length === 0 ? (
+            <div className="bg-background border rounded-xl p-12 text-center">
+              <p className="text-muted-foreground">Aucun candidat ne correspond aux filtres sélectionnés.</p>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {groups.map(({ host, list, sample }) => {
             const hostEmails = splitMulti(sample.hoteEmail);
             const hostPhones = splitMulti(sample.hoteTelephone);
             return (
