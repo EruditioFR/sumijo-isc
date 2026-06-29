@@ -376,6 +376,12 @@ const CandidatesAdmin = () => {
               Photos (ZIP)
             </Button>
           )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={() => setEmargementOpen(true)}>
+              <ClipboardCheck className="w-4 h-4 mr-2" />
+              Émargement
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
