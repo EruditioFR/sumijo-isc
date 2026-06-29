@@ -60,6 +60,7 @@ const FamiliesAdmin = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mapAddress, setMapAddress] = useState<string | null>(null);
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
