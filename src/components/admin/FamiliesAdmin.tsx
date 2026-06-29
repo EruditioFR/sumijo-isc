@@ -65,6 +65,9 @@ const FamiliesAdmin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mapAddress, setMapAddress] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPays, setSelectedPays] = useState<string>('all');
+  const [selectedTypeVoix, setSelectedTypeVoix] = useState<string>('all');
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
