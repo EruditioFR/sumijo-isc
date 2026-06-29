@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { ImageIcon, Ticket, Users, LogOut, Home, Music2 } from 'lucide-react';
+import { ImageIcon, Ticket, Users, LogOut, Home, Music2, HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminLogin } from './AdminLogin';
@@ -16,6 +16,7 @@ const navItems: { path: string; icon: typeof ImageIcon; labelKey?: string; label
   { path: '/admin/billetterie', icon: Ticket, labelKey: 'admin.ticketing' },
   { path: '/admin/candidats', icon: Users, labelKey: 'admin.candidates' },
   { path: '/admin/airs-demie-finale', icon: Music2, label: 'Airs' },
+  { path: '/admin/familles', icon: HomeIcon, label: 'Familles' },
 ];
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => {
