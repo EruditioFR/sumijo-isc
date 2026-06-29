@@ -90,9 +90,40 @@ const FamiliesAdmin = () => {
     fetchCandidates();
   }, []);
 
+  const filteredCandidates = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return candidates.filter((c) => {
+      const matchesSearch = !q ||
+        c.nom.toLowerCase().includes(q) ||
+        c.prenom.toLowerCase().includes(q) ||
+        (c.pays && c.pays.toLowerCase().includes(q)) ||
+        (c.typeVoix && c.typeVoix.toLowerCase().includes(q)) ||
+        (c.allergies && c.allergies.toLowerCase().includes(q)) ||
+        (c.hote && c.hote.toLowerCase().includes(q)) ||
+        (c.hoteAdresse && c.hoteAdresse.toLowerCase().includes(q)) ||
+        (c.email && c.email.toLowerCase().includes(q)) ||
+        (c.telephone && c.telephone.toLowerCase().includes(q));
+      const matchesPays = selectedPays === 'all' || c.pays === selectedPays;
+      const matchesTypeVoix = selectedTypeVoix === 'all' || c.typeVoix === selectedTypeVoix;
+      return matchesSearch && matchesPays && matchesTypeVoix;
+    });
+  }, [candidates, searchQuery, selectedPays, selectedTypeVoix]);
+
+  const paysOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of candidates) if (c.pays) set.add(c.pays);
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+  }, [candidates]);
+
+  const typeVoixOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of candidates) if (c.typeVoix) set.add(c.typeVoix);
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+  }, [candidates]);
+
   const groups = useMemo(() => {
     const map = new Map<string, Candidate[]>();
-    for (const c of candidates) {
+    for (const c of filteredCandidates) {
       const key = c.hote && c.hote.trim() ? c.hote.trim() : 'Sans hôte attribué';
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push(c);
@@ -107,7 +138,7 @@ const FamiliesAdmin = () => {
         if (oa == null && ob != null) return 1;
         return a.host.localeCompare(b.host, 'fr');
       });
-  }, [candidates]);
+  }, [filteredCandidates]);
 
   const ContactBlock = ({ c }: { c: Candidate }) => (
     <div className="space-y-1 text-xs">
