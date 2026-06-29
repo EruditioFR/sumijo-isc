@@ -169,10 +169,15 @@ const FamiliesAdmin = () => {
                   {(sample.hoteAdresse || hostEmails.length > 0 || hostPhones.length > 0) && (
                     <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
                       {sample.hoteAdresse && (
-                        <span className="inline-flex items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setMapAddress(sample.hoteAdresse)}
+                          className="inline-flex items-center gap-1.5 hover:text-primary underline-offset-2 hover:underline cursor-pointer"
+                          title="Voir sur la carte"
+                        >
                           <MapPin className="w-3.5 h-3.5" />
                           {sample.hoteAdresse}
-                        </span>
+                        </button>
                       )}
                       {hostPhones.map((p, i) => (
                         <a key={`p${i}`} href={telHref(p)} className="inline-flex items-center gap-1.5 hover:text-primary">
