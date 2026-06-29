@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Home, Loader2, RefreshCw, Mail, Phone, MapPin } from 'lucide-react';
+import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
