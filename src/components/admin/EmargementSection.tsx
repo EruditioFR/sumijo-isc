@@ -1,19 +1,20 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Clock, CheckCircle2, RotateCcw, Hourglass } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Clock, CheckCircle2, RotateCcw, Hourglass, Loader2 } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface EmargementCandidate {
   id: string;
   nom: string;
   prenom: string;
   heureArrivee: string | null;
+  arrive?: boolean;
 }
-
-const STORAGE_KEY = 'admin:emargement:present:v1';
 
 /** Parse Airtable arrival value into a comparable Date (today in Paris) + display string. */
 const parseArrival = (
@@ -23,7 +24,6 @@ const parseArrival = (
   const s = String(raw).trim();
   if (!s) return { date: null, display: '—' };
 
-  // Full ISO datetime
   if (/^\d{4}-\d{2}-\d{2}T/.test(s)) {
     const d = new Date(s);
     if (!isNaN(d.getTime())) {
@@ -36,7 +36,6 @@ const parseArrival = (
     }
   }
 
-  // Time only "HH:MM" or "HH:MM:SS" or "HHhMM"
   const m = s.match(/(\d{1,2})[:hH](\d{2})/);
   if (m) {
     const h = parseInt(m[1], 10);
@@ -52,31 +51,62 @@ const parseArrival = (
 
 const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }) => {
   const [now, setNow] = useState(new Date());
-  const [present, setPresent] = useState<Set<string>>(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return new Set(JSON.parse(raw) as string[]);
-    } catch {}
-    return new Set();
-  });
+  const [present, setPresent] = useState<Set<string>>(new Set());
+  const [pending, setPending] = useState<Set<string>>(new Set());
+  const initialized = useRef(false);
+
+  // Hydrate from Airtable's "Arrivé ?" field
+  useEffect(() => {
+    if (initialized.current && candidates.length === 0) return;
+    const initial = new Set<string>();
+    for (const c of candidates) {
+      if (c.arrive) initial.add(c.id);
+    }
+    setPresent((prev) => {
+      // Merge: trust Airtable as source of truth on (re)load
+      return initial;
+    });
+    if (candidates.length > 0) initialized.current = true;
+  }, [candidates]);
 
   useEffect(() => {
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(present)));
-    } catch {}
-  }, [present]);
+  const toggle = async (id: string) => {
+    const wasPresent = present.has(id);
+    const nextValue = !wasPresent;
 
-  const toggle = (id: string) => {
+    // Optimistic update
     setPresent((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      nextValue ? next.add(id) : next.delete(id);
       return next;
     });
+    setPending((prev) => new Set(prev).add(id));
+
+    try {
+      const { error } = await supabase.functions.invoke('update-candidate-arrival', {
+        body: { recordId: id, arrived: nextValue },
+      });
+      if (error) throw error;
+    } catch (e) {
+      // Revert on failure
+      setPresent((prev) => {
+        const next = new Set(prev);
+        wasPresent ? next.add(id) : next.delete(id);
+        return next;
+      });
+      toast.error("Impossible de mettre à jour Airtable");
+      console.error('update-candidate-arrival error', e);
+    } finally {
+      setPending((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+    }
   };
 
   const enriched = useMemo(
@@ -118,6 +148,40 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
     day: 'numeric',
     month: 'long',
   });
+
+  const renderCheckbox = (id: string, checked: boolean, label: string) => (
+    <div className="inline-flex items-center justify-center">
+      {pending.has(id) ? (
+        <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+      ) : (
+        <Checkbox
+          checked={checked}
+          onCheckedChange={() => toggle(id)}
+          aria-label={label}
+        />
+      )}
+    </div>
+  );
+
+  const resetAll = async () => {
+    const ids = Array.from(present);
+    if (ids.length === 0) return;
+    if (!confirm(`Réinitialiser ${ids.length} émargement(s) ? Le champ "Arrivé ?" sera décoché dans Airtable.`)) return;
+    setPending((prev) => {
+      const next = new Set(prev);
+      ids.forEach((id) => next.add(id));
+      return next;
+    });
+    setPresent(new Set());
+    await Promise.all(
+      ids.map((id) =>
+        supabase.functions.invoke('update-candidate-arrival', {
+          body: { recordId: id, arrived: false },
+        }),
+      ),
+    );
+    setPending(new Set());
+  };
 
   return (
     <section className="mb-10 space-y-6">
@@ -171,11 +235,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
                     <TableCell className="font-medium">{c.nom.toUpperCase()}</TableCell>
                     <TableCell>{c.prenom}</TableCell>
                     <TableCell className="text-center">
-                      <Checkbox
-                        checked={false}
-                        onCheckedChange={() => toggle(c.id)}
-                        aria-label={`Marquer ${c.prenom} ${c.nom} comme arrivé`}
-                      />
+                      {renderCheckbox(c.id, false, `Marquer ${c.prenom} ${c.nom} comme arrivé`)}
                     </TableCell>
                   </TableRow>
                 );
@@ -186,11 +246,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
                   <TableCell className="font-medium">{c.nom.toUpperCase()}</TableCell>
                   <TableCell>{c.prenom}</TableCell>
                   <TableCell className="text-center">
-                    <Checkbox
-                      checked={false}
-                      onCheckedChange={() => toggle(c.id)}
-                      aria-label={`Marquer ${c.prenom} ${c.nom} comme arrivé`}
-                    />
+                    {renderCheckbox(c.id, false, `Marquer ${c.prenom} ${c.nom} comme arrivé`)}
                   </TableCell>
                 </TableRow>
               ))}
@@ -211,7 +267,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setPresent(new Set())}
+              onClick={resetAll}
               className="text-muted-foreground"
             >
               <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
@@ -240,11 +296,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
                   <TableCell className="font-medium">{c.nom.toUpperCase()}</TableCell>
                   <TableCell>{c.prenom}</TableCell>
                   <TableCell className="text-center">
-                    <Checkbox
-                      checked
-                      onCheckedChange={() => toggle(c.id)}
-                      aria-label={`Retirer ${c.prenom} ${c.nom} des présents`}
-                    />
+                    {renderCheckbox(c.id, true, `Retirer ${c.prenom} ${c.nom} des présents`)}
                   </TableCell>
                 </TableRow>
               ))}
