@@ -408,14 +408,23 @@ const FamiliesAdmin = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex flex-wrap justify-end gap-3">
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France')}&destination=${encodeURIComponent(mapAddress)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                >
+                  <Navigation className="w-3.5 h-3.5" />
+                  Voir l'itinéraire
+                </a>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
                 >
-                  Ouvrir dans Google Maps
+                  Ouvrir la carte
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
