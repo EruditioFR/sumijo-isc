@@ -39,6 +39,7 @@ interface Candidate {
   hoteAdresse: string | null;
   hoteEmail: string | null;
   hoteTelephone: string | null;
+  hoteOrdre: number | null;
 }
 
 const calcAge = (date: string | null): string => {
