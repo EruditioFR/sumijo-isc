@@ -19,6 +19,7 @@ import AdminTicketing from "./pages/AdminTicketing";
 import AdminCandidates from "./pages/AdminCandidates";
 import AdminCortot from "./pages/AdminCortot";
 import AdminAirsDemiFinale from "./pages/AdminAirsDemiFinale";
+import AdminFamilies from "./pages/AdminFamilies";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
  import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/admin/candidats" element={<AdminCandidates />} />
             <Route path="/admin/cortot" element={<AdminCortot />} />
             <Route path="/admin/airs-demie-finale" element={<AdminAirsDemiFinale />} />
+            <Route path="/admin/familles" element={<AdminFamilies />} />
             <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

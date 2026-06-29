@@ -134,6 +134,31 @@ Deno.serve(async (req) => {
         status: f["Status"] ?? null,
         email: f["E-mail"] ?? f["Email"] ?? f["Mail"] ?? null,
         telephone: f["Tél"] ?? f["Téléphone"] ?? f["Telephone"] ?? f["Tel"] ?? null,
+        allergies: f["Allergies"] ?? f["Allergie"] ?? f["Régime alimentaire"] ?? f["Regime alimentaire"] ?? null,
+        hote: (() => {
+          const v = f["Nom des hôtes (from Hébergement)"] ?? f["Hébergement"] ?? null;
+          if (!v) return null;
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean).join(", ") || null;
+          return String(v).trim() || null;
+        })(),
+        hoteAdresse: (() => {
+          const v = f["Adresse (from Hébergement)"];
+          if (!v) return null;
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean).join(", ") || null;
+          return String(v).trim() || null;
+        })(),
+        hoteEmail: (() => {
+          const v = f["Mails (from Hébergement)"] ?? f["Mail (from Hébergement)"] ?? f["E-mail (from Hébergement)"];
+          if (!v) return null;
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean).join(", ") || null;
+          return String(v).trim() || null;
+        })(),
+        hoteTelephone: (() => {
+          const v = f["Téléphone (from Hébergement)"] ?? f["Tel (from Hébergement)"];
+          if (!v) return null;
+          if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean).join(", ") || null;
+          return String(v).trim() || null;
+        })(),
         bio: f["Bio"] ?? f["Biographie"] ?? f["Bio artistique"] ?? null,
         motivation: f["Pourquoi je participe"] ?? f["Pourquoi je souhaite participer"] ?? f["Motivation"] ?? null,
         infosUtiles: f["Infos utiles"] ?? f["Informations complémentaires"] ?? f["Informations utiles"] ?? null,
