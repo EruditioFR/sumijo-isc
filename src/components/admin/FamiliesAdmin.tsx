@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Home, Loader2, RefreshCw, Mail, Phone, MapPin } from 'lucide-react';
+import { Home, Loader2, RefreshCw, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
@@ -59,6 +60,7 @@ const FamiliesAdmin = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mapAddress, setMapAddress] = useState<string | null>(null);
   const isMobile = useIsMobile();
 
   const fetchCandidates = async () => {
@@ -167,10 +169,15 @@ const FamiliesAdmin = () => {
                   {(sample.hoteAdresse || hostEmails.length > 0 || hostPhones.length > 0) && (
                     <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
                       {sample.hoteAdresse && (
-                        <span className="inline-flex items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setMapAddress(sample.hoteAdresse)}
+                          className="inline-flex items-center gap-1.5 hover:text-primary underline-offset-2 hover:underline cursor-pointer"
+                          title="Voir sur la carte"
+                        >
                           <MapPin className="w-3.5 h-3.5" />
                           {sample.hoteAdresse}
-                        </span>
+                        </button>
                       )}
                       {hostPhones.map((p, i) => (
                         <a key={`p${i}`} href={telHref(p)} className="inline-flex items-center gap-1.5 hover:text-primary">
@@ -292,6 +299,41 @@ const FamiliesAdmin = () => {
           })}
         </div>
       )}
+
+      <Dialog open={!!mapAddress} onOpenChange={(o) => !o && setMapAddress(null)}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="flex items-start gap-2 pr-8">
+              <MapPin className="w-5 h-5 shrink-0 mt-0.5" />
+              <span className="break-words">{mapAddress}</span>
+            </DialogTitle>
+          </DialogHeader>
+          {mapAddress && (
+            <div className="space-y-3">
+              <div className="w-full aspect-video rounded-lg overflow-hidden border bg-muted">
+                <iframe
+                  title={`Carte : ${mapAddress}`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`}
+                  className="w-full h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="flex justify-end">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  Ouvrir dans Google Maps
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
