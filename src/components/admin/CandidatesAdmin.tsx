@@ -549,7 +549,9 @@ const CandidatesAdmin = () => {
             <span>Source : Airtable « candidats 2026 »</span>
           </div>
         </div>
+        </>
       )}
+
 
       <Sheet open={!!sheetCandidate} onOpenChange={(o) => !o && setSheetCandidate(null)}>
         <SheetContent side="right" className="w-full sm:max-w-2xl overflow-y-auto print:max-w-none print:w-full">
