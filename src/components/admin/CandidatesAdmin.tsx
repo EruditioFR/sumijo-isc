@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
+import EmargementSection from './EmargementSection';
 
 const CountryFlag = ({ name, className = '' }: { name: string; className?: string }) => {
   const url = countryNameToFlagUrl(name);
@@ -53,6 +54,7 @@ interface Candidate {
   videoSelection2: string | null;
   videoSelection3: string | null;
   langues: string[];
+  heureArrivee: string | null;
 }
 
 const computeAge = (iso: string): number | null => {
@@ -401,7 +403,10 @@ const CandidatesAdmin = () => {
           </p>
         </div>
       ) : (
+        <>
+          <EmargementSection candidates={candidates} />
         <div className="bg-background border rounded-xl overflow-hidden">
+
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
@@ -544,7 +549,9 @@ const CandidatesAdmin = () => {
             <span>Source : Airtable « candidats 2026 »</span>
           </div>
         </div>
+        </>
       )}
+
 
       <Sheet open={!!sheetCandidate} onOpenChange={(o) => !o && setSheetCandidate(null)}>
         <SheetContent side="right" className="w-full sm:max-w-2xl overflow-y-auto print:max-w-none print:w-full">

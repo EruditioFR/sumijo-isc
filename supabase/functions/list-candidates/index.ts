@@ -194,7 +194,7 @@ Deno.serve(async (req) => {
           if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
           return String(v).split(/[,;]+/).map((s) => s.trim()).filter(Boolean);
         })(),
-
+        heureArrivee: f["Heure d'arrivée"] ?? f["Heure d arrivée"] ?? f["Heure arrivée"] ?? f["Heure d'arrivee"] ?? null,
       };
     });
 
