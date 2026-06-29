@@ -159,6 +159,17 @@ Deno.serve(async (req) => {
           if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean).join(", ") || null;
           return String(v).trim() || null;
         })(),
+        hoteOrdre: (() => {
+          const v = f["Num ordre (from Hébergement)"] ?? f["Num ordre"] ?? f["Numéro d'ordre (from Hébergement)"] ?? null;
+          if (v === null || v === undefined) return null;
+          if (Array.isArray(v)) {
+            const first = v.find((x) => x !== null && x !== undefined && x !== "");
+            const n = Number(first);
+            return Number.isFinite(n) ? n : null;
+          }
+          const n = Number(v);
+          return Number.isFinite(n) ? n : null;
+        })(),
         bio: f["Bio"] ?? f["Biographie"] ?? f["Bio artistique"] ?? null,
         motivation: f["Pourquoi je participe"] ?? f["Pourquoi je souhaite participer"] ?? f["Motivation"] ?? null,
         infosUtiles: f["Infos utiles"] ?? f["Informations complémentaires"] ?? f["Informations utiles"] ?? null,

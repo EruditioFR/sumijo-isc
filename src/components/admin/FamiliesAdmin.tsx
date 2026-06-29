@@ -39,6 +39,7 @@ interface Candidate {
   hoteAdresse: string | null;
   hoteEmail: string | null;
   hoteTelephone: string | null;
+  hoteOrdre: number | null;
 }
 
 const calcAge = (date: string | null): string => {
@@ -88,8 +89,15 @@ const FamiliesAdmin = () => {
       map.get(key)!.push(c);
     }
     return Array.from(map.entries())
-      .sort(([a], [b]) => a.localeCompare(b, 'fr'))
-      .map(([host, list]) => ({ host, list, sample: list[0] }));
+      .map(([host, list]) => ({ host, list, sample: list[0] }))
+      .sort((a, b) => {
+        const oa = a.sample.hoteOrdre;
+        const ob = b.sample.hoteOrdre;
+        if (oa != null && ob != null && oa !== ob) return oa - ob;
+        if (oa != null && ob == null) return -1;
+        if (oa == null && ob != null) return 1;
+        return a.host.localeCompare(b.host, 'fr');
+      });
   }, [candidates]);
 
   const ContactBlock = ({ c }: { c: Candidate }) => (
