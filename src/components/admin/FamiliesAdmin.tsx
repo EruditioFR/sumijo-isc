@@ -458,25 +458,44 @@ const FamiliesAdmin = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <div className="flex flex-wrap justify-end gap-3">
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France')}&destination=${encodeURIComponent(mapAddress)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                >
-                  <Navigation className="w-3.5 h-3.5" />
-                  Voir l'itinéraire
-                </a>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
-                >
-                  Ouvrir la carte
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  {routeLoading && (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  )}
+                  {!routeLoading && routeInfo && (
+                    <>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Navigation className="w-3.5 h-3.5" />
+                        {routeInfo.distanceKm} km
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {formatDuration(routeInfo.durationMin)}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France')}&destination=${encodeURIComponent(mapAddress)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                  >
+                    <Navigation className="w-3.5 h-3.5" />
+                    Voir l'itinéraire
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    Ouvrir la carte
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           )}
