@@ -55,6 +55,7 @@ interface Candidate {
   videoSelection3: string | null;
   langues: string[];
   heureArrivee: string | null;
+  arrive?: boolean;
 }
 
 const computeAge = (iso: string): number | null => {

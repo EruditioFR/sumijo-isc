@@ -195,6 +195,7 @@ Deno.serve(async (req) => {
           return String(v).split(/[,;]+/).map((s) => s.trim()).filter(Boolean);
         })(),
         heureArrivee: f["Heure d'arrivée"] ?? f["Heure d arrivée"] ?? f["Heure arrivée"] ?? f["Heure d'arrivee"] ?? null,
+        arrive: f["Arrivé ?"] ?? f["Arrivé?"] ?? f["Arrive ?"] ?? f["Arrivé"] ?? false,
       };
     });
 
