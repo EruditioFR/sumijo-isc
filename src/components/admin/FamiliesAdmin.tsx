@@ -386,6 +386,8 @@ const FamiliesAdmin = () => {
           })}
         </div>
       )}
+    </div>
+  )}
 
       <Dialog open={!!mapAddress} onOpenChange={(o) => !o && setMapAddress(null)}>
         <DialogContent className="max-w-3xl">
