@@ -160,7 +160,7 @@ Deno.serve(async (req) => {
           return String(v).trim() || null;
         })(),
         hoteOrdre: (() => {
-          const v = f["Num ordre (from Hébergement)"] ?? f["Num ordre"] ?? f["Numéro d'ordre (from Hébergement)"] ?? null;
+          const v = f["Num ordre"] ?? f["Num ordre (from Hébergement)"] ?? f["Numéro d'ordre"] ?? null;
           if (v === null || v === undefined) return null;
           if (Array.isArray(v)) {
             const first = v.find((x) => x !== null && x !== undefined && x !== "");
