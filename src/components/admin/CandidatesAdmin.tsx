@@ -195,6 +195,7 @@ const CandidatesAdmin = () => {
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
   const [isExportingPhotos, setIsExportingPhotos] = useState(false);
+  const [emargementOpen, setEmargementOpen] = useState(false);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v2';
