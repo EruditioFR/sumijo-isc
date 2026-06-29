@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as XLSX from 'xlsx';
 import {
   Users, FileText, IdCard, Video, Loader2, RefreshCw,
-  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download,
+  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download, ClipboardCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -195,6 +195,7 @@ const CandidatesAdmin = () => {
   const [sheetCandidate, setSheetCandidate] = useState<Candidate | null>(null);
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
   const [isExportingPhotos, setIsExportingPhotos] = useState(false);
+  const [emargementOpen, setEmargementOpen] = useState(false);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v2';
@@ -375,6 +376,12 @@ const CandidatesAdmin = () => {
               Photos (ZIP)
             </Button>
           )}
+          {candidates.length > 0 && (
+            <Button variant="outline" size="sm" onClick={() => setEmargementOpen(true)}>
+              <ClipboardCheck className="w-4 h-4 mr-2" />
+              Émargement
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
@@ -404,8 +411,8 @@ const CandidatesAdmin = () => {
         </div>
       ) : (
         <>
-          <EmargementSection candidates={candidates} />
         <div className="bg-background border rounded-xl overflow-hidden">
+
 
           <div className="overflow-x-auto">
             <Table>
@@ -644,6 +651,13 @@ const CandidatesAdmin = () => {
               </div>
             );
           })()}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={emargementOpen} onOpenChange={setEmargementOpen}>
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="sr-only">Émargement</DialogTitle>
+          <EmargementSection candidates={candidates} />
         </DialogContent>
       </Dialog>
     </div>
