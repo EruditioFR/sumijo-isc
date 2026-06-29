@@ -92,6 +92,54 @@ const FamiliesAdmin = () => {
     fetchCandidates();
   }, []);
 
+  const ORIGIN_LAT = 47.3876994;
+  const ORIGIN_LON = 1.9574773;
+
+  useEffect(() => {
+    if (!mapAddress) {
+      setRouteInfo(null);
+      return;
+    }
+    setRouteLoading(true);
+    let cancelled = false;
+    const fetchRoute = async () => {
+      try {
+        const geoRes = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(mapAddress)}&format=json&limit=1`,
+          { headers: { 'Accept-Language': 'fr' } }
+        );
+        const geoData = await geoRes.json();
+        if (!geoData || !geoData[0]) throw new Error('Adresse introuvable');
+        const destLat = parseFloat(geoData[0].lat);
+        const destLon = parseFloat(geoData[0].lon);
+        const routeRes = await fetch(
+          `https://router.project-osrm.org/route/v1/driving/${ORIGIN_LON},${ORIGIN_LAT};${destLon},${destLat}?overview=false`
+        );
+        const routeData = await routeRes.json();
+        if (routeData.code !== 'Ok' || !routeData.routes || !routeData.routes[0]) {
+          throw new Error('Impossible de calculer l\'itinéraire');
+        }
+        const route = routeData.routes[0];
+        const distanceKm = Math.round(route.distance / 1000 * 10) / 10;
+        const durationMin = Math.round(route.duration / 60);
+        if (!cancelled) setRouteInfo({ distanceKm, durationMin });
+      } catch {
+        if (!cancelled) setRouteInfo(null);
+      } finally {
+        if (!cancelled) setRouteLoading(false);
+      }
+    };
+    fetchRoute();
+    return () => { cancelled = true; };
+  }, [mapAddress]);
+
+  const formatDuration = (min: number): string => {
+    if (min < 60) return `${min} min`;
+    const h = Math.floor(min / 60);
+    const m = min % 60;
+    return m > 0 ? `${h} h ${m} min` : `${h} h`;
+  };
+
   const filteredCandidates = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return candidates.filter((c) => {
