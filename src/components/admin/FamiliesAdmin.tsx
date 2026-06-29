@@ -168,7 +168,7 @@ const FamiliesAdmin = () => {
           </h2>
           <p className="text-muted-foreground">
             {groups.length > 0
-              ? `${groups.length} hôte${groups.length > 1 ? 's' : ''} · ${candidates.length} candidat${candidates.length > 1 ? 's' : ''}`
+              ? `${groups.length} hôte${groups.length > 1 ? 's' : ''} · ${filteredCandidates.length} candidat${filteredCandidates.length > 1 ? 's' : ''}`
               : 'Regroupement des candidats par famille d\'accueil'}
           </p>
         </div>
