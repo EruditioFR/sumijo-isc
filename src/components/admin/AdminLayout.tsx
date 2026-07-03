@@ -24,6 +24,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const { t } = useTranslation();
   const { user, isAdmin, isLoading, signOut } = useAdminAuth();
   const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   if (isLoading) {
     return (
