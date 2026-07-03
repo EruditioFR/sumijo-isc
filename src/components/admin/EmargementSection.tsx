@@ -45,9 +45,6 @@ const parseArrival = (
   return { date: null, display: s };
 };
 
-const normalize = (s: string) =>
-  s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
 type Tab = 'upcoming' | 'present';
 
 const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }) => {
@@ -108,41 +105,29 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
     [candidates],
   );
 
-  const filterFn = (c: (typeof enriched)[number]) => {
-    if (!query.trim()) return true;
-    const q = normalize(query);
-    return (
-      normalize(c.nom).includes(q) ||
-      normalize(c.prenom).includes(q) ||
-      normalize(`${c.prenom} ${c.nom}`).includes(q)
-    );
-  };
-
   const upcoming = useMemo(
     () =>
       enriched
         .filter((c) => !present.has(c.id) && c.parsed.date)
-        .filter(filterFn)
         .sort((a, b) => a.parsed.date!.getTime() - b.parsed.date!.getTime()),
-    [enriched, present, query],
+    [enriched, present],
   );
 
   const unscheduled = useMemo(
-    () => enriched.filter((c) => !present.has(c.id) && !c.parsed.date).filter(filterFn),
-    [enriched, present, query],
+    () => enriched.filter((c) => !present.has(c.id) && !c.parsed.date),
+    [enriched, present],
   );
 
   const presentList = useMemo(
     () =>
       enriched
         .filter((c) => present.has(c.id))
-        .filter(filterFn)
         .sort((a, b) => {
           const ta = a.parsed.date?.getTime() ?? 0;
           const tb = b.parsed.date?.getTime() ?? 0;
           return ta - tb;
         }),
-    [enriched, present, query],
+    [enriched, present],
   );
 
   const totalCount = candidates.length;
@@ -271,27 +256,6 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
               />
             </div>
           </div>
-
-          {/* Search */}
-          <div className="relative mt-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-            <Input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Rechercher un candidat…"
-              className="pl-9 pr-9 h-10"
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => setQuery('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-muted"
-                aria-label="Effacer la recherche"
-              >
-                <X className="w-4 h-4 text-muted-foreground" />
-              </button>
-            )}
-          </div>
         </div>
 
         {/* Tabs */}
@@ -345,7 +309,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
       <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
         {tab === 'upcoming' ? (
           upcoming.length === 0 && unscheduled.length === 0 ? (
-            <EmptyList label={query ? 'Aucun résultat.' : 'Aucune arrivée à venir.'} />
+            <EmptyList label="Aucune arrivée à venir." />
           ) : (
             <>
               {upcoming.map((c) => {
@@ -365,7 +329,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             </>
           )
         ) : presentList.length === 0 ? (
-          <EmptyList label={query ? 'Aucun résultat.' : 'Aucun candidat émargé.'} />
+          <EmptyList label="Aucun candidat émargé." />
         ) : (
           presentList.map((c) => <CandidateRow key={c.id} c={c} checked />)
         )}
