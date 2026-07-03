@@ -656,7 +656,7 @@ const CandidatesAdmin = () => {
       </Dialog>
 
       <Dialog open={emargementOpen} onOpenChange={setEmargementOpen}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="p-0 gap-0 max-w-5xl w-[100vw] sm:w-[95vw] h-[100dvh] sm:h-[90vh] sm:max-h-[90vh] max-w-none sm:max-w-5xl rounded-none sm:rounded-lg flex flex-col overflow-hidden">
           <DialogTitle className="sr-only">Émargement</DialogTitle>
           <EmargementSection candidates={candidates} />
         </DialogContent>
