@@ -54,7 +54,6 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
   const [now, setNow] = useState(new Date());
   const [present, setPresent] = useState<Set<string>>(new Set());
   const [pending, setPending] = useState<Set<string>>(new Set());
-  const [query, setQuery] = useState('');
   const [tab, setTab] = useState<Tab>('upcoming');
   const initialized = useRef(false);
 
