@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Clock, CheckCircle2, RotateCcw, Hourglass, Loader2, Search, Users, UserCheck, X,
+  Clock, CheckCircle2, RotateCcw, Hourglass, Loader2, Users, UserCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
