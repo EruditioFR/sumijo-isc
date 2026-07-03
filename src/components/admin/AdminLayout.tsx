@@ -62,36 +62,56 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="ghost" size="sm" asChild className="hidden md:inline-flex">
               <Link to="/">
                 <Home className="w-4 h-4 mr-2" />
                 {t('nav.home')}
               </Link>
             </Button>
-            <Button variant="ghost" size="sm" onClick={signOut}>
+            <Button variant="ghost" size="sm" asChild className="md:hidden">
+              <Link to="/" aria-label={t('nav.home')}>
+                <Home className="w-4 h-4" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" onClick={signOut} className="hidden md:inline-flex">
               <LogOut className="w-4 h-4 mr-2" />
               {t('admin.logout')}
+            </Button>
+            <Button variant="ghost" size="sm" onClick={signOut} className="md:hidden" aria-label={t('admin.logout')}>
+              <LogOut className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setMobileOpen(v => !v)}
+              aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile navigation */}
-        <nav className="md:hidden border-t px-4 py-2 flex gap-2 overflow-x-auto">
-          {navItems.map(item => (
-            <Button
-              key={item.path}
-              variant={location.pathname === item.path ? 'default' : 'ghost'}
-              size="sm"
-              asChild
-              className="shrink-0"
-            >
-              <Link to={item.path}>
-                <item.icon className="w-4 h-4 mr-2" />
-                {item.labelKey ? t(item.labelKey) : item.label}
-              </Link>
-            </Button>
-          ))}
-        </nav>
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <nav className="md:hidden border-t bg-background px-4 py-3 flex flex-col gap-2">
+            {navItems.map(item => (
+              <Button
+                key={item.path}
+                variant={location.pathname === item.path ? 'default' : 'ghost'}
+                size="sm"
+                asChild
+                className="justify-start"
+                onClick={() => setMobileOpen(false)}
+              >
+                <Link to={item.path}>
+                  <item.icon className="w-4 h-4 mr-3" />
+                  {item.labelKey ? t(item.labelKey) : item.label}
+                </Link>
+              </Button>
+            ))}
+          </nav>
+        )}
       </header>
 
       <main className="container mx-auto px-4 py-8">
