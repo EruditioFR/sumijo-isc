@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { ImageIcon, Ticket, Users, LogOut, Home, Music2, HomeIcon } from 'lucide-react';
+import { ImageIcon, Ticket, Users, LogOut, Home, Music2, HomeIcon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminLogin } from './AdminLogin';
