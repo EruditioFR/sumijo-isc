@@ -357,20 +357,20 @@ const CandidatesAdmin = () => {
               : t('admin.candidatesSubtitle')}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
           {candidates.length > 0 && (
-            <Button variant="outline" size="sm" onClick={toggleAll}>
+            <Button variant="outline" size="sm" onClick={toggleAll} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
               {allExpanded ? 'Tout replier' : 'Tout déplier'}
             </Button>
           )}
           {candidates.length > 0 && (
-            <Button variant="outline" size="sm" onClick={exportXlsx}>
+            <Button variant="outline" size="sm" onClick={exportXlsx} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
               <Download className="w-4 h-4 mr-2" />
               Exporter
             </Button>
           )}
           {candidates.length > 0 && (
-            <Button variant="outline" size="sm" onClick={exportPhotosZip} disabled={isExportingPhotos}>
+            <Button variant="outline" size="sm" onClick={exportPhotosZip} disabled={isExportingPhotos} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
               {isExportingPhotos
                 ? <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                 : <Download className="w-4 h-4 mr-2" />}
@@ -378,12 +378,12 @@ const CandidatesAdmin = () => {
             </Button>
           )}
           {candidates.length > 0 && (
-            <Button variant="outline" size="sm" onClick={() => setEmargementOpen(true)}>
+            <Button variant="default" size="sm" onClick={() => setEmargementOpen(true)} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
               <ClipboardCheck className="w-4 h-4 mr-2" />
               Émargement
             </Button>
           )}
-          <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading}>
+          <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
           </Button>
