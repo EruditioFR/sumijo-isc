@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Clock, CheckCircle2, RotateCcw, Hourglass, Loader2, Users, UserCheck,
+  Clock, CheckCircle2, RotateCcw, Hourglass, Loader2, Users, UserCheck, Bus,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
@@ -13,7 +13,11 @@ interface EmargementCandidate {
   prenom: string;
   heureArrivee: string | null;
   arrive?: boolean;
+  bus?: boolean;
 }
+
+type Mode = 'arrived' | 'bus';
+type Tab = 'upcoming' | 'present';
 
 const parseArrival = (
   raw: string | null,
@@ -45,20 +49,40 @@ const parseArrival = (
   return { date: null, display: s };
 };
 
-type Tab = 'upcoming' | 'present';
+const MODE_LABELS: Record<Mode, { title: string; presentLabel: string; upcomingEmpty: string; presentEmpty: string }> = {
+  arrived: {
+    title: 'Arrivées',
+    presentLabel: 'arrivés',
+    upcomingEmpty: 'Aucune arrivée à venir.',
+    presentEmpty: 'Aucun candidat arrivé.',
+  },
+  bus: {
+    title: 'Montée dans le bus',
+    presentLabel: 'dans le bus',
+    upcomingEmpty: 'Aucun candidat à monter.',
+    presentEmpty: 'Aucun candidat dans le bus.',
+  },
+};
 
 const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }) => {
   const [now, setNow] = useState(new Date());
-  const [present, setPresent] = useState<Set<string>>(new Set());
+  const [mode, setMode] = useState<Mode>('arrived');
+  const [arrivedSet, setArrivedSet] = useState<Set<string>>(new Set());
+  const [busSet, setBusSet] = useState<Set<string>>(new Set());
   const [pending, setPending] = useState<Set<string>>(new Set());
   const [tab, setTab] = useState<Tab>('upcoming');
   const initialized = useRef(false);
 
   useEffect(() => {
     if (initialized.current && candidates.length === 0) return;
-    const initial = new Set<string>();
-    for (const c of candidates) if (c.arrive) initial.add(c.id);
-    setPresent(initial);
+    const a = new Set<string>();
+    const b = new Set<string>();
+    for (const c of candidates) {
+      if (c.arrive) a.add(c.id);
+      if (c.bus) b.add(c.id);
+    }
+    setArrivedSet(a);
+    setBusSet(b);
     if (candidates.length > 0) initialized.current = true;
   }, [candidates]);
 
@@ -66,6 +90,9 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
+
+  const present = mode === 'arrived' ? arrivedSet : busSet;
+  const setPresent = mode === 'arrived' ? setArrivedSet : setBusSet;
 
   const toggle = async (id: string) => {
     const wasPresent = present.has(id);
@@ -80,7 +107,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
 
     try {
       const { error } = await supabase.functions.invoke('update-candidate-arrival', {
-        body: { recordId: id, arrived: nextValue },
+        body: { recordId: id, arrived: nextValue, field: mode },
       });
       if (error) throw error;
     } catch (e) {
@@ -134,6 +161,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
   const presentCount = present.size;
   const remainingCount = totalCount - presentCount;
   const progress = totalCount === 0 ? 0 : Math.round((presentCount / totalCount) * 100);
+  const labels = MODE_LABELS[mode];
 
   const parisTime = now.toLocaleTimeString('fr-FR', {
     timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', second: '2-digit',
@@ -155,7 +183,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
     await Promise.all(
       ids.map((id) =>
         supabase.functions.invoke('update-candidate-arrival', {
-          body: { recordId: id, arrived: false },
+          body: { recordId: id, arrived: false, field: mode },
         }),
       ),
     );
@@ -199,7 +227,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             <span className="uppercase">{c.nom}</span>{' '}
             <span className="font-normal">{c.prenom}</span>
           </div>
-          {passed && !checked && (
+          {passed && !checked && mode === 'arrived' && (
             <div className="text-xs text-destructive mt-0.5">En retard</div>
           )}
         </div>
@@ -231,7 +259,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             <div className="min-w-0">
               <h3 className="text-lg sm:text-xl font-display text-foreground flex items-center gap-2">
                 <Hourglass className="w-5 h-5" />
-                Émargement
+                Émargement · {labels.title}
               </h3>
               <p className="text-xs text-muted-foreground capitalize mt-0.5">{parisDate}</p>
             </div>
@@ -241,11 +269,47 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             </div>
           </div>
 
+          {/* Mode switch */}
+          <div className="mt-4 inline-flex rounded-lg border bg-muted/40 p-1 w-full sm:w-auto">
+            <button
+              type="button"
+              onClick={() => setMode('arrived')}
+              className={cn(
+                'flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md transition-colors',
+                mode === 'arrived'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <UserCheck className="w-4 h-4" />
+              Arrivées
+              <span className="text-xs px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                {arrivedSet.size}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode('bus')}
+              className={cn(
+                'flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md transition-colors',
+                mode === 'bus'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <Bus className="w-4 h-4" />
+              Bus
+              <span className="text-xs px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                {busSet.size}
+              </span>
+            </button>
+          </div>
+
           {/* Progress */}
           <div className="mt-4">
             <div className="flex items-center justify-between text-xs text-muted-foreground mb-1.5">
               <span>
-                <span className="font-semibold text-foreground">{presentCount}</span> / {totalCount} présents
+                <span className="font-semibold text-foreground">{presentCount}</span> / {totalCount} {labels.presentLabel}
               </span>
               <span>{progress}%</span>
             </div>
@@ -291,8 +355,8 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
                 : 'border-transparent text-muted-foreground hover:text-foreground',
             )}
           >
-            <UserCheck className="w-4 h-4" />
-            Présents
+            {mode === 'bus' ? <Bus className="w-4 h-4" /> : <UserCheck className="w-4 h-4" />}
+            {mode === 'bus' ? 'Dans le bus' : 'Présents'}
             <span
               className={cn(
                 'text-xs px-1.5 py-0.5 rounded-full',
@@ -309,11 +373,11 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
       <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
         {tab === 'upcoming' ? (
           upcoming.length === 0 && unscheduled.length === 0 ? (
-            <EmptyList label="Aucune arrivée à venir." />
+            <EmptyList label={labels.upcomingEmpty} />
           ) : (
             <>
               {upcoming.map((c) => {
-                const passed = !!c.parsed.date && c.parsed.date.getTime() < now.getTime();
+                const passed = mode === 'arrived' && !!c.parsed.date && c.parsed.date.getTime() < now.getTime();
                 return <CandidateRow key={c.id} c={c} checked={false} passed={passed} />;
               })}
               {unscheduled.length > 0 && (
@@ -329,7 +393,7 @@ const EmargementSection = ({ candidates }: { candidates: EmargementCandidate[] }
             </>
           )
         ) : presentList.length === 0 ? (
-          <EmptyList label="Aucun candidat émargé." />
+          <EmptyList label={labels.presentEmpty} />
         ) : (
           presentList.map((c) => <CandidateRow key={c.id} c={c} checked />)
         )}

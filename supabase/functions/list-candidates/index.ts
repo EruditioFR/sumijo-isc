@@ -196,6 +196,7 @@ Deno.serve(async (req) => {
         })(),
         heureArrivee: f["Heure d'arrivée"] ?? f["Heure d arrivée"] ?? f["Heure arrivée"] ?? f["Heure d'arrivee"] ?? null,
         arrive: f["Arrivé ?"] ?? f["Arrivé?"] ?? f["Arrive ?"] ?? f["Arrivé"] ?? false,
+        bus: f["Montée dans le bus"] ?? f["Monté dans le bus"] ?? f["Bus"] ?? false,
       };
     });
 

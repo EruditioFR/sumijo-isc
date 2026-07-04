@@ -56,6 +56,7 @@ interface Candidate {
   langues: string[];
   heureArrivee: string | null;
   arrive?: boolean;
+  bus?: boolean;
 }
 
 const computeAge = (iso: string): number | null => {
