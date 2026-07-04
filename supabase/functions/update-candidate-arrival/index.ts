@@ -55,8 +55,21 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => null);
     const recordId = body?.recordId;
     const arrived = body?.arrived;
+    const field = body?.field ?? "arrived";
     if (typeof recordId !== "string" || !/^rec[A-Za-z0-9]+$/.test(recordId) || typeof arrived !== "boolean") {
       return new Response(JSON.stringify({ error: "Invalid payload" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const FIELD_MAP: Record<string, string> = {
+      arrived: "Arrivé ?",
+      bus: "Montée dans le bus",
+    };
+    const airtableField = FIELD_MAP[field as string];
+    if (!airtableField) {
+      return new Response(JSON.stringify({ error: "Invalid field" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -75,7 +88,7 @@ Deno.serve(async (req) => {
         "X-Connection-Api-Key": AIRTABLE_API_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fields: { "Arrivé ?": arrived } }),
+      body: JSON.stringify({ fields: { [airtableField]: arrived } }),
     });
 
     if (!res.ok) {
