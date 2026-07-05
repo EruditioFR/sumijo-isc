@@ -31,7 +31,7 @@ const parseTimeToIso = (raw: unknown): { iso: string | null; display: string | n
   if (!raw) return { iso: null, display: null };
   const s = String(raw).trim();
   if (!s) return { iso: null, display: null };
-  // ISO date-time
+  // ISO date-time (Airtable date+time fields return ISO regardless of display format)
   if (/^\d{4}-\d{2}-\d{2}T/.test(s)) {
     const d = new Date(s);
     if (!isNaN(d.getTime())) {
@@ -48,7 +48,22 @@ const parseTimeToIso = (raw: unknown): { iso: string | null; display: string | n
       };
     }
   }
-  // "HH:MM" or "HHhMM" — no date, cannot compute departure reliably; return null iso
+  // US format fallback: "M/D/YYYY h:mm AM/PM" or similar — let Date parse it
+  const dFallback = new Date(s);
+  if (!isNaN(dFallback.getTime())) {
+    return {
+      iso: dFallback.toISOString(),
+      display: dFallback.toLocaleString("fr-FR", {
+        timeZone: "Europe/Paris",
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    };
+  }
+  // "HH:MM" or "HHhMM" — no date, cannot compute departure reliably
   const m = s.match(/(\d{1,2})[:hH](\d{2})/);
   if (m) {
     return { iso: null, display: `${m[1].padStart(2, "0")}:${m[2]}` };
