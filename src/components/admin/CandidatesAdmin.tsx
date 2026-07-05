@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as XLSX from 'xlsx';
 import {
   Users, FileText, IdCard, Video, Loader2, RefreshCw,
-  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download, ClipboardCheck,
+  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download, ClipboardCheck, Car,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,6 +17,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
 import EmargementSection from './EmargementSection';
+import PickupSection from './PickupSection';
 
 const CountryFlag = ({ name, className = '' }: { name: string; className?: string }) => {
   const url = countryNameToFlagUrl(name);
@@ -198,6 +199,7 @@ const CandidatesAdmin = () => {
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
   const [isExportingPhotos, setIsExportingPhotos] = useState(false);
   const [emargementOpen, setEmargementOpen] = useState(false);
+  const [pickupOpen, setPickupOpen] = useState(false);
   const playVideo = (url: string, title: string) => setVideoModal({ url, title });
 
   const CACHE_KEY = 'admin:candidates:v2';
@@ -382,6 +384,12 @@ const CandidatesAdmin = () => {
             <Button variant="default" size="sm" onClick={() => setEmargementOpen(true)} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
               <ClipboardCheck className="w-4 h-4 mr-2" />
               Émargement
+            </Button>
+          )}
+          {candidates.length > 0 && (
+            <Button variant="default" size="sm" onClick={() => setPickupOpen(true)} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
+              <Car className="w-4 h-4 mr-2" />
+              Pickup
             </Button>
           )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
@@ -660,6 +668,13 @@ const CandidatesAdmin = () => {
         <DialogContent className="p-0 gap-0 max-w-5xl w-[100vw] sm:w-[95vw] h-[100dvh] sm:h-[90vh] sm:max-h-[90vh] max-w-none sm:max-w-5xl rounded-none sm:rounded-lg flex flex-col overflow-hidden">
           <DialogTitle className="sr-only">Émargement</DialogTitle>
           <EmargementSection candidates={candidates} />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={pickupOpen} onOpenChange={setPickupOpen}>
+        <DialogContent className="p-0 gap-0 max-w-6xl w-[100vw] sm:w-[95vw] h-[100dvh] sm:h-[90vh] sm:max-h-[90vh] max-w-none sm:max-w-6xl rounded-none sm:rounded-lg flex flex-col overflow-hidden">
+          <DialogTitle className="sr-only">Pickup</DialogTitle>
+          <PickupSection />
         </DialogContent>
       </Dialog>
     </div>
