@@ -127,10 +127,16 @@ const PickupSection = () => {
     setError(null);
     try {
       const { data, error } = await supabase.functions.invoke('list-pickup-schedule', {
-        body: { fieldName: selected, destination, marginMinutes: margin },
+        body: {
+          fieldName: selected,
+          destination,
+          marginMinutes: margin,
+          groupThresholdMinutes: threshold,
+        },
       });
       if (error) throw error;
       setRows((data?.rows ?? []) as PickupRow[]);
+      setGroups((data?.groups ?? []) as PickupGroup[]);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Erreur inconnue';
       setError(msg);
