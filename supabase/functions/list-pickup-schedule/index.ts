@@ -159,7 +159,7 @@ Deno.serve(async (req) => {
     ).trim();
     const marginMinutes: number = Number.isFinite(body?.marginMinutes)
       ? Number(body.marginMinutes)
-      : 15;
+      : 0;
     if (!fieldName) {
       return new Response(JSON.stringify({ error: "fieldName required" }), {
         status: 400,
