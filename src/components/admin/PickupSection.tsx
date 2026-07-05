@@ -89,7 +89,14 @@ const PickupSection = () => {
     const n = raw ? Number(raw) : NaN;
     return Number.isFinite(n) ? n : DEFAULT_MARGIN;
   });
+  const [threshold, setThreshold] = useState<number>(() => {
+    const raw = localStorage.getItem(THRESHOLD_KEY);
+    const n = raw ? Number(raw) : NaN;
+    return Number.isFinite(n) ? n : DEFAULT_THRESHOLD;
+  });
   const [rows, setRows] = useState<PickupRow[]>([]);
+  const [groups, setGroups] = useState<PickupGroup[]>([]);
+  const [view, setView] = useState<'list' | 'groups'>('list');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -109,6 +116,10 @@ const PickupSection = () => {
   useEffect(() => {
     localStorage.setItem(MARGIN_KEY, String(margin));
   }, [margin]);
+
+  useEffect(() => {
+    localStorage.setItem(THRESHOLD_KEY, String(threshold));
+  }, [threshold]);
 
   const load = async (opts?: { silent?: boolean }) => {
     if (!selected) return;
