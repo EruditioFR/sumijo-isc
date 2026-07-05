@@ -17,6 +17,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { countryNameToFlagUrl } from '@/lib/countryFlags';
 import EmargementSection from './EmargementSection';
+import PickupSection from './PickupSection';
 
 const CountryFlag = ({ name, className = '' }: { name: string; className?: string }) => {
   const url = countryNameToFlagUrl(name);
