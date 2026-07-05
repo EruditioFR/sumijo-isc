@@ -48,7 +48,42 @@ const parseTimeToIso = (raw: unknown): { iso: string | null; display: string | n
       };
     }
   }
-  // US format fallback: "M/D/YYYY h:mm AM/PM" or similar — let Date parse it
+  // European format: D/M/YYYY [HH:MM] (24h). JS Date interprets "5/7/2026" as May 7 (US),
+  // so parse manually. Matches "5/7/2026", "05/07/2026 14:30", "5-7-2026 14h30", etc.
+  const eu = s.match(
+    /^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})(?:[ T]+(\d{1,2})[:hH](\d{2}))?/,
+  );
+  if (eu) {
+    const day = parseInt(eu[1], 10);
+    const month = parseInt(eu[2], 10);
+    let year = parseInt(eu[3], 10);
+    if (year < 100) year += 2000;
+    const hour = eu[4] ? parseInt(eu[4], 10) : 0;
+    const minute = eu[5] ? parseInt(eu[5], 10) : 0;
+    // Build as Europe/Paris local time — subtract offset so toISOString reflects that instant.
+    // Simple approach: build UTC then adjust by Paris offset for that date.
+    const utcGuess = new Date(Date.UTC(year, month - 1, day, hour, minute));
+    // Determine Paris offset for that instant
+    const parisStr = utcGuess.toLocaleString("en-US", { timeZone: "Europe/Paris" });
+    const parisAsIfLocal = new Date(parisStr);
+    const offsetMs = parisAsIfLocal.getTime() - utcGuess.getTime();
+    const d = new Date(utcGuess.getTime() - offsetMs);
+    if (!isNaN(d.getTime()) && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+      return {
+        iso: d.toISOString(),
+        display: d.toLocaleString("fr-FR", {
+          timeZone: "Europe/Paris",
+          weekday: "short",
+          day: "2-digit",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
+      };
+    }
+  }
+  // Generic fallback
   const dFallback = new Date(s);
   if (!isNaN(dFallback.getTime())) {
     return {
@@ -60,6 +95,7 @@ const parseTimeToIso = (raw: unknown): { iso: string | null; display: string | n
         month: "short",
         hour: "2-digit",
         minute: "2-digit",
+        hour12: false,
       }),
     };
   }
