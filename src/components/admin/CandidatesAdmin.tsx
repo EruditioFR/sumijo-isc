@@ -670,6 +670,13 @@ const CandidatesAdmin = () => {
           <EmargementSection candidates={candidates} />
         </DialogContent>
       </Dialog>
+
+      <Dialog open={pickupOpen} onOpenChange={setPickupOpen}>
+        <DialogContent className="p-0 gap-0 max-w-6xl w-[100vw] sm:w-[95vw] h-[100dvh] sm:h-[90vh] sm:max-h-[90vh] max-w-none sm:max-w-6xl rounded-none sm:rounded-lg flex flex-col overflow-hidden">
+          <DialogTitle className="sr-only">Pickup</DialogTitle>
+          <PickupSection />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
