@@ -286,7 +286,7 @@ Deno.serve(async (req) => {
         row.durationSeconds = durSec;
         if (row.pickupTimeIso) {
           const pickupMs = new Date(row.pickupTimeIso).getTime();
-          const departMs = pickupMs - (durSec + marginMinutes * 60) * 1000;
+          const departMs = pickupMs - durSec * 1000;
           const dep = new Date(departMs);
           row.departureIso = dep.toISOString();
           row.departureDisplay = fmtParisTime(row.departureIso);
