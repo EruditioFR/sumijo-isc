@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
-  Car, Loader2, MapPin, Clock, MessageCircle, Plus, Trash2, Copy, Check, Settings2,
+  Car, Loader2, MapPin, Clock, MessageCircle, Plus, Trash2, Copy, Check, Settings2, Users, List,
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -34,12 +35,22 @@ interface PickupRow {
   error: string | null;
 }
 
+interface PickupGroup {
+  id: string;
+  candidateIds: string[];
+  addresses: string[];
+  earliestDepartureIso: string | null;
+  latestPickupIso: string | null;
+}
+
 const FIELDS_KEY = 'admin:pickup:fields:v1';
 const DEST_KEY = 'admin:pickup:destination:v1';
 const MARGIN_KEY = 'admin:pickup:margin:v1';
+const THRESHOLD_KEY = 'admin:pickup:threshold:v1';
 const DEFAULT_FIELDS = ['Lundi matin'];
 const DEFAULT_DESTINATION = 'Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France';
 const DEFAULT_MARGIN = 15;
+const DEFAULT_THRESHOLD = 10;
 
 const loadFields = (): string[] => {
   try {
@@ -78,7 +89,14 @@ const PickupSection = () => {
     const n = raw ? Number(raw) : NaN;
     return Number.isFinite(n) ? n : DEFAULT_MARGIN;
   });
+  const [threshold, setThreshold] = useState<number>(() => {
+    const raw = localStorage.getItem(THRESHOLD_KEY);
+    const n = raw ? Number(raw) : NaN;
+    return Number.isFinite(n) ? n : DEFAULT_THRESHOLD;
+  });
   const [rows, setRows] = useState<PickupRow[]>([]);
+  const [groups, setGroups] = useState<PickupGroup[]>([]);
+  const [view, setView] = useState<'list' | 'groups'>('list');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -99,16 +117,26 @@ const PickupSection = () => {
     localStorage.setItem(MARGIN_KEY, String(margin));
   }, [margin]);
 
+  useEffect(() => {
+    localStorage.setItem(THRESHOLD_KEY, String(threshold));
+  }, [threshold]);
+
   const load = async (opts?: { silent?: boolean }) => {
     if (!selected) return;
     if (!opts?.silent) setIsLoading(true);
     setError(null);
     try {
       const { data, error } = await supabase.functions.invoke('list-pickup-schedule', {
-        body: { fieldName: selected, destination, marginMinutes: margin },
+        body: {
+          fieldName: selected,
+          destination,
+          marginMinutes: margin,
+          groupThresholdMinutes: threshold,
+        },
       });
       if (error) throw error;
       setRows((data?.rows ?? []) as PickupRow[]);
+      setGroups((data?.groups ?? []) as PickupGroup[]);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Erreur inconnue';
       setError(msg);
@@ -226,10 +254,45 @@ const PickupSection = () => {
           </Button>
         </div>
 
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-          <MapPin className="w-3.5 h-3.5" />
-          <span className="truncate">Destination : {destination}</span>
-          <span className="ml-2">· Marge : +{margin} min</span>
+        <div className="mt-3 flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground min-w-0">
+            <MapPin className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">Destination : {destination}</span>
+            <span className="ml-2 whitespace-nowrap">· Marge : +{margin} min · Regroupement ≤ {threshold} min</span>
+          </div>
+          <div className="inline-flex rounded-lg border bg-muted/40 p-1">
+            <button
+              type="button"
+              onClick={() => setView('list')}
+              className={cn(
+                'flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors',
+                view === 'list'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <List className="w-3.5 h-3.5" />
+              Liste
+            </button>
+            <button
+              type="button"
+              onClick={() => setView('groups')}
+              className={cn(
+                'flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors',
+                view === 'groups'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <Users className="w-3.5 h-3.5" />
+              Groupes
+              {groups.length > 0 && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                  {groups.length}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -249,6 +312,97 @@ const PickupSection = () => {
           <div className="p-12 text-center text-sm text-muted-foreground">
             Aucun candidat pour ce créneau.
           </div>
+        ) : view === 'groups' ? (
+          groups.length === 0 ? (
+            <div className="p-12 text-center text-sm text-muted-foreground">
+              Aucun regroupement possible pour ce créneau.
+            </div>
+          ) : (
+            <div className="p-4 sm:p-6 space-y-4">
+              {groups.map((g, idx) => {
+                const members = g.candidateIds
+                  .map((id) => rows.find((r) => r.id === id))
+                  .filter((r): r is PickupRow => !!r);
+                const earliestDisplay = g.earliestDepartureIso
+                  ? new Date(g.earliestDepartureIso).toLocaleTimeString('fr-FR', {
+                      timeZone: 'Europe/Paris',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })
+                  : '—';
+                const solo = members.length === 1;
+                return (
+                  <div
+                    key={g.id}
+                    className={cn(
+                      'rounded-xl border overflow-hidden',
+                      solo ? 'bg-background' : 'bg-primary/5 border-primary/30',
+                    )}
+                  >
+                    <div className="px-4 py-3 flex items-center justify-between gap-3 border-b bg-background/60">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div
+                          className={cn(
+                            'w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0',
+                            solo
+                              ? 'bg-muted text-muted-foreground'
+                              : 'bg-primary text-primary-foreground',
+                          )}
+                        >
+                          {solo ? <Car className="w-4 h-4" /> : idx + 1}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-sm font-semibold text-foreground">
+                            {solo
+                              ? 'Taxi individuel'
+                              : `Taxi partagé · ${members.length} candidats`}
+                          </div>
+                          <div className="text-xs text-muted-foreground truncate">
+                            {g.addresses.join(' · ')}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                          1er départ
+                        </div>
+                        <div className="font-mono tabular-nums text-sm font-semibold">
+                          {earliestDisplay}
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="divide-y">
+                      {members.map((m, i) => (
+                        <li
+                          key={m.id}
+                          className="px-4 py-2.5 flex items-center gap-3"
+                        >
+                          <div className="w-6 text-xs text-muted-foreground text-center tabular-nums">
+                            #{i + 1}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium truncate">
+                              <span className="uppercase">{m.nom}</span> {m.prenom}
+                            </div>
+                            <div className="text-xs text-muted-foreground truncate">
+                              Présence : {m.pickupTimeDisplay ?? '—'} · {formatDistance(m.distanceMeters)} · {formatDuration(m.durationSeconds)}
+                            </div>
+                          </div>
+                          {m.departureDisplay ? (
+                            <span className="inline-flex items-center px-2 py-1 rounded-md bg-primary/10 text-primary font-mono tabular-nums text-sm font-semibold shrink-0">
+                              {m.departureDisplay}
+                            </span>
+                          ) : (
+                            <span className="text-xs text-muted-foreground">—</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          )
         ) : (
           <Table>
             <TableHeader className="sticky top-0 bg-background z-10">
@@ -362,18 +516,31 @@ const PickupSection = () => {
               />
             </div>
 
-            <div>
-              <Label htmlFor="pickup-margin" className="text-sm mb-2 block">
-                Marge de sécurité (minutes)
-              </Label>
-              <Input
-                id="pickup-margin"
-                type="number"
-                min={0}
-                value={margin}
-                onChange={(e) => setMargin(Number(e.target.value) || 0)}
-                className="w-32"
-              />
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label htmlFor="pickup-margin" className="text-sm mb-2 block">
+                  Marge de sécurité (min)
+                </Label>
+                <Input
+                  id="pickup-margin"
+                  type="number"
+                  min={0}
+                  value={margin}
+                  onChange={(e) => setMargin(Number(e.target.value) || 0)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="pickup-threshold" className="text-sm mb-2 block">
+                  Regroupement max (min)
+                </Label>
+                <Input
+                  id="pickup-threshold"
+                  type="number"
+                  min={0}
+                  value={threshold}
+                  onChange={(e) => setThreshold(Number(e.target.value) || 0)}
+                />
+              </div>
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
