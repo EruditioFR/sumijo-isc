@@ -254,10 +254,45 @@ const PickupSection = () => {
           </Button>
         </div>
 
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-          <MapPin className="w-3.5 h-3.5" />
-          <span className="truncate">Destination : {destination}</span>
-          <span className="ml-2">· Marge : +{margin} min</span>
+        <div className="mt-3 flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground min-w-0">
+            <MapPin className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">Destination : {destination}</span>
+            <span className="ml-2 whitespace-nowrap">· Marge : +{margin} min · Regroupement ≤ {threshold} min</span>
+          </div>
+          <div className="inline-flex rounded-lg border bg-muted/40 p-1">
+            <button
+              type="button"
+              onClick={() => setView('list')}
+              className={cn(
+                'flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors',
+                view === 'list'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <List className="w-3.5 h-3.5" />
+              Liste
+            </button>
+            <button
+              type="button"
+              onClick={() => setView('groups')}
+              className={cn(
+                'flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors',
+                view === 'groups'
+                  ? 'bg-background shadow-sm text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              <Users className="w-3.5 h-3.5" />
+              Groupes
+              {groups.length > 0 && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                  {groups.length}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
