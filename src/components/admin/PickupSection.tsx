@@ -516,18 +516,31 @@ const PickupSection = () => {
               />
             </div>
 
-            <div>
-              <Label htmlFor="pickup-margin" className="text-sm mb-2 block">
-                Marge de sécurité (minutes)
-              </Label>
-              <Input
-                id="pickup-margin"
-                type="number"
-                min={0}
-                value={margin}
-                onChange={(e) => setMargin(Number(e.target.value) || 0)}
-                className="w-32"
-              />
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label htmlFor="pickup-margin" className="text-sm mb-2 block">
+                  Marge de sécurité (min)
+                </Label>
+                <Input
+                  id="pickup-margin"
+                  type="number"
+                  min={0}
+                  value={margin}
+                  onChange={(e) => setMargin(Number(e.target.value) || 0)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="pickup-threshold" className="text-sm mb-2 block">
+                  Regroupement max (min)
+                </Label>
+                <Input
+                  id="pickup-threshold"
+                  type="number"
+                  min={0}
+                  value={threshold}
+                  onChange={(e) => setThreshold(Number(e.target.value) || 0)}
+                />
+              </div>
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
