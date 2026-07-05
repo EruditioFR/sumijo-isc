@@ -393,40 +393,43 @@ Deno.serve(async (req) => {
         }
       }
 
-      // Bucket candidates by root address index
-      const buckets = new Map<number, CandidateRow[]>();
+      // Bucket candidates by pickup time (heure présence) then by proximity root.
+      // Grouping ONLY unites candidates sharing the same arrival time.
+      const timeBuckets = new Map<string, CandidateRow[]>();
       for (const r of groupables) {
-        const idx = addrIndex.get(r.hoteAdresse as string)!;
-        const root = find(idx);
-        if (!buckets.has(root)) buckets.set(root, []);
-        buckets.get(root)!.push(r);
+        const key = r.pickupTimeIso as string;
+        if (!timeBuckets.has(key)) timeBuckets.set(key, []);
+        timeBuckets.get(key)!.push(r);
       }
 
-      for (const [root, list] of buckets) {
-        // Order within group by pickup time (heure présence)
-        list.sort((a, b) => {
-          const ta = a.pickupTimeIso ? new Date(a.pickupTimeIso).getTime() : Infinity;
-          const tb = b.pickupTimeIso ? new Date(b.pickupTimeIso).getTime() : Infinity;
-          if (ta !== tb) return ta - tb;
-          return a.nom.localeCompare(b.nom);
-        });
-        const addrs = Array.from(new Set(list.map((r) => r.hoteAdresse as string)));
-        const earliest = list
-          .map((r) => r.departureIso)
-          .filter(Boolean)
-          .sort()[0] ?? null;
-        const latest = list
-          .map((r) => r.pickupTimeIso)
-          .filter(Boolean)
-          .sort()
-          .slice(-1)[0] ?? null;
-        groups.push({
-          id: `g${root}`,
-          candidateIds: list.map((r) => r.id),
-          addresses: addrs,
-          earliestDepartureIso: earliest,
-          latestPickupIso: latest,
-        });
+      for (const [timeKey, timeList] of timeBuckets) {
+        const proxBuckets = new Map<number, CandidateRow[]>();
+        for (const r of timeList) {
+          const idx = addrIndex.get(r.hoteAdresse as string)!;
+          const root = find(idx);
+          if (!proxBuckets.has(root)) proxBuckets.set(root, []);
+          proxBuckets.get(root)!.push(r);
+        }
+        for (const [root, list] of proxBuckets) {
+          list.sort((a, b) => {
+            const ta = a.pickupTimeIso ? new Date(a.pickupTimeIso).getTime() : Infinity;
+            const tb = b.pickupTimeIso ? new Date(b.pickupTimeIso).getTime() : Infinity;
+            if (ta !== tb) return ta - tb;
+            return a.nom.localeCompare(b.nom);
+          });
+          const addrs = Array.from(new Set(list.map((r) => r.hoteAdresse as string)));
+          const earliest = list
+            .map((r) => r.departureIso)
+            .filter(Boolean)
+            .sort()[0] ?? null;
+          groups.push({
+            id: `g${root}-${timeKey}`,
+            candidateIds: list.map((r) => r.id),
+            addresses: addrs,
+            earliestDepartureIso: earliest,
+            latestPickupIso: timeKey,
+          });
+        }
       }
 
       // Sort groups by earliest departure
