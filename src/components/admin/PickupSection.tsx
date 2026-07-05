@@ -45,11 +45,9 @@ interface PickupGroup {
 
 const FIELDS_KEY = 'admin:pickup:fields:v1';
 const DEST_KEY = 'admin:pickup:destination:v1';
-const MARGIN_KEY = 'admin:pickup:margin:v1';
 const THRESHOLD_KEY = 'admin:pickup:threshold:v1';
 const DEFAULT_FIELDS = ['Lundi matin'];
 const DEFAULT_DESTINATION = 'Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France';
-const DEFAULT_MARGIN = 15;
 const DEFAULT_THRESHOLD = 10;
 
 const loadFields = (): string[] => {
@@ -84,11 +82,6 @@ const PickupSection = () => {
   const [destination, setDestination] = useState<string>(
     () => localStorage.getItem(DEST_KEY) || DEFAULT_DESTINATION,
   );
-  const [margin, setMargin] = useState<number>(() => {
-    const raw = localStorage.getItem(MARGIN_KEY);
-    const n = raw ? Number(raw) : NaN;
-    return Number.isFinite(n) ? n : DEFAULT_MARGIN;
-  });
   const [threshold, setThreshold] = useState<number>(() => {
     const raw = localStorage.getItem(THRESHOLD_KEY);
     const n = raw ? Number(raw) : NaN;
@@ -114,10 +107,6 @@ const PickupSection = () => {
   }, [destination]);
 
   useEffect(() => {
-    localStorage.setItem(MARGIN_KEY, String(margin));
-  }, [margin]);
-
-  useEffect(() => {
     localStorage.setItem(THRESHOLD_KEY, String(threshold));
   }, [threshold]);
 
@@ -130,7 +119,6 @@ const PickupSection = () => {
         body: {
           fieldName: selected,
           destination,
-          marginMinutes: margin,
           groupThresholdMinutes: threshold,
         },
       });
@@ -258,7 +246,7 @@ const PickupSection = () => {
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground min-w-0">
             <MapPin className="w-3.5 h-3.5 shrink-0" />
             <span className="truncate">Destination : {destination}</span>
-            <span className="ml-2 whitespace-nowrap">· Marge : +{margin} min · Regroupement ≤ {threshold} min</span>
+            <span className="ml-2 whitespace-nowrap">· Regroupement ≤ {threshold} min</span>
           </div>
           <div className="inline-flex rounded-lg border bg-muted/40 p-1">
             <button
@@ -516,20 +504,7 @@ const PickupSection = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label htmlFor="pickup-margin" className="text-sm mb-2 block">
-                  Marge de sécurité (min)
-                </Label>
-                <Input
-                  id="pickup-margin"
-                  type="number"
-                  min={0}
-                  value={margin}
-                  onChange={(e) => setMargin(Number(e.target.value) || 0)}
-                />
-              </div>
-              <div>
+            <div>
                 <Label htmlFor="pickup-threshold" className="text-sm mb-2 block">
                   Regroupement max (min)
                 </Label>
@@ -540,7 +515,6 @@ const PickupSection = () => {
                   value={threshold}
                   onChange={(e) => setThreshold(Number(e.target.value) || 0)}
                 />
-              </div>
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
