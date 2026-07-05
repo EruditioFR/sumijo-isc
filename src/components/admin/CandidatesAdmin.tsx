@@ -386,6 +386,12 @@ const CandidatesAdmin = () => {
               Émargement
             </Button>
           )}
+          {candidates.length > 0 && (
+            <Button variant="default" size="sm" onClick={() => setPickupOpen(true)} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
+              <Car className="w-4 h-4 mr-2" />
+              Pickup
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={() => fetchCandidates()} disabled={isLoading} className="flex-1 sm:flex-none min-w-[calc(50%-0.25rem)] sm:min-w-0">
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Actualiser
