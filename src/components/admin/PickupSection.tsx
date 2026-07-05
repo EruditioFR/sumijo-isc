@@ -312,6 +312,97 @@ const PickupSection = () => {
           <div className="p-12 text-center text-sm text-muted-foreground">
             Aucun candidat pour ce créneau.
           </div>
+        ) : view === 'groups' ? (
+          groups.length === 0 ? (
+            <div className="p-12 text-center text-sm text-muted-foreground">
+              Aucun regroupement possible pour ce créneau.
+            </div>
+          ) : (
+            <div className="p-4 sm:p-6 space-y-4">
+              {groups.map((g, idx) => {
+                const members = g.candidateIds
+                  .map((id) => rows.find((r) => r.id === id))
+                  .filter((r): r is PickupRow => !!r);
+                const earliestDisplay = g.earliestDepartureIso
+                  ? new Date(g.earliestDepartureIso).toLocaleTimeString('fr-FR', {
+                      timeZone: 'Europe/Paris',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })
+                  : '—';
+                const solo = members.length === 1;
+                return (
+                  <div
+                    key={g.id}
+                    className={cn(
+                      'rounded-xl border overflow-hidden',
+                      solo ? 'bg-background' : 'bg-primary/5 border-primary/30',
+                    )}
+                  >
+                    <div className="px-4 py-3 flex items-center justify-between gap-3 border-b bg-background/60">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div
+                          className={cn(
+                            'w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0',
+                            solo
+                              ? 'bg-muted text-muted-foreground'
+                              : 'bg-primary text-primary-foreground',
+                          )}
+                        >
+                          {solo ? <Car className="w-4 h-4" /> : idx + 1}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-sm font-semibold text-foreground">
+                            {solo
+                              ? 'Taxi individuel'
+                              : `Taxi partagé · ${members.length} candidats`}
+                          </div>
+                          <div className="text-xs text-muted-foreground truncate">
+                            {g.addresses.join(' · ')}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                          1er départ
+                        </div>
+                        <div className="font-mono tabular-nums text-sm font-semibold">
+                          {earliestDisplay}
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="divide-y">
+                      {members.map((m, i) => (
+                        <li
+                          key={m.id}
+                          className="px-4 py-2.5 flex items-center gap-3"
+                        >
+                          <div className="w-6 text-xs text-muted-foreground text-center tabular-nums">
+                            #{i + 1}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium truncate">
+                              <span className="uppercase">{m.nom}</span> {m.prenom}
+                            </div>
+                            <div className="text-xs text-muted-foreground truncate">
+                              Présence : {m.pickupTimeDisplay ?? '—'} · {formatDistance(m.distanceMeters)} · {formatDuration(m.durationSeconds)}
+                            </div>
+                          </div>
+                          {m.departureDisplay ? (
+                            <span className="inline-flex items-center px-2 py-1 rounded-md bg-primary/10 text-primary font-mono tabular-nums text-sm font-semibold shrink-0">
+                              {m.departureDisplay}
+                            </span>
+                          ) : (
+                            <span className="text-xs text-muted-foreground">—</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          )
         ) : (
           <Table>
             <TableHeader className="sticky top-0 bg-background z-10">
