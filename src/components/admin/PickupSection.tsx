@@ -35,12 +35,22 @@ interface PickupRow {
   error: string | null;
 }
 
+interface PickupGroup {
+  id: string;
+  candidateIds: string[];
+  addresses: string[];
+  earliestDepartureIso: string | null;
+  latestPickupIso: string | null;
+}
+
 const FIELDS_KEY = 'admin:pickup:fields:v1';
 const DEST_KEY = 'admin:pickup:destination:v1';
 const MARGIN_KEY = 'admin:pickup:margin:v1';
+const THRESHOLD_KEY = 'admin:pickup:threshold:v1';
 const DEFAULT_FIELDS = ['Lundi matin'];
 const DEFAULT_DESTINATION = 'Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France';
 const DEFAULT_MARGIN = 15;
+const DEFAULT_THRESHOLD = 10;
 
 const loadFields = (): string[] => {
   try {
