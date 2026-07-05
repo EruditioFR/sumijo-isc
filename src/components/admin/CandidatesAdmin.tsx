@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as XLSX from 'xlsx';
 import {
   Users, FileText, IdCard, Video, Loader2, RefreshCw,
-  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download, ClipboardCheck,
+  ChevronRight, Mail, Phone, Sparkles, Quote, Info, Eye, Printer, Download, ClipboardCheck, Car,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
