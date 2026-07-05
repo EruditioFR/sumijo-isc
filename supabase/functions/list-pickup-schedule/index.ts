@@ -301,9 +301,147 @@ Deno.serve(async (req) => {
       return a.nom.localeCompare(b.nom);
     });
 
+    // --- Grouping candidates by geographic proximity (taxi sharing) ---
+    const groupThresholdMinutes: number = Number.isFinite(body?.groupThresholdMinutes)
+      ? Number(body.groupThresholdMinutes)
+      : 10;
+    const groupThresholdSec = groupThresholdMinutes * 60;
+
+    type Group = {
+      id: string;
+      candidateIds: string[];
+      addresses: string[];
+      earliestDepartureIso: string | null;
+      latestPickupIso: string | null;
+    };
+    const groups: Group[] = [];
+
+    const groupables = rows.filter(
+      (r) => r.hoteAdresse && r.departureIso && r.durationSeconds !== null,
+    );
+
+    if (groupables.length > 0) {
+      // Deduplicate addresses to keep the matrix small
+      const uniqueAddrs: string[] = [];
+      const addrIndex = new Map<string, number>();
+      for (const r of groupables) {
+        const a = r.hoteAdresse as string;
+        if (!addrIndex.has(a)) {
+          addrIndex.set(a, uniqueAddrs.length);
+          uniqueAddrs.push(a);
+        }
+      }
+
+      // Pairwise driving-time matrix between unique addresses
+      const n = uniqueAddrs.length;
+      const durMatrix: number[][] = Array.from({ length: n }, () => Array(n).fill(Infinity));
+      for (let i = 0; i < n; i++) durMatrix[i][i] = 0;
+
+      if (n > 1) {
+        const wp = uniqueAddrs.map((a) => ({ waypoint: { address: a } }));
+        const pairResp = await fetch(
+          `${MAPS_GATEWAY}/routes/distanceMatrix/v2:computeRouteMatrix`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${LOVABLE_API_KEY}`,
+              "X-Connection-Api-Key": GOOGLE_MAPS_API_KEY,
+              "Content-Type": "application/json",
+              "X-Goog-FieldMask":
+                "originIndex,destinationIndex,duration,status,condition",
+            },
+            body: JSON.stringify({
+              origins: wp,
+              destinations: wp,
+              travelMode: "DRIVE",
+              routingPreference: "TRAFFIC_AWARE",
+            }),
+          },
+        );
+        const pairText = await pairResp.text();
+        if (pairResp.ok) {
+          let els: any[] = [];
+          try {
+            els = JSON.parse(pairText);
+          } catch {}
+          for (const el of els) {
+            const oi = el.originIndex ?? 0;
+            const di = el.destinationIndex ?? 0;
+            if (el.condition && el.condition !== "ROUTE_EXISTS") continue;
+            const durStr: string | undefined = el.duration;
+            const durSec = durStr ? Number(String(durStr).replace(/s$/, "")) : NaN;
+            if (Number.isFinite(durSec)) {
+              durMatrix[oi][di] = durSec;
+            }
+          }
+        } else {
+          console.warn("Pairwise matrix failed", pairResp.status, pairText.slice(0, 200));
+        }
+      }
+
+      // Union-Find on unique addresses: link i-j when both directions ≤ threshold
+      const parent = Array.from({ length: n }, (_, i) => i);
+      const find = (x: number): number => (parent[x] === x ? x : (parent[x] = find(parent[x])));
+      const union = (a: number, b: number) => {
+        const ra = find(a); const rb = find(b);
+        if (ra !== rb) parent[ra] = rb;
+      };
+      for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+          const t = Math.max(durMatrix[i][j], durMatrix[j][i]);
+          if (t <= groupThresholdSec) union(i, j);
+        }
+      }
+
+      // Bucket candidates by root address index
+      const buckets = new Map<number, CandidateRow[]>();
+      for (const r of groupables) {
+        const idx = addrIndex.get(r.hoteAdresse as string)!;
+        const root = find(idx);
+        if (!buckets.has(root)) buckets.set(root, []);
+        buckets.get(root)!.push(r);
+      }
+
+      for (const [root, list] of buckets) {
+        // Order within group by pickup time (heure présence)
+        list.sort((a, b) => {
+          const ta = a.pickupTimeIso ? new Date(a.pickupTimeIso).getTime() : Infinity;
+          const tb = b.pickupTimeIso ? new Date(b.pickupTimeIso).getTime() : Infinity;
+          if (ta !== tb) return ta - tb;
+          return a.nom.localeCompare(b.nom);
+        });
+        const addrs = Array.from(new Set(list.map((r) => r.hoteAdresse as string)));
+        const earliest = list
+          .map((r) => r.departureIso)
+          .filter(Boolean)
+          .sort()[0] ?? null;
+        const latest = list
+          .map((r) => r.pickupTimeIso)
+          .filter(Boolean)
+          .sort()
+          .slice(-1)[0] ?? null;
+        groups.push({
+          id: `g${root}`,
+          candidateIds: list.map((r) => r.id),
+          addresses: addrs,
+          earliestDepartureIso: earliest,
+          latestPickupIso: latest,
+        });
+      }
+
+      // Sort groups by earliest departure
+      groups.sort((a, b) => {
+        const ta = a.earliestDepartureIso ? new Date(a.earliestDepartureIso).getTime() : Infinity;
+        const tb = b.earliestDepartureIso ? new Date(b.earliestDepartureIso).getTime() : Infinity;
+        return ta - tb;
+      });
+    }
+
     return new Response(
       JSON.stringify({
         rows,
+        groups,
+        groupThresholdMinutes,
         fieldName,
         destination,
         marginMinutes,
