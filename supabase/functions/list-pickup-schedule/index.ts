@@ -157,9 +157,6 @@ Deno.serve(async (req) => {
     const destination: string = String(
       body?.destination ?? "Château de La Ferté-Imbault, 41300 La Ferté-Imbault, France",
     ).trim();
-    const marginMinutes: number = Number.isFinite(body?.marginMinutes)
-      ? Number(body.marginMinutes)
-      : 0;
     if (!fieldName) {
       return new Response(JSON.stringify({ error: "fieldName required" }), {
         status: 400,
@@ -447,7 +444,6 @@ Deno.serve(async (req) => {
         groupThresholdMinutes,
         fieldName,
         destination,
-        marginMinutes,
         count: rows.length,
       }),
       {
