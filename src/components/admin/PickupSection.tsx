@@ -161,7 +161,7 @@ const PickupSection = () => {
     () =>
       rows
         .filter((r) => r.departureDisplay)
-        .map((r) => `pickup at ${r.departureDisplay}`)
+        .map((r) => `${r.prenom} ${r.nom} — pickup at ${r.departureDisplay}`)
         .join('\n'),
     [rows],
   );
