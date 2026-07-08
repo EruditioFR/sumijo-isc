@@ -136,7 +136,7 @@ const VotePage = () => {
               Les votes sont actuellement fermés
             </h2>
             <p className="text-sm md:text-base text-muted-foreground">
-              Revenez pendant la période d'ouverture pour voter pour votre candidat préféré.
+              Revenez pendant la période d'ouverture pour voter pour votre candidat favori.
             </p>
           </Card>
         ) : (
