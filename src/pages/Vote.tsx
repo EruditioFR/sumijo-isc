@@ -179,7 +179,7 @@ const VotePage = () => {
 
             {showGrid && (
               <>
-                <p className="text-center text-base md:text-xl text-muted-foreground mb-4 md:mb-6">
+                <p className="text-center text-lg md:text-2xl text-foreground font-medium mb-4 md:mb-6">
                   Touchez une photo pour sélectionner votre candidat.
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
