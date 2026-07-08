@@ -116,10 +116,11 @@ const VotePage = () => {
         style={{ paddingBottom: showBar ? 'calc(env(safe-area-inset-bottom) + 6.5rem)' : undefined }}
       >
         <header className="text-center mb-6 md:mb-10">
-          <div className="inline-flex items-center gap-2 mb-3 md:mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium">
-            <Vote className="w-3.5 h-3.5 md:w-4 md:h-4" />
-            Prix du public
-          </div>
+          <img
+            src={posterImage}
+            alt="Affiche Concours International de Chant Sumi Jo 2026"
+            className="mx-auto mb-5 md:mb-8 w-40 sm:w-48 md:w-64 h-auto rounded-lg shadow-lg"
+          />
           <h1 className="font-display text-2xl md:text-5xl text-foreground mb-2 md:mb-3 leading-tight">
             Votez pour votre candidat préféré
           </h1>
@@ -127,6 +128,7 @@ const VotePage = () => {
             Concours International de Chant Sumi Jo — Édition 2026
           </p>
         </header>
+
 
         {!isOpen ? (
           <Card className="max-w-xl mx-auto p-6 md:p-10 text-center">
