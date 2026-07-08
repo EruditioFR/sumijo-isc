@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Loader2, Check, Vote, X } from 'lucide-react';
+import { Loader2, Check, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { Helmet } from 'react-helmet-async';
+import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TOKEN_KEY = 'sumijo_vote_token';
 
