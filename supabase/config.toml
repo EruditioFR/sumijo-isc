@@ -2,3 +2,6 @@ project_id = "rboxzxuykhwywovopfcq"
 
 [functions.list-semifinalists]
 verify_jwt = false
+
+[functions.list-vote-candidates]
+verify_jwt = false
