@@ -20,6 +20,8 @@ import AdminCandidates from "./pages/AdminCandidates";
 import AdminCortot from "./pages/AdminCortot";
 import AdminAirsDemiFinale from "./pages/AdminAirsDemiFinale";
 import AdminFamilies from "./pages/AdminFamilies";
+import AdminVote from "./pages/AdminVote";
+import Vote from "./pages/Vote";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
  import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";
@@ -50,6 +52,8 @@ const App = () => (
             <Route path="/admin/cortot" element={<AdminCortot />} />
             <Route path="/admin/airs-demie-finale" element={<AdminAirsDemiFinale />} />
             <Route path="/admin/familles" element={<AdminFamilies />} />
+            <Route path="/admin/vote" element={<AdminVote />} />
+            <Route path="/vote" element={<Vote />} />
             <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -121,6 +121,30 @@ export type Database = {
           },
         ]
       }
+      public_votes: {
+        Row: {
+          candidate_id: string
+          created_at: string
+          id: string
+          updated_at: string
+          voter_token: string
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          voter_token: string
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          voter_token?: string
+        }
+        Relationships: []
+      }
       ticketing_notifications: {
         Row: {
           created_at: string
@@ -160,6 +184,24 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      vote_settings: {
+        Row: {
+          id: string
+          is_open: boolean
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          is_open?: boolean
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          is_open?: boolean
+          updated_at?: string
         }
         Relationships: []
       }
