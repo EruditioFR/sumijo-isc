@@ -1,62 +1,56 @@
-## Nouvelle page : Concert de gala — Salle Cortot, 10 juin 2026
+# Outil de vote public — Prix du public
 
-Création d'une page dédiée au concert "Sumi Jo & Winners" qui aura lieu un mois avant le concours.
+## Objectif
+Permettre au public de voter (via lien / QR code) pour son candidat préféré parmi les demi-finalistes non-finalistes. Une voix par personne, modifiable. Ouverture/fermeture et résultats gérés par l'admin.
 
-### Routing
-- Nouvelle route `/concert-gala-paris` dans `src/App.tsx`
-- Nouveau fichier `src/pages/ConcertGalaParis.tsx`
+## 1. Base de données (Lovable Cloud)
 
-### Structure de la page
+**Table `vote_settings`** (singleton, 1 ligne)
+- `is_open` (bool) — bouton on/off
+- `updated_at`
 
-1. **Header** (réutilisé, sticky comme sur les autres sous-pages)
+**Table `public_votes`**
+- `id`, `voter_token` (UUID stocké côté navigateur en localStorage), `candidate_id` (string, ID Airtable), `created_at`, `updated_at`
+- Unique sur `voter_token` (un vote par token, modifiable via UPDATE)
 
-2. **Hero**
-   - Eyebrow doré : "Concert exceptionnel — Paris"
-   - Titre : "Sumi Jo & Winners"
-   - Sous-titre : "Concert des Lauréats de la Sumi Jo International Singing Competition 2024"
-   - Date / lieu : "Mercredi 10 juin 2026 — 20h00 · Salle Cortot, Paris"
-   - CTA principal : "Réserver" (lien vers Salle Cortot, à confirmer — voir question)
-   - CTA secondaire : "En savoir plus sur le concours" → `/`
+RLS :
+- `vote_settings` : SELECT public, UPDATE admin uniquement
+- `public_votes` : INSERT/UPDATE anonyme si `is_open = true`, SELECT admin uniquement (les résultats ne sont pas publics en direct)
 
-3. **Présentation / texte d'introduction**
-   - Paragraphe sur Sumi Jo (commandeure des Arts et des Lettres, Unesco Artist for Peace, Grammy Award, "Voice from Heaven")
-   - Tournée des 40 ans de carrière (Asie, Cadogan Hall Londres, Carnegie Hall New York, Salle Cortot Paris)
-   - Mise en valeur visuelle (citation Karajan en serif elegant)
+## 2. Source des candidats
+Edge function `list-vote-candidates` : liste depuis Airtable les candidats dont la case **Finaliste** n'est PAS cochée (les demi-finalistes non-finalistes), avec nom, prénom, photo, id.
 
-4. **Programme du concert** (en deux colonnes responsive ou deux blocs empilés)
-   - **Première partie** — liste des 8 pièces avec : interprète(s), titre de l'aria, opéra, compositeur
-   - **Deuxième partie** — liste des 10 pièces (incluant les interventions de Sumi Jo et le tutti final)
-   - Style : cartes élégantes avec accents dorés, séparateurs ornementaux, animations fade-in
+## 3. Page publique `/vote`
+- Accessible sans login
+- Si `is_open = false` → message "Les votes sont fermés"
+- Si `is_open = true` :
+  - Grille de cartes candidats (photo + nom)
+  - Sélection d'un candidat → confirmation
+  - Token stocké en localStorage → upsert dans `public_votes`
+  - Message "Merci, votre vote a été enregistré. Vous pouvez le modifier jusqu'à la clôture."
+  - Bouton "Modifier mon vote" si un vote existe déjà pour ce token
+- QR code affichable dans l'admin pour partager
 
-5. **Réservations / Tarifs**
-   - Grille de 4 cartes tarifaires :
-     - Catégorie 1 : 55 €
-     - Catégorie 2 : 35 €
-     - Catégorie 3 : 20 €
-     - Tarif réduit : 17 € (avec mention « Jeunes -26 ans, demandeurs d'emploi, Pass 17 »)
-   - Bouton "Réserver" prominent
-   - Bloc info billetterie : "01 48 24 40 63" et "billetterie@sallecortot.fr"
+## 4. Espace admin — nouvelle page `/admin/vote`
+Réservée aux admins (déjà en place via `useAdminAuth` + `user_roles`).
+- **Toggle on/off** pour `is_open`
+- **Lien public + QR code** de `/vote` (copier / télécharger)
+- **Tableau des résultats** en direct :
+  - Photo | Prénom | Nom | Nb votes | Pourcentage
+  - Trié par nombre de votes décroissant
+  - Total des votes affiché
+- Bouton "Rafraîchir" (ou realtime)
 
-6. **Footer** (réutilisé)
+Ajout d'une entrée "Vote public" dans la navigation admin (`AdminLayout`).
 
-### Design
-- Cohérent avec le reste du site : palette rose/burgundy + gold + cream, fonts Arial/Helvetica
-- Animations Framer Motion (fade/scale au scroll via `react-intersection-observer`)
-- Responsive desktop / mobile
-- SEO via `SEOHead` : title, description, keywords sur le concert
+## 5. i18n
+Page publique traduite FR / EN / KR / ZH selon la politique i18n du projet.
 
-### Lien depuis le site
-- Ajout d'un lien "Concert de Paris" dans le dropdown "Le concours" du `Header.tsx` (desktop + mobile), placé avant ou après "Le programme"
-- Clé i18n `nav.galaParis` ajoutée dans `fr.json` (et placeholders identiques dans `en.json`, `kr.json`, `zh.json` — texte en français, pas de traduction demandée pour cette page à ce stade)
+## Détails techniques
+- Edge functions : `list-vote-candidates` (Airtable), `cast-vote` (upsert sécurisé + vérification `is_open`), `get-vote-results` (admin, agrège votes + jointure avec candidats Airtable pour photo/nom)
+- `voter_token` = `crypto.randomUUID()` stocké en `localStorage` sous `sumijo_vote_token`
+- Nouvelle route dans `App.tsx` : `/vote` et `/admin/vote`
+- Pas de captcha au premier jet (peut être ajouté plus tard si abus)
 
-### Hors-scope (non inclus)
-- Pas de traduction du contenu de la page (FR uniquement, comme la programmation est en français)
-- Pas d'intégration billetterie embarquée (Billetweb) — lien externe vers la Salle Cortot
-
-### Question avant implémentation
-Une seule clarification utile : le lien de réservation. Le bouton "Réserver" doit-il pointer vers :
-- (a) le site de la Salle Cortot (URL exacte à fournir), ou
-- (b) un simple `mailto:billetterie@sallecortot.fr`, ou
-- (c) rien pour l'instant (juste afficher le numéro / l'email) ?
-
-Si tu confirmes (a) avec l'URL je l'intègre directement ; sinon je pars sur (b) par défaut.
+## Limites connues
+Un même utilisateur peut voter plusieurs fois en effaçant son localStorage ou changeant de navigateur — c'est le compromis standard pour un vote public anonyme sans friction. Si vous voulez plus strict, on peut ajouter une vérification par email (code envoyé) plus tard.
