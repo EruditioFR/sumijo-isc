@@ -44,9 +44,15 @@ Deno.serve(async (req) => {
           "X-Connection-Api-Key": AIRTABLE_API_KEY,
         },
       });
-      const json = await resp.json();
+      const text = await resp.text();
       if (!resp.ok) {
-        throw new Error(`Airtable error [${resp.status}]: ${JSON.stringify(json)}`);
+        throw new Error(`Airtable gateway error [${resp.status}]: ${text.slice(0, 300)}`);
+      }
+      let json: any;
+      try {
+        json = JSON.parse(text);
+      } catch {
+        throw new Error(`Airtable gateway returned non-JSON [${resp.status}]: ${text.slice(0, 300)}`);
       }
       records.push(...(json.records ?? []));
       offset = json.offset;
