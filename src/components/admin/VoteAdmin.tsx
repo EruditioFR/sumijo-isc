@@ -118,44 +118,46 @@ const VoteAdmin = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-display text-foreground flex items-center gap-2">
-            <Vote className="w-6 h-6" /> Vote public — Prix du public
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="text-xl md:text-2xl font-display text-foreground flex items-center gap-2">
+            <Vote className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
+            <span className="truncate">Vote public</span>
           </h2>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-xs md:text-sm text-muted-foreground mt-1">
             {totalVotes} vote{totalVotes > 1 ? 's' : ''} enregistré{totalVotes > 1 ? 's' : ''}
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={load}>
-          <RefreshCw className="w-4 h-4 mr-2" /> Rafraîchir
+        <Button variant="outline" size="sm" onClick={load} className="flex-shrink-0">
+          <RefreshCw className="w-4 h-4 md:mr-2" />
+          <span className="hidden md:inline">Rafraîchir</span>
         </Button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <Label className="text-base">Ouverture des votes</Label>
-              <p className="text-sm text-muted-foreground mt-1">
+      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+        <Card className="p-4 md:p-6">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="min-w-0">
+              <Label className="text-sm md:text-base">Ouverture des votes</Label>
+              <p className="text-xs md:text-sm text-muted-foreground mt-1">
                 Activez pour permettre au public de voter.
               </p>
             </div>
             <Switch checked={isOpen} onCheckedChange={toggleOpen} disabled={saving} />
           </div>
-          <div className="rounded-md bg-muted p-3 flex items-center gap-2">
-            <code className="text-xs flex-1 truncate">{publicUrl}</code>
-            <Button size="sm" variant="ghost" onClick={copyLink}>
+          <div className="rounded-md bg-muted p-2.5 flex items-center gap-2">
+            <code className="text-[11px] md:text-xs flex-1 truncate">{publicUrl}</code>
+            <Button size="sm" variant="ghost" onClick={copyLink} className="flex-shrink-0">
               <Copy className="w-4 h-4" />
             </Button>
           </div>
         </Card>
 
-        <Card className="p-6 flex flex-col items-center">
-          <Label className="text-base mb-3">QR code</Label>
+        <Card className="p-4 md:p-6 flex flex-col items-center">
+          <Label className="text-sm md:text-base mb-3">QR code</Label>
           <div className="bg-white p-3 rounded-md">
-            <QRCodeSVG id="vote-qr" value={publicUrl} size={160} level="M" />
+            <QRCodeSVG id="vote-qr" value={publicUrl} size={140} level="M" />
           </div>
           <Button variant="outline" size="sm" className="mt-3" onClick={downloadQR}>
             Télécharger
@@ -164,10 +166,52 @@ const VoteAdmin = () => {
       </div>
 
       <Card className="overflow-hidden">
-        <div className="p-4 border-b bg-muted/40">
-          <h3 className="font-display text-lg text-foreground">Résultats en direct</h3>
+        <div className="p-3 md:p-4 border-b bg-muted/40">
+          <h3 className="font-display text-base md:text-lg text-foreground">Résultats en direct</h3>
         </div>
-        <div className="overflow-x-auto">
+
+        {/* Mobile: card list */}
+        <div className="md:hidden divide-y">
+          {results.map((r, i) => (
+            <div key={r.id} className="p-3 flex items-center gap-3">
+              <span className="text-sm text-muted-foreground w-5 text-right tabular-nums flex-shrink-0">
+                {i + 1}
+              </span>
+              <div className="w-11 h-11 rounded-full overflow-hidden bg-muted flex-shrink-0">
+                {r.photoUrl && (
+                  <img
+                    src={r.photoUrl}
+                    alt={`${r.prenom} ${r.nom}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-foreground truncate leading-tight">
+                  {r.prenom} {r.nom}
+                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${r.percent}%` }} />
+                  </div>
+                  <span className="text-[11px] tabular-nums text-muted-foreground">
+                    {r.percent.toFixed(1)}%
+                  </span>
+                </div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <p className="text-base font-semibold tabular-nums leading-tight">{r.votes}</p>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wide">votes</p>
+              </div>
+            </div>
+          ))}
+          {results.length === 0 && (
+            <p className="p-6 text-center text-sm text-muted-foreground">Aucun candidat trouvé.</p>
+          )}
+        </div>
+
+        {/* Desktop: table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
             <thead className="text-left text-sm text-muted-foreground border-b">
               <tr>
@@ -200,10 +244,7 @@ const VoteAdmin = () => {
                   <td className="p-3">
                     <div className="flex items-center gap-2 justify-end">
                       <div className="w-24 h-1.5 rounded-full bg-muted overflow-hidden">
-                        <div
-                          className="h-full bg-primary"
-                          style={{ width: `${r.percent}%` }}
-                        />
+                        <div className="h-full bg-primary" style={{ width: `${r.percent}%` }} />
                       </div>
                       <span className="text-sm tabular-nums w-14 text-right">
                         {r.percent.toFixed(1)}%
@@ -228,3 +269,4 @@ const VoteAdmin = () => {
 };
 
 export default VoteAdmin;
+
