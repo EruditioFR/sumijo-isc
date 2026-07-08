@@ -20,6 +20,8 @@ import AdminCandidates from "./pages/AdminCandidates";
 import AdminCortot from "./pages/AdminCortot";
 import AdminAirsDemiFinale from "./pages/AdminAirsDemiFinale";
 import AdminFamilies from "./pages/AdminFamilies";
+import AdminVote from "./pages/AdminVote";
+import Vote from "./pages/Vote";
  import PrivacyPolicy from "./pages/PrivacyPolicy";
  import LegalNotice from "./pages/LegalNotice";
 import NotFound from "./pages/NotFound";
