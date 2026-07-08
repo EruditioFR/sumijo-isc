@@ -124,7 +124,7 @@ const VotePage = () => {
           <h1 className="font-display text-2xl md:text-5xl text-foreground mb-2 md:mb-3 leading-tight">
             Votez pour votre candidat favori
           </h1>
-          <p className="text-xs md:text-base text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             Concours International de Chant Sumi Jo — Édition 2026
           </p>
         </header>
