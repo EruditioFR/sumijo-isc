@@ -61,12 +61,18 @@ Deno.serve(async (req) => {
 
     const { error: voteError } = await supabase
       .from("public_votes")
-      .upsert(
-        { voter_token: voterToken, candidate_id: candidateId },
-        { onConflict: "voter_token", ignoreDuplicates: false },
-      );
+      .insert({ voter_token: voterToken, candidate_id: candidateId });
 
-    if (voteError) throw voteError;
+    if (voteError) {
+      // Duplicate voter_token => already voted
+      if ((voteError as any).code === "23505") {
+        return new Response(JSON.stringify({ error: "Already voted" }), {
+          status: 409,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      throw voteError;
+    }
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

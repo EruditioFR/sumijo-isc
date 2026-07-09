@@ -41,7 +41,6 @@ const VotePage = () => {
   const [loading, setLoading] = useState(true);
   const [currentVote, setCurrentVote] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
-  const [editing, setEditing] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [bioCandidate, setBioCandidate] = useState<Candidate | null>(null);
 
@@ -107,12 +106,14 @@ const VotePage = () => {
       localStorage.setItem(VOTE_KEY, pendingId);
       setCurrentVote(pendingId);
       setPendingId(null);
-      setEditing(false);
       toast.success('Votre vote a été enregistré');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err: any) {
       console.error(err);
-      toast.error(err?.message ?? "Impossible d'enregistrer le vote");
+      const msg = err?.context?.status === 409 || /already/i.test(err?.message ?? '')
+        ? 'Vous avez déjà voté.'
+        : err?.message ?? "Impossible d'enregistrer le vote";
+      toast.error(msg);
     } finally {
       setSubmitting(false);
     }
@@ -120,7 +121,7 @@ const VotePage = () => {
 
   const pendingCandidate = pendingId ? candidates.find((c) => c.id === pendingId) : null;
   const showBar = isOpen && pendingId && pendingId !== currentVote;
-  const showGrid = !isOpen || !currentVote || editing;
+  const showGrid = !isOpen || !currentVote;
 
   if (loading || isOpen === null) {
     return (
@@ -173,7 +174,7 @@ const VotePage = () => {
           </Card>
         )}
 
-        {isOpen && currentVote && !editing && (
+        {isOpen && currentVote && (
           <Card className="max-w-2xl mx-auto p-4 md:p-6 mb-6 md:mb-8 bg-primary/5 border-primary/30">
             <div className="flex items-start gap-3 md:gap-4">
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
@@ -183,7 +184,7 @@ const VotePage = () => {
                 <h3 className="font-display text-base md:text-lg text-foreground mb-1">
                   Merci, votre vote a été enregistré
                 </h3>
-                <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Vous avez voté pour{' '}
                   <strong className="text-foreground">
                     {(() => {
@@ -191,19 +192,8 @@ const VotePage = () => {
                       return c ? `${c.prenom} ${c.nom}` : '—';
                     })()}
                   </strong>
-                  . Vous pouvez modifier votre choix jusqu'à la clôture des votes.
+                  . Votre vote est définitif.
                 </p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full sm:w-auto"
-                  onClick={() => {
-                    setEditing(true);
-                    setPendingId(currentVote);
-                  }}
-                >
-                  Modifier mon vote
-                </Button>
               </div>
             </div>
           </Card>
@@ -374,8 +364,6 @@ const VotePage = () => {
             >
               {submitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
-              ) : currentVote ? (
-                'Modifier'
               ) : (
                 'Confirmer'
               )}
