@@ -98,55 +98,13 @@ const VotePage = () => {
     if (!pendingId || !isOpen) return;
     setSubmitting(true);
     try {
-      const hasExisting = !!localStorage.getItem(VOTE_KEY) || !!currentVote;
+      const votePayload = { voter_token: token, candidate_id: pendingId };
 
-      const tryUpdate = async () => {
-        const { error } = await supabase
-          .from('public_votes')
-          .update({ candidate_id: pendingId })
-          .eq('voter_token', token);
-        if (error) throw error;
-        return true;
-      };
+      const { error } = await supabase
+        .from('public_votes')
+        .upsert(votePayload, { onConflict: 'voter_token', ignoreDuplicates: false });
 
-      const tryInsert = async () => {
-        const { error } = await supabase
-          .from('public_votes')
-          .insert({ voter_token: token, candidate_id: pendingId });
-        return error;
-      };
-
-      let saved = false;
-      if (hasExisting) {
-        // Un vote existe déjà pour ce token : on l'écrase.
-        saved = await tryUpdate();
-        if (!saved) {
-          // Rien à mettre à jour (localStorage désynchronisé) → insert.
-          const insErr = await tryInsert();
-          if (insErr) {
-            if (insErr.code === '23505' || /duplicate key/i.test(insErr.message)) {
-              saved = await tryUpdate();
-            } else {
-              throw insErr;
-            }
-          } else {
-            saved = true;
-          }
-        }
-      } else {
-        const insErr = await tryInsert();
-        if (insErr) {
-          if (insErr.code === '23505' || /duplicate key/i.test(insErr.message)) {
-            saved = await tryUpdate();
-          } else {
-            throw insErr;
-          }
-        } else {
-          saved = true;
-        }
-      }
-
-      if (!saved) throw new Error("Le vote n'a pas pu être enregistré");
+      if (error) throw error;
 
       localStorage.setItem(VOTE_KEY, pendingId);
       setCurrentVote(pendingId);
