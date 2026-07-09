@@ -174,7 +174,7 @@ const VotePage = () => {
           </Card>
         )}
 
-        {isOpen && currentVote && !editing && (
+        {isOpen && currentVote && (
           <Card className="max-w-2xl mx-auto p-4 md:p-6 mb-6 md:mb-8 bg-primary/5 border-primary/30">
             <div className="flex items-start gap-3 md:gap-4">
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
@@ -184,7 +184,7 @@ const VotePage = () => {
                 <h3 className="font-display text-base md:text-lg text-foreground mb-1">
                   Merci, votre vote a été enregistré
                 </h3>
-                <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Vous avez voté pour{' '}
                   <strong className="text-foreground">
                     {(() => {
@@ -192,19 +192,8 @@ const VotePage = () => {
                       return c ? `${c.prenom} ${c.nom}` : '—';
                     })()}
                   </strong>
-                  . Vous pouvez modifier votre choix jusqu'à la clôture des votes.
+                  . Votre vote est définitif.
                 </p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full sm:w-auto"
-                  onClick={() => {
-                    setEditing(true);
-                    setPendingId(currentVote);
-                  }}
-                >
-                  Modifier mon vote
-                </Button>
               </div>
             </div>
           </Card>
