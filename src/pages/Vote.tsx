@@ -98,11 +98,9 @@ const VotePage = () => {
     if (!pendingId || !isOpen) return;
     setSubmitting(true);
     try {
-      const votePayload = { voter_token: token, candidate_id: pendingId };
-
-      const { error } = await supabase
-        .from('public_votes')
-        .upsert(votePayload, { onConflict: 'voter_token', ignoreDuplicates: false });
+      const { error } = await supabase.functions.invoke('cast-vote', {
+        body: { voter_token: token, candidate_id: pendingId },
+      });
 
       if (error) throw error;
 
