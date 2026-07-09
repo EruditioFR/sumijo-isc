@@ -1,0 +1,1 @@
+DROP TRIGGER IF EXISTS update_public_votes_updated_at ON public.public_votes;
