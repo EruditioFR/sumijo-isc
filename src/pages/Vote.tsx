@@ -15,6 +15,7 @@ import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TOKEN_KEY = 'sumijo_vote_token';
 const VOTE_KEY = 'sumijo_vote_candidate';
+const ROUND_KEY = 'sumijo_vote_round';
 
 interface Candidate {
   id: string;
@@ -25,6 +26,17 @@ interface Candidate {
   photoUrl: string | null;
   bio: string | null;
 }
+
+const syncVoteRound = (serverRound: number | null) => {
+  if (serverRound == null) return;
+  const stored = localStorage.getItem(ROUND_KEY);
+  const storedRound = stored ? parseInt(stored, 10) : null;
+  if (storedRound !== serverRound) {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(VOTE_KEY);
+    localStorage.setItem(ROUND_KEY, String(serverRound));
+  }
+};
 
 const getVoterToken = (): string => {
   let t = localStorage.getItem(TOKEN_KEY);
