@@ -106,12 +106,14 @@ const VotePage = () => {
       localStorage.setItem(VOTE_KEY, pendingId);
       setCurrentVote(pendingId);
       setPendingId(null);
-      setEditing(false);
       toast.success('Votre vote a été enregistré');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err: any) {
       console.error(err);
-      toast.error(err?.message ?? "Impossible d'enregistrer le vote");
+      const msg = err?.context?.status === 409 || /already/i.test(err?.message ?? '')
+        ? 'Vous avez déjà voté.'
+        : err?.message ?? "Impossible d'enregistrer le vote";
+      toast.error(msg);
     } finally {
       setSubmitting(false);
     }
