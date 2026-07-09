@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet-async';
 import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TOKEN_KEY = 'sumijo_vote_token';
+const VOTE_KEY = 'sumijo_vote_candidate';
 
 interface Candidate {
   id: string;
@@ -48,16 +49,15 @@ const VotePage = () => {
 
   const loadData = async () => {
     try {
-      const [{ data: settings }, candidatesRes, { data: myVote }] = await Promise.all([
+      const [{ data: settings }, candidatesRes] = await Promise.all([
         supabase.from('vote_settings').select('is_open').limit(1).maybeSingle(),
         supabase.functions.invoke('list-vote-candidates'),
-        supabase.from('public_votes').select('candidate_id').eq('voter_token', token).maybeSingle(),
       ]);
 
       setIsOpen(settings?.is_open ?? false);
       if (candidatesRes.error) throw candidatesRes.error;
       setCandidates(candidatesRes.data?.candidates ?? []);
-      setCurrentVote(myVote?.candidate_id ?? null);
+      setCurrentVote(localStorage.getItem(VOTE_KEY));
     } catch (err) {
       console.error(err);
       toast.error('Erreur lors du chargement');
@@ -98,18 +98,14 @@ const VotePage = () => {
     if (!pendingId || !isOpen) return;
     setSubmitting(true);
     try {
-      if (currentVote) {
-        const { error } = await supabase
-          .from('public_votes')
-          .update({ candidate_id: pendingId })
-          .eq('voter_token', token);
-        if (error) throw error;
-      } else {
-        const { error } = await supabase
-          .from('public_votes')
-          .insert({ voter_token: token, candidate_id: pendingId });
-        if (error) throw error;
-      }
+      const { error } = await supabase
+        .from('public_votes')
+        .upsert(
+          { voter_token: token, candidate_id: pendingId },
+          { onConflict: 'voter_token' },
+        );
+      if (error) throw error;
+      localStorage.setItem(VOTE_KEY, pendingId);
       setCurrentVote(pendingId);
       setPendingId(null);
       setEditing(false);
