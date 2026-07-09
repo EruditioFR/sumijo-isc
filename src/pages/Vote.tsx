@@ -299,7 +299,7 @@ const VotePage = () => {
 
       {/* Bio modal */}
       <Dialog open={!!bioCandidate} onOpenChange={(o) => !o && setBioCandidate(null)}>
-        <DialogContent className="max-w-2xl w-[calc(100vw-2rem)] max-h-[85vh] p-0 gap-0 flex flex-col overflow-hidden">
+        <DialogContent className="max-w-2xl w-[calc(100vw-2rem)] max-h-[85vh] p-0 gap-0 flex flex-col overflow-hidden [&>button.absolute]:hidden">
           {bioCandidate && (
             <>
               <DialogHeader className="sticky top-0 z-10 bg-background border-b px-5 md:px-6 py-4 pr-14">
