@@ -192,16 +192,19 @@ export type Database = {
           id: string
           is_open: boolean
           updated_at: string
+          vote_round: number
         }
         Insert: {
           id?: string
           is_open?: boolean
           updated_at?: string
+          vote_round?: number
         }
         Update: {
           id?: string
           is_open?: boolean
           updated_at?: string
+          vote_round?: number
         }
         Relationships: []
       }

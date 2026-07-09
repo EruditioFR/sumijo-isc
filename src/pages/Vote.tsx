@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -15,6 +15,7 @@ import posterImage from '@/assets/competition-2026-poster.jpg';
 
 const TOKEN_KEY = 'sumijo_vote_token';
 const VOTE_KEY = 'sumijo_vote_candidate';
+const ROUND_KEY = 'sumijo_vote_round';
 
 interface Candidate {
   id: string;
@@ -25,6 +26,17 @@ interface Candidate {
   photoUrl: string | null;
   bio: string | null;
 }
+
+const syncVoteRound = (serverRound: number | null) => {
+  if (serverRound == null) return;
+  const stored = localStorage.getItem(ROUND_KEY);
+  const storedRound = stored ? parseInt(stored, 10) : null;
+  if (storedRound !== serverRound) {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(VOTE_KEY);
+    localStorage.setItem(ROUND_KEY, String(serverRound));
+  }
+};
 
 const getVoterToken = (): string => {
   let t = localStorage.getItem(TOKEN_KEY);
@@ -44,14 +56,21 @@ const VotePage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [bioCandidate, setBioCandidate] = useState<Candidate | null>(null);
 
-  const token = useMemo(() => getVoterToken(), []);
+  const [token, setToken] = useState<string>('');
 
   const loadData = async () => {
     try {
       const [{ data: settings }, candidatesRes] = await Promise.all([
-        supabase.from('vote_settings').select('is_open').limit(1).maybeSingle(),
+        supabase
+          .from('vote_settings')
+          .select('is_open, vote_round')
+          .limit(1)
+          .maybeSingle(),
         supabase.functions.invoke('list-vote-candidates'),
       ]);
+
+      syncVoteRound((settings as any)?.vote_round ?? null);
+      setToken(getVoterToken());
 
       setIsOpen(settings?.is_open ?? false);
       if (candidatesRes.error) throw candidatesRes.error;
@@ -94,7 +113,7 @@ const VotePage = () => {
   }, []);
 
   const submitVote = async () => {
-    if (!pendingId || !isOpen) return;
+    if (!pendingId || !isOpen || !token) return;
     setSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke('cast-vote', {

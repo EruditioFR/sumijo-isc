@@ -1,35 +1,42 @@
-## Résultat de la vérification
+# Reset votes without breaking past voters
 
-La chaîne de vote pour les utilisateurs non identifiés est correctement configurée. Aucune modification de code ou de base de données n'est nécessaire.
+## Objectif
+Vider la table `public_votes` et garantir que les personnes ayant déjà voté (token présent dans leur `localStorage`) puissent voter à nouveau sans rencontrer l'erreur 409 "Already voted" ni l'erreur RLS.
 
-### Ce qui a été vérifié
+## Problème
+- Le `voter_token` est stocké dans `localStorage` (clé `sumijo_vote_token`) et est **persistant**.
+- Si on vide simplement la table, un ancien votant génère bien un INSERT côté edge function, mais son ancien token peut encore exister ailleurs. En pratique, après un TRUNCATE la contrainte UNIQUE ne pose plus problème — **mais** le client, lui, cache aussi `sumijo_vote_candidate` et affiche donc "Merci, votre vote a été enregistré" sans jamais permettre de revoter.
+- Résultat perçu : "les anciens votants ne peuvent pas revoter".
 
-1. **Autorisations base de données**
-   - `public_votes` : `anon` et `authenticated` ont `INSERT` + `SELECT`, `service_role` a `ALL`
-   - `vote_settings` : `anon` et `authenticated` ont `SELECT`, `service_role` a `ALL`
-   - Contrainte d'unicité sur `voter_token` en place (empêche les doublons)
-   - RLS activée : SELECT réservé aux admins, INSERT autorisé si le vote est ouvert
+## Solution : versionner le scrutin
 
-2. **Edge function `cast-vote`**
-   - Utilise la `service_role` côté serveur → contourne la RLS de toute façon, donc aucun risque d'erreur RLS remontée à l'utilisateur
-   - Valide le format UUID du jeton et l'ID du candidat (400 si invalide)
-   - Vérifie que le vote est ouvert (403 « Votes closed » sinon)
-   - Insert simple, code 23505 attrapé et renvoyé en 409 « Already voted »
+Ajouter un identifiant de scrutin (`vote_round`) côté serveur. Chaque fois qu'on réinitialise les votes, on incrémente ce numéro. Le client compare le round local au round serveur : s'ils diffèrent, il **efface son token et son choix locaux**, ce qui le remet à zéro proprement.
 
-3. **Test réel effectué**
-   - Appel POST anonyme sur `/cast-vote` avec charge utile valide → réponse `403 Votes closed` (attendu car `is_open = false` en ce moment)
-   - Dès que l'admin bascule le switch, le même appel insérera la ligne sans erreur
+### Étapes
 
-4. **Front `src/pages/Vote.tsx`**
-   - N'affiche la barre de confirmation que si `isOpen === true`
-   - Message d'erreur traduit en français si vote déjà enregistré (« Vous avez déjà voté. »)
-   - Un jeton anonyme est généré et persisté en `localStorage` — pas de dépendance à une session authentifiée
+**1. Migration SQL**
+- Ajouter une colonne `vote_round INTEGER NOT NULL DEFAULT 1` à `vote_settings`.
+- `DELETE FROM public_votes;`
+- `UPDATE vote_settings SET vote_round = vote_round + 1;` (déclenche le reset côté clients).
 
-### État actuel du back-office
+**2. Edge function `list-vote-candidates`**
+- Retourner aussi `vote_round` (et `is_open`) dans la réponse, pour éviter un round-trip supplémentaire.
 
-- `is_open = false` : le vote est fermé côté public. C'est un choix d'admin, pas un bug.
-- Pour tester en conditions réelles : dans le back-office → onglet « Vote public » → activer « Ouverture des votes ». Un vote depuis un navigateur non connecté doit alors s'enregistrer immédiatement et apparaître en temps réel dans le tableau des résultats.
+**3. `src/pages/Vote.tsx`**
+- Ajouter une clé `sumijo_vote_round` dans `localStorage`.
+- Au chargement, comparer le round stocké au round serveur :
+  - S'ils diffèrent (ou si aucun round n'est stocké) → supprimer `sumijo_vote_token` et `sumijo_vote_candidate`, écrire le nouveau round.
+  - Puis (re)générer un token propre via `getVoterToken()`.
+- Le reste du flux (sélection, `cast-vote`) reste identique.
 
-### Conclusion
+**4. Bouton "Réinitialiser les votes" dans l'admin (optionnel mais recommandé)**
+- Dans `src/components/admin/VoteAdmin.tsx`, un bouton qui appelle une nouvelle edge function `reset-votes` (service_role) faisant le DELETE + increment. Ainsi le client n'a plus besoin de repasser par une migration à chaque scrutin.
+- Confirmation obligatoire (modal).
 
-Aucun code à modifier. Si vous constatez une erreur côté utilisateur une fois le vote ouvert, indiquez-moi le message exact affiché et je diagnostique le cas précis.
+## Résultat
+- Les anciens votants voient la grille de vote réapparaître automatiquement au prochain chargement.
+- Aucun message d'erreur RLS ni 409, car ils utilisent un nouveau token.
+- Les nouveaux votants ne sont pas impactés.
+
+## Question rapide
+Souhaitez-vous **le bouton "Réinitialiser" dans l'admin** (étape 4) ou seulement le reset ponctuel via migration cette fois-ci ?
