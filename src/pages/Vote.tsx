@@ -299,11 +299,11 @@ const VotePage = () => {
 
       {/* Bio modal */}
       <Dialog open={!!bioCandidate} onOpenChange={(o) => !o && setBioCandidate(null)}>
-        <DialogContent className="max-w-2xl w-[calc(100vw-2rem)] max-h-[85vh] overflow-y-auto p-5 md:p-6">
+        <DialogContent className="max-w-2xl w-[calc(100vw-2rem)] max-h-[85vh] p-0 gap-0 flex flex-col overflow-hidden">
           {bioCandidate && (
             <>
-              <DialogHeader>
-                <DialogTitle className="font-display text-xl md:text-2xl pr-8">
+              <DialogHeader className="sticky top-0 z-10 bg-background border-b px-5 md:px-6 py-4 pr-14">
+                <DialogTitle className="font-display text-xl md:text-2xl">
                   {bioCandidate.prenom} {bioCandidate.nom}
                 </DialogTitle>
                 <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-muted-foreground pt-1">
@@ -318,10 +318,17 @@ const VotePage = () => {
                   )}
                 </div>
               </DialogHeader>
-              <div className="h-px w-full bg-border my-3" />
-              <div className="prose prose-sm md:prose-base max-w-none text-foreground whitespace-pre-line leading-relaxed">
+              <div className="overflow-y-auto px-5 md:px-6 py-4 md:py-5 prose prose-sm md:prose-base max-w-none text-foreground whitespace-pre-line leading-relaxed">
                 {bioCandidate.bio}
               </div>
+              <button
+                type="button"
+                onClick={() => setBioCandidate(null)}
+                aria-label="Fermer"
+                className="absolute right-3 top-3 z-20 w-10 h-10 rounded-full bg-background border border-border shadow-sm flex items-center justify-center text-foreground hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </>
           )}
         </DialogContent>
