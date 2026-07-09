@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
     do {
       const url = new URL(`${GATEWAY_URL}/v0/${BASE_ID}/${TABLE_ID}`);
       url.searchParams.set("pageSize", "100");
-      const fields = ["Nom", "Prénom", "Pays", "Type de voix", "Photo", "Finaliste ? "];
+      const fields = ["Nom", "Prénom", "Pays", "Type de voix", "Photo", "Finaliste ? ", "Bio FR"];
       fields.forEach((f) => url.searchParams.append("fields[]", f));
       if (offset) url.searchParams.set("offset", offset);
 
@@ -70,6 +70,7 @@ Deno.serve(async (req) => {
           pays: f["Pays"] ?? "",
           typeVoix: f["Type de voix"] ?? "",
           photoUrl: photo?.thumbnails?.large?.url ?? photo?.url ?? null,
+          bio: f["Bio FR"] ?? null,
         };
       });
 

@@ -2,7 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Loader2, Check, X } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Loader2, Check, X, BookOpen, Lock } from 'lucide-react';
 import { toast } from 'sonner';
 import { Helmet } from 'react-helmet-async';
 import posterImage from '@/assets/competition-2026-poster.jpg';
@@ -16,6 +22,7 @@ interface Candidate {
   pays: string;
   typeVoix: string;
   photoUrl: string | null;
+  bio: string | null;
 }
 
 const getVoterToken = (): string => {
@@ -35,11 +42,11 @@ const VotePage = () => {
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [bioCandidate, setBioCandidate] = useState<Candidate | null>(null);
 
   const token = useMemo(() => getVoterToken(), []);
 
   const loadData = async () => {
-    setLoading(true);
     try {
       const [{ data: settings }, candidatesRes, { data: myVote }] = await Promise.all([
         supabase.from('vote_settings').select('is_open').limit(1).maybeSingle(),
@@ -61,10 +68,34 @@ const VotePage = () => {
 
   useEffect(() => {
     loadData();
+    const channel = supabase
+      .channel('vote_settings_public')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'vote_settings' },
+        (payload) => {
+          const next = (payload.new as any)?.is_open;
+          if (typeof next === 'boolean') {
+            setIsOpen((prev) => {
+              if (prev === false && next === true) {
+                toast.success('Les votes sont maintenant ouverts !');
+              } else if (prev === true && next === false) {
+                toast.info('Les votes sont clôturés.');
+              }
+              return next;
+            });
+          }
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const submitVote = async () => {
-    if (!pendingId) return;
+    if (!pendingId || !isOpen) return;
     setSubmitting(true);
     try {
       if (currentVote) {
@@ -93,8 +124,8 @@ const VotePage = () => {
   };
 
   const pendingCandidate = pendingId ? candidates.find((c) => c.id === pendingId) : null;
-  const showBar = pendingId && pendingId !== currentVote;
-  const showGrid = !currentVote || editing;
+  const showBar = isOpen && pendingId && pendingId !== currentVote;
+  const showGrid = !isOpen || !currentVote || editing;
 
   if (loading || isOpen === null) {
     return (
@@ -122,125 +153,179 @@ const VotePage = () => {
             className="mx-auto mb-5 md:mb-8 w-40 sm:w-48 md:w-64 h-auto rounded-lg shadow-lg"
           />
           <h1 className="font-display text-2xl md:text-5xl text-foreground mb-2 md:mb-3 leading-tight">
-            Votez pour votre candidat favori
+            {isOpen ? 'Votez pour votre candidat favori' : 'Découvrez les candidats'}
           </h1>
           <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             Concours International de Chant Sumi Jo — Édition 2026
           </p>
         </header>
 
-
-        {!isOpen ? (
-          <Card className="max-w-xl mx-auto p-6 md:p-10 text-center">
-            <h2 className="font-display text-xl md:text-2xl text-foreground mb-2 md:mb-3">
-              Les votes sont actuellement fermés
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Revenez pendant la période d'ouverture pour voter pour votre candidat favori.
-            </p>
-          </Card>
-        ) : (
-          <>
-            {currentVote && !editing && (
-              <Card className="max-w-2xl mx-auto p-4 md:p-6 mb-6 md:mb-8 bg-primary/5 border-primary/30">
-                <div className="flex items-start gap-3 md:gap-4">
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-base md:text-lg text-foreground mb-1">
-                      Merci, votre vote a été enregistré
-                    </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
-                      Vous avez voté pour{' '}
-                      <strong className="text-foreground">
-                        {(() => {
-                          const c = candidates.find((c) => c.id === currentVote);
-                          return c ? `${c.prenom} ${c.nom}` : '—';
-                        })()}
-                      </strong>
-                      . Vous pouvez modifier votre choix jusqu'à la clôture des votes.
-                    </p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full sm:w-auto"
-                      onClick={() => {
-                        setEditing(true);
-                        setPendingId(currentVote);
-                      }}
-                    >
-                      Modifier mon vote
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            )}
-
-            {showGrid && (
-              <>
-                <p className="text-center text-lg md:text-2xl text-foreground font-medium mb-4 md:mb-6">
-                  Touchez une photo pour sélectionner votre candidat.
+        {!isOpen && (
+          <Card className="max-w-2xl mx-auto p-5 md:p-6 mb-6 md:mb-8 bg-muted/40 border-primary/20">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                <Lock className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h2 className="font-display text-lg md:text-2xl text-foreground mb-1">
+                  Les votes ne sont pas encore ouverts
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  Découvrez ci-dessous les candidats. Le vote sera activé prochainement — cette page se mettra à jour automatiquement.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-                  {candidates.map((c) => {
-                    const isPending = pendingId === c.id;
-                    const isCurrent = currentVote === c.id;
-                    return (
-                      <button
-                        key={c.id}
-                        type="button"
-                        onClick={() => setPendingId(c.id)}
-                        className={`text-left rounded-lg overflow-hidden bg-card border transition-all active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                          isPending
-                            ? 'ring-2 ring-primary border-primary shadow-lg'
-                            : isCurrent
-                            ? 'border-primary/40'
-                            : 'border-border hover:shadow-md'
-                        }`}
-                      >
-                        <div className="aspect-[3/4] bg-muted overflow-hidden relative">
-                          {c.photoUrl ? (
-                            <img
-                              src={c.photoUrl}
-                              alt={`${c.prenom} ${c.nom}`}
-                              loading="lazy"
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
-                              Photo
-                            </div>
-                          )}
-                          {isPending && (
-                            <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md">
-                              <Check className="w-4 h-4" />
-                            </div>
-                          )}
-                          {isCurrent && !isPending && (
-                            <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-primary/90 text-primary-foreground text-[10px] font-medium">
-                              Choix actuel
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-2.5 md:p-3">
-                          <h3 className="font-display text-sm md:text-base text-foreground leading-tight line-clamp-2">
-                            {c.prenom} {c.nom}
-                          </h3>
-                          <p className="text-[11px] md:text-xs text-muted-foreground mt-0.5 truncate">
-                            {c.pays}
-                            {c.typeVoix ? ` — ${c.typeVoix}` : ''}
-                          </p>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {isOpen && currentVote && !editing && (
+          <Card className="max-w-2xl mx-auto p-4 md:p-6 mb-6 md:mb-8 bg-primary/5 border-primary/30">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-display text-base md:text-lg text-foreground mb-1">
+                  Merci, votre vote a été enregistré
+                </h3>
+                <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
+                  Vous avez voté pour{' '}
+                  <strong className="text-foreground">
+                    {(() => {
+                      const c = candidates.find((c) => c.id === currentVote);
+                      return c ? `${c.prenom} ${c.nom}` : '—';
+                    })()}
+                  </strong>
+                  . Vous pouvez modifier votre choix jusqu'à la clôture des votes.
+                </p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full sm:w-auto"
+                  onClick={() => {
+                    setEditing(true);
+                    setPendingId(currentVote);
+                  }}
+                >
+                  Modifier mon vote
+                </Button>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {showGrid && (
+          <>
+            {isOpen && (
+              <p className="text-center text-lg md:text-2xl text-foreground font-medium mb-4 md:mb-6">
+                Touchez une photo pour sélectionner votre candidat.
+              </p>
             )}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+              {candidates.map((c) => {
+                const isPending = pendingId === c.id;
+                const isCurrent = currentVote === c.id;
+                const clickable = isOpen;
+                return (
+                  <div
+                    key={c.id}
+                    className={`rounded-lg overflow-hidden bg-card border transition-all ${
+                      isPending
+                        ? 'ring-2 ring-primary border-primary shadow-lg'
+                        : isCurrent
+                        ? 'border-primary/40'
+                        : 'border-border'
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => clickable && setPendingId(c.id)}
+                      disabled={!clickable}
+                      className={`w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                        clickable ? 'active:scale-[0.98] hover:shadow-md cursor-pointer' : 'cursor-default'
+                      }`}
+                    >
+                      <div className="aspect-[3/4] bg-muted overflow-hidden relative">
+                        {c.photoUrl ? (
+                          <img
+                            src={c.photoUrl}
+                            alt={`${c.prenom} ${c.nom}`}
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
+                            Photo
+                          </div>
+                        )}
+                        {isPending && (
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md">
+                            <Check className="w-4 h-4" />
+                          </div>
+                        )}
+                        {isCurrent && !isPending && (
+                          <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-primary/90 text-primary-foreground text-[10px] font-medium">
+                            Choix actuel
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-2.5 md:p-3">
+                        <h3 className="font-display text-sm md:text-base text-foreground leading-tight line-clamp-2">
+                          {c.prenom} {c.nom}
+                        </h3>
+                        <p className="text-[11px] md:text-xs text-muted-foreground mt-0.5 truncate">
+                          {c.pays}
+                          {c.typeVoix ? ` — ${c.typeVoix}` : ''}
+                        </p>
+                      </div>
+                    </button>
+                    {c.bio && (
+                      <button
+                        type="button"
+                        onClick={() => setBioCandidate(c)}
+                        className="w-full px-3 py-2 text-xs md:text-sm text-primary hover:bg-primary hover:text-primary-foreground transition-colors border-t border-border flex items-center justify-center gap-1.5"
+                      >
+                        <BookOpen className="w-3.5 h-3.5" />
+                        Lire la biographie
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </>
         )}
       </div>
+
+      {/* Bio modal */}
+      <Dialog open={!!bioCandidate} onOpenChange={(o) => !o && setBioCandidate(null)}>
+        <DialogContent className="max-w-2xl w-[calc(100vw-2rem)] max-h-[85vh] overflow-y-auto p-5 md:p-6">
+          {bioCandidate && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-display text-xl md:text-2xl pr-8">
+                  {bioCandidate.prenom} {bioCandidate.nom}
+                </DialogTitle>
+                <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-muted-foreground pt-1">
+                  {bioCandidate.typeVoix && (
+                    <span className="text-primary font-medium">{bioCandidate.typeVoix}</span>
+                  )}
+                  {bioCandidate.pays && (
+                    <>
+                      <span>•</span>
+                      <span>{bioCandidate.pays}</span>
+                    </>
+                  )}
+                </div>
+              </DialogHeader>
+              <div className="h-px w-full bg-border my-3" />
+              <div className="prose prose-sm md:prose-base max-w-none text-foreground whitespace-pre-line leading-relaxed">
+                {bioCandidate.bio}
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Sticky confirm bar */}
       {showBar && pendingCandidate && (
