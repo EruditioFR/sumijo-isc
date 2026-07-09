@@ -321,6 +321,11 @@ const VotePage = () => {
               <div className="overflow-y-auto px-5 md:px-6 py-4 md:py-5 prose prose-sm md:prose-base max-w-none text-foreground whitespace-pre-line leading-relaxed">
                 {bioCandidate.bio}
               </div>
+              <div className="sticky bottom-0 z-10 bg-background border-t px-5 md:px-6 py-3 flex justify-end" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 0.75rem)' }}>
+                <Button variant="outline" onClick={() => setBioCandidate(null)}>
+                  Fermer
+                </Button>
+              </div>
               <button
                 type="button"
                 onClick={() => setBioCandidate(null)}
