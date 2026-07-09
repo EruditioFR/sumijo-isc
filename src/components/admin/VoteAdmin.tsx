@@ -55,6 +55,45 @@ const VoteAdmin = () => {
 
   useEffect(() => {
     load();
+    const channel = supabase
+      .channel('public_votes_admin')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'public_votes' },
+        (payload) => {
+          setVotes((prev) => {
+            if (payload.eventType === 'INSERT') {
+              return [...prev, { candidate_id: (payload.new as any).candidate_id }];
+            }
+            if (payload.eventType === 'UPDATE') {
+              const oldToken = (payload.old as any)?.voter_token;
+              const next = [...prev];
+              // remplace un vote (un seul par token) : retire un vote pour l'ancien candidat, ajoute pour le nouveau
+              const oldCandidate = (payload.old as any)?.candidate_id;
+              if (oldCandidate) {
+                const idx = next.findIndex((v) => v.candidate_id === oldCandidate);
+                if (idx !== -1) next.splice(idx, 1);
+              }
+              next.push({ candidate_id: (payload.new as any).candidate_id });
+              return next;
+              void oldToken;
+            }
+            if (payload.eventType === 'DELETE') {
+              const oldCandidate = (payload.old as any)?.candidate_id;
+              const idx = prev.findIndex((v) => v.candidate_id === oldCandidate);
+              if (idx === -1) return prev;
+              const next = [...prev];
+              next.splice(idx, 1);
+              return next;
+            }
+            return prev;
+          });
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const toggleOpen = async (value: boolean) => {
