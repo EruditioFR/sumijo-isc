@@ -41,7 +41,6 @@ const VotePage = () => {
   const [loading, setLoading] = useState(true);
   const [currentVote, setCurrentVote] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
-  const [editing, setEditing] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [bioCandidate, setBioCandidate] = useState<Candidate | null>(null);
 
