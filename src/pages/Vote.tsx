@@ -101,13 +101,12 @@ const VotePage = () => {
       const hasExisting = !!localStorage.getItem(VOTE_KEY) || !!currentVote;
 
       const tryUpdate = async () => {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('public_votes')
           .update({ candidate_id: pendingId })
-          .eq('voter_token', token)
-          .select('candidate_id');
+          .eq('voter_token', token);
         if (error) throw error;
-        return (data?.length ?? 0) > 0;
+        return true;
       };
 
       const tryInsert = async () => {
