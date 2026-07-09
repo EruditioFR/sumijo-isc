@@ -70,6 +70,7 @@ Deno.serve(async (req) => {
           pays: f["Pays"] ?? "",
           typeVoix: f["Type de voix"] ?? "",
           photoUrl: photo?.thumbnails?.large?.url ?? photo?.url ?? null,
+          bio: f["Bio FR"] ?? null,
         };
       });
 
