@@ -104,7 +104,19 @@ const VotePage = () => {
           { voter_token: token, candidate_id: pendingId },
           { onConflict: 'voter_token' },
         );
-      if (error) throw error;
+      if (error) {
+        // Filet de sécurité : si l'upsert échoue sur la contrainte d'unicité
+        // (ex. ancien code en cache), on retente en UPDATE.
+        if (error.code === '23505' || /duplicate key/i.test(error.message)) {
+          const { error: updErr } = await supabase
+            .from('public_votes')
+            .update({ candidate_id: pendingId })
+            .eq('voter_token', token);
+          if (updErr) throw updErr;
+        } else {
+          throw error;
+        }
+      }
       localStorage.setItem(VOTE_KEY, pendingId);
       setCurrentVote(pendingId);
       setPendingId(null);
