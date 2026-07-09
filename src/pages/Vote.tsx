@@ -56,14 +56,21 @@ const VotePage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [bioCandidate, setBioCandidate] = useState<Candidate | null>(null);
 
-  const token = useMemo(() => getVoterToken(), []);
+  const [token, setToken] = useState<string>('');
 
   const loadData = async () => {
     try {
       const [{ data: settings }, candidatesRes] = await Promise.all([
-        supabase.from('vote_settings').select('is_open').limit(1).maybeSingle(),
+        supabase
+          .from('vote_settings')
+          .select('is_open, vote_round')
+          .limit(1)
+          .maybeSingle(),
         supabase.functions.invoke('list-vote-candidates'),
       ]);
+
+      syncVoteRound((settings as any)?.vote_round ?? null);
+      setToken(getVoterToken());
 
       setIsOpen(settings?.is_open ?? false);
       if (candidatesRes.error) throw candidatesRes.error;
