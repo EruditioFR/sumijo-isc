@@ -121,7 +121,7 @@ const VotePage = () => {
 
   const pendingCandidate = pendingId ? candidates.find((c) => c.id === pendingId) : null;
   const showBar = isOpen && pendingId && pendingId !== currentVote;
-  const showGrid = !isOpen || !currentVote || editing;
+  const showGrid = !isOpen || !currentVote;
 
   if (loading || isOpen === null) {
     return (
