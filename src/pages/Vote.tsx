@@ -113,7 +113,7 @@ const VotePage = () => {
   }, []);
 
   const submitVote = async () => {
-    if (!pendingId || !isOpen) return;
+    if (!pendingId || !isOpen || !token) return;
     setSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke('cast-vote', {
