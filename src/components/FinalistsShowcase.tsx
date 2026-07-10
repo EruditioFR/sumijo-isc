@@ -212,7 +212,7 @@ const FinalistsShowcase = () => {
                     >
                       <div className="relative rounded-md overflow-hidden ring-1 ring-gold/60 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
                         <img
-                          src={posterAsset.url}
+                          src={logoCompetition}
                           alt="Affiche Sumi Jo 2026"
                           className="w-16 md:w-24 h-auto block"
                         />
