@@ -18,10 +18,6 @@ const FinalistsLightbox = () => {
     setOpen(false);
   };
 
-  const handleClose = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1");
-    setOpen(false);
-  };
 
   return (
     <AnimatePresence>
