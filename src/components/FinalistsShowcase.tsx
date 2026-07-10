@@ -203,21 +203,18 @@ const FinalistsShowcase = () => {
                       </div>
                     </div>
 
-                    {/* Affiche Sumi Jo badge */}
+                    {/* Logo Sumi Jo */}
                     <motion.div
-                      initial={{ opacity: 0, y: -10, rotate: -8 }}
-                      animate={{ opacity: 1, y: 0, rotate: -6 }}
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                       className="absolute top-3 left-3 md:top-4 md:left-4 z-10"
                     >
-                      <div className="relative rounded-md overflow-hidden ring-1 ring-gold/60 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
-                        <img
-                          src={logoCompetition}
-                          alt="Affiche Sumi Jo 2026"
-                          className="w-16 md:w-24 h-auto block"
-                        />
-                        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
-                      </div>
+                      <img
+                        src={logoCompetition}
+                        alt="Sumi Jo International Singing Competition"
+                        className="w-16 md:w-24 h-auto block drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+                      />
                     </motion.div>
 
 
