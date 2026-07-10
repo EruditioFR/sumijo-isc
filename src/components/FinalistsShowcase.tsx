@@ -216,6 +216,8 @@ const FinalistsShowcase = () => {
                         src={posterAsset.url}
                         alt="Sumi Jo International Singing Competition"
                         className="w-16 md:w-24 h-auto block drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </motion.div>
 
