@@ -45,6 +45,7 @@ const Index = () => {
         jsonLd={jsonLdSchemas}
       />
       <Header />
+      <FinalistsLightbox />
       <main>
         <HeroSection />
         <ProgramSection />
