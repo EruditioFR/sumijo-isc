@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { countryNameToFlagUrl } from "@/lib/countryFlags";
-import logoCompetition from "@/assets/logo-competition.png";
+import posterAsset from "@/assets/competition-2026-poster.jpg.asset.json";
 
 interface Finalist {
   id: string;
@@ -211,7 +211,7 @@ const FinalistsShowcase = () => {
                       className="absolute top-3 left-3 md:top-4 md:left-4 z-10"
                     >
                       <img
-                        src={logoCompetition}
+                        src={posterAsset.url}
                         alt="Sumi Jo International Singing Competition"
                         className="w-16 md:w-24 h-auto block drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
                       />
