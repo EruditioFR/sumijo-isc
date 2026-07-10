@@ -8,6 +8,7 @@ import StatsSection from '@/components/StatsSection';
 import VideoGallerySection from '@/components/VideoGallerySection';
 import SemiFinalistsSection from '@/components/SemiFinalistsSection';
 import FinalistsShowcase from '@/components/FinalistsShowcase';
+import FinalistsLightbox from '@/components/FinalistsLightbox';
 import WinnersSection from '@/components/WinnersSection';
 import PressSection from '@/components/PressSection';
 import GallerySection from '@/components/GallerySection';
@@ -44,6 +45,7 @@ const Index = () => {
         jsonLd={jsonLdSchemas}
       />
       <Header />
+      <FinalistsLightbox />
       <main>
         <HeroSection />
         <ProgramSection />
