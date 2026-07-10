@@ -10,15 +10,14 @@ const FinalistsLightbox = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
     const timer = setTimeout(() => setOpen(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1");
     setOpen(false);
   };
+
 
   return (
     <AnimatePresence>
