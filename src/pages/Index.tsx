@@ -1,23 +1,8 @@
+import { lazy, Suspense } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import ProgramSection from '@/components/ProgramSection';
-import AnnouncementVideoSection from '@/components/AnnouncementVideoSection';
-import IntroductionSection from '@/components/IntroductionSection';
-import HarmonySection from '@/components/HarmonySection';
-import StatsSection from '@/components/StatsSection';
-import VideoGallerySection from '@/components/VideoGallerySection';
-import SemiFinalistsSection from '@/components/SemiFinalistsSection';
-import FinalistsShowcase from '@/components/FinalistsShowcase';
-import FinalistsLightbox from '@/components/FinalistsLightbox';
-import WinnersSection from '@/components/WinnersSection';
-import PressSection from '@/components/PressSection';
-import GallerySection from '@/components/GallerySection';
-import FestivalSection from '@/components/FestivalSection';
-import PosterSection from '@/components/PosterSection';
-import FAQSection from '@/components/FAQSection';
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
 import SEOHead from '@/components/SEOHead';
+import ScrollToTop from '@/components/ScrollToTop';
 import {
   getOrganizationSchema,
   getEventSchema,
@@ -25,6 +10,25 @@ import {
   getWebSiteSchema,
   defaultFAQItems,
 } from '@/lib/structuredData';
+
+// Lazy-load below-the-fold sections to shrink the initial JS bundle
+const FinalistsLightbox = lazy(() => import('@/components/FinalistsLightbox'));
+const ProgramSection = lazy(() => import('@/components/ProgramSection'));
+const StatsSection = lazy(() => import('@/components/StatsSection'));
+const VideoGallerySection = lazy(() => import('@/components/VideoGallerySection'));
+const SemiFinalistsSection = lazy(() => import('@/components/SemiFinalistsSection'));
+const FinalistsShowcase = lazy(() => import('@/components/FinalistsShowcase'));
+const WinnersSection = lazy(() => import('@/components/WinnersSection'));
+const GallerySection = lazy(() => import('@/components/GallerySection'));
+const PressSection = lazy(() => import('@/components/PressSection'));
+const IntroductionSection = lazy(() => import('@/components/IntroductionSection'));
+const HarmonySection = lazy(() => import('@/components/HarmonySection'));
+const FestivalSection = lazy(() => import('@/components/FestivalSection'));
+const FAQSection = lazy(() => import('@/components/FAQSection'));
+const PosterSection = lazy(() => import('@/components/PosterSection'));
+const Footer = lazy(() => import('@/components/Footer'));
+
+const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden />;
 
 const Index = () => {
   const jsonLdSchemas = [
@@ -45,24 +49,30 @@ const Index = () => {
         jsonLd={jsonLdSchemas}
       />
       <Header />
-      <FinalistsLightbox />
+      <Suspense fallback={null}>
+        <FinalistsLightbox />
+      </Suspense>
       <main>
         <HeroSection />
-        <ProgramSection />
-        <StatsSection />
-        <VideoGallerySection />
-        <SemiFinalistsSection />
-        <FinalistsShowcase />
-        <WinnersSection />
-        <GallerySection />
-        <PressSection />
-        <IntroductionSection />
-        <HarmonySection />
-        <FestivalSection />
-        <FAQSection />
-        <PosterSection />
+        <Suspense fallback={<SectionFallback />}>
+          <ProgramSection />
+          <StatsSection />
+          <VideoGallerySection />
+          <SemiFinalistsSection />
+          <FinalistsShowcase />
+          <WinnersSection />
+          <GallerySection />
+          <PressSection />
+          <IntroductionSection />
+          <HarmonySection />
+          <FestivalSection />
+          <FAQSection />
+          <PosterSection />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
       <ScrollToTop />
     </div>
   );
