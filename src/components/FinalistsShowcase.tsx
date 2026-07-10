@@ -173,7 +173,7 @@ const FinalistsShowcase = () => {
                       {/* Info overlay */}
                       <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-center">
                         {current.typeVoix && (
-                          <span className="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold text-[10px] md:text-xs uppercase tracking-[0.25em] mb-3 border border-gold/40 backdrop-blur-sm">
+                          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-[10px] md:text-xs uppercase tracking-[0.25em] mb-3 border border-white/40 backdrop-blur-sm">
                             {current.typeVoix}
                           </span>
                         )}
