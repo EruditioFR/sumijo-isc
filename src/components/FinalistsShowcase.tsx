@@ -226,42 +226,6 @@ const FinalistsShowcase = () => {
                       ))}
                     </div>
                   </div>
-
-
-                  {/* Info */}
-                  <div className="text-center md:text-left">
-                    {current.typeVoix && (
-                      <span className="inline-block px-4 py-1.5 rounded-full bg-gold/15 text-gold text-xs md:text-sm uppercase tracking-[0.25em] mb-5 border border-gold/30">
-                        {current.typeVoix}
-                      </span>
-                    )}
-                    <h3 className="font-display text-cream leading-tight">
-                      <span className="block text-3xl md:text-5xl font-light">
-                        {formatFirstName(current.prenom)}
-                      </span>
-                      <span className="block text-4xl md:text-6xl font-semibold tracking-wide text-gold">
-                        {current.nom.toUpperCase()}
-                      </span>
-                    </h3>
-                    <div className="mt-6 flex items-center justify-center md:justify-start gap-3 text-cream/90">
-                      {flag && (
-                        <img
-                          src={flag}
-                          alt={current.pays}
-                          className="h-5 w-auto rounded-[2px] shadow"
-                        />
-                      )}
-                      <span className="text-base md:text-lg tracking-wide">
-                        {current.pays}
-                      </span>
-                    </div>
-
-                    <div className="mt-8 text-cream/50 text-xs uppercase tracking-[0.3em]">
-                      {String(index + 1).padStart(2, "0")}{" "}
-                      <span className="opacity-50">/</span>{" "}
-                      {String(list.length).padStart(2, "0")}
-                    </div>
-                  </div>
                 </motion.div>
               </AnimatePresence>
 
