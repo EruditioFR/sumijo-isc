@@ -100,9 +100,6 @@ const FinalistsShowcase = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
         >
-          <span className="inline-block text-gold font-medium text-sm md:text-base uppercase tracking-[0.3em] mb-3">
-            {t("finalists.eyebrow", "Les artistes en lice")}
-          </span>
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-cream leading-tight">
             {t("finalists.title", "Les 11 finalistes")}{" "}
             <span className="text-gold">2026</span>
