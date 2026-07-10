@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { countryNameToFlagUrl } from "@/lib/countryFlags";
-import logoCompetition from "@/assets/logo-competition.png";
+import posterAsset from "@/assets/competition-2026-poster.jpg.asset.json";
 
 interface Finalist {
   id: string;
