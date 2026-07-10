@@ -123,107 +123,107 @@ const FinalistsShowcase = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.02 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="grid md:grid-cols-2 gap-8 md:gap-14 items-center"
+                  className="relative mx-auto w-full max-w-xl"
                 >
                   {/* Portrait with sparkling frame */}
-                  <div className="relative mx-auto w-full max-w-sm md:max-w-none">
-                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                      {/* Rotating gold shimmer ring */}
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                    {/* Rotating gold shimmer ring */}
+                    <motion.div
+                      aria-hidden
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                      className="absolute -inset-[2px] rounded-2xl"
+                      style={{
+                        background:
+                          "conic-gradient(from 0deg, transparent 0deg, hsl(var(--gold)) 60deg, transparent 140deg, transparent 220deg, hsl(var(--gold)) 300deg, transparent 360deg)",
+                      }}
+                    />
+                    <div className="absolute inset-[2px] rounded-2xl overflow-hidden bg-gradient-to-br from-rose/20 to-gold/10">
+                      {current.photoUrl ? (
+                        <img
+                          src={current.photoUrl}
+                          alt={`${formatFirstName(current.prenom)} ${current.nom}`}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-cream/40">
+                          <User className="w-20 h-20" />
+                        </div>
+                      )}
+                      {/* Shimmer sweep */}
                       <motion.div
                         aria-hidden
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                        className="absolute -inset-[2px] rounded-2xl"
-                        style={{
-                          background:
-                            "conic-gradient(from 0deg, transparent 0deg, hsl(var(--gold)) 60deg, transparent 140deg, transparent 220deg, hsl(var(--gold)) 300deg, transparent 360deg)",
+                        initial={{ x: "-120%" }}
+                        animate={{ x: "120%" }}
+                        transition={{
+                          duration: 2.4,
+                          repeat: Infinity,
+                          repeatDelay: 0.6,
+                          ease: "easeInOut",
                         }}
+                        className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]"
                       />
-                      <div className="absolute inset-[2px] rounded-2xl overflow-hidden bg-gradient-to-br from-rose/20 to-gold/10">
-                        {current.photoUrl ? (
-                          <img
-                            src={current.photoUrl}
-                            alt={`${formatFirstName(current.prenom)} ${current.nom}`}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-cream/40">
-                            <User className="w-20 h-20" />
-                          </div>
+
+                      {/* Dark gradient overlay for text readability */}
+                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/60 to-transparent pointer-events-none" />
+
+                      {/* Info overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-center">
+                        {current.typeVoix && (
+                          <span className="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold text-[10px] md:text-xs uppercase tracking-[0.25em] mb-3 border border-gold/40 backdrop-blur-sm">
+                            {current.typeVoix}
+                          </span>
                         )}
-                        {/* Shimmer sweep */}
-                        <motion.div
-                          aria-hidden
-                          initial={{ x: "-120%" }}
-                          animate={{ x: "120%" }}
+                        <h3 className="font-display text-cream leading-tight drop-shadow-lg">
+                          <span className="block text-2xl md:text-4xl font-light">
+                            {formatFirstName(current.prenom)}
+                          </span>
+                          <span className="block text-3xl md:text-5xl font-semibold tracking-wide text-gold">
+                            {current.nom.toUpperCase()}
+                          </span>
+                        </h3>
+                        <div className="mt-3 flex items-center justify-center gap-2 text-cream/95">
+                          {flag && (
+                            <img
+                              src={flag}
+                              alt={current.pays}
+                              className="h-4 md:h-5 w-auto rounded-[2px] shadow"
+                            />
+                          )}
+                          <span className="text-sm md:text-base tracking-wide">
+                            {current.pays}
+                          </span>
+                        </div>
+                        <div className="mt-4 text-cream/60 text-[10px] md:text-xs uppercase tracking-[0.3em]">
+                          {String(index + 1).padStart(2, "0")}{" "}
+                          <span className="opacity-50">/</span>{" "}
+                          {String(list.length).padStart(2, "0")}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Sparkles */}
+                    <div className="pointer-events-none absolute inset-0">
+                      {SPARKLES.map((s, i) => (
+                        <motion.span
+                          key={i}
+                          className="absolute rounded-full bg-gold"
+                          style={{
+                            top: s.top,
+                            left: s.left,
+                            width: s.size,
+                            height: s.size,
+                            boxShadow: "0 0 10px hsl(var(--gold)), 0 0 20px hsl(var(--gold))",
+                          }}
+                          animate={{ opacity: [0, 1, 0], scale: [0.4, 1.2, 0.4] }}
                           transition={{
-                            duration: 2.4,
+                            duration: s.duration,
                             repeat: Infinity,
-                            repeatDelay: 0.6,
+                            delay: s.delay,
                             ease: "easeInOut",
                           }}
-                          className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]"
                         />
-                      </div>
-
-                      {/* Sparkles */}
-                      <div className="pointer-events-none absolute inset-0">
-                        {SPARKLES.map((s, i) => (
-                          <motion.span
-                            key={i}
-                            className="absolute rounded-full bg-gold"
-                            style={{
-                              top: s.top,
-                              left: s.left,
-                              width: s.size,
-                              height: s.size,
-                              boxShadow: "0 0 10px hsl(var(--gold)), 0 0 20px hsl(var(--gold))",
-                            }}
-                            animate={{ opacity: [0, 1, 0], scale: [0.4, 1.2, 0.4] }}
-                            transition={{
-                              duration: s.duration,
-                              repeat: Infinity,
-                              delay: s.delay,
-                              ease: "easeInOut",
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Info */}
-                  <div className="text-center md:text-left">
-                    {current.typeVoix && (
-                      <span className="inline-block px-4 py-1.5 rounded-full bg-gold/15 text-gold text-xs md:text-sm uppercase tracking-[0.25em] mb-5 border border-gold/30">
-                        {current.typeVoix}
-                      </span>
-                    )}
-                    <h3 className="font-display text-cream leading-tight">
-                      <span className="block text-3xl md:text-5xl font-light">
-                        {formatFirstName(current.prenom)}
-                      </span>
-                      <span className="block text-4xl md:text-6xl font-semibold tracking-wide text-gold">
-                        {current.nom.toUpperCase()}
-                      </span>
-                    </h3>
-                    <div className="mt-6 flex items-center justify-center md:justify-start gap-3 text-cream/90">
-                      {flag && (
-                        <img
-                          src={flag}
-                          alt={current.pays}
-                          className="h-5 w-auto rounded-[2px] shadow"
-                        />
-                      )}
-                      <span className="text-base md:text-lg tracking-wide">
-                        {current.pays}
-                      </span>
-                    </div>
-
-                    <div className="mt-8 text-cream/50 text-xs uppercase tracking-[0.3em]">
-                      {String(index + 1).padStart(2, "0")}{" "}
-                      <span className="opacity-50">/</span>{" "}
-                      {String(list.length).padStart(2, "0")}
+                      ))}
                     </div>
                   </div>
                 </motion.div>
