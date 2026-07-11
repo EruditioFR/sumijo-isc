@@ -103,7 +103,7 @@ const FinalistsShowcase = () => {
           className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
         >
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-cream leading-tight">
-            {t("finalists.title", "Les 11 finalistes")}{" "}
+            {t("finalists.laureatsTitle", "Les 5 lauréats")}{" "}
             <span className="text-gold">2026</span>
           </h2>
           <div className="h-0.5 w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent mt-6" />
