@@ -13,6 +13,7 @@ interface Finalist {
   prenom: string;
   pays: string;
   typeVoix: string;
+  prix: string;
   photoUrl: string | null;
 }
 
