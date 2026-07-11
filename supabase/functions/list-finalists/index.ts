@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
     do {
       const url = new URL(`${GATEWAY_URL}/v0/${BASE_ID}/${TABLE_ID}`);
       url.searchParams.set("pageSize", "100");
-      const fields = ["Nom", "Prénom", "Pays", "Type de voix", "Photo", "Finaliste ? "];
+      const fields = ["Nom", "Prénom", "Pays", "Type de voix", "Photo", "Laureat", "Prix"];
       fields.forEach((f) => url.searchParams.append("fields[]", f));
       if (offset) url.searchParams.set("offset", offset);
 
@@ -53,8 +53,18 @@ Deno.serve(async (req) => {
       offset = json.offset;
     } while (offset);
 
+    const prixRank = (p: string) => {
+      const s = (p || "").toLowerCase();
+      if (s.includes("1")) return 1;
+      if (s.includes("2")) return 2;
+      if (s.includes("3")) return 3;
+      if (s.includes("4")) return 4;
+      if (s.includes("5")) return 5;
+      return 99;
+    };
+
     const finalists = records
-      .filter((r) => r.fields?.["Finaliste ? "] === true)
+      .filter((r) => r.fields?.["Laureat"] === true)
       .map((r) => {
         const f = r.fields ?? {};
         const photo: AirtableAttachment | undefined = f["Photo"]?.[0];
@@ -64,11 +74,12 @@ Deno.serve(async (req) => {
           prenom: f["Prénom"] ?? "",
           pays: f["Pays"] ?? "",
           typeVoix: f["Type de voix"] ?? "",
+          prix: f["Prix"] ?? "",
           photoUrl: photo?.thumbnails?.large?.url ?? photo?.url ?? null,
         };
       });
 
-    finalists.sort((a, b) => a.nom.localeCompare(b.nom));
+    finalists.sort((a, b) => prixRank(a.prix) - prixRank(b.prix) || a.nom.localeCompare(b.nom));
 
     return new Response(
       JSON.stringify({ finalists, count: finalists.length }),
