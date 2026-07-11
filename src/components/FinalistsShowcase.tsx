@@ -171,6 +171,20 @@ const FinalistsShowcase = () => {
                       {/* Dark gradient overlay for text readability */}
                       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/60 to-transparent pointer-events-none" />
 
+                      {/* Prix badge - top right */}
+                      {current.prix && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8, y: -8 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                          className="absolute top-3 right-3 md:top-4 md:right-4 z-10"
+                        >
+                          <span className="inline-block px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-gold via-yellow-400 to-gold text-[#3a0f1a] text-xs md:text-sm font-bold uppercase tracking-widest shadow-[0_4px_20px_rgba(212,175,55,0.5)] border border-gold/60">
+                            {current.prix}
+                          </span>
+                        </motion.div>
+                      )}
+
                       {/* Info overlay */}
                       <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-center">
                         {current.typeVoix && (
