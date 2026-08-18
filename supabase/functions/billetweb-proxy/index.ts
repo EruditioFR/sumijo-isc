@@ -59,13 +59,24 @@ Deno.serve(async (req) => {
 
     // Fetch events first to get event ID
     const eventsRes = await fetch(`${BILLETWEB_API}/events?${authParams}`);
-    const events = await eventsRes.json();
+    const eventsText = await eventsRes.text();
+    let events: any;
+    try {
+      events = JSON.parse(eventsText);
+    } catch {
+      console.error('Billetweb events non-JSON response:', eventsRes.status, eventsText.slice(0, 500));
+      return new Response(JSON.stringify({ error: `Billetweb a renvoyé une réponse invalide (${eventsRes.status})` }), {
+        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
-    if (!events || events.length === 0) {
-      return new Response(JSON.stringify({ events: [], attendees: [], availability: [] }), {
+    if (!Array.isArray(events) || events.length === 0) {
+      console.error('Billetweb events empty/unexpected:', eventsRes.status, eventsText.slice(0, 500));
+      return new Response(JSON.stringify({ events: [], attendees: [], availability: [], debug: { status: eventsRes.status, body: eventsText.slice(0, 300) } }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
+
 
     const eventId = events[0].id;
 
