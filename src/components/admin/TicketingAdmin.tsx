@@ -253,6 +253,54 @@ const ReservationsTab = () => {
     [availability]
   );
 
+  // ── Rapport de fréquentation jour par jour (billets scannés) ──
+  const attendanceByDay = useMemo(() => {
+    const map = new Map<string, { day: string; issued: number; scanned: number; invitations: number; firstScan?: Date; lastScan?: Date }>();
+    attendees.filter(a => a.disabled === '0').forEach(a => {
+      const day = a.category || a.ticket || 'Non catégorisé';
+      const row = map.get(day) || { day, issued: 0, scanned: 0, invitations: 0 };
+      row.issued += 1;
+      if (invitationOrderIds.has(a.order_ext_id)) row.invitations += 1;
+      if (a.used === '1') {
+        row.scanned += 1;
+        const d = a.used_date ? new Date(a.used_date) : null;
+        if (d && !isNaN(d.getTime())) {
+          if (!row.firstScan || d < row.firstScan) row.firstScan = d;
+          if (!row.lastScan || d > row.lastScan) row.lastScan = d;
+        }
+      }
+      map.set(day, row);
+    });
+    return Array.from(map.values()).sort((a, b) => a.day.localeCompare(b.day, 'fr'));
+  }, [attendees, invitationOrderIds]);
+
+  const attendanceTotals = useMemo(() => ({
+    issued: attendanceByDay.reduce((s, r) => s + r.issued, 0),
+    scanned: attendanceByDay.reduce((s, r) => s + r.scanned, 0),
+  }), [attendanceByDay]);
+
+  const exportAttendanceCSV = () => {
+    const headers = ['Journée', 'Billets émis', 'Dont invitations', 'Billets scannés', 'Taux de présence', 'Premier scan', 'Dernier scan'];
+    const rows = attendanceByDay.map(r => [
+      `"${r.day}"`,
+      r.issued,
+      r.invitations,
+      r.scanned,
+      r.issued > 0 ? `${Math.round((r.scanned / r.issued) * 100)}%` : '—',
+      r.firstScan ? format(r.firstScan, 'dd/MM/yyyy HH:mm', { locale: fr }) : '',
+      r.lastScan ? format(r.lastScan, 'dd/MM/yyyy HH:mm', { locale: fr }) : '',
+    ]);
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `frequentation-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+
   const exportCSV = () => {
     const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Type', 'Payé', 'Moyen'];
     const rows = orders.map(o => [
@@ -362,6 +410,121 @@ const ReservationsTab = () => {
           </CardContent>
         </Card>
       )}
+
+      {/* Rapport de fréquentation */}
+      <Card>
+        <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <CardTitle className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              Fréquentation jour par jour
+            </CardTitle>
+            <CardDescription>
+              Billets scannés à l'entrée {attendanceTotals.issued > 0 && `— ${attendanceTotals.scanned}/${attendanceTotals.issued} au total`}
+            </CardDescription>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" onClick={fetchData} disabled={isLoading}>
+              <RefreshCw className={cn("w-4 h-4 mr-2", isLoading && "animate-spin")} />
+              Actualiser
+            </Button>
+            <Button variant="outline" size="sm" onClick={exportAttendanceCSV} disabled={attendanceByDay.length === 0}>
+              <Download className="w-4 h-4 mr-2" />
+              Exporter
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {isLoading ? (
+            <div className="space-y-3">
+              {Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}
+            </div>
+          ) : attendanceByDay.length === 0 ? (
+            <div className="text-center py-12 text-muted-foreground">
+              <CheckCircle className="w-12 h-12 mx-auto mb-4 opacity-50" />
+              <p>Aucun billet à comptabiliser</p>
+            </div>
+          ) : (
+            <>
+              {/* Mobile: cartes */}
+              <div className="space-y-3 md:hidden">
+                {attendanceByDay.map(r => {
+                  const pct = r.issued > 0 ? Math.round((r.scanned / r.issued) * 100) : 0;
+                  return (
+                    <div key={r.day} className="border rounded-lg p-3">
+                      <p className="font-medium text-sm">{r.day}</p>
+                      <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
+                        <span>{r.scanned}/{r.issued} scannés</span>
+                        <Badge variant={pct >= 80 ? 'default' : pct >= 40 ? 'secondary' : 'outline'}>{pct}%</Badge>
+                      </div>
+                      <div className="mt-2 h-2 rounded-full bg-muted overflow-hidden">
+                        <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+                      </div>
+                      {r.firstScan && (
+                        <p className="mt-2 text-xs text-muted-foreground flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {format(r.firstScan, 'HH:mm', { locale: fr })} → {format(r.lastScan!, 'HH:mm', { locale: fr })}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Desktop: tableau */}
+              <div className="rounded-md border overflow-x-auto hidden md:block">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Journée</TableHead>
+                      <TableHead className="text-right">Billets émis</TableHead>
+                      <TableHead className="text-right">Dont invitations</TableHead>
+                      <TableHead className="text-right">Scannés</TableHead>
+                      <TableHead>Taux de présence</TableHead>
+                      <TableHead>Plage de scan</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {attendanceByDay.map(r => {
+                      const pct = r.issued > 0 ? Math.round((r.scanned / r.issued) * 100) : 0;
+                      return (
+                        <TableRow key={r.day}>
+                          <TableCell className="font-medium">{r.day}</TableCell>
+                          <TableCell className="text-right">{r.issued}</TableCell>
+                          <TableCell className="text-right">{r.invitations}</TableCell>
+                          <TableCell className="text-right">{r.scanned}</TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              <div className="h-2 w-24 rounded-full bg-muted overflow-hidden">
+                                <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+                              </div>
+                              <span className="text-xs text-muted-foreground">{pct}%</span>
+                            </div>
+                          </TableCell>
+                          <TableCell className="text-xs text-muted-foreground">
+                            {r.firstScan ? `${format(r.firstScan, 'dd/MM HH:mm', { locale: fr })} → ${format(r.lastScan!, 'HH:mm', { locale: fr })}` : '—'}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                    <TableRow className="font-semibold bg-muted/40">
+                      <TableCell>Total</TableCell>
+                      <TableCell className="text-right">{attendanceTotals.issued}</TableCell>
+                      <TableCell />
+                      <TableCell className="text-right">{attendanceTotals.scanned}</TableCell>
+                      <TableCell>
+                        {attendanceTotals.issued > 0 ? `${Math.round((attendanceTotals.scanned / attendanceTotals.issued) * 100)}%` : '—'}
+                      </TableCell>
+                      <TableCell />
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </>
+          )}
+        </CardContent>
+      </Card>
+
 
       {/* Orders table */}
       <Card>
