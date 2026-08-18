@@ -57,17 +57,48 @@ Deno.serve(async (req) => {
   try {
     const authParams = `user=${billetwebUser}&key=${billetwebKey}&version=1`;
 
-    // Fetch events first to get event ID
-    const eventsRes = await fetch(`${BILLETWEB_API}/events?${authParams}`);
-    const events = await eventsRes.json();
+    // Fetch events (include past events: the 2026 edition is over, so the
+    // default /events listing returns nothing once the event date has passed)
+    const fetchEvents = async (extra: string) => {
+      const res = await fetch(`${BILLETWEB_API}/events?${authParams}${extra}`);
+      const text = await res.text();
+      try {
+        const parsed = JSON.parse(text);
+        return { ok: true as const, status: res.status, list: Array.isArray(parsed) ? parsed : [] };
+      } catch {
+        console.error('Billetweb events non-JSON response:', res.status, text.slice(0, 500));
+        return { ok: false as const, status: res.status, list: [] as any[] };
+      }
+    };
 
-    if (!events || events.length === 0) {
+    let eventsResult = await fetchEvents('&past=1');
+    if (eventsResult.ok && eventsResult.list.length === 0) {
+      eventsResult = await fetchEvents('');
+    }
+
+    if (!eventsResult.ok) {
+      return new Response(JSON.stringify({ error: `Billetweb a renvoyé une réponse invalide (${eventsResult.status})` }), {
+        status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const events = eventsResult.list;
+    if (events.length === 0) {
+      console.error('Billetweb: aucun événement retourné');
       return new Response(JSON.stringify({ events: [], attendees: [], availability: [] }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    const eventId = events[0].id;
+    // Prefer the Sumi Jo event, otherwise the most recent one
+    const sumiEvent = events.find((e: any) => String(e.name || '').toLowerCase().includes('sumi'));
+    const sorted = [...events].sort((a: any, b: any) =>
+      new Date(b.start || 0).getTime() - new Date(a.start || 0).getTime()
+    );
+    const selected = sumiEvent || sorted[0];
+    const eventId = selected.id;
+    events[0] = selected;
+
 
     if (action === 'attendees') {
       const res = await fetch(`${BILLETWEB_API}/event/${eventId}/attendees?${authParams}`);
