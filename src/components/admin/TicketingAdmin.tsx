@@ -253,6 +253,54 @@ const ReservationsTab = () => {
     [availability]
   );
 
+  // ── Rapport de fréquentation jour par jour (billets scannés) ──
+  const attendanceByDay = useMemo(() => {
+    const map = new Map<string, { day: string; issued: number; scanned: number; invitations: number; firstScan?: Date; lastScan?: Date }>();
+    attendees.filter(a => a.disabled === '0').forEach(a => {
+      const day = a.category || a.ticket || 'Non catégorisé';
+      const row = map.get(day) || { day, issued: 0, scanned: 0, invitations: 0 };
+      row.issued += 1;
+      if (invitationOrderIds.has(a.order_ext_id)) row.invitations += 1;
+      if (a.used === '1') {
+        row.scanned += 1;
+        const d = a.used_date ? new Date(a.used_date) : null;
+        if (d && !isNaN(d.getTime())) {
+          if (!row.firstScan || d < row.firstScan) row.firstScan = d;
+          if (!row.lastScan || d > row.lastScan) row.lastScan = d;
+        }
+      }
+      map.set(day, row);
+    });
+    return Array.from(map.values()).sort((a, b) => a.day.localeCompare(b.day, 'fr'));
+  }, [attendees, invitationOrderIds]);
+
+  const attendanceTotals = useMemo(() => ({
+    issued: attendanceByDay.reduce((s, r) => s + r.issued, 0),
+    scanned: attendanceByDay.reduce((s, r) => s + r.scanned, 0),
+  }), [attendanceByDay]);
+
+  const exportAttendanceCSV = () => {
+    const headers = ['Journée', 'Billets émis', 'Dont invitations', 'Billets scannés', 'Taux de présence', 'Premier scan', 'Dernier scan'];
+    const rows = attendanceByDay.map(r => [
+      `"${r.day}"`,
+      r.issued,
+      r.invitations,
+      r.scanned,
+      r.issued > 0 ? `${Math.round((r.scanned / r.issued) * 100)}%` : '—',
+      r.firstScan ? format(r.firstScan, 'dd/MM/yyyy HH:mm', { locale: fr }) : '',
+      r.lastScan ? format(r.lastScan, 'dd/MM/yyyy HH:mm', { locale: fr }) : '',
+    ]);
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `frequentation-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+
   const exportCSV = () => {
     const headers = ['Commande', 'Acheteur', 'Email', 'Ville', 'Pays', 'Date', 'Billets', 'Montant', 'Type', 'Payé', 'Moyen'];
     const rows = orders.map(o => [
