@@ -45,7 +45,9 @@
     "success": "Notification enregistrée ! Vous serez alerté le 1er mars.",
     "error": "Veuillez entrer une adresse email valide",
     "alreadyRegistered": "Cette adresse email est déjà inscrite",
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer."
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer.",
+    "closedTitle": "Billetterie fermée",
+    "closedText": "La billetterie de l'édition 2026 est désormais fermée. Merci à toutes et à tous pour votre soutien."
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",

@@ -45,7 +45,9 @@
     "success": "通知已注册！我们将在3月1日提醒您。",
     "error": "请输入有效的电子邮箱地址",
     "alreadyRegistered": "该电子邮箱已注册",
-    "errorGeneric": "发生错误，请重试。"
+    "errorGeneric": "发生错误，请重试。",
+    "closedTitle": "售票已结束",
+    "closedText": "2026 年赛事售票已结束。感谢各位的支持。"
   },
   "hero": {
     "title": "SUMI JO INTERNATIONAL SINGING COMPETITION",

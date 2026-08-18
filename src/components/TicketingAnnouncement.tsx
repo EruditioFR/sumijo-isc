@@ -21,8 +21,10 @@ const TicketingAnnouncement = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Clear previous widget content
+    // Billetterie fermée : aucun widget chargé
     container.innerHTML = '';
+    return;
+
 
     const locale = getBilletwebLocale();
     const url = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${locale}`;
@@ -88,15 +90,23 @@ const TicketingAnnouncement = () => {
         <div className="mx-auto w-16 h-0.5 bg-rose" />
       </motion.div>
 
-      {/* Billetweb Widget */}
+      {/* Billetterie fermée */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="max-w-4xl mx-auto bg-white rounded-lg shadow-elegant p-4 md:p-8"
+        className="max-w-4xl mx-auto bg-white rounded-lg shadow-elegant p-8 md:p-12 text-center"
       >
-        <div ref={containerRef} />
+        <h2 className="font-display text-2xl md:text-3xl text-rose-dark tracking-wide mb-4">
+          {t('ticketing.closedTitle')}
+        </h2>
+        <div className="mx-auto w-16 h-0.5 bg-gold mb-6" />
+        <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+          {t('ticketing.closedText')}
+        </p>
+        <div ref={containerRef} className="hidden" />
       </motion.div>
+
     </section>
   );
 };
