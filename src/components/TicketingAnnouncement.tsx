@@ -21,8 +21,10 @@ const TicketingAnnouncement = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Clear previous widget content
+    // Billetterie fermée : aucun widget chargé
     container.innerHTML = '';
+    return;
+
 
     const locale = getBilletwebLocale();
     const url = `https://www.billetweb.fr/shop.php?event=sumi-jo-international-singing-competition1&locale=${locale}`;
